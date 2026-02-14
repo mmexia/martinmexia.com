@@ -445,13 +445,123 @@ function NeuralNetwork() {
   );
 }
 
+/* ─── Matrix Rain ─── */
+function MatrixRain() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    ctx.scale(dpr, dpr);
+
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const fontSize = 14;
+    const columns = Math.floor(w / fontSize);
+    const drops: number[] = Array(columns).fill(0).map(() => Math.random() * -100);
+    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFCERCATROVA";
+
+    const draw = () => {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.font = `${fontSize}px monospace`;
+
+      drops.forEach((y, i) => {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+
+        // Lead character — bright green
+        ctx.fillStyle = "#00ff41";
+        ctx.fillText(char, x, y * fontSize);
+
+        // Trail character — dimmer
+        if (y > 1) {
+          ctx.fillStyle = "rgba(0, 255, 65, 0.3)";
+          const trailChar = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(trailChar, x, (y - 1) * fontSize);
+        }
+
+        drops[i] += 0.5 + Math.random() * 0.5;
+
+        if (y * fontSize > h && Math.random() > 0.98) {
+          drops[i] = 0;
+        }
+      });
+    };
+
+    const interval = setInterval(draw, 33);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 0,
+        background: "#000",
+      }}
+    />
+  );
+}
+
 /* ─── Main Page ─── */
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const [inputActive, setInputActive] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [matrixMode, setMatrixMode] = useState(false);
+  const [shake, setShake] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (inputActive && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [inputActive]);
+
+  const handleCursorClick = () => {
+    setInputActive(true);
+  };
+
+  const handleInputKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      if (inputValue.toLowerCase().replace(/\s+/g, "") === "cercatrova") {
+        setMatrixMode(true);
+      } else {
+        // Wrong input — shake and clear
+        setShake(true);
+        setTimeout(() => {
+          setShake(false);
+          setInputValue("");
+        }, 500);
+      }
+    }
+    if (e.key === "Escape") {
+      setInputActive(false);
+      setInputValue("");
+    }
+  };
+
+  const exitMatrix = () => {
+    setMatrixMode(false);
+    setInputActive(false);
+    setInputValue("");
+  };
 
   return (
     <>
@@ -475,160 +585,306 @@ export default function Home() {
           margin-left: 6px;
           animation: blink 1s step-end infinite;
           vertical-align: text-bottom;
+          cursor: text;
+          pointer-events: auto;
         }
         @keyframes blink {
           50% { opacity: 0; }
         }
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          20% { transform: translateX(-8px); }
+          40% { transform: translateX(8px); }
+          60% { transform: translateX(-5px); }
+          80% { transform: translateX(5px); }
+        }
+        .shake {
+          animation: shake 0.4s ease;
+        }
+        .secret-input {
+          background: transparent;
+          border: none;
+          outline: none;
+          color: var(--accent);
+          font-size: clamp(1.5rem, 4vw, 2.5rem);
+          font-weight: 300;
+          letter-spacing: 0.25em;
+          font-style: italic;
+          text-transform: uppercase;
+          font-family: inherit;
+          width: 100%;
+          text-align: center;
+          caret-color: var(--accent);
+          pointer-events: auto;
+        }
+        .secret-input::placeholder {
+          color: var(--accent);
+          opacity: 0.3;
+        }
+        @keyframes matrixFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .matrix-overlay {
+          animation: matrixFadeIn 1s ease forwards;
+        }
+        @keyframes glitch {
+          0%, 100% { text-shadow: 2px 0 #00ff41, -2px 0 #ff0040; }
+          25% { text-shadow: -2px -1px #00ff41, 2px 1px #ff0040; }
+          50% { text-shadow: 1px 2px #00ff41, -1px -2px #ff0040; }
+          75% { text-shadow: -1px 1px #00ff41, 1px -1px #ff0040; }
+        }
       `}</style>
 
-      <NeuralNetwork />
-      <ThemeToggle />
-
-      <main
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
-          zIndex: 1,
-          pointerEvents: "none",
-          textAlign: "center",
-        }}
-      >
-        {mounted && (
-          <>
-            <div className="fade-up" style={{ marginBottom: "1rem" }}>
-              <div
-                style={{
-                  display: "inline-block",
-                  padding: "0.4rem 1rem",
-                  border: "1px solid var(--border)",
-                  borderRadius: "100px",
-                  fontSize: "0.85rem",
-                  color: "var(--text-secondary)",
-                  letterSpacing: "0.05em",
-                  textTransform: "uppercase",
-                  background: "var(--bg)",
-                  backdropFilter: "blur(10px)",
-                }}
-              >
-                <span
-                  style={{ color: "var(--accent)", marginRight: "0.5rem" }}
-                >
-                  ●
-                </span>
-                Online
-              </div>
-            </div>
-
-            <div className="fade-up fade-up-delay-1">
-              <h1
-                style={{
-                  fontSize: "clamp(2.5rem, 8vw, 6rem)",
-                  fontWeight: 800,
-                  letterSpacing: "-0.03em",
-                  lineHeight: 1,
-                  color: "var(--text)",
-                }}
-              >
-                Martin Mexia
-              </h1>
-            </div>
-
-            <div
-              className="fade-up fade-up-delay-2"
-              style={{ marginTop: "2rem" }}
-            >
-              <p
-                style={{
-                  fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
-                  color: "var(--accent)",
-                  fontWeight: 300,
-                  letterSpacing: "0.25em",
-                  fontStyle: "italic",
-                  textTransform: "uppercase",
-                }}
-              >
-                Cerca Trova
-                <span className="cursor-blink" />
-              </p>
-            </div>
-
-            <div
-              className="fade-up fade-up-delay-3"
+      {matrixMode ? (
+        <div className="matrix-overlay" style={{ position: "fixed", inset: 0, zIndex: 50 }}>
+          <MatrixRain />
+          <div
+            style={{
+              position: "fixed",
+              inset: 0,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 51,
+            }}
+          >
+            <h1
               style={{
-                marginTop: "3rem",
-                pointerEvents: "auto",
-                display: "flex",
-                gap: "1rem",
+                fontSize: "clamp(2rem, 6vw, 5rem)",
+                fontWeight: 800,
+                color: "#00ff41",
+                fontFamily: "monospace",
+                letterSpacing: "0.1em",
+                animation: "glitch 0.3s ease infinite",
+                textShadow: "0 0 20px rgba(0,255,65,0.5)",
               }}
             >
-              <a
-                href="https://linkedin.com/in/martinmexia"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  padding: "0.8rem 2rem",
-                  background: "var(--accent)",
-                  color: "white",
-                  textDecoration: "none",
-                  borderRadius: "8px",
-                  fontSize: "0.95rem",
-                  fontWeight: 500,
-                  transition: "all 0.2s ease",
-                  border: "none",
-                }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.style.opacity = "0.85")
-                }
-                onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
-              >
-                LinkedIn →
-              </a>
-              <a
-                href="mailto:martinmexia@gmail.com"
-                style={{
-                  padding: "0.8rem 2rem",
-                  background: "transparent",
-                  color: "var(--text)",
-                  textDecoration: "none",
-                  borderRadius: "8px",
-                  fontSize: "0.95rem",
-                  fontWeight: 500,
-                  border: "1px solid var(--border)",
-                  transition: "all 0.2s ease",
-                }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.style.borderColor = "var(--accent)")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.style.borderColor = "var(--border)")
-                }
-              >
-                Contact
-              </a>
-            </div>
-          </>
-        )}
-      </main>
+              CERCA TROVA
+            </h1>
+            <p
+              style={{
+                marginTop: "2rem",
+                color: "#00ff41",
+                fontFamily: "monospace",
+                fontSize: "1rem",
+                opacity: 0.7,
+                letterSpacing: "0.2em",
+              }}
+            >
+              YOU FOUND IT
+            </p>
+            <button
+              onClick={exitMatrix}
+              style={{
+                marginTop: "3rem",
+                padding: "0.6rem 2rem",
+                background: "transparent",
+                border: "1px solid #00ff41",
+                color: "#00ff41",
+                fontFamily: "monospace",
+                fontSize: "0.85rem",
+                letterSpacing: "0.15em",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                borderRadius: "4px",
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = "rgba(0,255,65,0.1)";
+                e.currentTarget.style.boxShadow = "0 0 15px rgba(0,255,65,0.3)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              RETURN →
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
+          <NeuralNetwork />
+          <ThemeToggle />
+        </>
+      )}
 
-      <footer
-        style={{
-          position: "fixed",
-          bottom: "2rem",
-          left: "0",
-          right: "0",
-          textAlign: "center",
-          fontSize: "0.75rem",
-          color: "var(--text-secondary)",
-          letterSpacing: "0.1em",
-          zIndex: 1,
-        }}
-      >
-        © {new Date().getFullYear()} MARTIN MEXIA
-      </footer>
+      {!matrixMode && (
+        <main
+          style={{
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "relative",
+            zIndex: 1,
+            pointerEvents: "none",
+            textAlign: "center",
+          }}
+        >
+          {mounted && (
+            <>
+              <div className="fade-up" style={{ marginBottom: "1rem" }}>
+                <div
+                  style={{
+                    display: "inline-block",
+                    padding: "0.4rem 1rem",
+                    border: "1px solid var(--border)",
+                    borderRadius: "100px",
+                    fontSize: "0.85rem",
+                    color: "var(--text-secondary)",
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase",
+                    background: "var(--bg)",
+                    backdropFilter: "blur(10px)",
+                  }}
+                >
+                  <span
+                    style={{ color: "var(--accent)", marginRight: "0.5rem" }}
+                  >
+                    ●
+                  </span>
+                  Online
+                </div>
+              </div>
+
+              <div className="fade-up fade-up-delay-1">
+                <h1
+                  style={{
+                    fontSize: "clamp(2.5rem, 8vw, 6rem)",
+                    fontWeight: 800,
+                    letterSpacing: "-0.03em",
+                    lineHeight: 1,
+                    color: "var(--text)",
+                  }}
+                >
+                  Martin Mexia
+                </h1>
+              </div>
+
+              <div
+                className={`fade-up fade-up-delay-2 ${shake ? "shake" : ""}`}
+                style={{ marginTop: "2rem" }}
+              >
+                {inputActive ? (
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    className="secret-input"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={handleInputKeyDown}
+                    onBlur={() => {
+                      if (!inputValue) {
+                        setInputActive(false);
+                      }
+                    }}
+                    placeholder="..."
+                    maxLength={20}
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck={false}
+                  />
+                ) : (
+                  <p
+                    style={{
+                      fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
+                      color: "var(--accent)",
+                      fontWeight: 300,
+                      letterSpacing: "0.25em",
+                      fontStyle: "italic",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Cerca Trova
+                    <span
+                      className="cursor-blink"
+                      onClick={handleCursorClick}
+                      title=""
+                    />
+                  </p>
+                )}
+              </div>
+
+              <div
+                className="fade-up fade-up-delay-3"
+                style={{
+                  marginTop: "3rem",
+                  pointerEvents: "auto",
+                  display: "flex",
+                  gap: "1rem",
+                }}
+              >
+                <a
+                  href="https://linkedin.com/in/martinmexia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    padding: "0.8rem 2rem",
+                    background: "var(--accent)",
+                    color: "white",
+                    textDecoration: "none",
+                    borderRadius: "8px",
+                    fontSize: "0.95rem",
+                    fontWeight: 500,
+                    transition: "all 0.2s ease",
+                    border: "none",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.opacity = "0.85")
+                  }
+                  onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
+                >
+                  LinkedIn →
+                </a>
+                <a
+                  href="mailto:martinmexia@gmail.com"
+                  style={{
+                    padding: "0.8rem 2rem",
+                    background: "transparent",
+                    color: "var(--text)",
+                    textDecoration: "none",
+                    borderRadius: "8px",
+                    fontSize: "0.95rem",
+                    fontWeight: 500,
+                    border: "1px solid var(--border)",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.borderColor = "var(--accent)")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.borderColor = "var(--border)")
+                  }
+                >
+                  Contact
+                </a>
+              </div>
+            </>
+          )}
+        </main>
+      )}
+
+      {!matrixMode && (
+        <footer
+          style={{
+            position: "fixed",
+            bottom: "2rem",
+            left: "0",
+            right: "0",
+            textAlign: "center",
+            fontSize: "0.75rem",
+            color: "var(--text-secondary)",
+            letterSpacing: "0.1em",
+            zIndex: 1,
+          }}
+        >
+          © {new Date().getFullYear()} MARTIN MEXIA
+        </footer>
+      )}
     </>
   );
 }
