@@ -61,6 +61,7 @@ interface NetNode {
 function NeuralNetwork() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
+  const clickRef = useRef({ x: -1000, y: -1000, time: 0 });
   const nodesRef = useRef<NetNode[]>([]);
   const animRef = useRef<number>(0);
   const sizeRef = useRef({ w: 0, h: 0 });
@@ -142,8 +143,13 @@ function NeuralNetwork() {
       mouseRef.current = { x: -1000, y: -1000 };
     };
 
+    const handleClick = (e: MouseEvent) => {
+      clickRef.current = { x: e.clientX, y: e.clientY, time: Date.now() };
+    };
+
     window.addEventListener("mousemove", handleMouse);
     window.addEventListener("mouseleave", handleMouseLeave);
+    canvas.addEventListener("click", handleClick);
 
     const isDark = () =>
       document.documentElement.getAttribute("data-theme") === "dark";
@@ -193,21 +199,52 @@ function NeuralNetwork() {
             node.vy *= 0.5;
           }
         } else {
-          // Particles — gentle drift + mouse attraction
+          // Particles — subtle movement
+
+          // Repel from company nodes (don't overlap labels)
+          const companyNodes = nodes.filter((n) => n.isCompany);
+          companyNodes.forEach((cn) => {
+            const cdx = node.x - cn.x;
+            const cdy = node.y - cn.y;
+            const cd = Math.sqrt(cdx * cdx + cdy * cdy);
+            const minDist = cn.radius + 25; // keep clear of label area
+            if (cd < minDist && cd > 0) {
+              const repelForce = (minDist - cd) / minDist;
+              node.vx += (cdx / cd) * repelForce * 0.3;
+              node.vy += (cdy / cd) * repelForce * 0.3;
+            }
+          });
+
+          // Click attraction — gentle drift toward click point
+          const click = clickRef.current;
+          const timeSinceClick = Date.now() - click.time;
+          if (timeSinceClick < 3000) { // effect lasts 3 seconds
+            const cdx = click.x - node.x;
+            const cdy = click.y - node.y;
+            const cd = Math.sqrt(cdx * cdx + cdy * cdy);
+            if (cd > 5) {
+              const fade = 1 - timeSinceClick / 3000;
+              node.vx += (cdx / cd) * 0.03 * fade;
+              node.vy += (cdy / cd) * 0.03 * fade;
+            }
+          }
+
+          // Very gentle mouse influence (hover, not attract aggressively)
           const mdx = mouse.x - node.x;
           const mdy = mouse.y - node.y;
           const md = Math.sqrt(mdx * mdx + mdy * mdy);
-
           if (md < mouseDist) {
             const force = (mouseDist - md) / mouseDist;
-            node.vx += (mdx / md) * force * 0.2;
-            node.vy += (mdy / md) * force * 0.2;
+            node.vx += (mdx / md) * force * 0.04;
+            node.vy += (mdy / md) * force * 0.04;
           }
 
-          node.vx += (node.baseX - node.x) * 0.0002;
-          node.vy += (node.baseY - node.y) * 0.0002;
-          node.vx *= 0.995;
-          node.vy *= 0.995;
+          // Drift back to base — very gentle
+          node.vx += (node.baseX - node.x) * 0.0001;
+          node.vy += (node.baseY - node.y) * 0.0001;
+          // Strong damping for subtle motion
+          node.vx *= 0.985;
+          node.vy *= 0.985;
         }
 
         node.x += node.vx;
@@ -347,6 +384,7 @@ function NeuralNetwork() {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouse);
       window.removeEventListener("mouseleave", handleMouseLeave);
+      canvas.removeEventListener("click", handleClick);
     };
   }, [initNodes]);
 
