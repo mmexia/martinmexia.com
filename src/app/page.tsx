@@ -53,7 +53,6 @@ interface NetNode {
   vy: number;
   radius: number;
   label?: string;
-  logo?: string;
   isCompany?: boolean;
   baseX: number;
   baseY: number;
@@ -63,32 +62,23 @@ function NeuralNetwork() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const nodesRef = useRef<NetNode[]>([]);
-  const imagesRef = useRef<Map<string, HTMLImageElement>>(new Map());
   const animRef = useRef<number>(0);
   const sizeRef = useRef({ w: 0, h: 0 });
 
   const companies = [
-    { label: "REVOLUT", logo: "/logos/revolut.svg" },
-    { label: "RAPPI", logo: "/logos/rappi.svg" },
-    { label: "PAYIT", logo: "/logos/payit.svg" },
+    { label: "Revolut" },
+    { label: "Rappi" },
+    { label: "PayIt" },
   ];
-
-  // Preload logo images
-  useEffect(() => {
-    companies.forEach((c) => {
-      const img = new Image();
-      img.src = c.logo;
-      imagesRef.current.set(c.label, img);
-    });
-  }, []);
 
   const initNodes = useCallback((w: number, h: number) => {
     const nodes: NetNode[] = [];
 
+    // Company nodes — well separated, anchored positions
     const positions = [
-      { x: w * 0.18, y: h * 0.3 },
-      { x: w * 0.52, y: h * 0.2 },
-      { x: w * 0.82, y: h * 0.38 },
+      { x: w * 0.15, y: h * 0.3 },
+      { x: w * 0.5, y: h * 0.18 },
+      { x: w * 0.85, y: h * 0.35 },
     ];
 
     companies.forEach((c, i) => {
@@ -98,16 +88,16 @@ function NeuralNetwork() {
         y: pos.y,
         vx: 0,
         vy: 0,
-        radius: 36,
+        radius: 38,
         label: c.label,
-        logo: c.logo,
         isCompany: true,
         baseX: pos.x,
         baseY: pos.y,
       });
     });
 
-    const numParticles = Math.floor((w * h) / 15000);
+    // Ambient particles
+    const numParticles = Math.floor((w * h) / 14000);
     for (let i = 0; i < numParticles; i++) {
       const x = Math.random() * w;
       const y = Math.random() * h;
@@ -171,24 +161,39 @@ function NeuralNetwork() {
       const accentColor = dark ? "100, 160, 255" : "0, 90, 220";
       const particleColor = dark ? "150, 180, 255" : "40, 60, 120";
 
-      // Update positions — SLOWER movement
+      // Update positions
       nodes.forEach((node) => {
         if (node.isCompany) {
+          // ANCHOR behavior — very strong pull back to base, minimal drift
           const dx = node.baseX - node.x;
           const dy = node.baseY - node.y;
-          node.vx += dx * 0.0003;
-          node.vy += dy * 0.0003;
-          node.vx *= 0.99;
-          node.vy *= 0.99;
+          // Strong spring back to base
+          node.vx += dx * 0.02;
+          node.vy += dy * 0.02;
+          // Heavy damping
+          node.vx *= 0.9;
+          node.vy *= 0.9;
 
+          // Mouse influence is very subtle — just a tiny nudge
           const mdx = mouse.x - node.x;
           const mdy = mouse.y - node.y;
           const md = Math.sqrt(mdx * mdx + mdy * mdy);
-          if (md < 250) {
-            node.vx += (mdx / md) * 0.05;
-            node.vy += (mdy / md) * 0.05;
+          if (md < 150) {
+            node.vx += (mdx / md) * 0.01;
+            node.vy += (mdy / md) * 0.01;
+          }
+
+          // Clamp max displacement from base (never more than 20px)
+          const distFromBase = Math.sqrt(
+            (node.x + node.vx - node.baseX) ** 2 +
+            (node.y + node.vy - node.baseY) ** 2
+          );
+          if (distFromBase > 20) {
+            node.vx *= 0.5;
+            node.vy *= 0.5;
           }
         } else {
+          // Particles — gentle drift + mouse attraction
           const mdx = mouse.x - node.x;
           const mdy = mouse.y - node.y;
           const md = Math.sqrt(mdx * mdx + mdy * mdy);
@@ -208,13 +213,16 @@ function NeuralNetwork() {
         node.x += node.vx;
         node.y += node.vy;
 
-        if (node.x < -50) node.x = w + 50;
-        if (node.x > w + 50) node.x = -50;
-        if (node.y < -50) node.y = h + 50;
-        if (node.y > h + 50) node.y = -50;
+        // Wrap particles (not companies)
+        if (!node.isCompany) {
+          if (node.x < -50) node.x = w + 50;
+          if (node.x > w + 50) node.x = -50;
+          if (node.y < -50) node.y = h + 50;
+          if (node.y > h + 50) node.y = -50;
+        }
       });
 
-      // Draw connections — MORE VISIBLE
+      // Draw connections
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x;
@@ -226,9 +234,9 @@ function NeuralNetwork() {
               : connectionDist;
 
           if (dist < maxDist) {
-            const opacity = (1 - dist / maxDist) * (
-              nodes[i].isCompany || nodes[j].isCompany ? 0.7 : 0.5
-            );
+            const opacity =
+              (1 - dist / maxDist) *
+              (nodes[i].isCompany || nodes[j].isCompany ? 0.7 : 0.5);
             const color =
               nodes[i].isCompany || nodes[j].isCompany
                 ? accentColor
@@ -244,7 +252,7 @@ function NeuralNetwork() {
         }
       }
 
-      // Draw mouse connections — BRIGHTER
+      // Mouse connections
       nodes.forEach((node) => {
         const dx = mouse.x - node.x;
         const dy = mouse.y - node.y;
@@ -267,67 +275,64 @@ function NeuralNetwork() {
           const mdy = mouse.y - node.y;
           const md = Math.sqrt(mdx * mdx + mdy * mdy);
           const hover = md < 90;
-          const scale = hover ? 1.2 : 1;
+          const scale = hover ? 1.1 : 1;
           const r = node.radius * scale;
 
-          // Glow — stronger
+          // Outer glow
           ctx.beginPath();
           ctx.arc(node.x, node.y, r + 20, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${accentColor}, ${hover ? 0.15 : 0.06})`;
+          ctx.fillStyle = `rgba(${accentColor}, ${hover ? 0.12 : 0.04})`;
           ctx.fill();
 
-          // Circle background
+          // Circle — outline only, no fill (transparent)
           ctx.beginPath();
           ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
-          ctx.fillStyle = dark
-            ? `rgba(15, 15, 25, ${hover ? 0.95 : 0.9})`
-            : `rgba(255, 255, 255, ${hover ? 0.95 : 0.9})`;
-          ctx.fill();
-          ctx.strokeStyle = `rgba(${accentColor}, ${hover ? 0.9 : 0.5})`;
-          ctx.lineWidth = hover ? 2.5 : 1.5;
+          ctx.strokeStyle = `rgba(${accentColor}, ${hover ? 0.9 : 0.45})`;
+          ctx.lineWidth = hover ? 2 : 1.5;
           ctx.stroke();
 
-          // Try to draw logo image
-          const img = imagesRef.current.get(node.label || "");
-          if (img && img.complete && img.naturalWidth > 0) {
-            const imgW = r * 1.4;
-            const imgH = imgW * 0.4;
-            ctx.drawImage(
-              img,
-              node.x - imgW / 2,
-              node.y - imgH / 2,
-              imgW,
-              imgH
-            );
-          } else {
-            // Fallback: text label
-            ctx.font = `bold ${hover ? 12 : 11}px -apple-system, BlinkMacSystemFont, sans-serif`;
-            ctx.fillStyle = `rgba(${accentColor}, ${hover ? 1 : 0.8})`;
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText(node.label || "", node.x, node.y);
-          }
+          // Elegant brand text — same color as connections, outline style
+          const fontSize = hover ? 14 : 13;
+          ctx.font = `300 ${fontSize}px -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif`;
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+
+          // Stroke text for outline effect
+          ctx.strokeStyle = `rgba(${accentColor}, ${hover ? 1 : 0.7})`;
+          ctx.lineWidth = 0.8;
+          ctx.strokeText(node.label || "", node.x, node.y);
+          // Light fill
+          ctx.fillStyle = `rgba(${accentColor}, ${hover ? 0.9 : 0.5})`;
+          ctx.fillText(node.label || "", node.x, node.y);
 
           if (hover) {
-            ctx.font = "9px -apple-system, BlinkMacSystemFont, sans-serif";
+            ctx.font =
+              '300 9px -apple-system, BlinkMacSystemFont, sans-serif';
             ctx.fillStyle = dark
-              ? "rgba(255,255,255,0.5)"
-              : "rgba(0,0,0,0.5)";
+              ? "rgba(255,255,255,0.4)"
+              : "rgba(0,0,0,0.4)";
             ctx.textAlign = "center";
             ctx.fillText("coming soon", node.x, node.y + r + 18);
           }
         } else {
-          // Particle — MORE VISIBLE
+          // Particle
           const mdx = mouse.x - node.x;
           const mdy = mouse.y - node.y;
           const md = Math.sqrt(mdx * mdx + mdy * mdy);
           const glow = md < mouseDist ? (mouseDist - md) / mouseDist : 0;
 
           ctx.beginPath();
-          ctx.arc(node.x, node.y, node.radius + glow * 3, 0, Math.PI * 2);
-          ctx.fillStyle = glow > 0
-            ? `rgba(${accentColor}, ${0.4 + glow * 0.5})`
-            : `rgba(${particleColor}, 0.35)`;
+          ctx.arc(
+            node.x,
+            node.y,
+            node.radius + glow * 3,
+            0,
+            Math.PI * 2
+          );
+          ctx.fillStyle =
+            glow > 0
+              ? `rgba(${accentColor}, ${0.4 + glow * 0.5})`
+              : `rgba(${particleColor}, 0.35)`;
           ctx.fill();
         }
       });
@@ -427,7 +432,11 @@ export default function Home() {
                   backdropFilter: "blur(10px)",
                 }}
               >
-                <span style={{ color: "var(--accent)", marginRight: "0.5rem" }}>●</span>
+                <span
+                  style={{ color: "var(--accent)", marginRight: "0.5rem" }}
+                >
+                  ●
+                </span>
                 Online
               </div>
             </div>
@@ -489,7 +498,9 @@ export default function Home() {
                   transition: "all 0.2s ease",
                   border: "none",
                 }}
-                onMouseOver={(e) => (e.currentTarget.style.opacity = "0.85")}
+                onMouseOver={(e) =>
+                  (e.currentTarget.style.opacity = "0.85")
+                }
                 onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
               >
                 LinkedIn →
@@ -507,8 +518,12 @@ export default function Home() {
                   border: "1px solid var(--border)",
                   transition: "all 0.2s ease",
                 }}
-                onMouseOver={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
-                onMouseOut={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+                onMouseOver={(e) =>
+                  (e.currentTarget.style.borderColor = "var(--accent)")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.style.borderColor = "var(--border)")
+                }
               >
                 Contact
               </a>
