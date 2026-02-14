@@ -46,13 +46,14 @@ function ThemeToggle() {
 }
 
 /* ─── Neural Network Canvas ─── */
-interface Node {
+interface NetNode {
   x: number;
   y: number;
   vx: number;
   vy: number;
   radius: number;
   label?: string;
+  logo?: string;
   isCompany?: boolean;
   baseX: number;
   baseY: number;
@@ -61,24 +62,33 @@ interface Node {
 function NeuralNetwork() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
-  const nodesRef = useRef<Node[]>([]);
+  const nodesRef = useRef<NetNode[]>([]);
+  const imagesRef = useRef<Map<string, HTMLImageElement>>(new Map());
   const animRef = useRef<number>(0);
   const sizeRef = useRef({ w: 0, h: 0 });
 
   const companies = [
-    { label: "REVOLUT" },
-    { label: "RAPPI" },
-    { label: "PAYIT" },
+    { label: "REVOLUT", logo: "/logos/revolut.svg" },
+    { label: "RAPPI", logo: "/logos/rappi.svg" },
+    { label: "PAYIT", logo: "/logos/payit.svg" },
   ];
 
-  const initNodes = useCallback((w: number, h: number) => {
-    const nodes: Node[] = [];
+  // Preload logo images
+  useEffect(() => {
+    companies.forEach((c) => {
+      const img = new Image();
+      img.src = c.logo;
+      imagesRef.current.set(c.label, img);
+    });
+  }, []);
 
-    // Company nodes — spread across the canvas
+  const initNodes = useCallback((w: number, h: number) => {
+    const nodes: NetNode[] = [];
+
     const positions = [
-      { x: w * 0.2, y: h * 0.35 },
-      { x: w * 0.5, y: h * 0.25 },
-      { x: w * 0.8, y: h * 0.4 },
+      { x: w * 0.18, y: h * 0.3 },
+      { x: w * 0.52, y: h * 0.2 },
+      { x: w * 0.82, y: h * 0.38 },
     ];
 
     companies.forEach((c, i) => {
@@ -88,25 +98,25 @@ function NeuralNetwork() {
         y: pos.y,
         vx: 0,
         vy: 0,
-        radius: 32,
+        radius: 36,
         label: c.label,
+        logo: c.logo,
         isCompany: true,
         baseX: pos.x,
         baseY: pos.y,
       });
     });
 
-    // Ambient particle nodes
-    const numParticles = Math.floor((w * h) / 12000);
+    const numParticles = Math.floor((w * h) / 15000);
     for (let i = 0; i < numParticles; i++) {
       const x = Math.random() * w;
       const y = Math.random() * h;
       nodes.push({
         x,
         y,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        radius: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.15,
+        radius: Math.random() * 2.5 + 1,
         baseX: x,
         baseY: y,
       });
@@ -156,60 +166,55 @@ function NeuralNetwork() {
 
       ctx.clearRect(0, 0, w, h);
 
-      const connectionDist = 150;
-      const mouseDist = 200;
-      const accentColor = dark ? "59, 130, 246" : "0, 102, 255";
-      const particleColor = dark ? "255, 255, 255" : "0, 0, 0";
+      const connectionDist = 160;
+      const mouseDist = 220;
+      const accentColor = dark ? "100, 160, 255" : "0, 90, 220";
+      const particleColor = dark ? "150, 180, 255" : "40, 60, 120";
 
-      // Update positions
+      // Update positions — SLOWER movement
       nodes.forEach((node) => {
         if (node.isCompany) {
-          // Company nodes gently float around base position
           const dx = node.baseX - node.x;
           const dy = node.baseY - node.y;
-          node.vx += dx * 0.001;
-          node.vy += dy * 0.001;
-          node.vx *= 0.98;
-          node.vy *= 0.98;
+          node.vx += dx * 0.0003;
+          node.vy += dy * 0.0003;
+          node.vx *= 0.99;
+          node.vy *= 0.99;
 
-          // React to mouse — attract slightly
           const mdx = mouse.x - node.x;
           const mdy = mouse.y - node.y;
           const md = Math.sqrt(mdx * mdx + mdy * mdy);
           if (md < 250) {
-            node.vx += (mdx / md) * 0.15;
-            node.vy += (mdy / md) * 0.15;
+            node.vx += (mdx / md) * 0.05;
+            node.vy += (mdy / md) * 0.05;
           }
         } else {
-          // Particles drift and react to mouse
           const mdx = mouse.x - node.x;
           const mdy = mouse.y - node.y;
           const md = Math.sqrt(mdx * mdx + mdy * mdy);
 
           if (md < mouseDist) {
             const force = (mouseDist - md) / mouseDist;
-            node.vx += (mdx / md) * force * 0.5;
-            node.vy += (mdy / md) * force * 0.5;
+            node.vx += (mdx / md) * force * 0.2;
+            node.vy += (mdy / md) * force * 0.2;
           }
 
-          // Drift back to base
-          node.vx += (node.baseX - node.x) * 0.0005;
-          node.vy += (node.baseY - node.y) * 0.0005;
-          node.vx *= 0.99;
-          node.vy *= 0.99;
+          node.vx += (node.baseX - node.x) * 0.0002;
+          node.vy += (node.baseY - node.y) * 0.0002;
+          node.vx *= 0.995;
+          node.vy *= 0.995;
         }
 
         node.x += node.vx;
         node.y += node.vy;
 
-        // Wrap around edges
         if (node.x < -50) node.x = w + 50;
         if (node.x > w + 50) node.x = -50;
         if (node.y < -50) node.y = h + 50;
         if (node.y > h + 50) node.y = -50;
       });
 
-      // Draw connections
+      // Draw connections — MORE VISIBLE
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x;
@@ -217,11 +222,13 @@ function NeuralNetwork() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           const maxDist =
             nodes[i].isCompany || nodes[j].isCompany
-              ? connectionDist * 1.5
+              ? connectionDist * 1.8
               : connectionDist;
 
           if (dist < maxDist) {
-            const opacity = (1 - dist / maxDist) * 0.4;
+            const opacity = (1 - dist / maxDist) * (
+              nodes[i].isCompany || nodes[j].isCompany ? 0.7 : 0.5
+            );
             const color =
               nodes[i].isCompany || nodes[j].isCompany
                 ? accentColor
@@ -231,24 +238,24 @@ function NeuralNetwork() {
             ctx.lineTo(nodes[j].x, nodes[j].y);
             ctx.strokeStyle = `rgba(${color}, ${opacity})`;
             ctx.lineWidth =
-              nodes[i].isCompany && nodes[j].isCompany ? 1.5 : 0.5;
+              nodes[i].isCompany && nodes[j].isCompany ? 2 : 0.8;
             ctx.stroke();
           }
         }
       }
 
-      // Draw mouse connections
+      // Draw mouse connections — BRIGHTER
       nodes.forEach((node) => {
         const dx = mouse.x - node.x;
         const dy = mouse.y - node.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < mouseDist) {
-          const opacity = (1 - dist / mouseDist) * 0.6;
+          const opacity = (1 - dist / mouseDist) * 0.8;
           ctx.beginPath();
           ctx.moveTo(node.x, node.y);
           ctx.lineTo(mouse.x, mouse.y);
           ctx.strokeStyle = `rgba(${accentColor}, ${opacity})`;
-          ctx.lineWidth = 0.8;
+          ctx.lineWidth = 1;
           ctx.stroke();
         }
       });
@@ -256,63 +263,71 @@ function NeuralNetwork() {
       // Draw nodes
       nodes.forEach((node) => {
         if (node.isCompany) {
-          // Company node — circle with label
           const mdx = mouse.x - node.x;
           const mdy = mouse.y - node.y;
           const md = Math.sqrt(mdx * mdx + mdy * mdy);
-          const hover = md < 80;
-          const scale = hover ? 1.15 : 1;
+          const hover = md < 90;
+          const scale = hover ? 1.2 : 1;
           const r = node.radius * scale;
 
-          // Glow
-          if (hover) {
-            ctx.beginPath();
-            ctx.arc(node.x, node.y, r + 15, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${accentColor}, 0.08)`;
-            ctx.fill();
-          }
+          // Glow — stronger
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, r + 20, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${accentColor}, ${hover ? 0.15 : 0.06})`;
+          ctx.fill();
 
-          // Circle
+          // Circle background
           ctx.beginPath();
           ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
           ctx.fillStyle = dark
-            ? `rgba(20, 20, 20, ${hover ? 0.95 : 0.85})`
-            : `rgba(255, 255, 255, ${hover ? 0.95 : 0.85})`;
+            ? `rgba(15, 15, 25, ${hover ? 0.95 : 0.9})`
+            : `rgba(255, 255, 255, ${hover ? 0.95 : 0.9})`;
           ctx.fill();
-          ctx.strokeStyle = `rgba(${accentColor}, ${hover ? 0.8 : 0.3})`;
-          ctx.lineWidth = hover ? 2 : 1;
+          ctx.strokeStyle = `rgba(${accentColor}, ${hover ? 0.9 : 0.5})`;
+          ctx.lineWidth = hover ? 2.5 : 1.5;
           ctx.stroke();
 
-          // Label
-          ctx.font = `${hover ? "bold " : ""}${
-            hover ? 11 : 10
-          }px -apple-system, BlinkMacSystemFont, sans-serif`;
-          ctx.fillStyle = `rgba(${accentColor}, ${hover ? 1 : 0.7})`;
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText(node.label || "", node.x, node.y);
+          // Try to draw logo image
+          const img = imagesRef.current.get(node.label || "");
+          if (img && img.complete && img.naturalWidth > 0) {
+            const imgW = r * 1.4;
+            const imgH = imgW * 0.4;
+            ctx.drawImage(
+              img,
+              node.x - imgW / 2,
+              node.y - imgH / 2,
+              imgW,
+              imgH
+            );
+          } else {
+            // Fallback: text label
+            ctx.font = `bold ${hover ? 12 : 11}px -apple-system, BlinkMacSystemFont, sans-serif`;
+            ctx.fillStyle = `rgba(${accentColor}, ${hover ? 1 : 0.8})`;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(node.label || "", node.x, node.y);
+          }
 
-          // Hover hint
           if (hover) {
-            ctx.font =
-              "9px -apple-system, BlinkMacSystemFont, sans-serif";
+            ctx.font = "9px -apple-system, BlinkMacSystemFont, sans-serif";
             ctx.fillStyle = dark
-              ? "rgba(255,255,255,0.4)"
-              : "rgba(0,0,0,0.4)";
-            ctx.fillText("coming soon", node.x, node.y + r + 16);
+              ? "rgba(255,255,255,0.5)"
+              : "rgba(0,0,0,0.5)";
+            ctx.textAlign = "center";
+            ctx.fillText("coming soon", node.x, node.y + r + 18);
           }
         } else {
-          // Particle
+          // Particle — MORE VISIBLE
           const mdx = mouse.x - node.x;
           const mdy = mouse.y - node.y;
           const md = Math.sqrt(mdx * mdx + mdy * mdy);
           const glow = md < mouseDist ? (mouseDist - md) / mouseDist : 0;
 
           ctx.beginPath();
-          ctx.arc(node.x, node.y, node.radius + glow * 2, 0, Math.PI * 2);
+          ctx.arc(node.x, node.y, node.radius + glow * 3, 0, Math.PI * 2);
           ctx.fillStyle = glow > 0
-            ? `rgba(${accentColor}, ${0.3 + glow * 0.5})`
-            : `rgba(${particleColor}, 0.15)`;
+            ? `rgba(${accentColor}, ${0.4 + glow * 0.5})`
+            : `rgba(${particleColor}, 0.35)`;
           ctx.fill();
         }
       });
@@ -455,6 +470,8 @@ export default function Home() {
               style={{
                 marginTop: "3rem",
                 pointerEvents: "auto",
+                display: "flex",
+                gap: "1rem",
               }}
             >
               <a
@@ -489,7 +506,6 @@ export default function Home() {
                   fontWeight: 500,
                   border: "1px solid var(--border)",
                   transition: "all 0.2s ease",
-                  marginLeft: "1rem",
                 }}
                 onMouseOver={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
                 onMouseOut={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
