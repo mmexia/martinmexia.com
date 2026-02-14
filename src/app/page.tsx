@@ -63,6 +63,7 @@ function NeuralNetwork() {
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const clickRef = useRef({ x: -1000, y: -1000, time: 0 });
   const nodesRef = useRef<NetNode[]>([]);
+  const edgesRef = useRef<[number, number][]>([]);
   const animRef = useRef<number>(0);
   const sizeRef = useRef({ w: 0, h: 0 });
 
@@ -135,6 +136,54 @@ function NeuralNetwork() {
       ctx.scale(dpr, dpr);
       sizeRef.current = { w: window.innerWidth, h: window.innerHeight };
       nodesRef.current = initNodes(window.innerWidth, window.innerHeight);
+
+      // Pre-compute permanent edges based on initial positions
+      const nodes = nodesRef.current;
+      const edges: [number, number][] = [];
+      const edgeDist = 160;
+      const companyNodes = nodes.filter((n) => n.isCompany);
+      const clearRadius = 50;
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          if (nodes[i].isCompany && nodes[j].isCompany) continue;
+          // Company-to-particle edges
+          if (nodes[i].isCompany || nodes[j].isCompany) {
+            const cn = nodes[i].isCompany ? nodes[i] : nodes[j];
+            const pn = nodes[i].isCompany ? nodes[j] : nodes[i];
+            const dx = pn.x - cn.x;
+            const dy = pn.y - cn.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist > clearRadius && dist < edgeDist * 1.8) {
+              edges.push([i, j]);
+            }
+          } else {
+            // Particle-to-particle edges
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < edgeDist) {
+              // Skip if passes through company node
+              let blocked = false;
+              for (const cn of companyNodes) {
+                const ldx = nodes[j].x - nodes[i].x;
+                const ldy = nodes[j].y - nodes[i].y;
+                const lenSq = ldx * ldx + ldy * ldy;
+                if (lenSq === 0) continue;
+                let t = ((cn.x - nodes[i].x) * ldx + (cn.y - nodes[i].y) * ldy) / lenSq;
+                t = Math.max(0, Math.min(1, t));
+                const cx = nodes[i].x + t * ldx;
+                const cy = nodes[i].y + t * ldy;
+                if ((cn.x - cx) ** 2 + (cn.y - cy) ** 2 < clearRadius * clearRadius) {
+                  blocked = true;
+                  break;
+                }
+              }
+              if (!blocked) edges.push([i, j]);
+            }
+          }
+        }
+      }
+      edgesRef.current = edges;
     };
 
     resize();
@@ -254,93 +303,55 @@ function NeuralNetwork() {
         node.x += node.vx;
         node.y += node.vy;
 
-        // Wrap particles (not companies)
+        // Bounce particles at edges (no wrapping — keeps permanent edges intact)
         if (!node.isCompany) {
-          if (node.x < -50) node.x = w + 50;
-          if (node.x > w + 50) node.x = -50;
-          if (node.y < -50) node.y = h + 50;
-          if (node.y > h + 50) node.y = -50;
+          if (node.x < 0) { node.x = 0; node.vx *= -1; }
+          if (node.x > w) { node.x = w; node.vx *= -1; }
+          if (node.y < 0) { node.y = 0; node.vy *= -1; }
+          if (node.y > h) { node.y = h; node.vy *= -1; }
         }
       });
 
-      // Helper: check if a line segment passes through any company node
-      const companyNodes = nodes.filter((n) => n.isCompany);
-      const clearRadius = 50; // clear zone around company centers
+      // Draw permanent edges — connections never break
+      const clearRadius = 50;
+      const edges = edgesRef.current;
+      edges.forEach(([i, j]) => {
+        const a = nodes[i];
+        const b = nodes[j];
+        const isCompanyEdge = a.isCompany || b.isCompany;
 
-      const linePassesThroughCompany = (x1: number, y1: number, x2: number, y2: number) => {
-        for (const cn of companyNodes) {
-          // Distance from point to line segment
-          const dx = x2 - x1;
-          const dy = y2 - y1;
-          const lenSq = dx * dx + dy * dy;
-          if (lenSq === 0) continue;
-          let t = ((cn.x - x1) * dx + (cn.y - y1) * dy) / lenSq;
-          t = Math.max(0, Math.min(1, t));
-          const closestX = x1 + t * dx;
-          const closestY = y1 + t * dy;
-          const distSq = (cn.x - closestX) ** 2 + (cn.y - closestY) ** 2;
-          if (distSq < clearRadius * clearRadius) return true;
-        }
-        return false;
-      };
-
-      // Draw connections — skip any that pass through company nodes
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          // Skip connections between two non-company nodes if they cross a company
-          if (nodes[i].isCompany || nodes[j].isCompany) continue; // company connections drawn separately
-
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
+        if (isCompanyEdge) {
+          const cn = a.isCompany ? a : b;
+          const pn = a.isCompany ? b : a;
+          const dx = pn.x - cn.x;
+          const dy = pn.y - cn.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < connectionDist) {
-            // Skip if line passes through any company node
-            if (linePassesThroughCompany(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y)) continue;
-
-            const opacity = (1 - dist / connectionDist) * 0.5;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(${particleColor}, ${opacity})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
+          const ratio = dist > 0 ? clearRadius / dist : 0;
+          const startX = cn.x + dx * ratio;
+          const startY = cn.y + dy * ratio;
+          ctx.beginPath();
+          ctx.moveTo(startX, startY);
+          ctx.lineTo(pn.x, pn.y);
+          ctx.strokeStyle = `rgba(${accentColor}, 0.35)`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        } else {
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(${particleColor}, 0.35)`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
         }
-      }
-
-      // Draw connections from particles to company nodes — only from edge of clear zone outward
-      companyNodes.forEach((cn) => {
-        nodes.forEach((node) => {
-          if (node.isCompany) return;
-          const dx = node.x - cn.x;
-          const dy = node.y - cn.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          // Only connect if particle is outside clear zone but within range
-          if (dist > clearRadius && dist < connectionDist * 1.8) {
-            const opacity = (1 - dist / (connectionDist * 1.8)) * 0.6;
-            // Start line from edge of clear zone, not center
-            const ratio = clearRadius / dist;
-            const startX = cn.x + dx * ratio;
-            const startY = cn.y + dy * ratio;
-            ctx.beginPath();
-            ctx.moveTo(startX, startY);
-            ctx.lineTo(node.x, node.y);
-            ctx.strokeStyle = `rgba(${accentColor}, ${opacity})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        });
       });
 
-      // Mouse connections — also avoid company zones
+      // Mouse connections
       nodes.forEach((node) => {
         if (node.isCompany) return;
         const dx = mouse.x - node.x;
         const dy = mouse.y - node.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < mouseDist) {
-          if (linePassesThroughCompany(node.x, node.y, mouse.x, mouse.y)) return;
           const opacity = (1 - dist / mouseDist) * 0.8;
           ctx.beginPath();
           ctx.moveTo(node.x, node.y);
