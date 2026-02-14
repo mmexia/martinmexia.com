@@ -535,21 +535,13 @@ export default function Home() {
   }, [inputActive]);
 
   const handleCursorClick = () => {
+    setInputValue("CERCA TROVA");
     setInputActive(true);
   };
 
   const handleInputKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      if (inputValue.toLowerCase().replace(/\s+/g, "") === "cercatrova") {
-        setMatrixMode(true);
-      } else {
-        // Wrong input — shake and clear
-        setShake(true);
-        setTimeout(() => {
-          setShake(false);
-          setInputValue("");
-        }, 500);
-      }
+      setMatrixMode(true);
     }
     if (e.key === "Escape") {
       setInputActive(false);
