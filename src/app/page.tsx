@@ -259,42 +259,84 @@ function NeuralNetwork() {
         }
       });
 
-      // Draw connections
+      // Helper: check if a line segment passes through any company node
+      const companyNodes = nodes.filter((n) => n.isCompany);
+      const clearRadius = 50; // clear zone around company centers
+
+      const linePassesThroughCompany = (x1: number, y1: number, x2: number, y2: number) => {
+        for (const cn of companyNodes) {
+          // Distance from point to line segment
+          const dx = x2 - x1;
+          const dy = y2 - y1;
+          const lenSq = dx * dx + dy * dy;
+          if (lenSq === 0) continue;
+          let t = ((cn.x - x1) * dx + (cn.y - y1) * dy) / lenSq;
+          t = Math.max(0, Math.min(1, t));
+          const closestX = x1 + t * dx;
+          const closestY = y1 + t * dy;
+          const distSq = (cn.x - closestX) ** 2 + (cn.y - closestY) ** 2;
+          if (distSq < clearRadius * clearRadius) return true;
+        }
+        return false;
+      };
+
+      // Draw connections — skip any that pass through company nodes
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
+          // Skip connections between two non-company nodes if they cross a company
+          if (nodes[i].isCompany || nodes[j].isCompany) continue; // company connections drawn separately
+
           const dx = nodes[i].x - nodes[j].x;
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const maxDist =
-            nodes[i].isCompany || nodes[j].isCompany
-              ? connectionDist * 1.8
-              : connectionDist;
 
-          if (dist < maxDist) {
-            const opacity =
-              (1 - dist / maxDist) *
-              (nodes[i].isCompany || nodes[j].isCompany ? 0.7 : 0.5);
-            const color =
-              nodes[i].isCompany || nodes[j].isCompany
-                ? accentColor
-                : particleColor;
+          if (dist < connectionDist) {
+            // Skip if line passes through any company node
+            if (linePassesThroughCompany(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y)) continue;
+
+            const opacity = (1 - dist / connectionDist) * 0.5;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(${color}, ${opacity})`;
-            ctx.lineWidth =
-              nodes[i].isCompany && nodes[j].isCompany ? 2 : 0.8;
+            ctx.strokeStyle = `rgba(${particleColor}, ${opacity})`;
+            ctx.lineWidth = 0.8;
             ctx.stroke();
           }
         }
       }
 
-      // Mouse connections
+      // Draw connections from particles to company nodes — only from edge of clear zone outward
+      companyNodes.forEach((cn) => {
+        nodes.forEach((node) => {
+          if (node.isCompany) return;
+          const dx = node.x - cn.x;
+          const dy = node.y - cn.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          // Only connect if particle is outside clear zone but within range
+          if (dist > clearRadius && dist < connectionDist * 1.8) {
+            const opacity = (1 - dist / (connectionDist * 1.8)) * 0.6;
+            // Start line from edge of clear zone, not center
+            const ratio = clearRadius / dist;
+            const startX = cn.x + dx * ratio;
+            const startY = cn.y + dy * ratio;
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(node.x, node.y);
+            ctx.strokeStyle = `rgba(${accentColor}, ${opacity})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        });
+      });
+
+      // Mouse connections — also avoid company zones
       nodes.forEach((node) => {
+        if (node.isCompany) return;
         const dx = mouse.x - node.x;
         const dy = mouse.y - node.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < mouseDist) {
+          if (linePassesThroughCompany(node.x, node.y, mouse.x, mouse.y)) return;
           const opacity = (1 - dist / mouseDist) * 0.8;
           ctx.beginPath();
           ctx.moveTo(node.x, node.y);
@@ -321,9 +363,11 @@ function NeuralNetwork() {
           ctx.fillStyle = `rgba(${accentColor}, ${hover ? 0.12 : 0.04})`;
           ctx.fill();
 
-          // Circle — outline only, no fill (transparent)
+          // Circle — solid fill to fully occlude lines behind + outline
           ctx.beginPath();
           ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = dark ? "rgb(10, 10, 10)" : "rgb(255, 255, 255)";
+          ctx.fill();
           ctx.strokeStyle = `rgba(${accentColor}, ${hover ? 0.9 : 0.45})`;
           ctx.lineWidth = hover ? 2 : 1.5;
           ctx.stroke();
