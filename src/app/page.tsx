@@ -782,6 +782,7 @@ export default function Home() {
                   />
                 ) : (
                   <p
+                    onClick={handleCursorClick}
                     style={{
                       fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
                       color: "var(--accent)",
@@ -789,12 +790,12 @@ export default function Home() {
                       letterSpacing: "0.25em",
                       fontStyle: "italic",
                       textTransform: "uppercase",
+                      cursor: "pointer",
                     }}
                   >
                     Cerca Trova
                     <span
                       className="cursor-blink"
-                      onClick={handleCursorClick}
                       title=""
                     />
                   </p>
