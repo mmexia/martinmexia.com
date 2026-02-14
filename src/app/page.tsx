@@ -477,6 +477,25 @@ export default function Home() {
               >
                 LinkedIn →
               </a>
+              <a
+                href="mailto:martinmexia@gmail.com"
+                style={{
+                  padding: "0.8rem 2rem",
+                  background: "transparent",
+                  color: "var(--text)",
+                  textDecoration: "none",
+                  borderRadius: "8px",
+                  fontSize: "0.95rem",
+                  fontWeight: 500,
+                  border: "1px solid var(--border)",
+                  transition: "all 0.2s ease",
+                  marginLeft: "1rem",
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
+                onMouseOut={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+              >
+                Contact
+              </a>
             </div>
           </>
         )}
