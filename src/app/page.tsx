@@ -97,20 +97,24 @@ function NeuralNetwork() {
       });
     });
 
-    // Ambient particles
-    const numParticles = Math.floor((w * h) / 14000);
-    for (let i = 0; i < numParticles; i++) {
-      const x = Math.random() * w;
-      const y = Math.random() * h;
-      nodes.push({
-        x,
-        y,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.15,
-        radius: Math.random() * 2.5 + 1,
-        baseX: x,
-        baseY: y,
-      });
+    // Ambient particles — grid-based with jitter for even distribution (no empty gaps)
+    const spacing = 90; // grid cell size — ensures every area has nodes within connection range
+    const cols = Math.ceil(w / spacing);
+    const rows = Math.ceil(h / spacing);
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const x = col * spacing + (Math.random() - 0.5) * spacing * 0.8 + spacing / 2;
+        const y = row * spacing + (Math.random() - 0.5) * spacing * 0.8 + spacing / 2;
+        nodes.push({
+          x,
+          y,
+          vx: (Math.random() - 0.5) * 0.15,
+          vy: (Math.random() - 0.5) * 0.15,
+          radius: Math.random() * 2.5 + 1,
+          baseX: x,
+          baseY: y,
+        });
+      }
     }
 
     return nodes;
@@ -653,7 +657,7 @@ export default function Home() {
                 textShadow: "0 0 20px rgba(0,255,65,0.5)",
               }}
             >
-              CERCA TROVA
+              SEEK AND YOU WILL FIND
             </h1>
             <p
               style={{
