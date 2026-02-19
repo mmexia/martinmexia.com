@@ -3,6 +3,14 @@
 import { useState, useEffect } from "react";
 
 /* ─── Types ─── */
+interface ActivityDetail {
+  whatHappened: string;
+  thinking: string;
+  instructionsFollowed: string;
+  innerThoughts: string;
+  output: string;
+}
+
 interface Activity {
   timestamp: string;
   action: string;
@@ -10,6 +18,7 @@ interface Activity {
   channel: string;
   status: "success" | "failed" | "skipped";
   details?: Record<string, unknown>;
+  detail: ActivityDetail;
 }
 
 interface Stats {
@@ -99,6 +108,7 @@ export default function DetectivePage() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [timeline, setTimeline] = useState<Timeline[]>([]);
   const [mounted, setMounted] = useState(false);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     // Set dark theme default
@@ -132,6 +142,9 @@ export default function DetectivePage() {
         .d3 { animation-delay: 0.3s; }
         .d4 { animation-delay: 0.4s; }
         .d5 { animation-delay: 0.5s; }
+        .detail-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 300ms ease; }
+        .detail-panel.expanded { grid-template-rows: 1fr; }
+        .detail-panel-inner { overflow: hidden; }
       `}</style>
       <div style={{
         minHeight: "100vh", background: "var(--bg)", color: "var(--text)",
@@ -236,34 +249,98 @@ export default function DetectivePage() {
         }}>
           <h2 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "1rem" }}>Recent Activity</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-            {activities.slice(0, 20).map((a, i) => (
-              <div key={i} style={{
-                display: "flex", alignItems: "flex-start", gap: 12, padding: "0.75rem 0",
-                borderBottom: i < 19 ? "1px solid var(--border)" : "none",
-              }}>
-                <span style={{ fontSize: "1.2rem", lineHeight: 1, marginTop: 2 }}>
-                  {ACTION_ICONS[a.action] || "📌"}
-                </span>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: "0.9rem", lineHeight: 1.4 }}>{a.summary}</div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4, flexWrap: "wrap" }}>
-                    <span style={{ fontSize: "0.7rem", color: "var(--text-secondary)" }}>
-                      {relativeTime(a.timestamp)}
+            {activities.slice(0, 20).map((a, i) => {
+              const isExpanded = expandedIndex === i;
+              return (
+                <div key={i}>
+                  <div
+                    onClick={() => setExpandedIndex(isExpanded ? null : i)}
+                    style={{
+                      display: "flex", alignItems: "flex-start", gap: 12, padding: "0.75rem 0",
+                      borderBottom: !isExpanded && i < 19 ? "1px solid var(--border)" : "none",
+                      cursor: "pointer", userSelect: "none",
+                    }}
+                  >
+                    <span style={{ fontSize: "1.2rem", lineHeight: 1, marginTop: 2 }}>
+                      {ACTION_ICONS[a.action] || "📌"}
                     </span>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: "0.9rem", lineHeight: 1.4 }}>{a.summary}</div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4, flexWrap: "wrap" }}>
+                        <span style={{ fontSize: "0.7rem", color: "var(--text-secondary)" }}>
+                          {relativeTime(a.timestamp)}
+                        </span>
+                        <span style={{
+                          display: "inline-block", padding: "1px 8px", borderRadius: 100,
+                          fontSize: "0.65rem", fontWeight: 600, color: "#fff",
+                          background: CHANNEL_COLORS[a.channel] || "#666",
+                          textTransform: "capitalize",
+                        }}>{a.channel}</span>
+                        <span style={{
+                          display: "inline-block", width: 8, height: 8, borderRadius: "50%",
+                          background: STATUS_COLORS[a.status] || "#888",
+                        }} title={a.status} />
+                      </div>
+                    </div>
                     <span style={{
-                      display: "inline-block", padding: "1px 8px", borderRadius: 100,
-                      fontSize: "0.65rem", fontWeight: 600, color: "#fff",
-                      background: CHANNEL_COLORS[a.channel] || "#666",
-                      textTransform: "capitalize",
-                    }}>{a.channel}</span>
-                    <span style={{
-                      display: "inline-block", width: 8, height: 8, borderRadius: "50%",
-                      background: STATUS_COLORS[a.status] || "#888",
-                    }} title={a.status} />
+                      fontSize: "0.85rem", color: "var(--text-secondary)", marginTop: 2,
+                      transition: "transform 300ms ease",
+                      transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)",
+                      display: "inline-block",
+                    }}>▸</span>
                   </div>
+                  {a.detail && (
+                    <div className={`detail-panel${isExpanded ? " expanded" : ""}`}>
+                      <div className="detail-panel-inner">
+                        <div style={{
+                          padding: "0.75rem 0.75rem 1rem",
+                          marginBottom: "0.5rem",
+                          borderTop: "1px solid var(--border)",
+                          borderBottom: "1px solid var(--border)",
+                          background: "var(--bg)",
+                          borderRadius: 8,
+                        }}>
+                          {[
+                            { emoji: "🎯", label: "What happened", content: a.detail.whatHappened },
+                            { emoji: "🧠", label: "My thinking", content: a.detail.thinking },
+                            { emoji: "📋", label: "Instructions followed", content: a.detail.instructionsFollowed },
+                            { emoji: "💭", label: "Inner thoughts", content: a.detail.innerThoughts },
+                          ].map((section) => (
+                            <div key={section.label} style={{ marginBottom: "0.75rem" }}>
+                              <div style={{
+                                fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase",
+                                letterSpacing: "0.06em", color: "var(--text-secondary)", marginBottom: 4,
+                              }}>
+                                {section.emoji} {section.label}
+                              </div>
+                              <div style={{ fontSize: "0.85rem", lineHeight: 1.5, color: "var(--text)" }}>
+                                {section.content}
+                              </div>
+                            </div>
+                          ))}
+                          <div>
+                            <div style={{
+                              fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase",
+                              letterSpacing: "0.06em", color: "var(--text-secondary)", marginBottom: 4,
+                            }}>
+                              📤 Output
+                            </div>
+                            <pre style={{
+                              fontSize: "0.8rem", lineHeight: 1.5, color: "var(--text)",
+                              background: "var(--border)", borderRadius: 6, padding: "0.75rem",
+                              overflowX: "auto", whiteSpace: "pre-wrap", wordBreak: "break-word",
+                              margin: 0, fontFamily: "'SF Mono', 'Fira Code', 'Cascadia Code', monospace",
+                            }}>
+                              {a.detail.output}
+                            </pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
