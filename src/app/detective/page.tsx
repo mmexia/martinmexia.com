@@ -102,6 +102,21 @@ function ThemeToggle() {
   );
 }
 
+/* ─── Last Updated Helper ─── */
+function formatLastUpdated(iso: string): string {
+  const diff = Date.now() - new Date(iso).getTime();
+  const secs = Math.floor(diff / 1000);
+  if (secs < 60) return "just now";
+  const mins = Math.floor(secs / 60);
+  if (mins === 1) return "1 minute ago";
+  if (mins < 60) return `${mins} minutes ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs === 1) return "1 hour ago";
+  if (hrs < 24) return `${hrs} hours ago`;
+  const days = Math.floor(hrs / 24);
+  return days === 1 ? "1 day ago" : `${days} days ago`;
+}
+
 /* ─── Page ─── */
 export default function DetectivePage() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -109,6 +124,68 @@ export default function DetectivePage() {
   const [timeline, setTimeline] = useState<Timeline[]>([]);
   const [mounted, setMounted] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+  const [lastUpdatedDisplay, setLastUpdatedDisplay] = useState<string>("");
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const loadData = async (showRefreshIndicator = false) => {
+    if (showRefreshIndicator) setIsRefreshing(true);
+    try {
+      // Try public JSON first (real data), fall back to API (demo data)
+      let data;
+      try {
+        const res = await fetch("/detective-data.json", { cache: "no-store" });
+        if (res.ok) {
+          const jsonData = await res.json();
+          // Build stats and timeline from raw activities
+          const acts: Activity[] = jsonData.activities || [];
+          const successCount = acts.filter((a: Activity) => a.status === "success").length;
+          const channelCounts: Record<string, number> = {};
+          acts.forEach((a: Activity) => { channelCounts[a.channel] = (channelCounts[a.channel] || 0) + 1; });
+          const topChannels = Object.entries(channelCounts)
+            .sort((a, b) => b[1] - a[1])
+            .map(([channel, count]) => ({ channel, count }));
+          const now = new Date();
+          const tl: Timeline[] = [];
+          for (let i = 23; i >= 0; i--) {
+            const hourStart = new Date(now.getTime() - i * 3600000);
+            const hourEnd = new Date(hourStart.getTime() + 3600000);
+            const label = hourStart.toISOString().slice(11, 16);
+            const count = acts.filter((a: Activity) => {
+              const t = new Date(a.timestamp);
+              return t >= hourStart && t < hourEnd;
+            }).length;
+            tl.push({ hour: label, count });
+          }
+          data = {
+            activities: acts,
+            stats: {
+              totalActions: acts.length,
+              successRate: acts.length ? Math.round((successCount / acts.length) * 100) : 0,
+              lastActive: acts[0]?.timestamp || now.toISOString(),
+              topChannels,
+              actionsToday: acts.length,
+            },
+            timeline: tl,
+            lastUpdated: jsonData.lastUpdated,
+          };
+        } else {
+          throw new Error("not found");
+        }
+      } catch {
+        const res = await fetch("/api/detective");
+        data = await res.json();
+      }
+      setActivities(data.activities);
+      setStats(data.stats);
+      setTimeline(data.timeline);
+      if (data.lastUpdated) setLastUpdated(data.lastUpdated);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      if (showRefreshIndicator) setTimeout(() => setIsRefreshing(false), 500);
+    }
+  };
 
   useEffect(() => {
     // Set dark theme default
@@ -118,15 +195,21 @@ export default function DetectivePage() {
       document.documentElement.setAttribute("data-theme", localStorage.getItem("theme")!);
     }
     setMounted(true);
-    fetch("/api/detective")
-      .then((r) => r.json())
-      .then((data) => {
-        setActivities(data.activities);
-        setStats(data.stats);
-        setTimeline(data.timeline);
-      })
-      .catch(console.error);
+    loadData();
+
+    // Auto-refresh every 60 seconds
+    const interval = setInterval(() => loadData(true), 60000);
+    return () => clearInterval(interval);
   }, []);
+
+  // Update relative time display every 30 seconds
+  useEffect(() => {
+    if (!lastUpdated) return;
+    const update = () => setLastUpdatedDisplay(formatLastUpdated(lastUpdated));
+    update();
+    const interval = setInterval(update, 30000);
+    return () => clearInterval(interval);
+  }, [lastUpdated]);
 
   const maxTimelineCount = Math.max(...timeline.map((t) => t.count), 1);
 
@@ -142,6 +225,8 @@ export default function DetectivePage() {
         .d3 { animation-delay: 0.3s; }
         .d4 { animation-delay: 0.4s; }
         .d5 { animation-delay: 0.5s; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .refresh-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 6px; animation: pulse 1.5s ease-in-out infinite; }
         .detail-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 300ms ease; }
         .detail-panel.expanded { grid-template-rows: 1fr; }
         .detail-panel-inner { overflow: hidden; }
@@ -164,6 +249,17 @@ export default function DetectivePage() {
           </div>
           <ThemeToggle />
         </header>
+
+        {/* Last Updated */}
+        {lastUpdated && (
+          <div className="fade-in" style={{
+            fontSize: "0.8rem", color: "var(--text-secondary)", marginBottom: "1.5rem", marginTop: "-1.5rem",
+            display: "flex", alignItems: "center",
+          }}>
+            {isRefreshing && <span className="refresh-dot" />}
+            Last updated {lastUpdatedDisplay} • Auto-refreshing
+          </div>
+        )}
 
         {/* Stats Cards */}
         {stats && (

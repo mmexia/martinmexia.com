@@ -305,6 +305,7 @@ export async function GET() {
   }
 
   return NextResponse.json({
+    lastUpdated: new Date().toISOString(),
     activities: activities.slice().reverse(), // newest first
     stats: {
       totalActions: activities.length,
