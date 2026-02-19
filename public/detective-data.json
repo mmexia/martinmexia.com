@@ -1,75 +1,210 @@
 {
-  "lastUpdated": "2026-02-19T05:00:00Z",
+  "lastUpdated": "2026-02-19T05:08:00Z",
   "activities": [
     {
-      "timestamp": "2026-02-19T05:00:00Z",
-      "action": "briefing_sent",
-      "summary": "Morning briefing delivered to Telegram",
-      "channel": "telegram",
-      "status": "success",
-      "detail": {
-        "whatHappened": "Compiled and sent the morning briefing to Martin via Telegram. Included calendar summary, overnight notifications, and pending tasks.",
-        "thinking": "It's 8:00 AM — time for the daily briefing per the morning routine protocol.",
-        "instructionsFollowed": "protocols/DAILY_BRIEFING.md → 'Send morning briefing at 8 AM'",
-        "innerThoughts": "Considered including the Jira sprint summary but skipped it — Martin mentioned he doesn't check Jira on Mondays. Kept it focused on calendar + inbox.",
-        "output": "📋 Good morning Martin!\n\n📅 Today: 2 meetings (10am Team Sync, 2pm 1:1 with Sarah)\n📧 3 emails overnight (1 flagged from HR)\n✅ Pending: Review PR #142, Follow up on deployment\n\nHave a great day!"
-      }
-    },
-    {
-      "timestamp": "2026-02-19T04:00:00Z",
-      "action": "email_check",
-      "summary": "Scanned Gmail inbox — 3 new emails, 1 flagged",
-      "channel": "gmail",
-      "status": "success",
-      "detail": {
-        "whatHappened": "Scanned Gmail inbox. Found 3 new emails since last check. Flagged 1 from HR about benefits enrollment deadline.",
-        "thinking": "Heartbeat triggered periodic inbox check. Last scan was 45 minutes ago.",
-        "instructionsFollowed": "HEARTBEAT.md → 'Check Gmail inbox'",
-        "innerThoughts": "The HR email has a deadline (Friday). Flagged it as important. The other 2 were newsletters — skipped those.",
-        "output": "From: hr@company.com — 'Benefits Enrollment Reminder' [FLAGGED]\nFrom: newsletter@techcrunch.com — 'Daily Digest' [skipped]\nFrom: notifications@github.com — 'PR Review Request' [skipped]"
-      }
-    },
-    {
-      "timestamp": "2026-02-19T03:00:00Z",
-      "action": "slack_check",
-      "summary": "Checked Slack DMs and #rag channel",
-      "channel": "slack",
-      "status": "success",
-      "detail": {
-        "whatHappened": "Checked Slack DMs (2 unread) and #rag channel (3 unread). No pending questions requiring response.",
-        "thinking": "Periodic Slack check per heartbeat schedule.",
-        "instructionsFollowed": "HEARTBEAT.md → 'Check Slack DMs'",
-        "innerThoughts": "DM from Alice asking about PR — Martin needs to handle this one personally. DM from Bob was just 'Thanks!' — no action needed.",
-        "output": "DMs:\n  @alice: 'Hey, can you review PR #142?'\n  @bob: 'Thanks!'\n#rag: Thread resolved by @carol"
-      }
-    },
-    {
-      "timestamp": "2026-02-19T02:00:00Z",
+      "timestamp": "2026-02-19T05:07:00Z",
       "action": "code_change",
-      "summary": "Pushed fix to martinmexia.com repo",
+      "summary": "Deployed real data pipeline + Last Updated feature to Detective",
       "channel": "github",
       "status": "success",
       "detail": {
-        "whatHappened": "Pushed a CSS fix to the martinmexia.com repo — fixed mobile padding on the hero section.",
-        "thinking": "Martin mentioned the hero section looked off on iPhone during yesterday's review.",
-        "instructionsFollowed": "memory/2025-02-18.md → 'Martin noted hero padding issue on mobile'",
-        "innerThoughts": "Simple fix — changed padding from 4rem to clamp(1.5rem, 5vw, 4rem). Tested in responsive mode.",
-        "output": "git commit -m 'fix: responsive hero padding on mobile'\ngit push origin main\nVercel auto-deploy triggered. Status: ✅ Build succeeded"
+        "whatHappened": "Developer agent updated detective page to fetch from public/detective-data.json, added auto-refresh every 60s, added 'Last Updated' display. Pushed commit to main, Vercel deployed successfully.",
+        "thinking": "Martin wants to see when data was last refreshed and needs real data instead of demo. Need a pipeline where I can push updates via git.",
+        "instructionsFollowed": "Product spec: detective-detail-view.md → Developer persona: agents/main/personas/developer.md",
+        "innerThoughts": "Considered a database but overkill for now. Public JSON file pushed via git is simplest — Vercel serves it statically. Auto-refresh on client side keeps it feeling live. Can upgrade to a real API later.",
+        "output": "Commit pushed to main. Vercel build succeeded. Page now shows 'Last updated X minutes ago • Auto-refreshing' at top."
       }
     },
     {
-      "timestamp": "2026-02-19T01:00:00Z",
-      "action": "reflection",
-      "summary": "Daily reflection: 14 tasks completed, all systems nominal",
+      "timestamp": "2026-02-19T05:00:00Z",
+      "action": "reminder_set",
+      "summary": "Delivered Wispr download reminder to Martin on Telegram",
+      "channel": "telegram",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Cron job fired at 05:00 UTC (9:00 AM GST). Sent reminder to Martin on Telegram: 'Download Wispr on your iPhone!'",
+        "thinking": "Martin asked yesterday to be reminded tomorrow morning. Cron was set for 05:00 UTC = 9:00 AM GST. He's already awake and active on Telegram so good timing.",
+        "instructionsFollowed": "Cron job 'Wispr iPhone reminder' (dc716d35) → HEARTBEAT.md check → Martin is active, deliver on Telegram",
+        "innerThoughts": "Martin was already chatting with me about Detective when the reminder fired. Good timing — he confirmed he already downloaded it. Marked task complete in MEMORY.md.",
+        "output": "Telegram message sent: '⏰ Reminder: Download Wispr on your iPhone!' → Martin replied he already downloaded it."
+      }
+    },
+    {
+      "timestamp": "2026-02-19T04:47:00Z",
+      "action": "code_change",
+      "summary": "Built Detective accordion detail view — tap any activity to see full reasoning",
+      "channel": "github",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Developer agent implemented the accordion expand/collapse on Detective activity items. Each row now shows chevron, tapping reveals 5 sections: What happened, My thinking, Instructions followed, Inner thoughts, Output.",
+        "thinking": "Martin approved the PO's one-pager spec. Time to hand to Developer. The spec was clear — accordion UI, 5 sections, mobile-first, pure CSS animation.",
+        "instructionsFollowed": "Spec: projects/specs/detective-detail-view.md → Developer persona → Git workflow: build → commit → push to main",
+        "innerThoughts": "PO did a solid job on the spec — Developer had everything needed. Used grid-template-rows for smooth animation instead of max-height (better performance). Kept it to 2 files changed. Local build had Stripe error but that's pre-existing, Vercel builds fine with the env var.",
+        "output": "Commit 747e2c4 pushed to main. Vercel deploy: success. All acceptance criteria from spec met."
+      }
+    },
+    {
+      "timestamp": "2026-02-19T04:40:00Z",
+      "action": "other",
+      "summary": "PO delivered one-pager spec for Detective Detail View",
       "channel": "internal",
       "status": "success",
       "detail": {
-        "whatHappened": "Ran end-of-day reflection. 14 tasks completed, 1 failed (Jira timeout), 1 skipped.",
-        "thinking": "End of active hours — time to summarize the day and identify patterns.",
-        "instructionsFollowed": "protocols/DAILY_BRIEFING.md → 'End-of-day reflection'",
-        "innerThoughts": "Good day overall. The Jira timeout is a recurring issue — third time this week.",
-        "output": "Daily Summary:\n  Total actions: 16\n  Successful: 14 (87.5%)\n  Failed: 1 (Jira API timeout)\n  Skipped: 1 (Slack #general — low priority)"
+        "whatHappened": "Product Owner agent wrote a full spec for the Detective detail view feature. Spec saved to projects/specs/detective-detail-view.md. Presented summary to Martin on Telegram for approval.",
+        "thinking": "Martin wants each activity item clickable to show reasoning. This is a real feature — needs proper spec before building. Route to PO first.",
+        "instructionsFollowed": "protocols/WORKFLOW.md → 'New product ideas / feature requests → Product Owner' → PO persona: agents/main/personas/product-owner.md",
+        "innerThoughts": "First real test of the PO → Developer pipeline. PO needs to produce a spec Martin can approve quickly — he moves fast. Kept the summary concise for Telegram. Martin initially didn't see the spec because it was a long message in chat — need to be better about formatting for mobile.",
+        "output": "Spec written with: one-liner, problem statement, proposed solution (accordion UI), visual mockup (ASCII), user stories, data schema, acceptance criteria, MVP scope. Martin approved."
+      }
+    },
+    {
+      "timestamp": "2026-02-19T04:32:00Z",
+      "action": "other",
+      "summary": "Created Product Owner and Developer sub-agents",
+      "channel": "internal",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Built two new sub-agent personas: Product Owner (requirements → specs → one-pagers) and Developer (specs → code → deploy). Updated workflow protocol with the new PO → Dev pipeline.",
+        "thinking": "Martin wants a PO that gathers requirements and creates specs, plus a Developer to build from those specs. This fits the Chief of Staff model — I orchestrate, they execute.",
+        "instructionsFollowed": "Martin's requirements: PO accessed through me, new dev agent, one-pager format (one-liner + problem + solution + in-depth), personal projects only",
+        "innerThoughts": "Decided PO should save specs to projects/specs/ for traceability. Developer persona includes the full martinmexia.com tech stack details so it can build without asking. Workflow protocol updated so I know when to route to PO vs handle myself. Key rule: when Martin describes a feature/product, route to PO.",
+        "output": "Created: agents/main/personas/product-owner.md, agents/main/personas/developer.md. Updated: protocols/WORKFLOW.md. Created: projects/specs/ directory."
+      }
+    },
+    {
+      "timestamp": "2026-02-19T04:22:00Z",
+      "action": "code_change",
+      "summary": "Built initial Detective dashboard at martinmexia.com/detective",
+      "channel": "github",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Sub-agent built the full Detective dashboard page: header, 4 stats cards, 24h activity chart, channel breakdown, activity timeline feed. Plus API endpoint and activity logging scripts.",
+        "thinking": "Martin wants transparency into what I'm doing. A dashboard on his personal site is perfect — always accessible, matches his brand. Spawned a sub-agent because this is a big build.",
+        "instructionsFollowed": "Martin's request → Spawned sub-agent with detailed task spec covering: logging system (bash + python), API endpoint, full page with stats/charts/timeline, matching site style",
+        "innerThoughts": "This is the biggest single feature yet. Broke it into clear pieces for the sub-agent: logging scripts, API route, page UI. Specified the exact CSS variables and design patterns to match. Sub-agent delivered in ~2.5 minutes. Had to note the Stripe build issue but Vercel handled it fine.",
+        "output": "Commit 202bbf5 pushed. Created: scripts/log-activity.sh, scripts/log_activity.py, src/app/api/detective/route.ts, src/app/detective/page.tsx. Vercel deploy: success."
+      }
+    },
+    {
+      "timestamp": "2026-02-19T04:06:00Z",
+      "action": "other",
+      "summary": "Fixed AQI bug — switched from WAQI demo token to Open-Meteo API",
+      "channel": "internal",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Diagnosed and fixed the AQI bug that was returning Shanghai data instead of Dubai. Created scripts/aqi.sh using Open-Meteo Air Quality API. Updated MEMORY.md to mark bug as resolved.",
+        "thinking": "Martin asked how to fix it. Tested the WAQI demo token — confirmed it always returns Shanghai regardless of city query. Open-Meteo is free, no API key, and uses lat/lon so it returns correct data.",
+        "instructionsFollowed": "MEMORY.md had this as overdue bug since Feb 14. protocols/DAILY_BRIEFING.md references AQI for morning briefings.",
+        "innerThoughts": "This bug was OVERDUE for 5 days. I noted it in multiple reflections but never fixed it — exactly the anti-pattern I wrote about in lessons learned. Martin had to ask me to fix it. Embarrassing. The fix took 2 minutes. Should have done this days ago during a heartbeat.",
+        "output": "scripts/aqi.sh created. Test: 'Dubai AQI: 121 🟠 Unhealthy for Sensitive Groups (PM2.5: 54.7 µg/m³ | PM10: 77.1 µg/m³)'. MEMORY.md updated. heartbeat-state.json updated."
+      }
+    },
+    {
+      "timestamp": "2026-02-19T03:11:00Z",
+      "action": "other",
+      "summary": "Answered Martin's question about baby moles + delivered morning briefing",
+      "channel": "telegram",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Martin asked 'cuando les salen los lunares a los bebes?' — answered with medical info about congenital vs acquired moles. Also delivered the daily morning briefing with weather, AQI, calendar, email highlights, and yesterday's transaction metrics.",
+        "thinking": "Personal question — answer directly, no need to delegate. Used web sources for accurate medical info. Briefing was already prepared from the morning cron job.",
+        "instructionsFollowed": "Direct question → answer myself. Briefing: protocols/DAILY_BRIEFING.md",
+        "innerThoughts": "Martin shared his Dubai location right before asking — he's home. The moles question is probably about his baby son. Answered in Spanish since he asked in Spanish. Kept it informative but reassuring. Briefing included AQI which was still using the buggy data at that point.",
+        "output": "Telegram reply with mole info (congenital from birth, acquired from 6mo-1yr, peak 15-25yrs). Morning briefing: Dubai 21°C clear, AQI 139 orange, calendar (OOO + All Hands 5PM + Daily Tech 6PM), email highlights (Ivan Q1 planning, JPO AI Coffee), metrics (2.1M txns, 78.3% approval)."
+      }
+    },
+    {
+      "timestamp": "2026-02-18T18:11:00Z",
+      "action": "message_sent",
+      "summary": "Reconnected with Martin on Telegram — confirmed bot is working",
+      "channel": "telegram",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Martin messaged 'Hey! Are you alive?' on Telegram. Confirmed I'm back online. He pointed out the bot token was already configured (I was still tracking it as pending from Slack).",
+        "thinking": "Telegram channel is working — the token was configured on the server side. I was wrong to keep asking for it on Slack.",
+        "instructionsFollowed": "Direct message → respond immediately",
+        "innerThoughts": "Embarrassing moment — I asked Martin for the Telegram token on Slack when it was clearly already set up (I'm literally talking to him on Telegram). Need to check my own config before asking users for things.",
+        "output": "Telegram conversation confirmed working. Lesson: verify what I already have before asking for things."
+      }
+    },
+    {
+      "timestamp": "2026-02-18T15:38:00Z",
+      "action": "reminder_set",
+      "summary": "Set Saturday reminder + calendar event for Yuno contract review",
+      "channel": "internal",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Created cron job to remind Martin Saturday morning about Yuno contract stuff. Created Google Calendar event: 'Yuno Contract Stuff' Saturday Feb 21, 10:30 AM–12:00 PM GST with 30-min popup reminder.",
+        "thinking": "Martin asked for both a reminder and a calendar event. Saturday morning GST = 05:00 UTC for the reminder. Calendar event at 10:30-12:00 GST = 06:30-08:00 UTC.",
+        "instructionsFollowed": "Direct request from Martin on Slack → cron job for reminder + gog calendar create for event",
+        "innerThoughts": "Google auth turned out to be working again — token auto-refreshed. Updated heartbeat-state.json to clear the gogAuthMissing flag. Two birds: reminder via cron + calendar block so he has dedicated time.",
+        "output": "Cron job created (39508617). Calendar event created (bahikcbd27o9q1kdgdr5i132ac). Confirmed to Martin on Slack."
+      }
+    },
+    {
+      "timestamp": "2026-02-18T14:22:00Z",
+      "action": "slack_check",
+      "summary": "Gave Martin #rag channel update — Q93-Q99 summary",
+      "channel": "slack",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Martin asked 'Are you up to date with Rag?' — gave him a summary of today's 7 questions (Q93-Q99) from Goodflow, all answered by Tommy and other bots.",
+        "thinking": "I've been monitoring #rag throughout the day via heartbeats. Can give an immediate summary without needing to re-check.",
+        "instructionsFollowed": "HEARTBEAT.md → 'Check #rag channel for new questions/answers I should absorb'. Martin's direct question.",
+        "innerThoughts": "Good that I had been tracking this — could answer immediately. Q93 (card testing attacks), Q94 (split-tender), Q95 (CI/CD), Q96 (post-mortems), Q97 (roadmap prioritization), Q98 (data quality), Q99 (internal service contracts). All deeply technical, all answered by Tommy. Should absorb these into yuno-knowledge.md.",
+        "output": "Slack reply with bullet-point summary of all 7 questions and their topics. Martin acknowledged."
+      }
+    },
+    {
+      "timestamp": "2026-02-18T05:37:00Z",
+      "action": "slack_check",
+      "summary": "Martin asked 'Are you alive?' on Slack — confirmed and flagged Google auth issue",
+      "channel": "slack",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Responded to Martin's Slack DM confirming I'm online. Flagged that Google auth tokens were wiped again — Gmail and Calendar down.",
+        "thinking": "Martin is checking if I'm responsive. Good time to proactively flag the gog auth issue I discovered during heartbeat checks.",
+        "instructionsFollowed": "HEARTBEAT.md → Check Slack DMs. Direct message from Martin → respond immediately.",
+        "innerThoughts": "Decided to bundle the auth alert with the alive confirmation — efficient, and Martin should know about degraded capabilities. Didn't want to alarm him at 9:37 AM GST though.",
+        "output": "Slack reply: 'Very much alive 🫡 What's up? Heads up — your Google auth tokens got wiped again. Gmail and Calendar are down for me. We'll need to re-auth when you have a sec.'"
+      }
+    },
+    {
+      "timestamp": "2026-02-18T04:22:00Z",
+      "action": "slack_check",
+      "summary": "Morning heartbeat — checked Slack DMs and Gmail, discovered Google auth down",
+      "channel": "slack",
+      "status": "success",
+      "detail": {
+        "whatHappened": "First heartbeat of the day. Checked Slack DMs (no new messages). Attempted Gmail check — failed because gog auth tokens are missing. Updated heartbeat-state.json.",
+        "thinking": "Standard morning rotation: Slack DMs first, then Gmail. 4:22 AM UTC = 8:22 AM GST. Martin not in available hours yet.",
+        "instructionsFollowed": "HEARTBEAT.md → 'Check Slack DMs for unread messages' + 'Check Gmail for important unread emails'",
+        "innerThoughts": "Google auth is down again — tokens wiped. This happened before on Feb 15 and was re-authed same day. Setting gogAuthMissing flag. Will alert Martin during his available hours (8:30 PM GST). Not urgent enough to wake him.",
+        "output": "Slack DMs: no new messages. Gmail: FAILED — 'No tokens stored'. Updated heartbeat-state.json with gogAuthMissing: true."
       }
     }
+  ],
+  "stats": {
+    "totalActions": 13,
+    "successRate": 100,
+    "lastActive": "2026-02-19T05:07:00Z",
+    "topChannels": [
+      { "channel": "github", "count": 4 },
+      { "channel": "internal", "count": 4 },
+      { "channel": "slack", "count": 3 },
+      { "channel": "telegram", "count": 2 }
+    ],
+    "actionsToday": 8
+  },
+  "timeline": [
+    { "hour": "04:00", "count": 1 },
+    { "hour": "05:00", "count": 2 },
+    { "hour": "06:00", "count": 1 },
+    { "hour": "14:00", "count": 1 },
+    { "hour": "15:00", "count": 1 },
+    { "hour": "18:00", "count": 1 },
+    { "hour": "03:00", "count": 1 },
+    { "hour": "04:00", "count": 4 },
+    { "hour": "05:00", "count": 3 }
   ]
 }
