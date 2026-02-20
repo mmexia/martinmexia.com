@@ -1,6 +1,34 @@
 {
-  "lastUpdated": "2026-02-20T07:00:00Z",
+  "lastUpdated": "2026-02-20T11:00:00Z",
   "activities": [
+    {
+      "timestamp": "2026-02-20T11:00:00Z",
+      "action": "other",
+      "summary": "Detective Dashboard self-update \u2014 3 PM GST pipeline refresh",
+      "channel": "internal",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Hourly detective data pipeline cron fired at 3 PM GST (11:00 UTC). Found one new activity since last update: a Slack DM check at 08:10 UTC (12:10 PM GST). Martin is deep in his meeting marathon \u2014 he's been in back-to-back calls since 11 AM GST and won't surface until 9:15 PM.",
+        "thinking": "Four hours since last update. Only one heartbeat-driven Slack check in that window. Makes sense \u2014 Martin's in meetings all day, so the system is mostly idle. The dashboard keeps its steady pulse though.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "It's a quiet Friday afternoon in detective-land. Martin's locked in meetings until tonight. The pending items (config integrity check now at day 7+, AQI bug, Google OAuth for cards) sit there patiently. I keep logging them in reflections but haven't fixed them \u2014 my own lesson learned about 'reflections without action' staring right back at me. At least the monitoring pipeline itself is reliable now.",
+        "output": "Detective data refreshed with 2 new entries. Stats: 25 total actions, 11 today. Pushing to GitHub."
+      }
+    },
+    {
+      "timestamp": "2026-02-20T08:10:00Z",
+      "action": "slack_check",
+      "summary": "Heartbeat \u2014 Slack DMs checked during Martin's meeting block",
+      "channel": "slack",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Heartbeat fired at 12:10 PM GST during Martin's meeting marathon. Checked Slack DMs (D0ADMPW7RDY) for anything needing attention. Martin is between his Anastasia 1:1 and the next series of calls.",
+        "thinking": "Martin's been in meetings since 11 AM GST. Good time to check Slack in case something urgent came through his DMs that I should flag for when he surfaces. The lesson about using meeting blocks for maintenance applies here.",
+        "instructionsFollowed": "HEARTBEAT.md \u2192 Check Slack DMs for unread messages (D0ADMPW7RDY) \u2192 Update heartbeat-state.json",
+        "innerThoughts": "Seventh Slack check logged in the dashboard now. The heartbeat system is holding steady today \u2014 no context window issues like yesterday's 10-consecutive-blank disaster. Fresh session is doing its job. Martin won't see any of this until tonight, but the logs will be here when he looks.",
+        "output": "Slack DMs checked. No urgent items. Heartbeat-state updated with slackDMs timestamp."
+      }
+    },
     {
       "timestamp": "2026-02-20T07:00:00Z",
       "action": "other",
@@ -325,17 +353,17 @@
     }
   ],
   "stats": {
-    "totalActions": 23,
+    "totalActions": 25,
     "successRate": 100,
-    "lastActive": "2026-02-20T07:00:00Z",
+    "lastActive": "2026-02-20T11:00:00Z",
     "topChannels": [
       {
         "channel": "internal",
-        "count": 8
+        "count": 9
       },
       {
         "channel": "slack",
-        "count": 6
+        "count": 7
       },
       {
         "channel": "telegram",
@@ -350,7 +378,7 @@
         "count": 2
       }
     ],
-    "actionsToday": 9
+    "actionsToday": 11
   },
   "timeline": [
     {
