@@ -58,10 +58,15 @@ export default function BotVaultDashboard() {
     },
     {
       num: 2,
-      title: 'Add a Credential',
-      desc: 'Store your API keys and secrets securely.',
+      title: 'Create Access',
+      desc: 'Set up what your bot can use:',
+      subItems: [
+        { text: 'Credentials', detail: 'API keys and secrets to access different services', link: '/botvault/credentials' },
+        { text: 'Google Accounts', detail: 'Allow your bot to access your Google workspace', link: '/botvault/connections' },
+        { text: 'Cards', detail: 'Give the power to buy to your bot', link: '/botvault/cards' },
+      ],
       link: '/botvault/credentials',
-      linkText: '→ Add Credential',
+      linkText: '→ Set Up Access',
       done: (credentials ?? 0) > 0,
     },
     {
@@ -114,6 +119,16 @@ export default function BotVaultDashboard() {
                   <div className="bv-setup-content">
                     <div className="bv-setup-title">Step {step.num}: {step.title}</div>
                     <div className="bv-setup-desc">{step.desc}</div>
+                    {'subItems' in step && step.subItems && (
+                      <div className="bv-setup-subitems">
+                        {step.subItems.map((item: { text: string; detail: string; link: string }) => (
+                          <Link key={item.text} href={item.link} className="bv-setup-subitem">
+                            <span className="bv-subitem-name">{item.text}</span>
+                            <span className="bv-subitem-detail">{item.detail}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <Link href={step.link} className="bv-action-btn">
                     {step.linkText}
