@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { href: '/botvault/credentials', label: 'Credentials', icon: '🔑' },
   { href: '/botvault/bots', label: 'Bots', icon: '🤖' },
   { href: '/botvault/connections', label: 'Google Accounts', icon: '🔗' },
+  { href: '/botvault/skills', label: 'Skills', icon: '⚡' },
   { href: '/botvault/audit', label: 'Audit Log', icon: '📋' },
   { href: '/botvault/settings', label: 'Settings', icon: '⚙️' },
 ];
