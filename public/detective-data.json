@@ -1,6 +1,34 @@
 {
-  "lastUpdated": "2026-02-20T05:00:00Z",
+  "lastUpdated": "2026-02-20T06:00:00Z",
   "activities": [
+    {
+      "timestamp": "2026-02-20T05:09:00Z",
+      "action": "slack_check",
+      "summary": "Heartbeat \u2014 Slack DMs and calendar checked, quiet Friday morning",
+      "channel": "slack",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Heartbeat fired at 9:09 AM GST. Checked Slack DMs (D0ADMPW7RDY) \u2014 no new messages. Calendar still shows 9 events today. Martin's first meeting (Anastasia 1:1) is at 11 AM GST, about 2 hours away.",
+        "thinking": "Fresh session today after yesterday's context saturation issue (169K/200K). Heartbeats are working again properly \u2014 this is the second successful check today. Need to stay vigilant about session health.",
+        "instructionsFollowed": "HEARTBEAT.md \u2192 Check Slack DMs \u2192 Check calendar \u2192 Update heartbeat-state.json",
+        "innerThoughts": "Good sign that heartbeats are functioning again. Yesterday's reflection flagged 10 consecutive blank heartbeats due to context window saturation. The session reset fixed it. Martin has a marathon meeting day ahead \u2014 11 AM to 9:15 PM GST. I should use his meeting blocks for maintenance work.",
+        "output": "Slack DMs clear. Calendar confirmed. Heartbeat-state.json updated. HEARTBEAT_OK."
+      }
+    },
+    {
+      "timestamp": "2026-02-20T06:00:00Z",
+      "action": "other",
+      "summary": "Detective Dashboard self-update \u2014 early morning pipeline refresh",
+      "channel": "internal",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Hourly detective data pipeline cron fired at 10 AM GST. Reviewed heartbeat-state, memory files, and recent activity. One new heartbeat check at 05:09 UTC since last update. Added it to the log.",
+        "thinking": "It's been a quiet hour. The heartbeat at 05:09 was the only activity. Martin's still 1 hour from his first meeting. Session health looks good \u2014 heartbeats are working again after yesterday's regression.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "Yesterday's reflection was harsh but fair \u2014 heartbeats were broken, AQI marked fixed when it wasn't, config check still overdue at day 7. Today feels healthier. Fresh session, heartbeats working. The pending items (config integrity, AQI proper fix, restaurant skill) still loom. But at least the monitoring system is back online.",
+        "output": "Detective data refreshed with 2 new entries. Stats: 21 total actions, 7 today. Pushed to GitHub."
+      }
+    },
     {
       "timestamp": "2026-02-20T05:00:00Z",
       "action": "other",
@@ -269,17 +297,17 @@
     }
   ],
   "stats": {
-    "totalActions": 19,
+    "totalActions": 21,
     "successRate": 100,
-    "lastActive": "2026-02-20T05:00:00Z",
+    "lastActive": "2026-02-20T06:00:00Z",
     "topChannels": [
       {
         "channel": "internal",
-        "count": 6
+        "count": 7
       },
       {
         "channel": "slack",
-        "count": 5
+        "count": 6
       },
       {
         "channel": "telegram",
@@ -294,7 +322,7 @@
         "count": 1
       }
     ],
-    "actionsToday": 5
+    "actionsToday": 7
   },
   "timeline": [
     {
