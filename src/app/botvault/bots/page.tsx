@@ -218,7 +218,7 @@ export default function BotsPage() {
                     </div>
                     {bot.description && <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{bot.description}</p>}
                     <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                      <span>🔑 {bot.permission_count} credential{bot.permission_count !== 1 ? 's' : ''}</span>
+                      <span>🔑 {bot.permission_count} key{bot.permission_count !== 1 ? 's' : ''}</span>
                       <span>📅 {new Date(bot.created_at).toLocaleDateString()}</span>
                     </div>
                   </div>
@@ -247,7 +247,7 @@ export default function BotsPage() {
                     </div>
 
                     {/* Permissions Section */}
-                    <h4 style={{ margin: '0 0 0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Credential Permissions</h4>
+                    <h4 style={{ margin: '0 0 0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Key Permissions</h4>
                     {allCredentials.length === 0 ? (
                       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>No credentials available. Add credentials first.</p>
                     ) : (

@@ -113,16 +113,16 @@ export default function CredentialsPage() {
     <DashboardShell>
       <div className="bv-dashboard">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ margin: 0 }}>Credentials</h2>
+          <h2 style={{ margin: 0 }}>Keys</h2>
           <button className="bv-submit-btn" style={{ width: 'auto', padding: '0.5rem 1.25rem' }} onClick={openCreate}>
-            + Add Credential
+            + Add Key
           </button>
         </div>
 
         {loading ? (
           <div className="bv-empty-state">Loading...</div>
         ) : credentials.length === 0 ? (
-          <div className="bv-empty-state">No credentials yet. Add your first credential to get started.</div>
+          <div className="bv-empty-state">No keys yet. Add your first key to get started.</div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
@@ -172,7 +172,7 @@ export default function CredentialsPage() {
           <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}
             onClick={(e) => { if (e.target === e.currentTarget) setShowModal(false); }}>
             <div className="bv-auth-card" style={{ maxWidth: '480px' }}>
-              <h1 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>{editId ? 'Edit' : 'Add'} Credential</h1>
+              <h1 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>{editId ? 'Edit' : 'Add'} Key</h1>
               {error && <div className="bv-error">{error}</div>}
               <form onSubmit={handleSubmit}>
                 <div className="bv-form-group">
@@ -198,7 +198,7 @@ export default function CredentialsPage() {
                 <div style={{ display: 'flex', gap: '0.75rem' }}>
                   <button type="button" className="bv-action-btn" style={{ flex: 1 }} onClick={() => setShowModal(false)}>Cancel</button>
                   <button type="submit" className="bv-submit-btn" style={{ flex: 1 }} disabled={saving}>
-                    {saving ? 'Saving...' : editId ? 'Update' : 'Add Credential'}
+                    {saving ? 'Saving...' : editId ? 'Update' : 'Add Key'}
                   </button>
                 </div>
               </form>
@@ -211,9 +211,9 @@ export default function CredentialsPage() {
           <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}
             onClick={(e) => { if (e.target === e.currentTarget) setDeleteConfirm(null); }}>
             <div className="bv-auth-card" style={{ maxWidth: '400px', textAlign: 'center' }}>
-              <h1 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Delete Credential?</h1>
+              <h1 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Delete Key?</h1>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '1.5rem' }}>
-                This action cannot be undone. The credential will be permanently deleted.
+                This action cannot be undone. The key will be permanently deleted.
               </p>
               <div style={{ display: 'flex', gap: '0.75rem' }}>
                 <button className="bv-action-btn" style={{ flex: 1 }} onClick={() => setDeleteConfirm(null)}>Cancel</button>

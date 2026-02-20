@@ -61,7 +61,7 @@ export default function BotVaultDashboard() {
       title: "Create Access'",
       desc: 'Set up what your bot can use:',
       subItems: [
-        { text: 'Credentials', detail: 'API keys and secrets to access different services', link: '/botvault/credentials' },
+        { text: 'Keys', detail: 'API keys and secrets to access different services', link: '/botvault/credentials' },
         { text: 'Google Accounts', detail: 'Allow your bot to access your Google workspace', link: '/botvault/connections' },
         { text: 'Cards', detail: 'Give the power to buy to your bot', link: '/botvault/cards' },
       ],
@@ -142,7 +142,7 @@ export default function BotVaultDashboard() {
           <>
             <div className="bv-stats-grid">
               <div className="bv-stat-card">
-                <div className="label">Credentials</div>
+                <div className="label">Keys</div>
                 <div className="value">{credentials}</div>
               </div>
               <div className="bv-stat-card">
@@ -156,7 +156,7 @@ export default function BotVaultDashboard() {
             </div>
 
             <div className="bv-quick-actions">
-              <Link href="/botvault/credentials" className="bv-action-btn">+ Add Credential</Link>
+              <Link href="/botvault/credentials" className="bv-action-btn">+ Add Key</Link>
               <Link href="/botvault/bots" className="bv-action-btn">+ Register Bot</Link>
             </div>
 

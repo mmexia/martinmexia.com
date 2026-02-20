@@ -148,7 +148,7 @@ export default function SettingsPage() {
             <div className="bv-auth-card" style={{ maxWidth: '440px', textAlign: 'center' }}>
               <h1 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: '#ef4444' }}>Delete Account</h1>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '1rem' }}>
-                This will permanently delete your account, credentials, bots, tokens, and all associated data. Type <strong>DELETE</strong> to confirm.
+                This will permanently delete your account, keys, bots, tokens, and all associated data. Type <strong>DELETE</strong> to confirm.
               </p>
               <input value={deleteText} onChange={e => setDeleteText(e.target.value)} placeholder='Type "DELETE" to confirm'
                 style={{ ...inputStyle, textAlign: 'center', marginBottom: '1rem' }} />
