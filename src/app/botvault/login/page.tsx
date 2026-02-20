@@ -57,6 +57,9 @@ export default function LoginPage() {
         <div className="bv-auth-links">
           <a href="/botvault/signup">Create account</a> · <a href="/botvault/forgot-password">Forgot password?</a>
         </div>
+        <div className="bv-auth-links" style={{ marginTop: '0.5rem' }}>
+          <a href="/botvault/about">What is BotVault?</a>
+        </div>
       </div>
     </div>
   );
