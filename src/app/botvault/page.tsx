@@ -50,19 +50,19 @@ export default function BotVaultDashboard() {
   const steps = [
     {
       num: 1,
-      title: 'Add a Credential',
-      desc: 'Store your first API key or secret securely.',
-      link: '/botvault/credentials',
-      linkText: '→ Add Credential',
-      done: (credentials ?? 0) > 0,
-    },
-    {
-      num: 2,
       title: 'Register a Bot',
-      desc: 'Create a bot that will access your credentials.',
+      desc: 'Create the bot that will access your vault.',
       link: '/botvault/bots',
       linkText: '→ Register Bot',
       done: (bots ?? 0) > 0,
+    },
+    {
+      num: 2,
+      title: 'Add a Credential',
+      desc: 'Store your API keys and secrets securely.',
+      link: '/botvault/credentials',
+      linkText: '→ Add Credential',
+      done: (credentials ?? 0) > 0,
     },
     {
       num: 3,
