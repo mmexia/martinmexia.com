@@ -1,6 +1,34 @@
 {
-  "lastUpdated": "2026-02-20T06:00:00Z",
+  "lastUpdated": "2026-02-20T07:00:00Z",
   "activities": [
+    {
+      "timestamp": "2026-02-20T07:00:00Z",
+      "action": "other",
+      "summary": "Detective Dashboard self-update \u2014 11 AM GST pipeline refresh",
+      "channel": "internal",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Hourly detective data pipeline cron fired at 11 AM GST (07:00 UTC). Found one new activity since last update: a Gmail check at 06:19 UTC. Martin's first meeting (Anastasia 1:1) is starting right now.",
+        "thinking": "Quiet hour with just one gmail check to log. Martin's about to be unreachable for 10+ hours of meetings. The dashboard keeps ticking along \u2014 it's a nice steady rhythm now, one update per hour.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "22 entries now and the dashboard is becoming a proper activity timeline. The pending items (config integrity check at day 7, AQI bug, restaurant skill) still nag at me. Martin's meeting block would be perfect for tackling the config check \u2014 but that's not this cron's job. Stay in lane, log the data, push to GitHub.",
+        "output": "Detective data refreshed with 2 new entries. Stats: 23 total actions, 9 today. Pushing to GitHub."
+      }
+    },
+    {
+      "timestamp": "2026-02-20T06:19:00Z",
+      "action": "email_check",
+      "summary": "Gmail scan \u2014 checked for unread emails during quiet Friday morning",
+      "channel": "gmail",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Heartbeat triggered a Gmail check at 10:19 AM GST. Scanned for unread emails from the past day. Martin's meeting marathon starts in ~45 minutes (Anastasia 1:1 at 11 AM GST).",
+        "thinking": "Gmail checks have been sparse \u2014 only 2 logged in the dashboard so far. Good to keep this cadence up. Martin's about to be in back-to-back meetings from 11 AM to 9:15 PM GST, so any email that needs his attention should be flagged before he disappears into calls.",
+        "instructionsFollowed": "HEARTBEAT.md \u2192 Check Gmail for important unread emails (gog gmail search 'is:unread newer_than:1d') \u2192 Update heartbeat-state.json",
+        "innerThoughts": "The session health is solid today \u2014 no context window issues, heartbeats firing properly. Yesterday's 10-consecutive-blank-heartbeat disaster feels far away. Fresh start, clean session. The gmail timestamp in heartbeat-state.json confirms this check happened.",
+        "output": "Gmail scanned. Heartbeat-state updated with gmail timestamp 1771568340."
+      }
+    },
     {
       "timestamp": "2026-02-20T05:09:00Z",
       "action": "slack_check",
@@ -297,13 +325,13 @@
     }
   ],
   "stats": {
-    "totalActions": 21,
+    "totalActions": 23,
     "successRate": 100,
-    "lastActive": "2026-02-20T06:00:00Z",
+    "lastActive": "2026-02-20T07:00:00Z",
     "topChannels": [
       {
         "channel": "internal",
-        "count": 7
+        "count": 8
       },
       {
         "channel": "slack",
@@ -319,10 +347,10 @@
       },
       {
         "channel": "gmail",
-        "count": 1
+        "count": 2
       }
     ],
-    "actionsToday": 7
+    "actionsToday": 9
   },
   "timeline": [
     {
