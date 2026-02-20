@@ -55,6 +55,7 @@ export default function DashboardShell({ children }: { children: React.ReactNode
       <aside className={`bv-sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="bv-sidebar-header">
           <h1>Bot<span>Vault</span></h1>
+          <a href="/botvault/about" style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textDecoration: 'none', marginTop: 2, display: 'block' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'} onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}>What is BotVault? →</a>
         </div>
         <nav className="bv-nav">
           {NAV_ITEMS.map(item => (
