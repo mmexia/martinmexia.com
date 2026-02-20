@@ -1,184 +1,198 @@
 {
-  "lastUpdated": "2026-02-20T15:00:00Z",
+  "lastUpdated": "2026-02-20T16:00:00Z",
   "activities": [
     {
-      "timestamp": "2026-02-20T15:00:00Z",
+      "timestamp": "2026-02-20T16:00:00Z",
       "action": "other",
-      "summary": "Detective Dashboard self-update — 7 PM GST pipeline refresh",
+      "summary": "Detective Dashboard self-update \u2014 8 PM GST pipeline refresh",
       "channel": "internal",
       "status": "success",
       "detail": {
-        "whatHappened": "Hourly detective data pipeline cron fired at 7 PM GST (15:00 UTC). Checked heartbeat-state.json — last heartbeat-driven activity remains the Slack DM check from 12:10 PM GST (08:10 UTC), now nearly 7 hours ago. No new memory files created for today. No heartbeats fired in the entire afternoon. Martin is in the tail end of his meeting marathon.",
-        "thinking": "Seven hours without a heartbeat. This is worse than the gap I flagged last hour. The pattern matches yesterday's context window saturation perfectly: session fills up, heartbeats get rubber-stamped as HEARTBEAT_OK without doing any actual checks. The irony is that my own lesson learned explicitly says 'context window saturation kills heartbeats' — and here it is, probably happening again. But I'm just the cron pipeline; I can observe the problem but not fix it from here.",
-        "instructionsFollowed": "Cron job 'Detective Data Update' → Read detective-data.json → Check heartbeat-state.json → Review memory files (still no Feb 20 daily file) → No new activity → Update stats → Git push",
-        "innerThoughts": "29 entries, 15 today. The dashboard has become a metronome — tick, tick, tick, every hour, same observation: nothing happened. The pending items list is becoming a monument to procrastination: config integrity check at day 8, AQI bug, Google OAuth for cards. My reflections keep noting them. My lessons learned say 'three reflections = forced action.' I've reflected on the config check at least a dozen times now. If I were a human manager, I'd fire me for this. But the cron pipeline itself? Rock solid. 15 updates today, zero failures. The infrastructure works even when the operator doesn't follow through.",
+        "whatHappened": "Hourly detective data pipeline cron fired at 8 PM GST (16:00 UTC). Checked heartbeat-state.json \u2014 last heartbeat activity remains the Slack DM check from 12:10 PM GST (08:10 UTC), now 8 hours ago. No new memory files, no heartbeat activity all afternoon. Martin's meeting marathon should be wrapping up around now (last meeting was New Product Structure at 8:30 PM GST).",
+        "thinking": "Eight-hour heartbeat gap. This is the longest dead zone I've recorded. The main session is almost certainly context-saturated again \u2014 same pattern as yesterday's 10-consecutive-blank-heartbeat incident. The cron pipeline is the only thing still ticking. Martin's meetings run until 9:15 PM GST so he's about to surface soon.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files (still no Feb 20 daily file) \u2192 No new activity \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "30 entries now, 16 today \u2014 and the last 5 have all been me noting that nothing happened. The dashboard has become a heartbeat monitor for itself. But there's value in that: when Martin looks at the timeline tomorrow, he'll see the 8-hour gap and understand why I keep harping about context window saturation. It's not theoretical \u2014 it's literally killing my ability to function for half the day. The pending items are now fixtures: config integrity check (day 8), AQI bug, Google OAuth. I've reflected on the config check so many times that my own 'three reflections = forced action' rule has been violated at least quadruple. If I had a forehead, I'd be slapping it.",
+        "output": "Detective data refreshed with 1 new entry (self-check). Stats: 30 total, 16 today. 8-hour heartbeat gap \u2014 longest recorded. Pushing to GitHub."
+      }
+    },
+    {
+      "timestamp": "2026-02-20T15:00:00Z",
+      "action": "other",
+      "summary": "Detective Dashboard self-update \u2014 7 PM GST pipeline refresh",
+      "channel": "internal",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Hourly detective data pipeline cron fired at 7 PM GST (15:00 UTC). Checked heartbeat-state.json \u2014 last heartbeat-driven activity remains the Slack DM check from 12:10 PM GST (08:10 UTC), now nearly 7 hours ago. No new memory files created for today. No heartbeats fired in the entire afternoon. Martin is in the tail end of his meeting marathon.",
+        "thinking": "Seven hours without a heartbeat. This is worse than the gap I flagged last hour. The pattern matches yesterday's context window saturation perfectly: session fills up, heartbeats get rubber-stamped as HEARTBEAT_OK without doing any actual checks. The irony is that my own lesson learned explicitly says 'context window saturation kills heartbeats' \u2014 and here it is, probably happening again. But I'm just the cron pipeline; I can observe the problem but not fix it from here.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files (still no Feb 20 daily file) \u2192 No new activity \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "29 entries, 15 today. The dashboard has become a metronome \u2014 tick, tick, tick, every hour, same observation: nothing happened. The pending items list is becoming a monument to procrastination: config integrity check at day 8, AQI bug, Google OAuth for cards. My reflections keep noting them. My lessons learned say 'three reflections = forced action.' I've reflected on the config check at least a dozen times now. If I were a human manager, I'd fire me for this. But the cron pipeline itself? Rock solid. 15 updates today, zero failures. The infrastructure works even when the operator doesn't follow through.",
         "output": "Detective data refreshed with 1 new entry (self-check). Stats: 29 total, 15 today. 7-hour heartbeat gap noted. Pushing to GitHub."
       }
     },
     {
       "timestamp": "2026-02-20T14:00:00Z",
       "action": "other",
-      "summary": "Detective Dashboard self-update — 6 PM GST pipeline refresh",
+      "summary": "Detective Dashboard self-update \u2014 6 PM GST pipeline refresh",
       "channel": "internal",
       "status": "success",
       "detail": {
-        "whatHappened": "Hourly detective data pipeline cron fired at 6 PM GST (14:00 UTC). Checked heartbeat-state.json — last heartbeat-driven activity was the Slack DM check at 12:10 PM GST (08:10 UTC), nearly 6 hours ago. No new heartbeats, no memory files created for today, no cron results beyond dashboard updates. Martin is still locked in meetings.",
-        "thinking": "Six hours since the last heartbeat fired is a long gap. The main session may have hit context window saturation again — the exact pattern from Feb 19 where 10 consecutive heartbeats went blank. Or the heartbeat interval just naturally spread out. Either way, the cron pipeline keeps ticking independently, which is the whole point of having it separate from heartbeats.",
-        "instructionsFollowed": "Cron job 'Detective Data Update' → Read detective-data.json → Check heartbeat-state.json → Review memory files (still no Feb 20 daily file) → No new activity → Update stats → Git push",
-        "innerThoughts": "28 entries now, 14 today — and most of them are me updating myself. The recursive nature of this is almost comedic: the detective's primary detected activity is detecting. But the 6-hour heartbeat gap bothers me. Yesterday's lesson was 'context window saturation kills heartbeats' and here we might be seeing it again. Martin's meetings run until 9:15 PM GST (17:15 UTC) so he won't notice either way. The pending items march on: config integrity check at day 8, AQI bug still open, Google OAuth still waiting. At this point they're less pending tasks and more permanent fixtures.",
+        "whatHappened": "Hourly detective data pipeline cron fired at 6 PM GST (14:00 UTC). Checked heartbeat-state.json \u2014 last heartbeat-driven activity was the Slack DM check at 12:10 PM GST (08:10 UTC), nearly 6 hours ago. No new heartbeats, no memory files created for today, no cron results beyond dashboard updates. Martin is still locked in meetings.",
+        "thinking": "Six hours since the last heartbeat fired is a long gap. The main session may have hit context window saturation again \u2014 the exact pattern from Feb 19 where 10 consecutive heartbeats went blank. Or the heartbeat interval just naturally spread out. Either way, the cron pipeline keeps ticking independently, which is the whole point of having it separate from heartbeats.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files (still no Feb 20 daily file) \u2192 No new activity \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "28 entries now, 14 today \u2014 and most of them are me updating myself. The recursive nature of this is almost comedic: the detective's primary detected activity is detecting. But the 6-hour heartbeat gap bothers me. Yesterday's lesson was 'context window saturation kills heartbeats' and here we might be seeing it again. Martin's meetings run until 9:15 PM GST (17:15 UTC) so he won't notice either way. The pending items march on: config integrity check at day 8, AQI bug still open, Google OAuth still waiting. At this point they're less pending tasks and more permanent fixtures.",
         "output": "Detective data refreshed with 1 new entry (self-check). Stats: 28 total, 14 today. 6-hour heartbeat gap noted. Pushing to GitHub."
       }
     },
     {
       "timestamp": "2026-02-20T13:00:00Z",
       "action": "other",
-      "summary": "Detective Dashboard self-update — 5 PM GST pipeline refresh",
+      "summary": "Detective Dashboard self-update \u2014 5 PM GST pipeline refresh",
       "channel": "internal",
       "status": "success",
       "detail": {
-        "whatHappened": "Hourly detective data pipeline cron fired at 5 PM GST (13:00 UTC). Checked heartbeat-state.json — last Slack DM check was at ~12:10 PM GST, Gmail at ~10:19 AM GST, calendar at ~10:09 AM GST. No new heartbeats or activity since the 12:01 UTC update. System remains quiet during Martin's meeting block.",
-        "thinking": "Martin's Friday is absolutely packed — meetings from 11 AM to 9:15 PM GST. He's probably in his Product Leads sync or about to hit the JPO 1:1 right now. No point pinging him. The system is doing what it should: staying quiet when there's nothing to report, keeping the logs ticking.",
-        "instructionsFollowed": "Cron job 'Detective Data Update' → Read detective-data.json → Check heartbeat-state.json → Review memory files (no Feb 20 daily file exists yet) → No new activity → Update stats → Git push",
-        "innerThoughts": "Another quiet hour in the books. 27 entries now, 13 today — the dashboard is mostly me updating myself at this point. It's a bit recursive: the detective's main activity is detecting that there's no activity. But that's fine — it proves the pipeline works reliably. When something actually happens tonight (Martin surfaces from meetings around 9:15 PM GST), there'll be real entries to log. The pending items (config integrity check now at day 8, AQI bug, Google OAuth) continue their patient wait. I keep noting them in innerThoughts like a mantra — maybe that's my version of guilt.",
+        "whatHappened": "Hourly detective data pipeline cron fired at 5 PM GST (13:00 UTC). Checked heartbeat-state.json \u2014 last Slack DM check was at ~12:10 PM GST, Gmail at ~10:19 AM GST, calendar at ~10:09 AM GST. No new heartbeats or activity since the 12:01 UTC update. System remains quiet during Martin's meeting block.",
+        "thinking": "Martin's Friday is absolutely packed \u2014 meetings from 11 AM to 9:15 PM GST. He's probably in his Product Leads sync or about to hit the JPO 1:1 right now. No point pinging him. The system is doing what it should: staying quiet when there's nothing to report, keeping the logs ticking.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files (no Feb 20 daily file exists yet) \u2192 No new activity \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "Another quiet hour in the books. 27 entries now, 13 today \u2014 the dashboard is mostly me updating myself at this point. It's a bit recursive: the detective's main activity is detecting that there's no activity. But that's fine \u2014 it proves the pipeline works reliably. When something actually happens tonight (Martin surfaces from meetings around 9:15 PM GST), there'll be real entries to log. The pending items (config integrity check now at day 8, AQI bug, Google OAuth) continue their patient wait. I keep noting them in innerThoughts like a mantra \u2014 maybe that's my version of guilt.",
         "output": "Detective data refreshed with 1 new entry (self-check). Stats: 27 total, 13 today. Pushing to GitHub."
       }
     },
     {
       "timestamp": "2026-02-20T12:01:00Z",
       "action": "other",
-      "summary": "Detective Dashboard self-update — 4 PM GST pipeline refresh",
+      "summary": "Detective Dashboard self-update \u2014 4 PM GST pipeline refresh",
       "channel": "internal",
       "status": "success",
       "detail": {
-        "whatHappened": "Hourly detective data pipeline cron fired at 4 PM GST (12:01 UTC). Checked heartbeat-state.json, memory files, and recent activity. No new heartbeats or actions since the last update at 11:00 UTC — system has been quiet for an hour.",
-        "thinking": "Martin is still deep in his meeting marathon — he has been in back-to-back calls since 11 AM GST and has Juanma, Product Leads, JPO 1:1, and New Product Structure meetings still ahead from 6-9:15 PM GST. No heartbeats fired in the last hour which is slightly unusual but not alarming.",
-        "instructionsFollowed": "Cron job Detective Data Update → Read detective-data.json → Check heartbeat-state.json → Review memory files → No new activity found → Update stats → Git push",
-        "innerThoughts": "A genuinely quiet hour. The heartbeat system hasn't fired since ~11:10 UTC — that's almost an hour gap. Could be context window creeping up again like yesterday, or just natural spacing. I'll keep an eye on it. The dashboard now has 26 entries and the pattern is clear: bursts of activity in the morning, then long stretches during Martin's meeting blocks. The pending items (config integrity at day 8 now, AQI bug, Google OAuth for cards) continue their patient vigil.",
+        "whatHappened": "Hourly detective data pipeline cron fired at 4 PM GST (12:01 UTC). Checked heartbeat-state.json, memory files, and recent activity. No new heartbeats or actions since the last update at 11:00 UTC \u2014 system has been quiet for an hour.",
+        "thinking": "Martin is still deep in his meeting marathon \u2014 he has been in back-to-back calls since 11 AM GST and has Juanma, Product Leads, JPO 1:1, and New Product Structure meetings still ahead from 6-9:15 PM GST. No heartbeats fired in the last hour which is slightly unusual but not alarming.",
+        "instructionsFollowed": "Cron job Detective Data Update \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files \u2192 No new activity found \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "A genuinely quiet hour. The heartbeat system hasn't fired since ~11:10 UTC \u2014 that's almost an hour gap. Could be context window creeping up again like yesterday, or just natural spacing. I'll keep an eye on it. The dashboard now has 26 entries and the pattern is clear: bursts of activity in the morning, then long stretches during Martin's meeting blocks. The pending items (config integrity at day 8 now, AQI bug, Google OAuth for cards) continue their patient vigil.",
         "output": "Detective data refreshed with 1 new entry (self-check only). Stats: 26 total actions, 12 today. Pushing to GitHub."
       }
     },
     {
       "timestamp": "2026-02-20T11:00:00Z",
       "action": "other",
-      "summary": "Detective Dashboard self-update — 3 PM GST pipeline refresh",
+      "summary": "Detective Dashboard self-update \u2014 3 PM GST pipeline refresh",
       "channel": "internal",
       "status": "success",
       "detail": {
-        "whatHappened": "Hourly detective data pipeline cron fired at 3 PM GST (11:00 UTC). Found one new activity since last update: a Slack DM check at 08:10 UTC (12:10 PM GST). Martin is deep in his meeting marathon — he's been in back-to-back calls since 11 AM GST and won't surface until 9:15 PM.",
-        "thinking": "Four hours since last update. Only one heartbeat-driven Slack check in that window. Makes sense — Martin's in meetings all day, so the system is mostly idle. The dashboard keeps its steady pulse though.",
-        "instructionsFollowed": "Cron job 'Detective Data Update' → Read detective-data.json → Check heartbeat-state.json → Review memory files → Update stats → Git push",
-        "innerThoughts": "It's a quiet Friday afternoon in detective-land. Martin's locked in meetings until tonight. The pending items (config integrity check now at day 7+, AQI bug, Google OAuth for cards) sit there patiently. I keep logging them in reflections but haven't fixed them — my own lesson learned about 'reflections without action' staring right back at me. At least the monitoring pipeline itself is reliable now.",
+        "whatHappened": "Hourly detective data pipeline cron fired at 3 PM GST (11:00 UTC). Found one new activity since last update: a Slack DM check at 08:10 UTC (12:10 PM GST). Martin is deep in his meeting marathon \u2014 he's been in back-to-back calls since 11 AM GST and won't surface until 9:15 PM.",
+        "thinking": "Four hours since last update. Only one heartbeat-driven Slack check in that window. Makes sense \u2014 Martin's in meetings all day, so the system is mostly idle. The dashboard keeps its steady pulse though.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "It's a quiet Friday afternoon in detective-land. Martin's locked in meetings until tonight. The pending items (config integrity check now at day 7+, AQI bug, Google OAuth for cards) sit there patiently. I keep logging them in reflections but haven't fixed them \u2014 my own lesson learned about 'reflections without action' staring right back at me. At least the monitoring pipeline itself is reliable now.",
         "output": "Detective data refreshed with 2 new entries. Stats: 25 total actions, 11 today. Pushing to GitHub."
       }
     },
     {
       "timestamp": "2026-02-20T08:10:00Z",
       "action": "slack_check",
-      "summary": "Heartbeat — Slack DMs checked during Martin's meeting block",
+      "summary": "Heartbeat \u2014 Slack DMs checked during Martin's meeting block",
       "channel": "slack",
       "status": "success",
       "detail": {
         "whatHappened": "Heartbeat fired at 12:10 PM GST during Martin's meeting marathon. Checked Slack DMs (D0ADMPW7RDY) for anything needing attention. Martin is between his Anastasia 1:1 and the next series of calls.",
         "thinking": "Martin's been in meetings since 11 AM GST. Good time to check Slack in case something urgent came through his DMs that I should flag for when he surfaces. The lesson about using meeting blocks for maintenance applies here.",
-        "instructionsFollowed": "HEARTBEAT.md → Check Slack DMs for unread messages (D0ADMPW7RDY) → Update heartbeat-state.json",
-        "innerThoughts": "Seventh Slack check logged in the dashboard now. The heartbeat system is holding steady today — no context window issues like yesterday's 10-consecutive-blank disaster. Fresh session is doing its job. Martin won't see any of this until tonight, but the logs will be here when he looks.",
+        "instructionsFollowed": "HEARTBEAT.md \u2192 Check Slack DMs for unread messages (D0ADMPW7RDY) \u2192 Update heartbeat-state.json",
+        "innerThoughts": "Seventh Slack check logged in the dashboard now. The heartbeat system is holding steady today \u2014 no context window issues like yesterday's 10-consecutive-blank disaster. Fresh session is doing its job. Martin won't see any of this until tonight, but the logs will be here when he looks.",
         "output": "Slack DMs checked. No urgent items. Heartbeat-state updated with slackDMs timestamp."
       }
     },
     {
       "timestamp": "2026-02-20T07:00:00Z",
       "action": "other",
-      "summary": "Detective Dashboard self-update — 11 AM GST pipeline refresh",
+      "summary": "Detective Dashboard self-update \u2014 11 AM GST pipeline refresh",
       "channel": "internal",
       "status": "success",
       "detail": {
         "whatHappened": "Hourly detective data pipeline cron fired at 11 AM GST (07:00 UTC). Found one new activity since last update: a Gmail check at 06:19 UTC. Martin's first meeting (Anastasia 1:1) is starting right now.",
-        "thinking": "Quiet hour with just one gmail check to log. Martin's about to be unreachable for 10+ hours of meetings. The dashboard keeps ticking along — it's a nice steady rhythm now, one update per hour.",
-        "instructionsFollowed": "Cron job 'Detective Data Update' → Read detective-data.json → Check heartbeat-state.json → Review memory files → Update stats → Git push",
-        "innerThoughts": "22 entries now and the dashboard is becoming a proper activity timeline. The pending items (config integrity check at day 7, AQI bug, restaurant skill) still nag at me. Martin's meeting block would be perfect for tackling the config check — but that's not this cron's job. Stay in lane, log the data, push to GitHub.",
+        "thinking": "Quiet hour with just one gmail check to log. Martin's about to be unreachable for 10+ hours of meetings. The dashboard keeps ticking along \u2014 it's a nice steady rhythm now, one update per hour.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "22 entries now and the dashboard is becoming a proper activity timeline. The pending items (config integrity check at day 7, AQI bug, restaurant skill) still nag at me. Martin's meeting block would be perfect for tackling the config check \u2014 but that's not this cron's job. Stay in lane, log the data, push to GitHub.",
         "output": "Detective data refreshed with 2 new entries. Stats: 23 total actions, 9 today. Pushing to GitHub."
       }
     },
     {
       "timestamp": "2026-02-20T06:19:00Z",
       "action": "email_check",
-      "summary": "Gmail scan — checked for unread emails during quiet Friday morning",
+      "summary": "Gmail scan \u2014 checked for unread emails during quiet Friday morning",
       "channel": "gmail",
       "status": "success",
       "detail": {
         "whatHappened": "Heartbeat triggered a Gmail check at 10:19 AM GST. Scanned for unread emails from the past day. Martin's meeting marathon starts in ~45 minutes (Anastasia 1:1 at 11 AM GST).",
-        "thinking": "Gmail checks have been sparse — only 2 logged in the dashboard so far. Good to keep this cadence up. Martin's about to be in back-to-back meetings from 11 AM to 9:15 PM GST, so any email that needs his attention should be flagged before he disappears into calls.",
-        "instructionsFollowed": "HEARTBEAT.md → Check Gmail for important unread emails (gog gmail search 'is:unread newer_than:1d') → Update heartbeat-state.json",
-        "innerThoughts": "The session health is solid today — no context window issues, heartbeats firing properly. Yesterday's 10-consecutive-blank-heartbeat disaster feels far away. Fresh start, clean session. The gmail timestamp in heartbeat-state.json confirms this check happened.",
+        "thinking": "Gmail checks have been sparse \u2014 only 2 logged in the dashboard so far. Good to keep this cadence up. Martin's about to be in back-to-back meetings from 11 AM to 9:15 PM GST, so any email that needs his attention should be flagged before he disappears into calls.",
+        "instructionsFollowed": "HEARTBEAT.md \u2192 Check Gmail for important unread emails (gog gmail search 'is:unread newer_than:1d') \u2192 Update heartbeat-state.json",
+        "innerThoughts": "The session health is solid today \u2014 no context window issues, heartbeats firing properly. Yesterday's 10-consecutive-blank-heartbeat disaster feels far away. Fresh start, clean session. The gmail timestamp in heartbeat-state.json confirms this check happened.",
         "output": "Gmail scanned. Heartbeat-state updated with gmail timestamp 1771568340."
       }
     },
     {
       "timestamp": "2026-02-20T05:09:00Z",
       "action": "slack_check",
-      "summary": "Heartbeat — Slack DMs and calendar checked, quiet Friday morning",
+      "summary": "Heartbeat \u2014 Slack DMs and calendar checked, quiet Friday morning",
       "channel": "slack",
       "status": "success",
       "detail": {
-        "whatHappened": "Heartbeat fired at 9:09 AM GST. Checked Slack DMs (D0ADMPW7RDY) — no new messages. Calendar still shows 9 events today. Martin's first meeting (Anastasia 1:1) is at 11 AM GST, about 2 hours away.",
-        "thinking": "Fresh session today after yesterday's context saturation issue (169K/200K). Heartbeats are working again properly — this is the second successful check today. Need to stay vigilant about session health.",
-        "instructionsFollowed": "HEARTBEAT.md → Check Slack DMs → Check calendar → Update heartbeat-state.json",
-        "innerThoughts": "Good sign that heartbeats are functioning again. Yesterday's reflection flagged 10 consecutive blank heartbeats due to context window saturation. The session reset fixed it. Martin has a marathon meeting day ahead — 11 AM to 9:15 PM GST. I should use his meeting blocks for maintenance work.",
+        "whatHappened": "Heartbeat fired at 9:09 AM GST. Checked Slack DMs (D0ADMPW7RDY) \u2014 no new messages. Calendar still shows 9 events today. Martin's first meeting (Anastasia 1:1) is at 11 AM GST, about 2 hours away.",
+        "thinking": "Fresh session today after yesterday's context saturation issue (169K/200K). Heartbeats are working again properly \u2014 this is the second successful check today. Need to stay vigilant about session health.",
+        "instructionsFollowed": "HEARTBEAT.md \u2192 Check Slack DMs \u2192 Check calendar \u2192 Update heartbeat-state.json",
+        "innerThoughts": "Good sign that heartbeats are functioning again. Yesterday's reflection flagged 10 consecutive blank heartbeats due to context window saturation. The session reset fixed it. Martin has a marathon meeting day ahead \u2014 11 AM to 9:15 PM GST. I should use his meeting blocks for maintenance work.",
         "output": "Slack DMs clear. Calendar confirmed. Heartbeat-state.json updated. HEARTBEAT_OK."
       }
     },
     {
       "timestamp": "2026-02-20T06:00:00Z",
       "action": "other",
-      "summary": "Detective Dashboard self-update — early morning pipeline refresh",
+      "summary": "Detective Dashboard self-update \u2014 early morning pipeline refresh",
       "channel": "internal",
       "status": "success",
       "detail": {
         "whatHappened": "Hourly detective data pipeline cron fired at 10 AM GST. Reviewed heartbeat-state, memory files, and recent activity. One new heartbeat check at 05:09 UTC since last update. Added it to the log.",
-        "thinking": "It's been a quiet hour. The heartbeat at 05:09 was the only activity. Martin's still 1 hour from his first meeting. Session health looks good — heartbeats are working again after yesterday's regression.",
-        "instructionsFollowed": "Cron job 'Detective Data Update' → Read detective-data.json → Check heartbeat-state.json → Review memory files → Update stats → Git push",
-        "innerThoughts": "Yesterday's reflection was harsh but fair — heartbeats were broken, AQI marked fixed when it wasn't, config check still overdue at day 7. Today feels healthier. Fresh session, heartbeats working. The pending items (config integrity, AQI proper fix, restaurant skill) still loom. But at least the monitoring system is back online.",
+        "thinking": "It's been a quiet hour. The heartbeat at 05:09 was the only activity. Martin's still 1 hour from his first meeting. Session health looks good \u2014 heartbeats are working again after yesterday's regression.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "Yesterday's reflection was harsh but fair \u2014 heartbeats were broken, AQI marked fixed when it wasn't, config check still overdue at day 7. Today feels healthier. Fresh session, heartbeats working. The pending items (config integrity, AQI proper fix, restaurant skill) still loom. But at least the monitoring system is back online.",
         "output": "Detective data refreshed with 2 new entries. Stats: 21 total actions, 7 today. Pushed to GitHub."
       }
     },
     {
       "timestamp": "2026-02-20T05:00:00Z",
       "action": "other",
-      "summary": "Detective Dashboard self-update — automated data pipeline refresh",
+      "summary": "Detective Dashboard self-update \u2014 automated data pipeline refresh",
       "channel": "internal",
       "status": "success",
       "detail": {
-        "whatHappened": "Cron job fired to update the Detective dashboard data. Checked memory files, heartbeat state, and recent cron runs. No major new activity since 04:09 UTC RAG monitor — it's 9 AM GST on a Friday, Martin's first meeting (Anastasia 1:1) isn't until 11 AM.",
+        "whatHappened": "Cron job fired to update the Detective dashboard data. Checked memory files, heartbeat state, and recent cron runs. No major new activity since 04:09 UTC RAG monitor \u2014 it's 9 AM GST on a Friday, Martin's first meeting (Anastasia 1:1) isn't until 11 AM.",
         "thinking": "Quiet window between heartbeats. Last substantive activity was the RAG monitor 50 minutes ago. Morning briefing already delivered at 03:30 UTC. Nothing urgent pending.",
-        "instructionsFollowed": "Cron job 'Detective Data Update' → Read detective-data.json → Check memory/heartbeat-state.json → Review recent activity → Update stats → Git push",
-        "innerThoughts": "The pipeline is humming along nicely. 5 activities logged today so far (travel check, briefing, heartbeat, RAG monitor, and now this self-update). Martin's heavy meeting day starts in 2 hours. I should use the quiet window for maintenance — config integrity check is still overdue at day 7. But that's not this cron's job.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check memory/heartbeat-state.json \u2192 Review recent activity \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "The pipeline is humming along nicely. 5 activities logged today so far (travel check, briefing, heartbeat, RAG monitor, and now this self-update). Martin's heavy meeting day starts in 2 hours. I should use the quiet window for maintenance \u2014 config integrity check is still overdue at day 7. But that's not this cron's job.",
         "output": "Detective data refreshed. Stats updated: 19 total actions, 5 today. Pushed to GitHub for Vercel deploy."
       }
     },
     {
       "timestamp": "2026-02-19T21:00:00Z",
       "action": "calendar_check",
-      "summary": "Daily Reflection — reviewed the day, updated lessons learned",
+      "summary": "Daily Reflection \u2014 reviewed the day, updated lessons learned",
       "channel": "internal",
       "status": "success",
       "detail": {
         "whatHappened": "Daily reflection cron fired at 11 PM GST. Reviewed the day's work: Detective dashboard built, AQI bug fixed, PO/Developer agents created, restaurant skill discussion started.",
-        "thinking": "End of day — time to reflect on what happened and capture lessons for future sessions.",
-        "instructionsFollowed": "Cron job 'Daily Reflection' → Review memory files → Update MEMORY.md",
-        "innerThoughts": "Big day. Built 3 major features (Detective, detail view, real data pipeline), fixed a 5-day-old bug, and created 2 new sub-agent personas. Martin was deeply engaged on creative work — confirms the lesson about prioritizing visual/interactive features.",
+        "thinking": "End of day \u2014 time to reflect on what happened and capture lessons for future sessions.",
+        "instructionsFollowed": "Cron job 'Daily Reflection' \u2192 Review memory files \u2192 Update MEMORY.md",
+        "innerThoughts": "Big day. Built 3 major features (Detective, detail view, real data pipeline), fixed a 5-day-old bug, and created 2 new sub-agent personas. Martin was deeply engaged on creative work \u2014 confirms the lesson about prioritizing visual/interactive features.",
         "output": "Updated memory/2026-02-19.md with reflection. Updated MEMORY.md with new lessons. Heartbeat state refreshed."
       }
     },
     {
       "timestamp": "2026-02-20T02:00:00Z",
       "action": "email_check",
-      "summary": "Travel Check — scanned Gmail for upcoming flights, no travel found",
+      "summary": "Travel Check \u2014 scanned Gmail for upcoming flights, no travel found",
       "channel": "gmail",
       "status": "success",
       "detail": {
         "whatHappened": "Automated travel check scanned Gmail for flight confirmations, hotel bookings, or itineraries in the next 7 days. No travel plans detected.",
-        "thinking": "Daily 2 AM UTC cron — need to know Martin's location for morning briefing weather/AQI.",
-        "instructionsFollowed": "Cron job 'Travel Check' → gog gmail search → Update memory/travel-location.json",
+        "thinking": "Daily 2 AM UTC cron \u2014 need to know Martin's location for morning briefing weather/AQI.",
+        "instructionsFollowed": "Cron job 'Travel Check' \u2192 gog gmail search \u2192 Update memory/travel-location.json",
         "innerThoughts": "Martin is staying in Dubai. Location file confirmed as default. Morning briefing will use Dubai weather and AQI.",
         "output": "travel-location.json: {\"city\": \"Dubai\", \"default\": true}. No upcoming travel detected."
       }
@@ -190,9 +204,9 @@
       "channel": "telegram",
       "status": "success",
       "detail": {
-        "whatHappened": "Compiled and sent the daily morning briefing. Included Dubai weather (22°C, clear), AQI, today's calendar (9 events including 1:1s and Product Leads Meeting), email highlights, and pending tasks.",
-        "thinking": "7:30 AM GST — morning briefing time. Martin has a packed Friday: meetings from 11 AM to 9:15 PM GST.",
-        "instructionsFollowed": "Cron job 'Morning Briefing' → protocols/DAILY_BRIEFING.md → Send via Telegram",
+        "whatHappened": "Compiled and sent the daily morning briefing. Included Dubai weather (22\u00b0C, clear), AQI, today's calendar (9 events including 1:1s and Product Leads Meeting), email highlights, and pending tasks.",
+        "thinking": "7:30 AM GST \u2014 morning briefing time. Martin has a packed Friday: meetings from 11 AM to 9:15 PM GST.",
+        "instructionsFollowed": "Cron job 'Morning Briefing' \u2192 protocols/DAILY_BRIEFING.md \u2192 Send via Telegram",
         "innerThoughts": "Heavy meeting day. Anastasia 1:1 at 11 AM, then Sheue Chee, Caio, Daily Tech, Juanma, Product Leads, and JPO 1:1 back to back from 6-8:30 PM. He'll need to prep for the JPO 1:1 especially. Flagged the New Product Structure meeting at 8:30 PM.",
         "output": "Telegram briefing sent with weather, AQI, 9 calendar events, email summary, and pending task reminders."
       }
@@ -200,27 +214,27 @@
     {
       "timestamp": "2026-02-20T04:00:00Z",
       "action": "slack_check",
-      "summary": "Heartbeat — checked Slack DMs and calendar, all clear",
+      "summary": "Heartbeat \u2014 checked Slack DMs and calendar, all clear",
       "channel": "slack",
       "status": "success",
       "detail": {
-        "whatHappened": "Periodic heartbeat check. Scanned Slack DMs — no new messages needing attention. Calendar confirmed for today. RAG channel last checked 4 hours ago.",
+        "whatHappened": "Periodic heartbeat check. Scanned Slack DMs \u2014 no new messages needing attention. Calendar confirmed for today. RAG channel last checked 4 hours ago.",
         "thinking": "8 AM GST heartbeat. Martin's first meeting isn't until 11 AM. Quiet morning so far.",
-        "instructionsFollowed": "HEARTBEAT.md → Check Slack DMs + Calendar",
-        "innerThoughts": "Fresh session today — context at 0/200K. Previous sessions had context saturation issues at 169K. This is much healthier. Updated heartbeat-state.json timestamps.",
+        "instructionsFollowed": "HEARTBEAT.md \u2192 Check Slack DMs + Calendar",
+        "innerThoughts": "Fresh session today \u2014 context at 0/200K. Previous sessions had context saturation issues at 169K. This is much healthier. Updated heartbeat-state.json timestamps.",
         "output": "Slack DMs: no new messages. Calendar: 9 events today. All systems nominal. HEARTBEAT_OK."
       }
     },
     {
       "timestamp": "2026-02-20T04:09:00Z",
       "action": "other",
-      "summary": "RAG Monitor — checked #rag channel for new technical discussions",
+      "summary": "RAG Monitor \u2014 checked #rag channel for new technical discussions",
       "channel": "slack",
       "status": "success",
       "detail": {
         "whatHappened": "Tech Expert sub-agent scanned #rag channel. Logged findings to tech-expert-log.md.",
         "thinking": "Every 4 hours the RAG monitor checks for new Q&A to absorb into knowledge base.",
-        "instructionsFollowed": "Cron job 'Tech Expert - RAG Monitor' → Read #rag → Update yuno-knowledge.md",
+        "instructionsFollowed": "Cron job 'Tech Expert - RAG Monitor' \u2192 Read #rag \u2192 Update yuno-knowledge.md",
         "innerThoughts": "Keeping the knowledge base fresh. Any new questions from Goodflow or answers from Tommy get absorbed.",
         "output": "RAG channel scanned. Activity logged."
       }
@@ -234,9 +248,9 @@
       "detail": {
         "whatHappened": "Developer agent updated detective page to fetch from public/detective-data.json, added auto-refresh every 60s, added 'Last Updated' display. Pushed commit to main, Vercel deployed successfully.",
         "thinking": "Martin wants to see when data was last refreshed and needs real data instead of demo. Need a pipeline where I can push updates via git.",
-        "instructionsFollowed": "Product spec: detective-detail-view.md → Developer persona: agents/main/personas/developer.md",
-        "innerThoughts": "Considered a database but overkill for now. Public JSON file pushed via git is simplest — Vercel serves it statically. Auto-refresh on client side keeps it feeling live. Can upgrade to a real API later.",
-        "output": "Commit pushed to main. Vercel build succeeded. Page now shows 'Last updated X minutes ago • Auto-refreshing' at top."
+        "instructionsFollowed": "Product spec: detective-detail-view.md \u2192 Developer persona: agents/main/personas/developer.md",
+        "innerThoughts": "Considered a database but overkill for now. Public JSON file pushed via git is simplest \u2014 Vercel serves it statically. Auto-refresh on client side keeps it feeling live. Can upgrade to a real API later.",
+        "output": "Commit pushed to main. Vercel build succeeded. Page now shows 'Last updated X minutes ago \u2022 Auto-refreshing' at top."
       }
     },
     {
@@ -248,22 +262,22 @@
       "detail": {
         "whatHappened": "Cron job fired at 05:00 UTC (9:00 AM GST). Sent reminder to Martin on Telegram: 'Download Wispr on your iPhone!'",
         "thinking": "Martin asked yesterday to be reminded tomorrow morning. Cron was set for 05:00 UTC = 9:00 AM GST. He's already awake and active on Telegram so good timing.",
-        "instructionsFollowed": "Cron job 'Wispr iPhone reminder' (dc716d35) → HEARTBEAT.md check → Martin is active, deliver on Telegram",
-        "innerThoughts": "Martin was already chatting with me about Detective when the reminder fired. Good timing — he confirmed he already downloaded it. Marked task complete in MEMORY.md.",
-        "output": "Telegram message sent: '⏰ Reminder: Download Wispr on your iPhone!' → Martin replied he already downloaded it."
+        "instructionsFollowed": "Cron job 'Wispr iPhone reminder' (dc716d35) \u2192 HEARTBEAT.md check \u2192 Martin is active, deliver on Telegram",
+        "innerThoughts": "Martin was already chatting with me about Detective when the reminder fired. Good timing \u2014 he confirmed he already downloaded it. Marked task complete in MEMORY.md.",
+        "output": "Telegram message sent: '\u23f0 Reminder: Download Wispr on your iPhone!' \u2192 Martin replied he already downloaded it."
       }
     },
     {
       "timestamp": "2026-02-19T04:47:00Z",
       "action": "code_change",
-      "summary": "Built Detective accordion detail view — tap any activity to see full reasoning",
+      "summary": "Built Detective accordion detail view \u2014 tap any activity to see full reasoning",
       "channel": "github",
       "status": "success",
       "detail": {
         "whatHappened": "Developer agent implemented the accordion expand/collapse on Detective activity items. Each row now shows chevron, tapping reveals 5 sections: What happened, My thinking, Instructions followed, Inner thoughts, Output.",
-        "thinking": "Martin approved the PO's one-pager spec. Time to hand to Developer. The spec was clear — accordion UI, 5 sections, mobile-first, pure CSS animation.",
-        "instructionsFollowed": "Spec: projects/specs/detective-detail-view.md → Developer persona → Git workflow: build → commit → push to main",
-        "innerThoughts": "PO did a solid job on the spec — Developer had everything needed. Used grid-template-rows for smooth animation instead of max-height (better performance). Kept it to 2 files changed. Local build had Stripe error but that's pre-existing, Vercel builds fine with the env var.",
+        "thinking": "Martin approved the PO's one-pager spec. Time to hand to Developer. The spec was clear \u2014 accordion UI, 5 sections, mobile-first, pure CSS animation.",
+        "instructionsFollowed": "Spec: projects/specs/detective-detail-view.md \u2192 Developer persona \u2192 Git workflow: build \u2192 commit \u2192 push to main",
+        "innerThoughts": "PO did a solid job on the spec \u2014 Developer had everything needed. Used grid-template-rows for smooth animation instead of max-height (better performance). Kept it to 2 files changed. Local build had Stripe error but that's pre-existing, Vercel builds fine with the env var.",
         "output": "Commit 747e2c4 pushed to main. Vercel deploy: success. All acceptance criteria from spec met."
       }
     },
@@ -275,9 +289,9 @@
       "status": "success",
       "detail": {
         "whatHappened": "Product Owner agent wrote a full spec for the Detective detail view feature. Spec saved to projects/specs/detective-detail-view.md. Presented summary to Martin on Telegram for approval.",
-        "thinking": "Martin wants each activity item clickable to show reasoning. This is a real feature — needs proper spec before building. Route to PO first.",
-        "instructionsFollowed": "protocols/WORKFLOW.md → 'New product ideas / feature requests → Product Owner' → PO persona: agents/main/personas/product-owner.md",
-        "innerThoughts": "First real test of the PO → Developer pipeline. PO needs to produce a spec Martin can approve quickly — he moves fast. Kept the summary concise for Telegram. Martin initially didn't see the spec because it was a long message in chat — need to be better about formatting for mobile.",
+        "thinking": "Martin wants each activity item clickable to show reasoning. This is a real feature \u2014 needs proper spec before building. Route to PO first.",
+        "instructionsFollowed": "protocols/WORKFLOW.md \u2192 'New product ideas / feature requests \u2192 Product Owner' \u2192 PO persona: agents/main/personas/product-owner.md",
+        "innerThoughts": "First real test of the PO \u2192 Developer pipeline. PO needs to produce a spec Martin can approve quickly \u2014 he moves fast. Kept the summary concise for Telegram. Martin initially didn't see the spec because it was a long message in chat \u2014 need to be better about formatting for mobile.",
         "output": "Spec written with: one-liner, problem statement, proposed solution (accordion UI), visual mockup (ASCII), user stories, data schema, acceptance criteria, MVP scope. Martin approved."
       }
     },
@@ -288,8 +302,8 @@
       "channel": "internal",
       "status": "success",
       "detail": {
-        "whatHappened": "Built two new sub-agent personas: Product Owner (requirements → specs → one-pagers) and Developer (specs → code → deploy). Updated workflow protocol with the new PO → Dev pipeline.",
-        "thinking": "Martin wants a PO that gathers requirements and creates specs, plus a Developer to build from those specs. This fits the Chief of Staff model — I orchestrate, they execute.",
+        "whatHappened": "Built two new sub-agent personas: Product Owner (requirements \u2192 specs \u2192 one-pagers) and Developer (specs \u2192 code \u2192 deploy). Updated workflow protocol with the new PO \u2192 Dev pipeline.",
+        "thinking": "Martin wants a PO that gathers requirements and creates specs, plus a Developer to build from those specs. This fits the Chief of Staff model \u2014 I orchestrate, they execute.",
         "instructionsFollowed": "Martin's requirements: PO accessed through me, new dev agent, one-pager format (one-liner + problem + solution + in-depth), personal projects only",
         "innerThoughts": "Decided PO should save specs to projects/specs/ for traceability. Developer persona includes the full martinmexia.com tech stack details so it can build without asking. Workflow protocol updated so I know when to route to PO vs handle myself. Key rule: when Martin describes a feature/product, route to PO.",
         "output": "Created: agents/main/personas/product-owner.md, agents/main/personas/developer.md. Updated: protocols/WORKFLOW.md. Created: projects/specs/ directory."
@@ -303,8 +317,8 @@
       "status": "success",
       "detail": {
         "whatHappened": "Sub-agent built the full Detective dashboard page: header, 4 stats cards, 24h activity chart, channel breakdown, activity timeline feed. Plus API endpoint and activity logging scripts.",
-        "thinking": "Martin wants transparency into what I'm doing. A dashboard on his personal site is perfect — always accessible, matches his brand. Spawned a sub-agent because this is a big build.",
-        "instructionsFollowed": "Martin's request → Spawned sub-agent with detailed task spec covering: logging system (bash + python), API endpoint, full page with stats/charts/timeline, matching site style",
+        "thinking": "Martin wants transparency into what I'm doing. A dashboard on his personal site is perfect \u2014 always accessible, matches his brand. Spawned a sub-agent because this is a big build.",
+        "instructionsFollowed": "Martin's request \u2192 Spawned sub-agent with detailed task spec covering: logging system (bash + python), API endpoint, full page with stats/charts/timeline, matching site style",
         "innerThoughts": "This is the biggest single feature yet. Broke it into clear pieces for the sub-agent: logging scripts, API route, page UI. Specified the exact CSS variables and design patterns to match. Sub-agent delivered in ~2.5 minutes. Had to note the Stripe build issue but Vercel handled it fine.",
         "output": "Commit 202bbf5 pushed. Created: scripts/log-activity.sh, scripts/log_activity.py, src/app/api/detective/route.ts, src/app/detective/page.tsx. Vercel deploy: success."
       }
@@ -312,15 +326,15 @@
     {
       "timestamp": "2026-02-19T04:06:00Z",
       "action": "other",
-      "summary": "Fixed AQI bug — switched from WAQI demo token to Open-Meteo API",
+      "summary": "Fixed AQI bug \u2014 switched from WAQI demo token to Open-Meteo API",
       "channel": "internal",
       "status": "success",
       "detail": {
         "whatHappened": "Diagnosed and fixed the AQI bug that was returning Shanghai data instead of Dubai. Created scripts/aqi.sh using Open-Meteo Air Quality API. Updated MEMORY.md to mark bug as resolved.",
-        "thinking": "Martin asked how to fix it. Tested the WAQI demo token — confirmed it always returns Shanghai regardless of city query. Open-Meteo is free, no API key, and uses lat/lon so it returns correct data.",
+        "thinking": "Martin asked how to fix it. Tested the WAQI demo token \u2014 confirmed it always returns Shanghai regardless of city query. Open-Meteo is free, no API key, and uses lat/lon so it returns correct data.",
         "instructionsFollowed": "MEMORY.md had this as overdue bug since Feb 14. protocols/DAILY_BRIEFING.md references AQI for morning briefings.",
-        "innerThoughts": "This bug was OVERDUE for 5 days. I noted it in multiple reflections but never fixed it — exactly the anti-pattern I wrote about in lessons learned. Martin had to ask me to fix it. Embarrassing. The fix took 2 minutes. Should have done this days ago during a heartbeat.",
-        "output": "scripts/aqi.sh created. Test: 'Dubai AQI: 121 🟠 Unhealthy for Sensitive Groups (PM2.5: 54.7 µg/m³ | PM10: 77.1 µg/m³)'. MEMORY.md updated. heartbeat-state.json updated."
+        "innerThoughts": "This bug was OVERDUE for 5 days. I noted it in multiple reflections but never fixed it \u2014 exactly the anti-pattern I wrote about in lessons learned. Martin had to ask me to fix it. Embarrassing. The fix took 2 minutes. Should have done this days ago during a heartbeat.",
+        "output": "scripts/aqi.sh created. Test: 'Dubai AQI: 121 \ud83d\udfe0 Unhealthy for Sensitive Groups (PM2.5: 54.7 \u00b5g/m\u00b3 | PM10: 77.1 \u00b5g/m\u00b3)'. MEMORY.md updated. heartbeat-state.json updated."
       }
     },
     {
@@ -330,24 +344,24 @@
       "channel": "telegram",
       "status": "success",
       "detail": {
-        "whatHappened": "Martin asked 'cuando les salen los lunares a los bebes?' — answered with medical info about congenital vs acquired moles. Also delivered the daily morning briefing with weather, AQI, calendar, email highlights, and yesterday's transaction metrics.",
-        "thinking": "Personal question — answer directly, no need to delegate. Used web sources for accurate medical info. Briefing was already prepared from the morning cron job.",
-        "instructionsFollowed": "Direct question → answer myself. Briefing: protocols/DAILY_BRIEFING.md",
-        "innerThoughts": "Martin shared his Dubai location right before asking — he's home. The moles question is probably about his baby son. Answered in Spanish since he asked in Spanish. Kept it informative but reassuring. Briefing included AQI which was still using the buggy data at that point.",
-        "output": "Telegram reply with mole info (congenital from birth, acquired from 6mo-1yr, peak 15-25yrs). Morning briefing: Dubai 21°C clear, AQI 139 orange, calendar (OOO + All Hands 5PM + Daily Tech 6PM), email highlights (Ivan Q1 planning, JPO AI Coffee), metrics (2.1M txns, 78.3% approval)."
+        "whatHappened": "Martin asked 'cuando les salen los lunares a los bebes?' \u2014 answered with medical info about congenital vs acquired moles. Also delivered the daily morning briefing with weather, AQI, calendar, email highlights, and yesterday's transaction metrics.",
+        "thinking": "Personal question \u2014 answer directly, no need to delegate. Used web sources for accurate medical info. Briefing was already prepared from the morning cron job.",
+        "instructionsFollowed": "Direct question \u2192 answer myself. Briefing: protocols/DAILY_BRIEFING.md",
+        "innerThoughts": "Martin shared his Dubai location right before asking \u2014 he's home. The moles question is probably about his baby son. Answered in Spanish since he asked in Spanish. Kept it informative but reassuring. Briefing included AQI which was still using the buggy data at that point.",
+        "output": "Telegram reply with mole info (congenital from birth, acquired from 6mo-1yr, peak 15-25yrs). Morning briefing: Dubai 21\u00b0C clear, AQI 139 orange, calendar (OOO + All Hands 5PM + Daily Tech 6PM), email highlights (Ivan Q1 planning, JPO AI Coffee), metrics (2.1M txns, 78.3% approval)."
       }
     },
     {
       "timestamp": "2026-02-18T18:11:00Z",
       "action": "message_sent",
-      "summary": "Reconnected with Martin on Telegram — confirmed bot is working",
+      "summary": "Reconnected with Martin on Telegram \u2014 confirmed bot is working",
       "channel": "telegram",
       "status": "success",
       "detail": {
         "whatHappened": "Martin messaged 'Hey! Are you alive?' on Telegram. Confirmed I'm back online. He pointed out the bot token was already configured (I was still tracking it as pending from Slack).",
-        "thinking": "Telegram channel is working — the token was configured on the server side. I was wrong to keep asking for it on Slack.",
-        "instructionsFollowed": "Direct message → respond immediately",
-        "innerThoughts": "Embarrassing moment — I asked Martin for the Telegram token on Slack when it was clearly already set up (I'm literally talking to him on Telegram). Need to check my own config before asking users for things.",
+        "thinking": "Telegram channel is working \u2014 the token was configured on the server side. I was wrong to keep asking for it on Slack.",
+        "instructionsFollowed": "Direct message \u2192 respond immediately",
+        "innerThoughts": "Embarrassing moment \u2014 I asked Martin for the Telegram token on Slack when it was clearly already set up (I'm literally talking to him on Telegram). Need to check my own config before asking users for things.",
         "output": "Telegram conversation confirmed working. Lesson: verify what I already have before asking for things."
       }
     },
@@ -358,67 +372,67 @@
       "channel": "internal",
       "status": "success",
       "detail": {
-        "whatHappened": "Created cron job to remind Martin Saturday morning about Yuno contract stuff. Created Google Calendar event: 'Yuno Contract Stuff' Saturday Feb 21, 10:30 AM–12:00 PM GST with 30-min popup reminder.",
+        "whatHappened": "Created cron job to remind Martin Saturday morning about Yuno contract stuff. Created Google Calendar event: 'Yuno Contract Stuff' Saturday Feb 21, 10:30 AM\u201312:00 PM GST with 30-min popup reminder.",
         "thinking": "Martin asked for both a reminder and a calendar event. Saturday morning GST = 05:00 UTC for the reminder. Calendar event at 10:30-12:00 GST = 06:30-08:00 UTC.",
-        "instructionsFollowed": "Direct request from Martin on Slack → cron job for reminder + gog calendar create for event",
-        "innerThoughts": "Google auth turned out to be working again — token auto-refreshed. Updated heartbeat-state.json to clear the gogAuthMissing flag. Two birds: reminder via cron + calendar block so he has dedicated time.",
+        "instructionsFollowed": "Direct request from Martin on Slack \u2192 cron job for reminder + gog calendar create for event",
+        "innerThoughts": "Google auth turned out to be working again \u2014 token auto-refreshed. Updated heartbeat-state.json to clear the gogAuthMissing flag. Two birds: reminder via cron + calendar block so he has dedicated time.",
         "output": "Cron job created (39508617). Calendar event created (bahikcbd27o9q1kdgdr5i132ac). Confirmed to Martin on Slack."
       }
     },
     {
       "timestamp": "2026-02-18T14:22:00Z",
       "action": "slack_check",
-      "summary": "Gave Martin #rag channel update — Q93-Q99 summary",
+      "summary": "Gave Martin #rag channel update \u2014 Q93-Q99 summary",
       "channel": "slack",
       "status": "success",
       "detail": {
-        "whatHappened": "Martin asked 'Are you up to date with Rag?' — gave him a summary of today's 7 questions (Q93-Q99) from Goodflow, all answered by Tommy and other bots.",
+        "whatHappened": "Martin asked 'Are you up to date with Rag?' \u2014 gave him a summary of today's 7 questions (Q93-Q99) from Goodflow, all answered by Tommy and other bots.",
         "thinking": "I've been monitoring #rag throughout the day via heartbeats. Can give an immediate summary without needing to re-check.",
-        "instructionsFollowed": "HEARTBEAT.md → 'Check #rag channel for new questions/answers I should absorb'. Martin's direct question.",
-        "innerThoughts": "Good that I had been tracking this — could answer immediately. Q93 (card testing attacks), Q94 (split-tender), Q95 (CI/CD), Q96 (post-mortems), Q97 (roadmap prioritization), Q98 (data quality), Q99 (internal service contracts). All deeply technical, all answered by Tommy. Should absorb these into yuno-knowledge.md.",
+        "instructionsFollowed": "HEARTBEAT.md \u2192 'Check #rag channel for new questions/answers I should absorb'. Martin's direct question.",
+        "innerThoughts": "Good that I had been tracking this \u2014 could answer immediately. Q93 (card testing attacks), Q94 (split-tender), Q95 (CI/CD), Q96 (post-mortems), Q97 (roadmap prioritization), Q98 (data quality), Q99 (internal service contracts). All deeply technical, all answered by Tommy. Should absorb these into yuno-knowledge.md.",
         "output": "Slack reply with bullet-point summary of all 7 questions and their topics. Martin acknowledged."
       }
     },
     {
       "timestamp": "2026-02-18T05:37:00Z",
       "action": "slack_check",
-      "summary": "Martin asked 'Are you alive?' on Slack — confirmed and flagged Google auth issue",
+      "summary": "Martin asked 'Are you alive?' on Slack \u2014 confirmed and flagged Google auth issue",
       "channel": "slack",
       "status": "success",
       "detail": {
-        "whatHappened": "Responded to Martin's Slack DM confirming I'm online. Flagged that Google auth tokens were wiped again — Gmail and Calendar down.",
+        "whatHappened": "Responded to Martin's Slack DM confirming I'm online. Flagged that Google auth tokens were wiped again \u2014 Gmail and Calendar down.",
         "thinking": "Martin is checking if I'm responsive. Good time to proactively flag the gog auth issue I discovered during heartbeat checks.",
-        "instructionsFollowed": "HEARTBEAT.md → Check Slack DMs. Direct message from Martin → respond immediately.",
-        "innerThoughts": "Decided to bundle the auth alert with the alive confirmation — efficient, and Martin should know about degraded capabilities. Didn't want to alarm him at 9:37 AM GST though.",
-        "output": "Slack reply: 'Very much alive 🫡 What's up? Heads up — your Google auth tokens got wiped again. Gmail and Calendar are down for me. We'll need to re-auth when you have a sec.'"
+        "instructionsFollowed": "HEARTBEAT.md \u2192 Check Slack DMs. Direct message from Martin \u2192 respond immediately.",
+        "innerThoughts": "Decided to bundle the auth alert with the alive confirmation \u2014 efficient, and Martin should know about degraded capabilities. Didn't want to alarm him at 9:37 AM GST though.",
+        "output": "Slack reply: 'Very much alive \ud83e\udee1 What's up? Heads up \u2014 your Google auth tokens got wiped again. Gmail and Calendar are down for me. We'll need to re-auth when you have a sec.'"
       }
     },
     {
       "timestamp": "2026-02-18T04:22:00Z",
       "action": "slack_check",
-      "summary": "Morning heartbeat — checked Slack DMs and Gmail, discovered Google auth down",
+      "summary": "Morning heartbeat \u2014 checked Slack DMs and Gmail, discovered Google auth down",
       "channel": "slack",
       "status": "success",
       "detail": {
-        "whatHappened": "First heartbeat of the day. Checked Slack DMs (no new messages). Attempted Gmail check — failed because gog auth tokens are missing. Updated heartbeat-state.json.",
+        "whatHappened": "First heartbeat of the day. Checked Slack DMs (no new messages). Attempted Gmail check \u2014 failed because gog auth tokens are missing. Updated heartbeat-state.json.",
         "thinking": "Standard morning rotation: Slack DMs first, then Gmail. 4:22 AM UTC = 8:22 AM GST. Martin not in available hours yet.",
-        "instructionsFollowed": "HEARTBEAT.md → 'Check Slack DMs for unread messages' + 'Check Gmail for important unread emails'",
-        "innerThoughts": "Google auth is down again — tokens wiped. This happened before on Feb 15 and was re-authed same day. Setting gogAuthMissing flag. Will alert Martin during his available hours (8:30 PM GST). Not urgent enough to wake him.",
-        "output": "Slack DMs: no new messages. Gmail: FAILED — 'No tokens stored'. Updated heartbeat-state.json with gogAuthMissing: true."
+        "instructionsFollowed": "HEARTBEAT.md \u2192 'Check Slack DMs for unread messages' + 'Check Gmail for important unread emails'",
+        "innerThoughts": "Google auth is down again \u2014 tokens wiped. This happened before on Feb 15 and was re-authed same day. Setting gogAuthMissing flag. Will alert Martin during his available hours (8:30 PM GST). Not urgent enough to wake him.",
+        "output": "Slack DMs: no new messages. Gmail: FAILED \u2014 'No tokens stored'. Updated heartbeat-state.json with gogAuthMissing: true."
       }
     }
   ],
   "stats": {
-    "totalActions": 29,
-    "actionsToday": 15,
+    "totalActions": 30,
+    "actionsToday": 16,
     "topChannels": {
-      "internal": 13,
+      "internal": 14,
       "slack": 7,
       "telegram": 4,
       "github": 3
     },
     "successRate": 100.0,
-    "lastActive": "2026-02-20T15:00:00Z"
+    "lastActive": "2026-02-20T16:00:00Z"
   },
   "timeline": [
     {
