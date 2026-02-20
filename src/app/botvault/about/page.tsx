@@ -10,7 +10,7 @@ export default function AboutBotVault() {
         maxWidth: 800, margin: '0 auto', padding: '1.5rem 1rem 0',
         fontSize: '0.875rem',
       }}>
-        <Link href="/" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>← Back to site</Link>
+        <Link href="/botvault" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>← Back to BotVault</Link>
         <Link href="/botvault/login" style={{ color: 'var(--accent)', textDecoration: 'none' }}>Log in</Link>
       </nav>
 
