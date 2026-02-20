@@ -58,7 +58,7 @@ export default function BotVaultDashboard() {
     },
     {
       num: 2,
-      title: 'Create Access',
+      title: "Create Access'",
       desc: 'Set up what your bot can use:',
       subItems: [
         { text: 'Credentials', detail: 'API keys and secrets to access different services', link: '/botvault/credentials' },
