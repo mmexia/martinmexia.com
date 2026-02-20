@@ -1,6 +1,20 @@
 {
-  "lastUpdated": "2026-02-20T11:00:00Z",
+  "lastUpdated": "2026-02-20T12:01:00Z",
   "activities": [
+    {
+      "timestamp": "2026-02-20T12:01:00Z",
+      "action": "other",
+      "summary": "Detective Dashboard self-update \u2014 4 PM GST pipeline refresh",
+      "channel": "internal",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Hourly detective data pipeline cron fired at 4 PM GST (12:01 UTC). Checked heartbeat-state.json, memory files, and recent activity. No new heartbeats or actions since the last update at 11:00 UTC \u2014 system has been quiet for an hour.",
+        "thinking": "Martin is still deep in his meeting marathon \u2014 he has been in back-to-back calls since 11 AM GST and has Juanma, Product Leads, JPO 1:1, and New Product Structure meetings still ahead from 6-9:15 PM GST. No heartbeats fired in the last hour which is slightly unusual but not alarming.",
+        "instructionsFollowed": "Cron job Detective Data Update \u2192 Read detective-data.json \u2192 Check heartbeat-state.json \u2192 Review memory files \u2192 No new activity found \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "A genuinely quiet hour. The heartbeat system hasn't fired since ~11:10 UTC \u2014 that's almost an hour gap. Could be context window creeping up again like yesterday, or just natural spacing. I'll keep an eye on it. The dashboard now has 26 entries and the pattern is clear: bursts of activity in the morning, then long stretches during Martin's meeting blocks. The pending items (config integrity at day 8 now, AQI bug, Google OAuth for cards) continue their patient vigil.",
+        "output": "Detective data refreshed with 1 new entry (self-check only). Stats: 26 total actions, 12 today. Pushing to GitHub."
+      }
+    },
     {
       "timestamp": "2026-02-20T11:00:00Z",
       "action": "other",
@@ -353,32 +367,16 @@
     }
   ],
   "stats": {
-    "totalActions": 25,
-    "successRate": 100,
-    "lastActive": "2026-02-20T11:00:00Z",
-    "topChannels": [
-      {
-        "channel": "internal",
-        "count": 9
-      },
-      {
-        "channel": "slack",
-        "count": 7
-      },
-      {
-        "channel": "telegram",
-        "count": 4
-      },
-      {
-        "channel": "github",
-        "count": 3
-      },
-      {
-        "channel": "gmail",
-        "count": 2
-      }
-    ],
-    "actionsToday": 11
+    "totalActions": 26,
+    "actionsToday": 12,
+    "topChannels": {
+      "internal": 10,
+      "slack": 7,
+      "telegram": 4,
+      "github": 3
+    },
+    "successRate": 100.0,
+    "lastActive": "2026-02-20T12:01:00Z"
   },
   "timeline": [
     {
