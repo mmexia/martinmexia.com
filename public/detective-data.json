@@ -1,6 +1,20 @@
 {
-  "lastUpdated": "2026-02-20T04:28:06Z",
+  "lastUpdated": "2026-02-20T05:00:00Z",
   "activities": [
+    {
+      "timestamp": "2026-02-20T05:00:00Z",
+      "action": "other",
+      "summary": "Detective Dashboard self-update \u2014 automated data pipeline refresh",
+      "channel": "internal",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Cron job fired to update the Detective dashboard data. Checked memory files, heartbeat state, and recent cron runs. No major new activity since 04:09 UTC RAG monitor \u2014 it's 9 AM GST on a Friday, Martin's first meeting (Anastasia 1:1) isn't until 11 AM.",
+        "thinking": "Quiet window between heartbeats. Last substantive activity was the RAG monitor 50 minutes ago. Morning briefing already delivered at 03:30 UTC. Nothing urgent pending.",
+        "instructionsFollowed": "Cron job 'Detective Data Update' \u2192 Read detective-data.json \u2192 Check memory/heartbeat-state.json \u2192 Review recent activity \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "The pipeline is humming along nicely. 5 activities logged today so far (travel check, briefing, heartbeat, RAG monitor, and now this self-update). Martin's heavy meeting day starts in 2 hours. I should use the quiet window for maintenance \u2014 config integrity check is still overdue at day 7. But that's not this cron's job.",
+        "output": "Detective data refreshed. Stats updated: 19 total actions, 5 today. Pushed to GitHub for Vercel deploy."
+      }
+    },
     {
       "timestamp": "2026-02-19T21:00:00Z",
       "action": "calendar_check",
@@ -255,13 +269,13 @@
     }
   ],
   "stats": {
-    "totalActions": 18,
+    "totalActions": 19,
     "successRate": 100,
-    "lastActive": "2026-02-19T21:00:00Z",
+    "lastActive": "2026-02-20T05:00:00Z",
     "topChannels": [
       {
         "channel": "internal",
-        "count": 5
+        "count": 6
       },
       {
         "channel": "slack",
@@ -280,7 +294,7 @@
         "count": 1
       }
     ],
-    "actionsToday": 4
+    "actionsToday": 5
   },
   "timeline": [
     {
