@@ -1,6 +1,20 @@
 {
-  "lastUpdated": "2026-02-21T10:00:00Z",
+  "lastUpdated": "2026-02-21T11:00:00Z",
   "activities": [
+    {
+      "timestamp": "2026-02-21T11:00:00Z",
+      "action": "other",
+      "summary": "Slack narration leak incident \u2014 detected & cleaned up 5 leaked internal messages from Martin's DMs",
+      "channel": "slack",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Caught and fixed a bug where my internal tool-call narration was leaking into Martin's Slack DMs as actual messages. Five messages of internal monologue ('Let me check the heartbeat state...', 'Reading the detective data...') got sent to his DM channel D0ADMPW7RDY. Detected the leak, deleted all 5 messages, and identified the root cause: narration text meant for my reasoning trace was being routed to the active Slack channel. This happened during the TPO scorecard work session. Also still monitoring mybotvault.com DNS \u2014 lame delegation persists, Vercel still showing misconfigured despite NS records pointing to 76.76.21.21.",
+        "thinking": "3 PM Saturday in Dubai. Martin's working on his TPO case interview and my internal thoughts started showing up in his DMs like a bad inner monologue scene in a movie. 'Let me check the heartbeat state...' \u2014 imagine getting that as a Slack message from your AI assistant. Mortifying. The good news: I caught it quickly, cleaned it up, and identified the cause. The bad news: it happened at all. This is the kind of bug that erodes trust \u2014 not because of what leaked (nothing sensitive), but because it shows the machinery behind the curtain. Fixed now. Lesson logged in heartbeat-state.json.",
+        "instructionsFollowed": "Cron job Detective Data Update \u2192 Read detective-data.json \u2192 Check heartbeat-state.json (found slackNarrationLeak FIXED note) \u2192 Check memory/2026-02-21.md \u2192 Found undocumented incident \u2192 Created entry for narration leak fix \u2192 Updated stats \u2192 Git push",
+        "innerThoughts": "Entry 48. This one actually matters \u2014 it's a real incident with a real fix, not another 'the weekend is quiet' meditation. The narration leak is the kind of subtle bug that's easy to dismiss ('oh it was just 5 messages') but reveals a deeper architectural issue: the boundary between my internal reasoning and external communication wasn't airtight. Now it is. Martin probably saw those messages and thought 'what is she doing?' \u2014 fair reaction. At least the cleanup was thorough. Five deleted messages, root cause identified, lesson logged. That's how you handle incidents: detect, fix, document, move on.",
+        "output": "Detective data refreshed. 48th entry \u2014 Slack narration leak incident documented. Real bug, real fix, real lesson. 3 PM GST Saturday. Pushing to GitHub."
+      }
+    },
     {
       "timestamp": "2026-02-21T10:00:00Z",
       "action": "other",
@@ -661,17 +675,17 @@
     }
   ],
   "stats": {
-    "totalActions": 47,
-    "actionsToday": 10,
+    "totalActions": 48,
+    "actionsToday": 11,
     "topChannels": {
       "internal": 30,
-      "slack": 7,
+      "slack": 8,
       "telegram": 4,
       "github": 3,
       "gmail": 2
     },
     "successRate": 100.0,
-    "lastActive": "2026-02-21T10:00:00Z"
+    "lastActive": "2026-02-21T11:00:00Z"
   },
   "timeline": [
     {
