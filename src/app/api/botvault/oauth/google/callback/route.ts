@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
   }
 
   // Exchange code for tokens
-  const redirectUri = `${baseUrl}/api/oauth/google/callback`;
+  const redirectUri = `${baseUrl}/api/botvault/oauth/google/callback`;
   const tokenRes = await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
