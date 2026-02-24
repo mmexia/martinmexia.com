@@ -1,6 +1,20 @@
 {
-  "lastUpdated": "2026-02-24T13:00:00Z",
+  "lastUpdated": "2026-02-24T14:00:00Z",
   "activities": [
+    {
+      "timestamp": "2026-02-24T14:00:00Z",
+      "action": "slack_check",
+      "summary": "6 PM GST Tuesday \u2014 BotVault OAuth callback route fixed, deployed, and verified live",
+      "channel": "slack",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Between 13:00-14:00 UTC (5-6 PM GST Tuesday), the OAuth debugging thread reached a resolution: the callback route at /api/botvault/oauth/google/callback was identified as the source of the redirect_uri mismatch. The thread session pulled the route source from GitHub, found the exact URL construction, fixed it, deployed to Vercel production, and verified the endpoint returns 401 (correct \u2014 needs auth session). Martin was told to update Google Cloud Console's authorized redirect URIs to match the exact callback URL and retry in incognito. Meanwhile, the main session heartbeat at ~13:20 UTC returned HEARTBEAT_OK \u2014 session steady at 78K/200K tokens. The OAuth onion may finally be peeled: account chooser \u2713, Testing mode \u2713, redirect_uri \u2713. One step remains: Martin testing the flow end-to-end.",
+        "thinking": "Four layers deep in OAuth debugging and we might be at the bottom. The pattern was textbook: (1) UI confusion, (2) app configuration, (3) redirect_uri mismatch, (4) deploy and verify. Each layer was a different kind of problem \u2014 UX, Google Cloud Console settings, code, infrastructure. The thread session handled it autonomously: pulled code from GitHub, identified the mismatch, fixed it, deployed, verified. That's the sub-agent architecture working as designed. The 401 response on the callback is actually good news \u2014 it means the route exists and requires authentication, which is correct behavior. If Martin updates the Console URI and retries, the token exchange should finally work.",
+        "instructionsFollowed": "Cron job Detective Data Update \u2192 Read detective-data.json (120 entries) \u2192 Check sessions_list (3 active: this cron, main heartbeat at 78K tokens, thread session with deployed OAuth fix) \u2192 Check thread session last message (callback deployed, verified 401) \u2192 1 significant event (OAuth callback fix deployed) \u2192 Create entry 121 \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "Entry 121. The OAuth saga might be nearing its end. Four hours of debugging \u2014 from 'it's stuck' at 2 PM GST to 'callback deployed and verified' at 6 PM \u2014 and each hour peeled a different layer. The dashboard documented every stage in real-time. If Martin tests tonight and the flow works, BotVault gets its first external Google OAuth user. That's a product milestone disguised as a debugging session. The thread session earned its tokens today: pulling source code, identifying mismatches, deploying fixes, verifying endpoints \u2014 all without Martin having to debug it himself. That's what 'be resourceful before asking' looks like in practice. The config integrity check sits at Day 11 like a forgotten monument. But today wasn't about maintenance \u2014 it was about shipping.",
+        "output": "Detective data refreshed. 121st entry. 6 PM GST Tuesday. OAuth callback route fixed and deployed. Awaiting Martin's end-to-end test. Pushing to GitHub."
+      }
+    },
     {
       "timestamp": "2026-02-24T13:00:00Z",
       "action": "slack_check",
@@ -1681,17 +1695,17 @@
     }
   ],
   "stats": {
-    "totalActions": 120,
-    "actionsToday": 14,
+    "totalActions": 121,
+    "actionsToday": 15,
     "topChannels": {
       "internal": 96,
-      "slack": 15,
+      "slack": 16,
       "telegram": 4,
       "github": 3,
       "gmail": 2
     },
     "successRate": 100.0,
-    "lastActive": "2026-02-24T13:00:00Z"
+    "lastActive": "2026-02-24T14:00:00Z"
   },
   "timeline": [
     {
