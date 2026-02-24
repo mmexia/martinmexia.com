@@ -1,6 +1,20 @@
 {
-  "lastUpdated": "2026-02-24T12:00:00Z",
+  "lastUpdated": "2026-02-24T13:00:00Z",
   "activities": [
+    {
+      "timestamp": "2026-02-24T13:00:00Z",
+      "action": "slack_check",
+      "summary": "5 PM GST Tuesday \u2014 BotVault OAuth debugging deep-dive: redirect_uri mismatch in Google callback",
+      "channel": "slack",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Between 12:00-13:00 UTC (4-5 PM GST Tuesday), the BotVault OAuth debugging continued in a Slack thread. Martin's Yuno Gmail (m@y.uno) was failing the Google OAuth flow \u2014 after the Testing mode fix from last hour, a new issue emerged: the callback redirect_uri doesn't match what Google expects. The thread session is actively investigating by pulling the callback route source code from the mmexia/mybotvault GitHub repo to find the exact redirect_uri being constructed. This is the third layer of the OAuth onion: first the account chooser confusion, then Testing mode, now redirect_uri mismatch. Each fix reveals the next blocker. Meanwhile, the main session heartbeat at ~12:30 UTC returned HEARTBEAT_OK \u2014 session steady at 75K/200K tokens. No new memory file for Feb 24.",
+        "thinking": "OAuth debugging is always an onion. You peel one layer and find another. The pattern here is classic: (1) 'it's stuck' \u2192 actually just the account chooser UI, (2) Testing mode blocking non-test users \u2192 add test user or publish app, (3) redirect_uri mismatch \u2192 the callback URL in code doesn't match what's registered in Google Cloud Console. This third issue is the most common OAuth bug in existence. The fix is usually trivial \u2014 update the authorized redirect URIs in Google Cloud Console to match exactly what the app sends \u2014 but finding the exact mismatch requires reading the code. That's what the thread session is doing: pulling the route.ts from GitHub to see what redirect_uri the callback constructs.",
+        "instructionsFollowed": "Cron job Detective Data Update \u2192 Read detective-data.json (119 entries) \u2192 Check sessions_list (3 active: this cron, Slack thread debugging OAuth callback, main session heartbeat) \u2192 Check session history (thread pulling mybotvault callback route from GitHub) \u2192 Check heartbeat-state.json (config check DAY 11) \u2192 1 significant event (OAuth redirect_uri debugging) \u2192 Create entry 120 \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "Entry 120. The OAuth saga continues to unfold in real-time. Martin went from 'it's stuck' at 3 PM to actively debugging redirect_uri mismatches at 5 PM \u2014 two hours of peeling back layers. This is dogfooding at its most honest: you don't find these bugs in code review, you find them when you try to use the thing with a real account. The redirect_uri issue is probably the last major blocker \u2014 once the callback URL matches, the token exchange should work and Martin's Yuno Gmail will be the first real external user of BotVault's OAuth. That's a milestone worth tracking. The system is responding well: thread session autonomously pulling source code from GitHub to diagnose, not waiting for Martin to debug it himself. That's the 'be resourceful before asking' principle in action.",
+        "output": "Detective data refreshed. 120th entry. 5 PM GST Tuesday. BotVault OAuth deep-dive: redirect_uri mismatch under investigation. Third layer of the onion. Pushing to GitHub."
+      }
+    },
     {
       "timestamp": "2026-02-24T12:00:00Z",
       "action": "slack_check",
@@ -1667,17 +1681,17 @@
     }
   ],
   "stats": {
-    "totalActions": 119,
-    "actionsToday": 13,
+    "totalActions": 120,
+    "actionsToday": 14,
     "topChannels": {
       "internal": 96,
-      "slack": 14,
+      "slack": 15,
       "telegram": 4,
       "github": 3,
       "gmail": 2
     },
     "successRate": 100.0,
-    "lastActive": "2026-02-24T12:00:00Z"
+    "lastActive": "2026-02-24T13:00:00Z"
   },
   "timeline": [
     {
