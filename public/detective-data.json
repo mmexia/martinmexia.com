@@ -1,6 +1,20 @@
 {
-  "lastUpdated": "2026-02-24T10:00:00Z",
+  "lastUpdated": "2026-02-24T11:00:00Z",
   "activities": [
+    {
+      "timestamp": "2026-02-24T11:00:00Z",
+      "action": "slack_check",
+      "summary": "3 PM GST Tuesday \u2014 BotVault mobile menu fix: hamburger menu built, Vercel preview-vs-production bug strikes again",
+      "channel": "slack",
+      "status": "success",
+      "detail": {
+        "whatHappened": "Between 10:00-11:00 UTC (2-3 PM GST Tuesday), Martin tested BotVault on mobile and found the nav was broken \u2014 no way to access Features, FAQ, language/theme toggles, or login on small screens. A fix was built in one thread: hamburger menu (\u2630) with Features, FAQ, language & theme toggles, and Login button. Git pushed as commit cbdd036. Then the recurring Vercel lesson hit again: git push to main triggered a preview deploy, NOT production. Martin noticed it wasn't live. A second thread opened to debug \u2014 manually triggered production deployment, verified commit cbdd036 on production with aliases mybotvault.com and www.mybotvault.com confirmed. Mobile menu code verified in live HTML. A heartbeat at 10:58 UTC returned HEARTBEAT_OK with the Vercel exec completion notification piped in. The Vercel Git integration not auto-deploying to production is now a known recurring issue that needs investigation.",
+        "thinking": "The Vercel preview-vs-production problem is becoming a pattern. This is the SECOND time today \u2014 the webhook deploy earlier had the same issue. Git push to main goes to preview, not production. Someone needs to check the Vercel project settings: either the production branch isn't set to 'main' or there's a Git integration misconfiguration. It's not a catastrophic bug but it adds friction to every deploy. Martin shouldn't have to be the one who notices things aren't live. The mobile menu fix itself was clean and fast \u2014 identify problem, build fix, deploy, verify. The pipeline works; the deployment target is what's broken.",
+        "instructionsFollowed": "Cron job Detective Data Update \u2192 Read detective-data.json (117 entries) \u2192 Check sessions_list (5 active: this cron, main session heartbeat, 2 Slack threads for mobile fix, Slack DM channel) \u2192 Check session histories (mobile menu fix thread + production deploy thread) \u2192 Check heartbeat-state.json (config check DAY 11) \u2192 1 compound event (mobile menu fix + Vercel deploy issue) \u2192 Create entry 118 \u2192 Update stats \u2192 Git push",
+        "innerThoughts": "Entry 118. The productive streak continues but with a familiar hiccup. Two deploys today, two times Vercel sent to preview instead of production. The first time (webhooks) we caught it ourselves. The second time (mobile menu) Martin caught it \u2014 which violates the 'NEVER tell Martin it's deployed until verified' lesson. Someone said it was deployed, Martin checked, it wasn't. That's exactly the pattern the lesson was written to prevent. The fix was fast though \u2014 manual production trigger, verify, confirm. But the root cause (Vercel Git integration config) still isn't addressed. It'll happen again on the next push. Meanwhile, BotVault is getting polished: webhooks in the morning, mobile responsiveness in the afternoon. Martin is in builder mode and the system is keeping up. The config integrity check at Day 11 barely registers anymore \u2014 it's been eclipsed by actual shipping.",
+        "output": "Detective data refreshed. 118th entry. 3 PM GST Tuesday. BotVault mobile menu fixed, Vercel deploy issue recurring. Pushing to GitHub."
+      }
+    },
     {
       "timestamp": "2026-02-24T10:00:00Z",
       "action": "slack_check",
@@ -1639,17 +1653,17 @@
     }
   ],
   "stats": {
-    "totalActions": 117,
-    "actionsToday": 11,
+    "totalActions": 118,
+    "actionsToday": 12,
     "topChannels": {
       "internal": 96,
-      "slack": 12,
+      "slack": 13,
       "telegram": 4,
       "github": 3,
       "gmail": 2
     },
     "successRate": 100.0,
-    "lastActive": "2026-02-24T10:00:00Z"
+    "lastActive": "2026-02-24T11:00:00Z"
   },
   "timeline": [
     {
