@@ -51,8 +51,11 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
       row.auth_tag as string
     );
   } catch (err) {
-    console.error('Decryption failed for credential', credentialId, err);
-    return NextResponse.json({ error: 'Failed to decrypt credential' }, { status: 500 });
+    const errMsg = err instanceof Error ? err.message : String(err);
+    console.error('Decryption failed for credential', credentialId, 'user_id:', auth.user_id, 'error:', errMsg);
+    console.error('KEK secret set:', !!process.env.BOTVAULT_KEK_SECRET, 'length:', process.env.BOTVAULT_KEK_SECRET?.length);
+    console.error('encrypted_data length:', (row.encrypted_data as string)?.length, 'encrypted_dek length:', (row.encrypted_dek as string)?.length);
+    return NextResponse.json({ error: 'Failed to decrypt credential', detail: errMsg }, { status: 500 });
   }
 
   // Log access
