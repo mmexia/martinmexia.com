@@ -41,13 +41,19 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
   }
 
   const row = cred.rows[0];
-  const value = decryptCredential(
-    auth.user_id,
-    row.encrypted_data as string,
-    row.encrypted_dek as string,
-    row.iv as string,
-    row.auth_tag as string
-  );
+  let value: string;
+  try {
+    value = decryptCredential(
+      auth.user_id,
+      row.encrypted_data as string,
+      row.encrypted_dek as string,
+      row.iv as string,
+      row.auth_tag as string
+    );
+  } catch (err) {
+    console.error('Decryption failed for credential', credentialId, err);
+    return NextResponse.json({ error: 'Failed to decrypt credential' }, { status: 500 });
+  }
 
   // Log access
   await db.execute({
