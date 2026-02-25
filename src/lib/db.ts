@@ -69,7 +69,7 @@ export async function initializeDatabase(): Promise<void> {
     `CREATE TABLE IF NOT EXISTS bot_tokens (
       id              TEXT PRIMARY KEY,
       bot_id          TEXT NOT NULL REFERENCES bots(id),
-      credential_id   TEXT NOT NULL REFERENCES credentials(id),
+      credential_id   TEXT REFERENCES credentials(id),
       token_hash      TEXT UNIQUE NOT NULL,
       permission      TEXT NOT NULL,
       redeemed        BOOLEAN DEFAULT 0,

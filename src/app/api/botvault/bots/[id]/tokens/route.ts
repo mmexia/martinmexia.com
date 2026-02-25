@@ -58,8 +58,8 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   const tokenId = randomUUID();
 
   await db.execute({
-    sql: `INSERT INTO bot_tokens (id, bot_id, credential_id, token_hash, permission, expires_at) VALUES (?, ?, ?, ?, ?, ?)`,
-    args: [tokenId, botId, '', tokenHash, 'all', expiresAt],
+    sql: `INSERT INTO bot_tokens (id, bot_id, credential_id, token_hash, permission, expires_at) VALUES (?, ?, NULL, ?, ?, ?)`,
+    args: [tokenId, botId, tokenHash, 'all', expiresAt],
   });
 
   await db.execute({
