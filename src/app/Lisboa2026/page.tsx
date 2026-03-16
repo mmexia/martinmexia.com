@@ -1764,7 +1764,7 @@ export default function Lisboa2026() {
               {[
                 {
                   icon: "🔄",
-                  title: "Mobile Developers",
+                  title: "Flexible Team Sizes",
                   text: "Devs are mobile between integration teams depending on priorities",
                   color: COLORS.primary,
                 },
