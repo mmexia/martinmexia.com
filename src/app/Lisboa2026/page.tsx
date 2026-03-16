@@ -254,8 +254,11 @@ function ValueCard({
           transition: "all 0.4s ease",
           transform: hovered ? "translateY(-4px)" : "translateY(0)",
           boxShadow: hovered ? `0 20px 60px ${color}15` : "none",
-          minWidth: 280,
-          maxWidth: 320,
+          width: 320,
+          height: "100%",
+          display: "flex",
+          flexDirection: "column" as const,
+          justifyContent: "flex-start",
           backdropFilter: "blur(20px)",
         }}
       >
@@ -304,52 +307,6 @@ function OrgMatrix({ active }: { active: boolean }) {
   const allSubs = columns.flatMap((c) =>
     c.subs.map((s) => ({ sub: s, color: c.color }))
   );
-
-  // Ownership matrix: true = this platform touches this business unit column
-  const matrix: Record<string, Record<string, boolean>> = {
-    "Core": {
-      "Card Payments & Integrations": true, "Tokenization": true,
-      "APM Integrations": true,
-      "Core Ancillaries": true, "Reconciliations": true,
-      "Banking Connectivity": false, "Agentic Payments": false, "Banking Tech / WhiteLabel": false,
-    },
-    "Routing": {
-      "Card Payments & Integrations": true, "Tokenization": true,
-      "APM Integrations": false,
-      "Core Ancillaries": true, "Reconciliations": false,
-      "Banking Connectivity": false, "Agentic Payments": false, "Banking Tech / WhiteLabel": false,
-    },
-    "Data Enablement": {
-      "Card Payments & Integrations": true, "Tokenization": true,
-      "APM Integrations": true,
-      "Core Ancillaries": true, "Reconciliations": true,
-      "Banking Connectivity": true, "Agentic Payments": true, "Banking Tech / WhiteLabel": true,
-    },
-    "Internal Tools & Architecture": {
-      "Card Payments & Integrations": true, "Tokenization": true,
-      "APM Integrations": true,
-      "Core Ancillaries": true, "Reconciliations": true,
-      "Banking Connectivity": true, "Agentic Payments": true, "Banking Tech / WhiteLabel": true,
-    },
-    "Dashboard": {
-      "Card Payments & Integrations": true, "Tokenization": false,
-      "APM Integrations": true,
-      "Core Ancillaries": true, "Reconciliations": true,
-      "Banking Connectivity": false, "Agentic Payments": false, "Banking Tech / WhiteLabel": false,
-    },
-    "Checkout": {
-      "Card Payments & Integrations": true, "Tokenization": false,
-      "APM Integrations": true,
-      "Core Ancillaries": false, "Reconciliations": false,
-      "Banking Connectivity": false, "Agentic Payments": false, "Banking Tech / WhiteLabel": false,
-    },
-    "SDK & Plugins": {
-      "Card Payments & Integrations": true, "Tokenization": false,
-      "APM Integrations": true,
-      "Core Ancillaries": false, "Reconciliations": false,
-      "Banking Connectivity": false, "Agentic Payments": false, "Banking Tech / WhiteLabel": false,
-    },
-  };
 
   let rowIndex = 0;
 
@@ -477,9 +434,7 @@ function OrgMatrix({ active }: { active: boolean }) {
                     >
                       {row}
                     </td>
-                    {allSubs.map((s) => {
-                      const filled = matrix[row]?.[s.sub] ?? false;
-                      return (
+                    {allSubs.map((s) => (
                         <td
                           key={`${row}-${s.sub}`}
                           style={{
@@ -489,31 +444,17 @@ function OrgMatrix({ active }: { active: boolean }) {
                             minWidth: 65,
                           }}
                         >
-                          {filled ? (
-                            <div
-                              style={{
-                                width: "100%",
-                                height: 28,
-                                borderRadius: 6,
-                                background: `linear-gradient(135deg, ${s.color}30, ${s.color}15)`,
-                                border: `1px solid ${s.color}25`,
-                                boxShadow: `inset 0 1px 0 ${s.color}15`,
-                              }}
-                            />
-                          ) : (
-                            <div
-                              style={{
-                                width: "100%",
-                                height: 28,
-                                borderRadius: 6,
-                                background: "rgba(255,255,255,0.02)",
-                                border: "1px solid rgba(255,255,255,0.03)",
-                              }}
-                            />
-                          )}
+                          <div
+                            style={{
+                              width: "100%",
+                              height: 28,
+                              borderRadius: 6,
+                              background: `linear-gradient(135deg, ${s.color}30, ${s.color}15)`,
+                              border: `1px solid ${s.color}20`,
+                            }}
+                          />
                         </td>
-                      );
-                    })}
+                    ))}
                   </tr>
                 );
               })
@@ -521,25 +462,19 @@ function OrgMatrix({ active }: { active: boolean }) {
           </tbody>
         </table>
       </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: 20, marginTop: 20, flexWrap: "wrap" }}>
-        <div style={{ fontSize: 12, color: COLORS.textMuted, display: "flex", alignItems: "center", gap: 6 }}>
-          <div style={{ width: 14, height: 14, borderRadius: 4, background: "linear-gradient(135deg, #ffffff30, #ffffff15)", border: "1px solid rgba(255,255,255,0.25)" }} />
-          Active ownership
-        </div>
-        <div style={{ fontSize: 12, color: COLORS.textMuted, display: "flex", alignItems: "center", gap: 6 }}>
-          <div style={{ width: 14, height: 14, borderRadius: 4, background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }} />
-          No direct interaction
-        </div>
-      </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 12, flexWrap: "wrap" }}>
-        <div style={{ fontSize: 12, color: COLORS.textMuted, display: "flex", alignItems: "center", gap: 6 }}>
-          <span style={{ fontSize: 14 }}>👥</span>
-          Product Teams own the full stack — <strong style={{ color: COLORS.text }}>Backend, Frontend, Mobile</strong>
-        </div>
-        <div style={{ fontSize: 12, color: COLORS.accent, display: "flex", alignItems: "center", gap: 6 }}>
-          <span style={{ fontSize: 14 }}>✦</span>
-          Cross-team PRs unblocked by upcoming tech initiatives
-        </div>
+      {/* Color legend */}
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, marginTop: 14, flexWrap: "wrap" }}>
+        {[
+          { label: "Cards", color: "#4d65ff" },
+          { label: "APMs", color: "#7E41E9" },
+          { label: "Payment Ancillaries", color: "#3BFF9D" },
+          { label: "New Bets", color: "#FF5E00" },
+        ].map((c) => (
+          <div key={c.label} style={{ fontSize: 11, color: c.color, display: "flex", alignItems: "center", gap: 6 }}>
+            <div style={{ width: 12, height: 12, borderRadius: 3, background: `linear-gradient(135deg, ${c.color}40, ${c.color}20)`, border: `1px solid ${c.color}30` }} />
+            {c.label}
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -1016,59 +951,35 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
   );
 }
 
-/* ─────────────────────── INTEGRATIONS FLOW ─────────────────────── */
+/* ─────────────────────── INTEGRATIONS FLOW (SVG) ─────────────────────── */
 function IntegrationsFlow({ active }: { active: boolean }) {
-  const lanes = [
-    {
-      label: "COMMERCIAL",
-      color: "#3E4FE0",
-      bg: "rgba(62,79,224,0.06)",
-      steps: [
-        { name: "Start", icon: "▶", type: "start" as const },
-        { name: "Commercial\nRequest", icon: "📄", type: "step" as const, variant: "yellow" as const },
-        { name: "GM\nApproval", icon: "✅", type: "step" as const, variant: "yellow" as const },
-      ],
-    },
-    {
-      label: "PRODUCT\nOWNER",
-      color: "#E91E8C",
-      bg: "rgba(233,30,140,0.05)",
-      steps: [
-        { name: "Product\nAnalysis", icon: "🔍", type: "step" as const, variant: "pink" as const },
-        { name: "TAM\nValidation", icon: "📋", type: "step" as const, variant: "pink" as const },
-        { name: "TL Review +\nEstimation", icon: "⏱️", type: "step" as const, variant: "pink" as const },
-        { name: "PO UAT", icon: "👤", type: "step" as const, variant: "pink" as const },
-        { name: "UAT\nPassed?", icon: "✕", type: "decision" as const },
-        { name: "Commercial\nHandoff", icon: "📥", type: "step" as const, variant: "pink" as const },
-        { name: "Process\nComplete", icon: "⏹", type: "end" as const },
-      ],
-    },
-    {
-      label: "DEVELOPER",
-      color: "#22C55E",
-      bg: "rgba(34,197,94,0.05)",
-      steps: [
-        { name: "Development", icon: "💻", type: "step" as const, variant: "pink" as const },
-        { name: "Self-QA", icon: "☑️", type: "step" as const, variant: "green" as const },
-        { name: "Code\nReview", icon: "🔎", type: "step" as const, variant: "green" as const },
-        { name: "Release +\nMonitoring", icon: "📡", type: "step" as const, variant: "pink" as const },
-      ],
-    },
-    {
-      label: "OPERATIONS",
-      color: "#F59E0B",
-      bg: "rgba(245,158,11,0.05)",
-      steps: [
-        { name: "Blocker\nResolution", icon: "🔧", type: "step" as const, variant: "pink" as const },
-      ],
-    },
-  ];
+  /* Layout constants */
+  const W = 820;
+  const H = 420;
+  const laneH = [80, 110, 90, 70]; // Commercial, PO, Dev, Ops
+  const laneY = [0, 80, 190, 280];
+  const laneColors = ["#3E4FE0", "#E91E8C", "#22C55E", "#F59E0B"];
+  const laneBg = ["rgba(62,79,224,0.08)", "rgba(233,30,140,0.06)", "rgba(34,197,94,0.06)", "rgba(245,158,11,0.06)"];
+  const laneLabels = ["COMMERCIAL", "PRODUCT OWNER", "DEVELOPER", "OPERATIONS"];
+  const labelW = 36;
 
-  const stepColors = {
-    yellow: { bg: "#FEF3C7", border: "#F59E0B", text: "#92400E" },
-    pink: { bg: "#FCE4EC", border: "#E91E63", text: "#880E4F" },
-    green: { bg: "#D1FAE5", border: "#22C55E", text: "#065F46" },
-  };
+  /* Step positions (x centers) */
+  const stepStyle = (bg: string, border: string) => ({
+    bg, border, text: "#333",
+  });
+  const yellow = stepStyle("#FEF3C7", "#F59E0B");
+  const pink = stepStyle("#FCE4EC", "#E91E63");
+  const green = stepStyle("#D1FAE5", "#22C55E");
+
+  /* Animated flowing dot on dashed lines */
+  const flowDotKeyframes = `
+    @keyframes flowDot {
+      0% { offset-distance: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+  `;
 
   return (
     <div
@@ -1076,194 +987,162 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         opacity: active ? 1 : 0,
         transform: active ? "translateY(0)" : "translateY(20px)",
         transition: "all 0.8s ease 0.2s",
-        display: "flex",
-        flexDirection: "column",
-        gap: 6,
         width: "100%",
-        maxWidth: 900,
+        maxWidth: W + 20,
       }}
     >
-      {lanes.map((lane, li) => (
-        <div
-          key={lane.label}
-          style={{
-            display: "flex",
-            alignItems: "stretch",
-            borderRadius: 10,
-            overflow: "hidden",
-            border: `1px solid ${lane.color}25`,
-            background: lane.bg,
-            minHeight: lane.steps.length <= 1 ? 60 : 70,
-            opacity: active ? 1 : 0,
-            transition: `opacity 0.5s ease ${0.3 + li * 0.12}s`,
-          }}
-        >
-          {/* Lane label */}
-          <div
-            style={{
-              width: 36,
-              minWidth: 36,
-              background: `${lane.color}15`,
-              borderRight: `2px solid ${lane.color}40`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "4px 2px",
-            }}
-          >
-            <span
-              style={{
-                writingMode: "vertical-rl",
-                textOrientation: "mixed",
-                transform: "rotate(180deg)",
-                fontSize: 8,
-                fontWeight: 700,
-                letterSpacing: "0.1em",
-                color: lane.color,
-                textTransform: "uppercase",
-                whiteSpace: "pre-line",
-                textAlign: "center",
-                lineHeight: 1.2,
-              }}
-            >
-              {lane.label}
-            </span>
-          </div>
-          {/* Steps */}
-          <div
-            style={{
-              flex: 1,
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "8px 12px",
-              flexWrap: "nowrap",
-              overflowX: "auto",
-            }}
-          >
-            {lane.steps.map((step, si) => (
-              <div key={step.name} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                {si > 0 && (
-                  <div style={{ color: lane.color, fontSize: 14, opacity: 0.6 }}>→</div>
-                )}
-                {step.type === "start" ? (
-                  <div
-                    style={{
-                      width: 36,
-                      height: 36,
-                      borderRadius: "50%",
-                      border: `2px solid ${lane.color}`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: 14,
-                      color: lane.color,
-                      flexShrink: 0,
-                    }}
-                  >
-                    {step.icon}
-                  </div>
-                ) : step.type === "end" ? (
-                  <div
-                    style={{
-                      width: 36,
-                      height: 36,
-                      borderRadius: "50%",
-                      border: `3px solid ${lane.color}`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: 14,
-                      color: lane.color,
-                      flexShrink: 0,
-                    }}
-                  >
-                    {step.icon}
-                  </div>
-                ) : step.type === "decision" ? (
-                  <div
-                    style={{
-                      width: 36,
-                      height: 36,
-                      transform: "rotate(45deg)",
-                      border: `2px solid ${lane.color}`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: "rgba(255,255,255,0.9)",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <span style={{ transform: "rotate(-45deg)", fontSize: 10, fontWeight: 700, color: "#333" }}>
-                      {step.icon}
-                    </span>
-                  </div>
-                ) : (
-                  <div
-                    style={{
-                      padding: "6px 10px",
-                      borderRadius: 6,
-                      background: stepColors[step.variant || "pink"].bg,
-                      border: `1px solid ${stepColors[step.variant || "pink"].border}30`,
-                      flexShrink: 0,
-                      textAlign: "center",
-                      minWidth: 70,
-                    }}
-                  >
-                    <div style={{ fontSize: 12, marginBottom: 2 }}>{step.icon}</div>
-                    <div
-                      style={{
-                        fontSize: 9,
-                        fontWeight: 600,
-                        color: stepColors[step.variant || "pink"].text,
-                        whiteSpace: "pre-line",
-                        lineHeight: 1.2,
-                      }}
-                    >
-                      {step.name}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-      {/* Connection labels */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: 16,
-          marginTop: 6,
-          flexWrap: "wrap",
-        }}
+      <style>{flowDotKeyframes}</style>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        style={{ width: "100%", height: "auto" }}
+        xmlns="http://www.w3.org/2000/svg"
       >
-        {[
-          { label: "Approved", from: "Commercial", to: "Product Owner" },
-          { label: "Ready for Dev", from: "Product Owner", to: "Developer" },
-          { label: "Ready for UAT", from: "Developer", to: "Product Owner" },
-          { label: "Blocked → Resolved", from: "Developer", to: "Operations" },
-        ].map((c) => (
-          <div
-            key={c.label}
-            style={{
-              fontSize: 9,
-              color: COLORS.textMuted,
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
-              background: "rgba(255,255,255,0.03)",
-              padding: "3px 8px",
-              borderRadius: 6,
-              border: "1px solid rgba(255,255,255,0.06)",
-            }}
-          >
-            <span style={{ borderBottom: "1px dashed rgba(255,255,255,0.3)", width: 12, display: "inline-block" }} />
-            {c.label}
-          </div>
+        <defs>
+          <marker id="arrowSolid" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <path d="M0,0 L8,3 L0,6" fill="rgba(255,255,255,0.5)" />
+          </marker>
+          <marker id="arrowDash" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <path d="M0,0 L8,3 L0,6" fill="rgba(255,255,255,0.35)" />
+          </marker>
+        </defs>
+
+        {/* Swim lanes */}
+        {laneLabels.map((label, i) => (
+          <g key={label}>
+            <rect x={0} y={laneY[i]} width={W} height={laneH[i]} rx={8} fill={laneBg[i]} stroke={`${laneColors[i]}30`} strokeWidth={1} />
+            <rect x={0} y={laneY[i]} width={labelW} height={laneH[i]} rx={8} fill={`${laneColors[i]}15`} />
+            <text
+              x={labelW / 2}
+              y={laneY[i] + laneH[i] / 2}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill={laneColors[i]}
+              fontSize={7}
+              fontWeight={700}
+              letterSpacing="0.08em"
+              transform={`rotate(-90, ${labelW / 2}, ${laneY[i] + laneH[i] / 2})`}
+            >
+              {label}
+            </text>
+          </g>
         ))}
-      </div>
+
+        {/* ── COMMERCIAL LANE ── */}
+        {/* Start circle */}
+        <circle cx={70} cy={laneY[0] + 40} r={14} fill="none" stroke={laneColors[0]} strokeWidth={2} />
+        <polygon points="66,34 66,46 76,40" fill={laneColors[0]} />
+        {/* Commercial Request */}
+        <rect x={110} y={laneY[0] + 18} width={90} height={44} rx={6} fill={yellow.bg} stroke={`${yellow.border}50`} strokeWidth={1} />
+        <text x={155} y={laneY[0] + 35} textAnchor="middle" fontSize={8} fontWeight={600} fill={yellow.text}>Commercial</text>
+        <text x={155} y={laneY[0] + 46} textAnchor="middle" fontSize={8} fontWeight={600} fill={yellow.text}>Request</text>
+        {/* Arrow */}
+        <line x1={84} y1={laneY[0] + 40} x2={108} y2={laneY[0] + 40} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+        {/* GM Approval */}
+        <rect x={230} y={laneY[0] + 18} width={80} height={44} rx={6} fill={yellow.bg} stroke={`${yellow.border}50`} strokeWidth={1} />
+        <text x={270} y={laneY[0] + 35} textAnchor="middle" fontSize={8} fontWeight={600} fill={yellow.text}>GM</text>
+        <text x={270} y={laneY[0] + 46} textAnchor="middle" fontSize={8} fontWeight={600} fill={yellow.text}>Approval</text>
+        <line x1={200} y1={laneY[0] + 40} x2={228} y2={laneY[0] + 40} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+
+        {/* ── CROSS-LANE: Commercial → PO (Approved) ── */}
+        <path d="M 270 62 L 270 100" stroke="rgba(255,255,255,0.3)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
+        <text x={280} y={82} fontSize={7} fill={COLORS.accent} fontWeight={600} fontStyle="italic">Approved</text>
+
+        {/* ── PRODUCT OWNER LANE ── */}
+        {/* Product Analysis */}
+        <rect x={60} y={laneY[1] + 12} width={80} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
+        <text x={100} y={laneY[1] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Product</text>
+        <text x={100} y={laneY[1] + 38} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Analysis</text>
+        {/* TAM Validation */}
+        <rect x={165} y={laneY[1] + 12} width={80} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
+        <text x={205} y={laneY[1] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>TAM</text>
+        <text x={205} y={laneY[1] + 38} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Validation</text>
+        <line x1={140} y1={laneY[1] + 32} x2={163} y2={laneY[1] + 32} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+        {/* TL Review */}
+        <rect x={270} y={laneY[1] + 12} width={85} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
+        <text x={312} y={laneY[1] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>TL Review +</text>
+        <text x={312} y={laneY[1] + 38} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Estimation</text>
+        <line x1={245} y1={laneY[1] + 32} x2={268} y2={laneY[1] + 32} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+
+        {/* ── CROSS-LANE: PO → Dev (Ready for dev) ── */}
+        <path d="M 312 132 L 312 210" stroke="rgba(255,255,255,0.3)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
+        <text x={322} y={172} fontSize={7} fill={COLORS.accent} fontWeight={600} fontStyle="italic">Ready for dev</text>
+
+        {/* PO UAT */}
+        <rect x={500} y={laneY[1] + 12} width={70} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
+        <text x={535} y={laneY[1] + 35} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>PO UAT</text>
+        {/* Decision diamond */}
+        <rect x={598} y={laneY[1] + 16} width={30} height={30} rx={2} fill="white" stroke={laneColors[1]} strokeWidth={1.5} transform={`rotate(45, 613, ${laneY[1] + 31})`} />
+        <text x={613} y={laneY[1] + 34} textAnchor="middle" fontSize={8} fontWeight={700} fill="#333">✕</text>
+        <line x1={570} y1={laneY[1] + 32} x2={596} y2={laneY[1] + 32} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+        {/* Commercial Handoff */}
+        <rect x={660} y={laneY[1] + 12} width={80} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
+        <text x={700} y={laneY[1] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Commercial</text>
+        <text x={700} y={laneY[1] + 38} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Handoff</text>
+        <line x1={631} y1={laneY[1] + 32} x2={658} y2={laneY[1] + 32} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+        {/* Process Complete */}
+        <circle cx={775} cy={laneY[1] + 32} r={13} fill="none" stroke={laneColors[1]} strokeWidth={3} />
+        <rect x={769} y={laneY[1] + 26} width={12} height={12} rx={2} fill={laneColors[1]} />
+        <line x1={740} y1={laneY[1] + 32} x2={760} y2={laneY[1] + 32} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+
+        {/* ── CROSS-LANE: Dev → PO (Ready for UAT) ── */}
+        <path d="M 490 210 L 490 132" stroke="rgba(255,255,255,0.3)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
+        <text x={446} y={172} fontSize={7} fill={COLORS.accent} fontWeight={600} fontStyle="italic">Ready for UAT</text>
+
+        {/* ── CROSS-LANE: UAT Failed → Dev (AC Failed) ── */}
+        <path d="M 613 150 L 613 170 L 160 170 L 160 210" stroke="rgba(255,94,0,0.4)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
+        <text x={380} y={165} fontSize={7} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
+
+        {/* ── CROSS-LANE: UAT Passed → Release (Passed) ── */}
+        <path d="M 613 150 L 613 170 L 580 170 L 580 210" stroke="rgba(59,255,157,0.4)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
+
+        {/* ── DEVELOPER LANE ── */}
+        {/* Development */}
+        <rect x={100} y={laneY[2] + 10} width={90} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
+        <text x={145} y={laneY[2] + 28} textAnchor="middle" fontSize={8} fontWeight={600} fill={pink.text}>💻 Development</text>
+        {/* Self-QA */}
+        <rect x={220} y={laneY[2] + 10} width={75} height={40} rx={6} fill={green.bg} stroke={`${green.border}40`} strokeWidth={1} />
+        <text x={257} y={laneY[2] + 33} textAnchor="middle" fontSize={8} fontWeight={600} fill={green.text}>☑️ Self-QA</text>
+        <line x1={190} y1={laneY[2] + 30} x2={218} y2={laneY[2] + 30} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+        {/* Code Review */}
+        <rect x={325} y={laneY[2] + 10} width={85} height={40} rx={6} fill={green.bg} stroke={`${green.border}40`} strokeWidth={1} />
+        <text x={367} y={laneY[2] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={green.text}>🔎 Code</text>
+        <text x={367} y={laneY[2] + 39} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={green.text}>Review</text>
+        <line x1={295} y1={laneY[2] + 30} x2={323} y2={laneY[2] + 30} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+        {/* Release + Monitoring */}
+        <rect x={530} y={laneY[2] + 10} width={95} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
+        <text x={577} y={laneY[2] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>📡 Release +</text>
+        <text x={577} y={laneY[2] + 39} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Monitoring</text>
+        <line x1={410} y1={laneY[2] + 30} x2={528} y2={laneY[2] + 30} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+
+        {/* ── CROSS-LANE: Release → Commercial Handoff (Released) ── */}
+        <path d="M 625 210 L 660 210 L 700 132" stroke="rgba(255,255,255,0.3)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
+        <text x={665} y={175} fontSize={7} fill={COLORS.accent} fontWeight={600} fontStyle="italic">Released</text>
+
+        {/* ── CROSS-LANE: Dev → Ops (Blocked) ── */}
+        <path d="M 145 240 L 145 300" stroke="rgba(245,158,11,0.4)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
+        <text x={155} y={272} fontSize={7} fill="#F59E0B" fontWeight={600} fontStyle="italic">Blocked</text>
+
+        {/* ── OPERATIONS LANE ── */}
+        <rect x={80} y={laneY[3] + 10} width={100} height={40} rx={6} fill={yellow.bg} stroke={`${yellow.border}40`} strokeWidth={1} />
+        <text x={130} y={laneY[3] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={yellow.text}>🔧 Blocker</text>
+        <text x={130} y={laneY[3] + 39} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={yellow.text}>Resolution</text>
+
+        {/* ── CROSS-LANE: Ops → Dev (Resolved) ── */}
+        <path d="M 180 300 L 220 300 L 220 240" stroke="rgba(34,197,94,0.4)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
+        <text x={230} y={272} fontSize={7} fill="#22C55E" fontWeight={600} fontStyle="italic">Resolved</text>
+
+        {/* ── Animated flow dots ── */}
+        {active && (
+          <>
+            <circle r={3} fill={COLORS.accent} opacity={0.8}>
+              <animateMotion dur="4s" repeatCount="indefinite" path="M 270 62 L 270 100 L 100 100 L 100 132 L 205 132 L 312 132 L 312 210 L 145 210 L 257 210 L 367 210 L 490 210 L 490 132 L 535 132 L 613 132" />
+            </circle>
+            <circle r={2.5} fill="#3BFF9D" opacity={0.6}>
+              <animateMotion dur="6s" repeatCount="indefinite" begin="2s" path="M 312 132 L 312 210 L 190 230 L 295 230 L 410 230 L 528 230 L 625 210 L 700 132 L 775 132" />
+            </circle>
+          </>
+        )}
+      </svg>
     </div>
   );
 }
@@ -1272,7 +1151,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
 export default function Lisboa2026() {
   const [current, setCurrent] = useState(0);
   const transitioning = useRef(false);
-  const TOTAL_SLIDES = 8;
+  const TOTAL_SLIDES = 9;
 
   const goTo = useCallback(
     (n: number) => {
@@ -1533,6 +1412,7 @@ export default function Lisboa2026() {
               gap: 24,
               flexWrap: "wrap",
               justifyContent: "center",
+              alignItems: "stretch",
               maxWidth: 1100,
             }}
           >
@@ -1601,6 +1481,7 @@ export default function Lisboa2026() {
               gap: 24,
               flexWrap: "wrap",
               justifyContent: "center",
+              alignItems: "stretch",
               maxWidth: 1100,
             }}
           >
@@ -2018,6 +1899,75 @@ export default function Lisboa2026() {
             </p>
           </AnimatedText>
           <StrategicProjectsTable active={current === 7} />
+        </Slide>
+
+        {/* ═══════════ SLIDE 8: THANK YOU ═══════════ */}
+        <Slide active={current === 8} index={8}>
+          <AnimatedText active={current === 8} delay={0}>
+            <div
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: COLORS.accent,
+                marginBottom: 24,
+                textAlign: "center",
+              }}
+            >
+              Product Leadership Vision
+            </div>
+          </AnimatedText>
+          <AnimatedText active={current === 8} delay={0.2}>
+            <h1
+              style={{
+                fontSize: "clamp(48px, 7vw, 90px)",
+                fontWeight: 900,
+                textAlign: "center",
+                lineHeight: 1.1,
+                letterSpacing: "-0.03em",
+                marginBottom: 20,
+              }}
+            >
+              <span className="yuno-logo-text">Thank You</span>
+            </h1>
+          </AnimatedText>
+          <AnimatedText active={current === 8} delay={0.5}>
+            <p
+              style={{
+                fontSize: 20,
+                color: COLORS.textMuted,
+                textAlign: "center",
+                maxWidth: 500,
+                lineHeight: 1.5,
+              }}
+            >
+              Let&apos;s build world-class products together.
+            </p>
+          </AnimatedText>
+          <AnimatedText active={current === 8} delay={0.8}>
+            <div
+              style={{
+                marginTop: 48,
+                display: "flex",
+                gap: 16,
+                justifyContent: "center",
+              }}
+            >
+              {["🚀", "💎", "🔑", "⚡", "🎯"].map((e, i) => (
+                <span
+                  key={i}
+                  style={{
+                    fontSize: 32,
+                    opacity: 0.7,
+                    animation: `float${(i % 3) + 1} ${3 + i}s ease-in-out infinite`,
+                  }}
+                >
+                  {e}
+                </span>
+              ))}
+            </div>
+          </AnimatedText>
         </Slide>
 
         {/* Bottom nav hint */}
