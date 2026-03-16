@@ -289,24 +289,9 @@ function ValueCard({
 /* ─────────────────────── MATRIX COMPONENT ─────────────────────── */
 function OrgMatrix({ active }: { active: boolean }) {
   const platformGroups = [
-    {
-      label: "Core Platforms",
-      color: "#4d65ff",
-      bg: "#4d65ff12",
-      rows: ["Core", "Routing"],
-    },
-    {
-      label: "Internal",
-      color: "#7E41E9",
-      bg: "#7E41E912",
-      rows: ["Data Enablement", "Internal Tools & Architecture"],
-    },
-    {
-      label: "Experience",
-      color: "#3BFF9D",
-      bg: "#3BFF9D10",
-      rows: ["Dashboard", "Checkout", "SDK & Plugins"],
-    },
+    { label: "Core Platforms", color: "#4d65ff", bg: "#4d65ff12", rows: ["Core", "Routing"] },
+    { label: "Internal", color: "#7E41E9", bg: "#7E41E912", rows: ["Data Enablement", "Internal Tools & Architecture"] },
+    { label: "Experience", color: "#3BFF9D", bg: "#3BFF9D10", rows: ["Dashboard", "Checkout", "SDK & Plugins"] },
   ];
 
   const columns = [
@@ -319,6 +304,52 @@ function OrgMatrix({ active }: { active: boolean }) {
   const allSubs = columns.flatMap((c) =>
     c.subs.map((s) => ({ sub: s, color: c.color }))
   );
+
+  // Ownership matrix: true = this platform touches this business unit column
+  const matrix: Record<string, Record<string, boolean>> = {
+    "Core": {
+      "Card Payments & Integrations": true, "Tokenization": true,
+      "APM Integrations": true,
+      "Core Ancillaries": true, "Reconciliations": true,
+      "Banking Connectivity": false, "Agentic Payments": false, "Banking Tech / WhiteLabel": false,
+    },
+    "Routing": {
+      "Card Payments & Integrations": true, "Tokenization": true,
+      "APM Integrations": false,
+      "Core Ancillaries": true, "Reconciliations": false,
+      "Banking Connectivity": false, "Agentic Payments": false, "Banking Tech / WhiteLabel": false,
+    },
+    "Data Enablement": {
+      "Card Payments & Integrations": true, "Tokenization": true,
+      "APM Integrations": true,
+      "Core Ancillaries": true, "Reconciliations": true,
+      "Banking Connectivity": true, "Agentic Payments": true, "Banking Tech / WhiteLabel": true,
+    },
+    "Internal Tools & Architecture": {
+      "Card Payments & Integrations": true, "Tokenization": true,
+      "APM Integrations": true,
+      "Core Ancillaries": true, "Reconciliations": true,
+      "Banking Connectivity": true, "Agentic Payments": true, "Banking Tech / WhiteLabel": true,
+    },
+    "Dashboard": {
+      "Card Payments & Integrations": true, "Tokenization": false,
+      "APM Integrations": true,
+      "Core Ancillaries": true, "Reconciliations": true,
+      "Banking Connectivity": false, "Agentic Payments": false, "Banking Tech / WhiteLabel": false,
+    },
+    "Checkout": {
+      "Card Payments & Integrations": true, "Tokenization": false,
+      "APM Integrations": true,
+      "Core Ancillaries": false, "Reconciliations": false,
+      "Banking Connectivity": false, "Agentic Payments": false, "Banking Tech / WhiteLabel": false,
+    },
+    "SDK & Plugins": {
+      "Card Payments & Integrations": true, "Tokenization": false,
+      "APM Integrations": true,
+      "Core Ancillaries": false, "Reconciliations": false,
+      "Banking Connectivity": false, "Agentic Payments": false, "Banking Tech / WhiteLabel": false,
+    },
+  };
 
   let rowIndex = 0;
 
@@ -342,30 +373,11 @@ function OrgMatrix({ active }: { active: boolean }) {
           backdropFilter: "blur(20px)",
         }}
       >
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            minWidth: 860,
-          }}
-        >
+        <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 860 }}>
           <thead>
-            {/* Tier 1 — group headers */}
             <tr>
-              <th
-                style={{
-                  width: 40,
-                  padding: "10px 8px",
-                  borderBottom: "1px solid rgba(255,255,255,0.06)",
-                }}
-              />
-              <th
-                style={{
-                  width: 180,
-                  padding: "10px 16px",
-                  borderBottom: "1px solid rgba(255,255,255,0.06)",
-                }}
-              />
+              <th style={{ width: 36, padding: "10px 6px", borderBottom: "1px solid rgba(255,255,255,0.06)" }} />
+              <th style={{ width: 170, padding: "10px 14px", borderBottom: "1px solid rgba(255,255,255,0.06)" }} />
               {columns.map((c) => (
                 <th
                   key={c.group}
@@ -385,19 +397,13 @@ function OrgMatrix({ active }: { active: boolean }) {
                 </th>
               ))}
             </tr>
-            {/* Tier 2 — sub-column headers */}
             <tr>
+              <th style={{ padding: "6px", borderBottom: "1px solid rgba(255,255,255,0.08)" }} />
               <th
                 style={{
-                  padding: "8px",
+                  padding: "6px 14px",
                   borderBottom: "1px solid rgba(255,255,255,0.08)",
-                }}
-              />
-              <th
-                style={{
-                  padding: "8px 16px",
-                  borderBottom: "1px solid rgba(255,255,255,0.08)",
-                  fontSize: 11,
+                  fontSize: 10,
                   fontWeight: 600,
                   color: COLORS.textMuted,
                   textAlign: "left",
@@ -411,8 +417,8 @@ function OrgMatrix({ active }: { active: boolean }) {
                 <th
                   key={s.sub}
                   style={{
-                    padding: "10px 6px",
-                    fontSize: 10,
+                    padding: "8px 4px",
+                    fontSize: 9,
                     fontWeight: 500,
                     color: `${s.color}AA`,
                     borderBottom: "1px solid rgba(255,255,255,0.08)",
@@ -441,8 +447,8 @@ function OrgMatrix({ active }: { active: boolean }) {
                       <td
                         rowSpan={group.rows.length}
                         style={{
-                          padding: "8px 4px",
-                          fontSize: 10,
+                          padding: "6px 3px",
+                          fontSize: 9,
                           fontWeight: 700,
                           color: group.color,
                           textTransform: "uppercase",
@@ -461,39 +467,53 @@ function OrgMatrix({ active }: { active: boolean }) {
                     )}
                     <td
                       style={{
-                        padding: "12px 16px",
-                        fontSize: 13,
+                        padding: "10px 14px",
+                        fontSize: 12,
                         fontWeight: 600,
                         color: COLORS.text,
                         borderBottom: "1px solid rgba(255,255,255,0.04)",
                         whiteSpace: "nowrap",
-                        background: "rgba(255,255,255,0.01)",
                       }}
                     >
                       {row}
                     </td>
-                    {allSubs.map((s) => (
-                      <td
-                        key={`${row}-${s.sub}`}
-                        style={{
-                          padding: 6,
-                          borderBottom: "1px solid rgba(255,255,255,0.03)",
-                          borderLeft: "1px solid rgba(255,255,255,0.03)",
-                          minWidth: 70,
-                          background: `${s.color}10`,
-                        }}
-                      >
-                        <div
+                    {allSubs.map((s) => {
+                      const filled = matrix[row]?.[s.sub] ?? false;
+                      return (
+                        <td
+                          key={`${row}-${s.sub}`}
                           style={{
-                            width: "100%",
-                            height: 32,
-                            borderRadius: 6,
-                            background: `${s.color}18`,
-                            border: `1px solid ${s.color}15`,
+                            padding: 4,
+                            borderBottom: "1px solid rgba(255,255,255,0.03)",
+                            borderLeft: "1px solid rgba(255,255,255,0.03)",
+                            minWidth: 65,
                           }}
-                        />
-                      </td>
-                    ))}
+                        >
+                          {filled ? (
+                            <div
+                              style={{
+                                width: "100%",
+                                height: 28,
+                                borderRadius: 6,
+                                background: `linear-gradient(135deg, ${s.color}30, ${s.color}15)`,
+                                border: `1px solid ${s.color}25`,
+                                boxShadow: `inset 0 1px 0 ${s.color}15`,
+                              }}
+                            />
+                          ) : (
+                            <div
+                              style={{
+                                width: "100%",
+                                height: 28,
+                                borderRadius: 6,
+                                background: "rgba(255,255,255,0.02)",
+                                border: "1px solid rgba(255,255,255,0.03)",
+                              }}
+                            />
+                          )}
+                        </td>
+                      );
+                    })}
                   </tr>
                 );
               })
@@ -501,30 +521,24 @@ function OrgMatrix({ active }: { active: boolean }) {
           </tbody>
         </table>
       </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 24, flexWrap: "wrap" }}>
-        <div
-          style={{
-            fontSize: 13,
-            color: COLORS.textMuted,
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-          }}
-        >
-          <span style={{ fontSize: 16 }}>👥</span>
+      <div style={{ display: "flex", justifyContent: "center", gap: 20, marginTop: 20, flexWrap: "wrap" }}>
+        <div style={{ fontSize: 12, color: COLORS.textMuted, display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 14, height: 14, borderRadius: 4, background: "linear-gradient(135deg, #ffffff30, #ffffff15)", border: "1px solid rgba(255,255,255,0.25)" }} />
+          Active ownership
+        </div>
+        <div style={{ fontSize: 12, color: COLORS.textMuted, display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 14, height: 14, borderRadius: 4, background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }} />
+          No direct interaction
+        </div>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 12, flexWrap: "wrap" }}>
+        <div style={{ fontSize: 12, color: COLORS.textMuted, display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ fontSize: 14 }}>👥</span>
           Product Teams own the full stack — <strong style={{ color: COLORS.text }}>Backend, Frontend, Mobile</strong>
         </div>
-        <div
-          style={{
-            fontSize: 13,
-            color: COLORS.accent,
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-          }}
-        >
-          <span style={{ fontSize: 16 }}>✦</span>
-          Cross-team PRs will be unblocked by upcoming tech initiatives
+        <div style={{ fontSize: 12, color: COLORS.accent, display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ fontSize: 14 }}>✦</span>
+          Cross-team PRs unblocked by upcoming tech initiatives
         </div>
       </div>
     </div>
@@ -852,13 +866,13 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
         maxWidth: 1100,
         margin: "0 auto",
         overflowX: "auto",
-        borderRadius: 16,
+        borderRadius: 14,
         border: "1px solid rgba(255,255,255,0.08)",
         background: "rgba(255,255,255,0.02)",
         backdropFilter: "blur(20px)",
       }}
     >
-      <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 800 }}>
+      <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 760 }}>
         <thead>
           <tr>
             {["Initiative", "Status", "Priority", "Strategic Pillar", "Owner"].map(
@@ -866,8 +880,8 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                 <th
                   key={h}
                   style={{
-                    padding: "16px 20px",
-                    fontSize: 11,
+                    padding: "10px 14px",
+                    fontSize: 10,
                     fontWeight: 700,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
@@ -888,7 +902,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                 key={p.name}
                 style={{
                   borderBottom: "1px solid rgba(255,255,255,0.04)",
-                  transition: `background 0.2s ease, opacity 0.5s ease ${0.2 + i * 0.05}s`,
+                  transition: `background 0.2s ease, opacity 0.5s ease ${0.15 + i * 0.04}s`,
                   opacity: active ? 1 : 0,
                 }}
                 onMouseEnter={(e) =>
@@ -900,22 +914,22 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
               >
                 <td
                   style={{
-                    padding: "14px 20px",
-                    fontSize: 14,
+                    padding: "8px 14px",
+                    fontSize: 13,
                     fontWeight: 600,
                     color: COLORS.text,
                   }}
                 >
                   {p.name}
                 </td>
-                <td style={{ padding: "14px 20px" }}>
+                <td style={{ padding: "8px 14px" }}>
                   <span
                     style={{
-                      fontSize: 12,
+                      fontSize: 11,
                       fontWeight: 600,
                       color: statusColor(p.status),
                       background: `${statusColor(p.status)}15`,
-                      padding: "4px 12px",
+                      padding: "3px 10px",
                       borderRadius: 20,
                       whiteSpace: "nowrap",
                     }}
@@ -924,10 +938,10 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                     {p.status}
                   </span>
                 </td>
-                <td style={{ padding: "14px 20px" }}>
+                <td style={{ padding: "8px 14px" }}>
                   <span
                     style={{
-                      fontSize: 13,
+                      fontSize: 12,
                       fontWeight: 700,
                       color: priorityColor(p.priority),
                     }}
@@ -935,14 +949,14 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                     {p.priority}
                   </span>
                 </td>
-                <td style={{ padding: "14px 20px" }}>
+                <td style={{ padding: "8px 14px" }}>
                   <span
                     style={{
-                      fontSize: 12,
+                      fontSize: 11,
                       fontWeight: 600,
                       color: pillarColor(p.pillar),
                       background: `${pillarColor(p.pillar)}15`,
-                      padding: "4px 12px",
+                      padding: "3px 10px",
                       borderRadius: 20,
                       whiteSpace: "nowrap",
                     }}
@@ -952,8 +966,8 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                 </td>
                 <td
                   style={{
-                    padding: "14px 20px",
-                    fontSize: 13,
+                    padding: "8px 14px",
+                    fontSize: 12,
                     color: p.owner === "TBD" ? COLORS.textMuted : COLORS.text,
                     fontWeight: p.owner === "TBD" ? 400 : 600,
                     fontStyle: p.owner === "TBD" ? "italic" : "normal",
@@ -1418,12 +1432,12 @@ export default function Lisboa2026() {
           <AnimatedText active={current === 5} delay={0}>
             <div
               style={{
-                fontSize: 13,
+                fontSize: 12,
                 fontWeight: 600,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 color: COLORS.primary,
-                marginBottom: 16,
+                marginBottom: 10,
                 textAlign: "center",
               }}
             >
@@ -1433,11 +1447,11 @@ export default function Lisboa2026() {
           <AnimatedText active={current === 5} delay={0.1}>
             <h2
               style={{
-                fontSize: "clamp(28px, 3.5vw, 48px)",
+                fontSize: "clamp(24px, 3vw, 40px)",
                 fontWeight: 800,
                 textAlign: "center",
                 letterSpacing: "-0.02em",
-                marginBottom: 12,
+                marginBottom: 6,
               }}
             >
               Strategic{" "}
@@ -1447,12 +1461,12 @@ export default function Lisboa2026() {
           <AnimatedText active={current === 5} delay={0.15}>
             <p
               style={{
-                fontSize: 15,
+                fontSize: 14,
                 color: COLORS.textMuted,
                 textAlign: "center",
-                marginBottom: 32,
+                marginBottom: 20,
                 maxWidth: 600,
-                lineHeight: 1.5,
+                lineHeight: 1.4,
               }}
             >
               Beyond everyday work, these are the special initiatives with{" "}
