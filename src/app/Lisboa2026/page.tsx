@@ -973,7 +973,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
   const brX = 80, brY = 274, brW = 100, brH = 38;
 
   /* Main flow animation path (slow) */
-  const mainPath = `M ${startCx + 14} ${startCy} L ${crX} ${startCy} L ${crX + crW} ${startCy} L ${gmX} ${startCy} L ${gmX + gmW / 2} ${gmY + gmH} L ${gmX + gmW / 2} ${paY} L ${paX + paW / 2} ${paY + paH / 2} L ${tamX} ${tamY + tamH / 2} L ${tlX} ${tlY + tlH / 2} L ${tlX + tlW / 2} ${tlY + tlH} L ${devX + devW / 2} ${devY} L ${qaX} ${devY + devH / 2} L ${crwX} ${qaY + qaH / 2} L ${relX} ${relY + relH / 2} L ${relX + relW / 2} ${relY} L ${uatX + uatW / 2} ${uatY + uatH} L ${diaX} ${diaY} L ${chX} ${chY + chH / 2} L ${endCx} ${endCy}`;
+  /* Happy path: Start → Commercial Request → GM Approval → (Approved) → Product Analysis → TAM → TL Review → (Ready for dev) → Development → Self-QA → Code Review → (Ready for UAT) → PO UAT → Diamond → (Passed) → Release → (Released) → Commercial Handoff → End */
 
   return (
     <div
@@ -1031,7 +1031,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
         <text x={tlX + tlW / 2 + 8} y={(tlY + tlH + devY) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for dev</text>
 
-        <line x1={tlX + tlW} y1={tlY + tlH / 2} x2={uatX} y2={uatY + uatH / 2} {...sa} markerEnd="url(#ah)" strokeDasharray="6 4" />
+        <line x1={tlX + tlW} y1={tlY + tlH / 2} x2={uatX} y2={uatY + uatH / 2} {...sa} markerEnd="url(#ah)" />
         <Box x={uatX} y={uatY} w={uatW} h={uatH} c={P} lines={["PO UAT"]} />
         <line x1={uatX + uatW} y1={uatY + uatH / 2} x2={diaX - 16} y2={diaY} {...sa} markerEnd="url(#ah)" />
 
@@ -1047,25 +1047,29 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         <circle cx={endCx} cy={endCy} r={11} fill="none" stroke={lanes[1].color} strokeWidth={2.5} />
         <rect x={endCx - 5} y={endCy - 5} width={10} height={10} rx={1.5} fill={lanes[1].color} />
 
-        {/* ── Cross: Release+Monitoring → PO UAT (Ready for UAT) ── */}
-        <path d={`M ${relX + relW / 2} ${relY} L ${relX + relW / 2} ${(relY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${(relY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${uatY + uatH}`}
+        {/* ── Cross: Code Review → PO UAT (Ready for UAT) ── */}
+        {/* Goes straight up from Code Review top to PO UAT bottom */}
+        <path d={`M ${crwX + crwW / 2} ${crwY} L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${uatY + uatH}`}
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
-        <text x={relX + relW / 2 - 50} y={(relY + uatY + uatH) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for UAT</text>
+        <text x={(crwX + crwW / 2 + uatX + uatW / 2) / 2 - 20} y={(crwY + uatY + uatH) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for UAT</text>
 
         {/* ── Cross: Diamond (AC Failed) → Development ── */}
-        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${diaY + 30} L ${devX + devW / 2} ${diaY + 30} L ${devX + devW / 2} ${devY}`}
+        {/* Goes down from diamond bottom, then left below PO lane, then down into Dev lane */}
+        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${lanes[1].y + lanes[1].h + 6} L ${devX + devW / 2} ${lanes[1].y + lanes[1].h + 6} L ${devX + devW / 2} ${devY}`}
           stroke="rgba(255,94,0,0.45)" {...da} markerEnd="url(#ahd)" />
-        <text x={(diaX + devX + devW / 2) / 2} y={diaY + 27} fontSize={6.5} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
+        <text x={(diaX + devX + devW / 2) / 2} y={lanes[1].y + lanes[1].h + 3} fontSize={6.5} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
 
         {/* ── Cross: Diamond (Passed) → Release+Monitoring ── */}
-        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${diaY + 40} L ${relX + relW / 2} ${diaY + 40} L ${relX + relW / 2} ${relY + relH}`}
+        {/* Goes down from diamond, bends right-down to Release top */}
+        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${lanes[1].y + lanes[1].h + 14} L ${relX + relW / 2} ${lanes[1].y + lanes[1].h + 14} L ${relX + relW / 2} ${relY}`}
           stroke="rgba(59,255,157,0.4)" {...da} markerEnd="url(#ahd)" />
-        <text x={diaX + 8} y={diaY + 38} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Passed</text>
+        <text x={diaX + 8} y={lanes[1].y + lanes[1].h + 12} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Passed</text>
 
-        {/* ── Cross: Release → Commercial Handoff (Released) ── */}
-        <path d={`M ${relX + relW} ${relY + 4} L ${chX + chW / 2} ${relY + 4} L ${chX + chW / 2} ${chY + chH}`}
+        {/* ── Cross: Release+Monitoring → Commercial Handoff (Released) ── */}
+        {/* Goes up from Release top-right, then right to Commercial Handoff bottom */}
+        <path d={`M ${relX + relW} ${relY + 8} L ${relX + relW + 15} ${relY + 8} L ${relX + relW + 15} ${lanes[1].y + lanes[1].h + 14} L ${chX + chW / 2} ${lanes[1].y + lanes[1].h + 14} L ${chX + chW / 2} ${chY + chH}`}
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
-        <text x={(relX + relW + chX + chW / 2) / 2} y={relY} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Released</text>
+        <text x={(relX + relW + 15 + chX + chW / 2) / 2} y={lanes[1].y + lanes[1].h + 12} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Released</text>
 
         {/* ══════ DEVELOPER LANE ══════ */}
         <Box x={devX} y={devY} w={devW} h={devH} c={P} lines={["💻 Development"]} />
@@ -1092,14 +1096,62 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         {/* ── Animated flow dot (slow, follows main happy path) ── */}
         {active && (
           <>
-            <circle r={3.5} fill="#3BFF9D" opacity={0.9}>
-              <animateMotion dur="12s" repeatCount="indefinite"
-                path={`M ${startCx + 12} ${startCy} L ${crX + crW / 2} ${crY + crH / 2} L ${gmX + gmW / 2} ${gmY + gmH / 2} L ${gmX + gmW / 2} ${paY} L ${paX + paW / 2} ${paY + paH / 2} L ${tamX + tamW / 2} ${tamY + tamH / 2} L ${tlX + tlW / 2} ${tlY + tlH / 2} L ${tlX + tlW / 2} ${devY + devH / 2} L ${devX + devW / 2} ${devY + devH / 2} L ${qaX + qaW / 2} ${qaY + qaH / 2} L ${crwX + crwW / 2} ${crwY + crwH / 2} L ${relX + relW / 2} ${relY + relH / 2} L ${relX + relW / 2} ${uatY + uatH / 2} L ${uatX + uatW / 2} ${uatY + uatH / 2} L ${diaX} ${diaY} L ${chX + chW / 2} ${chY + chH / 2} L ${endCx} ${endCy}`}
+            {/* Dot 1: full happy path */}
+            <circle r={3} fill="#3BFF9D" opacity={0.85}>
+              <animateMotion dur="16s" repeatCount="indefinite"
+                path={[
+                  `M ${startCx + 12} ${startCy}`,
+                  `L ${crX + crW / 2} ${crY + crH / 2}`,
+                  `L ${gmX + gmW / 2} ${gmY + gmH / 2}`,
+                  // Approved: down then left
+                  `L ${gmX + gmW / 2} ${paY - 2}`,
+                  `L ${paX + paW / 2} ${paY - 2}`,
+                  `L ${paX + paW / 2} ${paY + paH / 2}`,
+                  // PO lane
+                  `L ${tamX + tamW / 2} ${tamY + tamH / 2}`,
+                  `L ${tlX + tlW / 2} ${tlY + tlH / 2}`,
+                  // Ready for dev: down then left
+                  `L ${tlX + tlW / 2} ${(tlY + tlH + devY) / 2}`,
+                  `L ${devX + devW / 2} ${(tlY + tlH + devY) / 2}`,
+                  `L ${devX + devW / 2} ${devY + devH / 2}`,
+                  // Dev lane
+                  `L ${qaX + qaW / 2} ${qaY + qaH / 2}`,
+                  `L ${crwX + crwW / 2} ${crwY + crwH / 2}`,
+                  // Ready for UAT: up then right
+                  `L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2}`,
+                  `L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2}`,
+                  `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
+                  // PO lane: UAT → Diamond → Commercial Handoff
+                  `L ${diaX} ${diaY}`,
+                  `L ${chX + chW / 2} ${chY + chH / 2}`,
+                  `L ${endCx} ${endCy}`,
+                ].join(" ")}
               />
             </circle>
+            {/* Dot 2: staggered */}
             <circle r={2.5} fill="#3BFF9D" opacity={0.5}>
-              <animateMotion dur="12s" repeatCount="indefinite" begin="4s"
-                path={`M ${startCx + 12} ${startCy} L ${crX + crW / 2} ${crY + crH / 2} L ${gmX + gmW / 2} ${gmY + gmH / 2} L ${gmX + gmW / 2} ${paY} L ${paX + paW / 2} ${paY + paH / 2} L ${tamX + tamW / 2} ${tamY + tamH / 2} L ${tlX + tlW / 2} ${tlY + tlH / 2} L ${tlX + tlW / 2} ${devY + devH / 2} L ${devX + devW / 2} ${devY + devH / 2} L ${qaX + qaW / 2} ${qaY + qaH / 2} L ${crwX + crwW / 2} ${crwY + crwH / 2} L ${relX + relW / 2} ${relY + relH / 2} L ${relX + relW / 2} ${uatY + uatH / 2} L ${uatX + uatW / 2} ${uatY + uatH / 2} L ${diaX} ${diaY} L ${chX + chW / 2} ${chY + chH / 2} L ${endCx} ${endCy}`}
+              <animateMotion dur="16s" repeatCount="indefinite" begin="5.3s"
+                path={[
+                  `M ${startCx + 12} ${startCy}`,
+                  `L ${crX + crW / 2} ${crY + crH / 2}`,
+                  `L ${gmX + gmW / 2} ${gmY + gmH / 2}`,
+                  `L ${gmX + gmW / 2} ${paY - 2}`,
+                  `L ${paX + paW / 2} ${paY - 2}`,
+                  `L ${paX + paW / 2} ${paY + paH / 2}`,
+                  `L ${tamX + tamW / 2} ${tamY + tamH / 2}`,
+                  `L ${tlX + tlW / 2} ${tlY + tlH / 2}`,
+                  `L ${tlX + tlW / 2} ${(tlY + tlH + devY) / 2}`,
+                  `L ${devX + devW / 2} ${(tlY + tlH + devY) / 2}`,
+                  `L ${devX + devW / 2} ${devY + devH / 2}`,
+                  `L ${qaX + qaW / 2} ${qaY + qaH / 2}`,
+                  `L ${crwX + crwW / 2} ${crwY + crwH / 2}`,
+                  `L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2}`,
+                  `L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2}`,
+                  `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
+                  `L ${diaX} ${diaY}`,
+                  `L ${chX + chW / 2} ${chY + chH / 2}`,
+                  `L ${endCx} ${endCy}`,
+                ].join(" ")}
               />
             </circle>
           </>
