@@ -1041,7 +1041,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
           transform={`rotate(45, ${diaX}, ${diaY})`} />
         <text x={diaX} y={diaY + 1} textAnchor="middle" dominantBaseline="central" fontSize={9} fontWeight={700} fill="#333">✕</text>
 
-        <line x1={diaX + 16} y1={diaY} x2={chX} y2={chY + chH / 2} {...sa} markerEnd="url(#ah)" />
+        {/* No direct line from diamond to Commercial Handoff — flow goes through Release+Monitoring */}
         <Box x={chX} y={chY} w={chW} h={chH} c={P} lines={["Commercial", "Handoff"]} />
         <line x1={chX + chW} y1={chY + chH / 2} x2={endCx - 12} y2={endCy} {...sa} markerEnd="url(#ah)" />
         <circle cx={endCx} cy={endCy} r={11} fill="none" stroke={lanes[1].color} strokeWidth={2.5} />
@@ -1060,16 +1060,16 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         <text x={(diaX + devX + devW / 2) / 2} y={lanes[1].y + lanes[1].h + 3} fontSize={6.5} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
 
         {/* ── Cross: Diamond (Passed) → Release+Monitoring ── */}
-        {/* Goes down from diamond, bends right-down to Release top */}
-        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${lanes[1].y + lanes[1].h + 14} L ${relX + relW / 2} ${lanes[1].y + lanes[1].h + 14} L ${relX + relW / 2} ${relY}`}
+        {/* Goes straight down from diamond to Release+Monitoring top — both are roughly vertically aligned */}
+        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${relY + relH / 2} L ${relX + relW} ${relY + relH / 2}`}
           stroke="rgba(59,255,157,0.4)" {...da} markerEnd="url(#ahd)" />
-        <text x={diaX + 8} y={lanes[1].y + lanes[1].h + 12} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Passed</text>
+        <text x={diaX + 8} y={(diaY + 16 + relY) / 2} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Passed</text>
 
         {/* ── Cross: Release+Monitoring → Commercial Handoff (Released) ── */}
-        {/* Goes up from Release top-right, then right to Commercial Handoff bottom */}
-        <path d={`M ${relX + relW} ${relY + 8} L ${relX + relW + 15} ${relY + 8} L ${relX + relW + 15} ${lanes[1].y + lanes[1].h + 14} L ${chX + chW / 2} ${lanes[1].y + lanes[1].h + 14} L ${chX + chW / 2} ${chY + chH}`}
+        {/* Goes up from Release right, right along gap, then up to Commercial Handoff bottom */}
+        <path d={`M ${relX + relW} ${relY + relH / 2} L ${chX + chW / 2} ${relY + relH / 2} L ${chX + chW / 2} ${chY + chH}`}
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
-        <text x={(relX + relW + 15 + chX + chW / 2) / 2} y={lanes[1].y + lanes[1].h + 12} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Released</text>
+        <text x={chX + chW / 2 + 8} y={(relY + relH / 2 + chY + chH) / 2} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Released</text>
 
         {/* ══════ DEVELOPER LANE ══════ */}
         <Box x={devX} y={devY} w={devW} h={devH} c={P} lines={["💻 Development"]} />
@@ -1121,8 +1121,13 @@ function IntegrationsFlow({ active }: { active: boolean }) {
                   `L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2}`,
                   `L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2}`,
                   `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
-                  // PO lane: UAT → Diamond → Commercial Handoff
+                  // PO lane: UAT → Diamond → (Passed down) → Release → (Released up) → Commercial Handoff
                   `L ${diaX} ${diaY}`,
+                  // Passed: down to Release+Monitoring
+                  `L ${diaX} ${relY + relH / 2}`,
+                  `L ${relX + relW / 2} ${relY + relH / 2}`,
+                  // Released: right then up to Commercial Handoff
+                  `L ${chX + chW / 2} ${relY + relH / 2}`,
                   `L ${chX + chW / 2} ${chY + chH / 2}`,
                   `L ${endCx} ${endCy}`,
                 ].join(" ")}
@@ -1149,6 +1154,9 @@ function IntegrationsFlow({ active }: { active: boolean }) {
                   `L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2}`,
                   `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
                   `L ${diaX} ${diaY}`,
+                  `L ${diaX} ${relY + relH / 2}`,
+                  `L ${relX + relW / 2} ${relY + relH / 2}`,
+                  `L ${chX + chW / 2} ${relY + relH / 2}`,
                   `L ${chX + chW / 2} ${chY + chH / 2}`,
                   `L ${endCx} ${endCy}`,
                 ].join(" ")}
