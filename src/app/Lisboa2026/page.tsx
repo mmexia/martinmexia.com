@@ -289,6 +289,43 @@ function ValueCard({
   );
 }
 
+/* ─────────────────────── PRINCIPLE CARD (hover like AnimatedCard) ─────────────────────── */
+function PrincipleCard({ active, delay, color, icon, title, children }: {
+  active: boolean; delay: number; color: string; icon: string; title: string; children: React.ReactNode;
+}) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <AnimatedText active={active} delay={delay}>
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          background: hovered
+            ? `linear-gradient(135deg, ${color}25, ${color}10)`
+            : `linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))`,
+          border: `1px solid ${hovered ? color + "60" : "rgba(255,255,255,0.08)"}`,
+          borderRadius: 20,
+          padding: "40px 36px",
+          textAlign: "center",
+          maxWidth: 380,
+          transition: "all 0.4s ease",
+          transform: hovered ? "translateY(-4px)" : "translateY(0)",
+          boxShadow: hovered ? `0 20px 60px ${color}15` : "none",
+          backdropFilter: "blur(20px)",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column" as const,
+          justifyContent: "flex-start",
+        }}
+      >
+        <div style={{ fontSize: 48, marginBottom: 16 }}>{icon}</div>
+        <h3 style={{ fontSize: 22, fontWeight: 700, color: COLORS.text, marginBottom: 12 }}>{title}</h3>
+        <p style={{ fontSize: 15, color: COLORS.textMuted, lineHeight: 1.6, margin: 0 }}>{children}</p>
+      </div>
+    </AnimatedText>
+  );
+}
+
 /* ─────────────────────── MATRIX COMPONENT ─────────────────────── */
 function OrgMatrix({ active }: { active: boolean }) {
   const platformGroups = [
@@ -1581,48 +1618,12 @@ export default function Lisboa2026() {
               maxWidth: 900,
             }}
           >
-            <AnimatedText active={current === 3} delay={0.25}>
-              <div
-                style={{
-                  background: "linear-gradient(135deg, rgba(62,79,224,0.12), rgba(62,79,224,0.04))",
-                  border: "1px solid rgba(62,79,224,0.2)",
-                  borderRadius: 20,
-                  padding: "40px 36px",
-                  textAlign: "center",
-                  maxWidth: 380,
-                  backdropFilter: "blur(20px)",
-                }}
-              >
-                <div style={{ fontSize: 48, marginBottom: 16 }}>👥</div>
-                <h3 style={{ fontSize: 22, fontWeight: 700, color: COLORS.text, marginBottom: 12 }}>
-                  Full Stack Ownership
-                </h3>
-                <p style={{ fontSize: 15, color: COLORS.textMuted, lineHeight: 1.6, margin: 0 }}>
-                  Product Teams are the full owners of their domain — <strong style={{ color: COLORS.text }}>Backend, Frontend, and Mobile</strong>. One team, one mission, complete ownership.
-                </p>
-              </div>
-            </AnimatedText>
-            <AnimatedText active={current === 3} delay={0.4}>
-              <div
-                style={{
-                  background: "linear-gradient(135deg, rgba(59,255,157,0.1), rgba(59,255,157,0.03))",
-                  border: "1px solid rgba(59,255,157,0.2)",
-                  borderRadius: 20,
-                  padding: "40px 36px",
-                  textAlign: "center",
-                  maxWidth: 380,
-                  backdropFilter: "blur(20px)",
-                }}
-              >
-                <div style={{ fontSize: 48, marginBottom: 16 }}>✦</div>
-                <h3 style={{ fontSize: 22, fontWeight: 700, color: COLORS.text, marginBottom: 12 }}>
-                  Cross-Team Collaboration
-                </h3>
-                <p style={{ fontSize: 15, color: COLORS.textMuted, lineHeight: 1.6, margin: 0 }}>
-                  Pending tech initiatives will enable teams to <strong style={{ color: COLORS.accent }}>submit PRs to other teams&apos; codebases</strong>, unblocking ourselves without dependencies.
-                </p>
-              </div>
-            </AnimatedText>
+            <PrincipleCard active={current === 3} delay={0.25} color={COLORS.primary} icon="👥" title="Full Stack Ownership">
+              Product Teams are the full owners of their domain — <strong style={{ color: COLORS.text }}>Backend, Frontend, and Mobile</strong>. One team, one mission, complete ownership.
+            </PrincipleCard>
+            <PrincipleCard active={current === 3} delay={0.4} color={COLORS.primary} icon="✦" title="Cross-Team Collaboration">
+              Pending tech initiatives will enable teams to <strong style={{ color: COLORS.accent }}>submit PRs to other teams&apos; codebases</strong>, unblocking ourselves without dependencies.
+            </PrincipleCard>
           </div>
         </Slide>
 
