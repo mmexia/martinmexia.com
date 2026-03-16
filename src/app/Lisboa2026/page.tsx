@@ -1047,23 +1047,17 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         <circle cx={endCx} cy={endCy} r={11} fill="none" stroke={lanes[1].color} strokeWidth={2.5} />
         <rect x={endCx - 5} y={endCy - 5} width={10} height={10} rx={1.5} fill={lanes[1].color} />
 
-        {/* ── Cross: Code Review → PO UAT (Ready for UAT) ── */}
-        {/* Goes straight up from Code Review top to PO UAT bottom */}
-        <path d={`M ${crwX + crwW / 2} ${crwY} L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${uatY + uatH}`}
+        {/* ── Cross: Release+Monitoring → PO UAT (Ready for UAT) ── */}
+        {/* Goes straight up from Release+Monitoring top to PO UAT bottom */}
+        <path d={`M ${relX + relW / 2} ${relY} L ${relX + relW / 2} ${(relY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${(relY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${uatY + uatH}`}
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
-        <text x={(crwX + crwW / 2 + uatX + uatW / 2) / 2 - 20} y={(crwY + uatY + uatH) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for UAT</text>
-
-        {/* ── Cross: Diamond (AC Failed) → Development ── */}
-        {/* Goes down from diamond bottom, then left below PO lane, then down into Dev lane */}
-        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${lanes[1].y + lanes[1].h + 6} L ${devX + devW / 2} ${lanes[1].y + lanes[1].h + 6} L ${devX + devW / 2} ${devY}`}
-          stroke="rgba(255,94,0,0.45)" {...da} markerEnd="url(#ahd)" />
-        <text x={(diaX + devX + devW / 2) / 2} y={lanes[1].y + lanes[1].h + 3} fontSize={6.5} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
+        <text x={(relX + relW / 2 + uatX + uatW / 2) / 2 - 20} y={(relY + uatY + uatH) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for UAT</text>
 
         {/* ── Cross: Diamond (Passed) → Release+Monitoring ── */}
-        {/* Goes straight down from diamond to Release+Monitoring top — both are roughly vertically aligned */}
-        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${relY + relH / 2} L ${relX + relW} ${relY + relH / 2}`}
+        {/* Goes straight down from diamond to Release+Monitoring top */}
+        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${(diaY + 16 + relY) / 2} L ${relX + relW / 2 + 20} ${(diaY + 16 + relY) / 2} L ${relX + relW / 2 + 20} ${relY}`}
           stroke="rgba(59,255,157,0.4)" {...da} markerEnd="url(#ahd)" />
-        <text x={diaX + 8} y={(diaY + 16 + relY) / 2} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Passed</text>
+        <text x={diaX + 8} y={(diaY + 16 + relY) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Passed</text>
 
         {/* ── Cross: Release+Monitoring → Commercial Handoff (Released) ── */}
         {/* Goes up from Release right, right along gap, then up to Commercial Handoff bottom */}
@@ -1073,15 +1067,20 @@ function IntegrationsFlow({ active }: { active: boolean }) {
 
         {/* ══════ DEVELOPER LANE ══════ */}
         <Box x={devX} y={devY} w={devW} h={devH} c={P} lines={["💻 Development"]} />
-        <line x1={devX + devW} y1={devY + devH / 2} x2={qaX} y2={qaY + qaH / 2} {...sa} markerEnd="url(#ah)" />
+        <line x1={devX + devW} y1={devY + devH / 2} x2={qaX} y2={qaY + qaH / 2} stroke="rgba(255,255,255,0.5)" strokeWidth={1.5} {...da} markerEnd="url(#ahd)" />
         <Box x={qaX} y={qaY} w={qaW} h={qaH} c={G} lines={["☑️ Self-QA"]} />
-        {/* Self-QA → Development feedback loop (dashed, loops back under) */}
+        {/* Self-QA → Development feedback loop (dashed, U-shaped under) */}
         <path d={`M ${qaX} ${qaY + qaH} L ${qaX} ${qaY + qaH + 14} L ${devX + devW} ${qaY + qaH + 14} L ${devX + devW} ${devY + devH}`}
           stroke="rgba(255,255,255,0.3)" {...da} markerEnd="url(#ahd)" />
-        <line x1={qaX + qaW} y1={qaY + qaH / 2} x2={crwX} y2={crwY + crwH / 2} {...sa} markerEnd="url(#ah)" />
+        <line x1={qaX + qaW} y1={qaY + qaH / 2} x2={crwX} y2={crwY + crwH / 2} stroke="rgba(255,255,255,0.5)" strokeWidth={1.5} {...da} markerEnd="url(#ahd)" />
         <Box x={crwX} y={crwY} w={crwW} h={crwH} c={G} lines={["🔎 Code", "Review"]} />
-        <line x1={crwX + crwW} y1={crwY + crwH / 2} x2={relX} y2={relY + relH / 2} {...sa} markerEnd="url(#ah)" />
+        <line x1={crwX + crwW} y1={crwY + crwH / 2} x2={relX} y2={relY + relH / 2} stroke="rgba(255,255,255,0.5)" strokeWidth={1.5} {...da} markerEnd="url(#ahd)" />
         <Box x={relX} y={relY} w={relW} h={relH} c={P} lines={["📡 Release +", "Monitoring"]} />
+
+        {/* ── AC Failed: Release+Monitoring → Development (U-shaped under Developer lane) ── */}
+        <path d={`M ${relX + relW / 2} ${relY + relH} L ${relX + relW / 2} ${relY + relH + 14} L ${devX + devW / 2} ${relY + relH + 14} L ${devX + devW / 2} ${devY + devH}`}
+          stroke="rgba(255,94,0,0.45)" {...da} markerEnd="url(#ahd)" />
+        <text x={(relX + relW / 2 + devX + devW / 2) / 2 - 15} y={relY + relH + 11} fontSize={6.5} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
 
         {/* ── Cross: Dev → Ops (Blocked) ── */}
         <path d={`M ${devX + devW / 2} ${devY + devH} L ${devX + devW / 2} ${brY}`}
@@ -1120,15 +1119,17 @@ function IntegrationsFlow({ active }: { active: boolean }) {
                   // Dev lane
                   `L ${qaX + qaW / 2} ${qaY + qaH / 2}`,
                   `L ${crwX + crwW / 2} ${crwY + crwH / 2}`,
-                  // Ready for UAT: up then right
-                  `L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2}`,
-                  `L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2}`,
+                  `L ${relX + relW / 2} ${relY + relH / 2}`,
+                  // Ready for UAT: up from Release+Monitoring to PO UAT
+                  `L ${relX + relW / 2} ${(relY + uatY + uatH) / 2}`,
+                  `L ${uatX + uatW / 2} ${(relY + uatY + uatH) / 2}`,
                   `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
                   // PO lane: UAT → Diamond → (Passed down) → Release → (Released up) → Commercial Handoff
                   `L ${diaX} ${diaY}`,
-                  // Passed: down to Release+Monitoring
-                  `L ${diaX} ${relY + relH / 2}`,
-                  `L ${relX + relW / 2} ${relY + relH / 2}`,
+                  // Passed: down to Release+Monitoring top
+                  `L ${diaX} ${(diaY + 16 + relY) / 2}`,
+                  `L ${relX + relW / 2 + 20} ${(diaY + 16 + relY) / 2}`,
+                  `L ${relX + relW / 2 + 20} ${relY + relH / 2}`,
                   // Released: right then up to Commercial Handoff
                   `L ${chX + chW / 2} ${relY + relH / 2}`,
                   `L ${chX + chW / 2} ${chY + chH / 2}`,
@@ -1153,12 +1154,14 @@ function IntegrationsFlow({ active }: { active: boolean }) {
                   `L ${devX + devW / 2} ${devY + devH / 2}`,
                   `L ${qaX + qaW / 2} ${qaY + qaH / 2}`,
                   `L ${crwX + crwW / 2} ${crwY + crwH / 2}`,
-                  `L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2}`,
-                  `L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2}`,
+                  `L ${relX + relW / 2} ${relY + relH / 2}`,
+                  `L ${relX + relW / 2} ${(relY + uatY + uatH) / 2}`,
+                  `L ${uatX + uatW / 2} ${(relY + uatY + uatH) / 2}`,
                   `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
                   `L ${diaX} ${diaY}`,
-                  `L ${diaX} ${relY + relH / 2}`,
-                  `L ${relX + relW / 2} ${relY + relH / 2}`,
+                  `L ${diaX} ${(diaY + 16 + relY) / 2}`,
+                  `L ${relX + relW / 2 + 20} ${(diaY + 16 + relY) / 2}`,
+                  `L ${relX + relW / 2 + 20} ${relY + relH / 2}`,
                   `L ${chX + chW / 2} ${relY + relH / 2}`,
                   `L ${chX + chW / 2} ${chY + chH / 2}`,
                   `L ${endCx} ${endCy}`,
