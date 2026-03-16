@@ -291,65 +291,48 @@ function OrgMatrix({ active }: { active: boolean }) {
   const platformGroups = [
     {
       label: "Core Platforms",
-      color: "#4d65ff20",
+      color: "#4d65ff",
+      bg: "#4d65ff12",
       rows: ["Core", "Routing"],
     },
     {
       label: "Internal",
-      color: "#7E41E920",
+      color: "#7E41E9",
+      bg: "#7E41E912",
       rows: ["Data Enablement", "Internal Tools & Architecture"],
     },
     {
       label: "Experience",
-      color: "#3BFF9D15",
+      color: "#3BFF9D",
+      bg: "#3BFF9D10",
       rows: ["Dashboard", "Checkout", "SDK & Plugins"],
     },
   ];
 
-  const businessUnits = [
-    {
-      group: "Business Units",
-      units: [
-        {
-          label: "Cards",
-          subs: ["Card Payments & Integrations", "Tokenization"],
-          color: "#4d65ff",
-          bg: "#4d65ff18",
-        },
-        {
-          label: "APMs",
-          subs: ["APM Integrations"],
-          color: "#7E41E9",
-          bg: "#7E41E918",
-        },
-        {
-          label: "Payment Ancillaries",
-          subs: ["Core Ancillaries", "Reconciliations"],
-          color: "#3BFF9D",
-          bg: "#3BFF9D15",
-        },
-      ],
-    },
-    {
-      group: "New Bets",
-      units: [
-        {
-          label: "New Bets",
-          subs: ["Banking Connectivity", "Agentic Payments", "Banking Tech / WhiteLabel"],
-          color: "#FF5E00",
-          bg: "#FF5E0018",
-        },
-      ],
-    },
+  const columns = [
+    { group: "Cards", color: "#4d65ff", subs: ["Card Payments & Integrations", "Tokenization"] },
+    { group: "APMs", color: "#7E41E9", subs: ["APM Integrations"] },
+    { group: "Payment Ancillaries", color: "#3BFF9D", subs: ["Core Ancillaries", "Reconciliations"] },
+    { group: "New Bets", color: "#FF5E00", subs: ["Banking Connectivity", "Agentic Payments", "Banking Tech / WhiteLabel"] },
   ];
 
-  const allSubs = businessUnits.flatMap((g) =>
-    g.units.flatMap((u) => u.subs.map((s) => ({ sub: s, color: u.color, bg: u.bg })))
+  const allSubs = columns.flatMap((c) =>
+    c.subs.map((s) => ({ sub: s, color: c.color }))
   );
-  const allRows = platformGroups.flatMap((g) => g.rows);
+
+  let rowIndex = 0;
 
   return (
-    <div style={{ width: "100%", maxWidth: 1200, margin: "0 auto" }}>
+    <div
+      style={{
+        width: "100%",
+        maxWidth: 1100,
+        margin: "0 auto",
+        opacity: active ? 1 : 0,
+        transform: active ? "translateY(0)" : "translateY(30px)",
+        transition: "all 0.8s cubic-bezier(0.4,0,0.2,1) 0.2s",
+      }}
+    >
       <div
         style={{
           overflowX: "auto",
@@ -363,89 +346,78 @@ function OrgMatrix({ active }: { active: boolean }) {
           style={{
             width: "100%",
             borderCollapse: "collapse",
-            minWidth: 900,
+            minWidth: 860,
           }}
         >
           <thead>
-            {/* Tier 1 */}
+            {/* Tier 1 — group headers */}
             <tr>
               <th
-                colSpan={2}
                 style={{
-                  padding: "12px 16px",
-                  background: "transparent",
+                  width: 40,
+                  padding: "10px 8px",
                   borderBottom: "1px solid rgba(255,255,255,0.06)",
                 }}
               />
-              {businessUnits.map((g) => (
+              <th
+                style={{
+                  width: 180,
+                  padding: "10px 16px",
+                  borderBottom: "1px solid rgba(255,255,255,0.06)",
+                }}
+              />
+              {columns.map((c) => (
                 <th
-                  key={g.group}
-                  colSpan={g.units.reduce((a, u) => a + u.subs.length, 0)}
+                  key={c.group}
+                  colSpan={c.subs.length}
                   style={{
-                    padding: "14px 16px",
-                    fontSize: 12,
+                    padding: "12px 8px",
+                    fontSize: 11,
                     fontWeight: 700,
-                    letterSpacing: "0.1em",
+                    letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: COLORS.textMuted,
-                    borderBottom: "1px solid rgba(255,255,255,0.06)",
+                    color: c.color,
+                    borderBottom: `2px solid ${c.color}40`,
                     textAlign: "center",
                   }}
                 >
-                  {g.group}
+                  {c.group}
                 </th>
               ))}
             </tr>
-            {/* Tier 2 - Unit labels */}
+            {/* Tier 2 — sub-column headers */}
             <tr>
               <th
-                colSpan={2}
                 style={{
-                  padding: "10px 16px",
-                  background: "transparent",
-                  borderBottom: "1px solid rgba(255,255,255,0.06)",
-                }}
-              />
-              {businessUnits.flatMap((g) =>
-                g.units.map((u) => (
-                  <th
-                    key={u.label}
-                    colSpan={u.subs.length}
-                    style={{
-                      padding: "10px 8px",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: u.color,
-                      borderBottom: `2px solid ${u.color}40`,
-                      textAlign: "center",
-                    }}
-                  >
-                    {u.label}
-                  </th>
-                ))
-              )}
-            </tr>
-            {/* Tier 3 - Sub columns */}
-            <tr>
-              <th
-                colSpan={2}
-                style={{
-                  padding: "10px 16px",
-                  background: "transparent",
+                  padding: "8px",
                   borderBottom: "1px solid rgba(255,255,255,0.08)",
                 }}
               />
+              <th
+                style={{
+                  padding: "8px 16px",
+                  borderBottom: "1px solid rgba(255,255,255,0.08)",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: COLORS.textMuted,
+                  textAlign: "left",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                Platform
+              </th>
               {allSubs.map((s) => (
                 <th
                   key={s.sub}
                   style={{
-                    padding: "10px 8px",
-                    fontSize: 11,
+                    padding: "10px 6px",
+                    fontSize: 10,
                     fontWeight: 500,
-                    color: COLORS.textMuted,
+                    color: `${s.color}AA`,
                     borderBottom: "1px solid rgba(255,255,255,0.08)",
                     textAlign: "center",
-                    whiteSpace: "nowrap",
+                    lineHeight: 1.3,
                   }}
                 >
                   {s.sub}
@@ -454,30 +426,33 @@ function OrgMatrix({ active }: { active: boolean }) {
             </tr>
           </thead>
           <tbody>
-            {platformGroups.map((group, gi) =>
-              group.rows.map((row, ri) => (
-                <AnimatedText
-                  key={row}
-                  active={active}
-                  delay={0.3 + (gi * group.rows.length + ri) * 0.08}
-                >
-                  <tr>
+            {platformGroups.map((group) =>
+              group.rows.map((row, ri) => {
+                const idx = rowIndex++;
+                return (
+                  <tr
+                    key={row}
+                    style={{
+                      opacity: active ? 1 : 0,
+                      transition: `opacity 0.5s ease ${0.3 + idx * 0.07}s`,
+                    }}
+                  >
                     {ri === 0 && (
                       <td
                         rowSpan={group.rows.length}
                         style={{
-                          padding: "12px 16px",
-                          fontSize: 12,
+                          padding: "8px 4px",
+                          fontSize: 10,
                           fontWeight: 700,
-                          color: COLORS.textMuted,
+                          color: group.color,
                           textTransform: "uppercase",
                           letterSpacing: "0.08em",
                           writingMode: "vertical-rl",
                           textOrientation: "mixed",
                           transform: "rotate(180deg)",
                           textAlign: "center",
-                          background: group.color,
-                          borderRight: "1px solid rgba(255,255,255,0.06)",
+                          background: group.bg,
+                          borderRight: `2px solid ${group.color}30`,
                           whiteSpace: "nowrap",
                         }}
                       >
@@ -486,12 +461,13 @@ function OrgMatrix({ active }: { active: boolean }) {
                     )}
                     <td
                       style={{
-                        padding: "14px 16px",
-                        fontSize: 14,
+                        padding: "12px 16px",
+                        fontSize: 13,
                         fontWeight: 600,
                         color: COLORS.text,
                         borderBottom: "1px solid rgba(255,255,255,0.04)",
                         whiteSpace: "nowrap",
+                        background: "rgba(255,255,255,0.01)",
                       }}
                     >
                       {row}
@@ -500,43 +476,57 @@ function OrgMatrix({ active }: { active: boolean }) {
                       <td
                         key={`${row}-${s.sub}`}
                         style={{
-                          padding: 8,
-                          background: s.bg,
+                          padding: 6,
                           borderBottom: "1px solid rgba(255,255,255,0.03)",
                           borderLeft: "1px solid rgba(255,255,255,0.03)",
-                          minWidth: 80,
+                          minWidth: 70,
+                          background: `${s.color}10`,
                         }}
-                      />
+                      >
+                        <div
+                          style={{
+                            width: "100%",
+                            height: 32,
+                            borderRadius: 6,
+                            background: `${s.color}18`,
+                            border: `1px solid ${s.color}15`,
+                          }}
+                        />
+                      </td>
                     ))}
                   </tr>
-                </AnimatedText>
-              ))
+                );
+              })
             )}
           </tbody>
         </table>
       </div>
-      <p
-        style={{
-          textAlign: "center",
-          fontSize: 13,
-          color: COLORS.textMuted,
-          marginTop: 20,
-          opacity: 0.7,
-        }}
-      >
-        Product Teams own the full stack — Backend, Frontend, Mobile
-      </p>
-      <p
-        style={{
-          textAlign: "center",
-          fontSize: 13,
-          color: COLORS.accent,
-          marginTop: 8,
-          opacity: 0.8,
-        }}
-      >
-        ✦ Pending tech initiatives will unblock cross-team PRs to different codebases
-      </p>
+      <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 24, flexWrap: "wrap" }}>
+        <div
+          style={{
+            fontSize: 13,
+            color: COLORS.textMuted,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <span style={{ fontSize: 16 }}>👥</span>
+          Product Teams own the full stack — <strong style={{ color: COLORS.text }}>Backend, Frontend, Mobile</strong>
+        </div>
+        <div
+          style={{
+            fontSize: 13,
+            color: COLORS.accent,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <span style={{ fontSize: 16 }}>✦</span>
+          Cross-team PRs will be unblocked by upcoming tech initiatives
+        </div>
+      </div>
     </div>
   );
 }
@@ -894,11 +884,12 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
         </thead>
         <tbody>
           {STRATEGIC_PROJECTS.map((p, i) => (
-            <AnimatedText key={p.name} active={active} delay={0.2 + i * 0.06}>
               <tr
+                key={p.name}
                 style={{
                   borderBottom: "1px solid rgba(255,255,255,0.04)",
-                  transition: "background 0.2s ease",
+                  transition: `background 0.2s ease, opacity 0.5s ease ${0.2 + i * 0.05}s`,
+                  opacity: active ? 1 : 0,
                 }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.background = "rgba(255,255,255,0.03)")
@@ -971,7 +962,6 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                   {p.owner}
                 </td>
               </tr>
-            </AnimatedText>
           ))}
         </tbody>
       </table>
