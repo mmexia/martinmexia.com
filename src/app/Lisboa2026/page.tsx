@@ -1029,7 +1029,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         {/* ── Cross: TL Review → Development (Ready for dev) ── */}
         <path d={`M ${tlX + tlW / 2} ${tlY + tlH} L ${tlX + tlW / 2} ${(tlY + tlH + devY) / 2} L ${devX + devW / 2} ${(tlY + tlH + devY) / 2} L ${devX + devW / 2} ${devY}`}
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
-        <text x={tlX + tlW / 2 + 8} y={(tlY + tlH + devY) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for dev</text>
+        <text x={tlX + tlW / 2 - 48} y={(tlY + tlH + devY) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for dev</text>
 
         <line x1={tlX + tlW} y1={tlY + tlH / 2} x2={uatX} y2={uatY + uatH / 2} {...sa} markerEnd="url(#ah)" />
         <Box x={uatX} y={uatY} w={uatW} h={uatH} c={P} lines={["PO UAT"]} />
@@ -1077,23 +1077,23 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         {/* NO direct arrow from Code Review to Release+Monitoring — work goes up via Ready for UAT then back down via Passed */}
         <Box x={relX} y={relY} w={relW} h={relH} c={P} lines={["📡 Release +", "Monitoring"]} />
 
-        {/* ── AC Failed: Release+Monitoring → Development (U-shaped under Developer lane) ── */}
-        <path d={`M ${relX + relW / 2} ${relY + relH} L ${relX + relW / 2} ${relY + relH + 14} L ${devX + devW / 2} ${relY + relH + 14} L ${devX + devW / 2} ${devY + devH}`}
+        {/* ── AC Failed: Diamond (X) → Development (cross-lane, dashed) ── */}
+        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${lanes[1].y + lanes[1].h + 6} L ${devX + devW / 2} ${lanes[1].y + lanes[1].h + 6} L ${devX + devW / 2} ${devY}`}
           stroke="rgba(255,94,0,0.45)" {...da} markerEnd="url(#ahd)" />
-        <text x={(relX + relW / 2 + devX + devW / 2) / 2 - 15} y={relY + relH + 11} fontSize={6.5} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
+        <text x={(diaX + devX + devW / 2) / 2} y={lanes[1].y + lanes[1].h + 3} fontSize={6.5} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
 
-        {/* ── Cross: Dev → Ops (Blocked) ── */}
-        <path d={`M ${devX + devW / 2} ${devY + devH} L ${devX + devW / 2} ${brY}`}
+        {/* ── Cross: Dev → Ops (Blocked) — [ shape: down, left, down ── */}
+        <path d={`M ${devX} ${devY + devH / 2} L ${devX - 18} ${devY + devH / 2} L ${devX - 18} ${brY + brH / 2} L ${brX} ${brY + brH / 2}`}
           stroke="rgba(245,158,11,0.45)" {...da} markerEnd="url(#ahd)" />
-        <text x={devX + devW / 2 + 8} y={(devY + devH + brY) / 2} fontSize={6.5} fill="#F59E0B" fontWeight={600} fontStyle="italic">Blocked</text>
+        <text x={devX - 16 - 40} y={(devY + devH / 2 + brY + brH / 2) / 2 + 3} fontSize={6.5} fill="#F59E0B" fontWeight={600} fontStyle="italic">Blocked</text>
 
         {/* ══════ OPERATIONS LANE ══════ */}
         <Box x={brX} y={brY} w={brW} h={brH} c={Y} lines={["🔧 Blocker", "Resolution"]} />
 
-        {/* ── Cross: Ops → Dev (Resolved) ── */}
-        <path d={`M ${brX + brW} ${brY + brH / 2} L ${brX + brW + 25} ${brY + brH / 2} L ${brX + brW + 25} ${devY + devH}`}
+        {/* ── Cross: Ops → Dev (Resolved) — goes from Blocker Resolution up to Development ── */}
+        <path d={`M ${brX + brW / 2} ${brY} L ${brX + brW / 2} ${(brY + devY + devH) / 2} L ${devX + devW} ${(brY + devY + devH) / 2} L ${devX + devW} ${devY + devH}`}
           stroke="rgba(34,197,94,0.45)" {...da} markerEnd="url(#ahd)" />
-        <text x={brX + brW + 30} y={(brY + brH / 2 + devY + devH) / 2} fontSize={6.5} fill="#22C55E" fontWeight={600} fontStyle="italic">Resolved</text>
+        <text x={brX + brW / 2 + 8} y={(brY + devY + devH) / 2 - 4} fontSize={6.5} fill="#22C55E" fontWeight={600} fontStyle="italic">Resolved</text>
 
         {/* ── Animated flow dot (slow, follows main happy path) ── */}
         {active && (
