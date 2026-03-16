@@ -937,7 +937,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
   const G = { bg: "#D1FAE5", bd: "#059669", tx: "#064E3B" }; // green
 
   /* Solid arrow style */
-  const sa = { stroke: "rgba(255,255,255,0.45)", strokeWidth: 1.2 };
+  const sa = { stroke: "rgba(255,255,255,0.6)", strokeWidth: 1.8 };
   /* Dashed arrow style */
   const da = { strokeWidth: 1.2, strokeDasharray: "5 3", fill: "none" };
 
@@ -987,11 +987,11 @@ function IntegrationsFlow({ active }: { active: boolean }) {
     >
       <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", height: "auto" }}>
         <defs>
-          <marker id="ah" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
-            <path d="M0,0 L7,2.5 L0,5" fill="rgba(255,255,255,0.5)" />
+          <marker id="ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L8,3 L0,6" fill="rgba(255,255,255,0.7)" />
           </marker>
-          <marker id="ahd" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
-            <path d="M0,0 L7,2.5 L0,5" fill="rgba(255,255,255,0.3)" />
+          <marker id="ahd" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L8,3 L0,6" fill="rgba(255,255,255,0.4)" />
           </marker>
         </defs>
 
@@ -1075,6 +1075,9 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         <Box x={devX} y={devY} w={devW} h={devH} c={P} lines={["💻 Development"]} />
         <line x1={devX + devW} y1={devY + devH / 2} x2={qaX} y2={qaY + qaH / 2} {...sa} markerEnd="url(#ah)" />
         <Box x={qaX} y={qaY} w={qaW} h={qaH} c={G} lines={["☑️ Self-QA"]} />
+        {/* Self-QA → Development feedback loop (dashed, loops back under) */}
+        <path d={`M ${qaX} ${qaY + qaH} L ${qaX} ${qaY + qaH + 14} L ${devX + devW} ${qaY + qaH + 14} L ${devX + devW} ${devY + devH}`}
+          stroke="rgba(255,255,255,0.3)" {...da} markerEnd="url(#ahd)" />
         <line x1={qaX + qaW} y1={qaY + qaH / 2} x2={crwX} y2={crwY + crwH / 2} {...sa} markerEnd="url(#ah)" />
         <Box x={crwX} y={crwY} w={crwW} h={crwH} c={G} lines={["🔎 Code", "Review"]} />
         <line x1={crwX + crwW} y1={crwY + crwH / 2} x2={relX} y2={relY + relH / 2} {...sa} markerEnd="url(#ah)" />
