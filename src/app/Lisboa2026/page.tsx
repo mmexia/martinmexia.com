@@ -1047,11 +1047,11 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         <circle cx={endCx} cy={endCy} r={11} fill="none" stroke={lanes[1].color} strokeWidth={2.5} />
         <rect x={endCx - 5} y={endCy - 5} width={10} height={10} rx={1.5} fill={lanes[1].color} />
 
-        {/* ── Cross: Release+Monitoring → PO UAT (Ready for UAT) ── */}
-        {/* Goes straight up from Release+Monitoring top to PO UAT bottom */}
-        <path d={`M ${relX + relW / 2} ${relY} L ${relX + relW / 2} ${(relY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${(relY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${uatY + uatH}`}
+        {/* ── Cross: Code Review → PO UAT (Ready for UAT) ── */}
+        {/* Goes straight up from Code Review top to PO UAT bottom */}
+        <path d={`M ${crwX + crwW / 2} ${crwY} L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${uatY + uatH}`}
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
-        <text x={(relX + relW / 2 + uatX + uatW / 2) / 2 - 20} y={(relY + uatY + uatH) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for UAT</text>
+        <text x={(crwX + crwW / 2 + uatX + uatW / 2) / 2 - 20} y={(crwY + uatY + uatH) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for UAT</text>
 
         {/* ── Cross: Diamond (Passed) → Release+Monitoring ── */}
         {/* Goes straight down from diamond to Release+Monitoring top */}
@@ -1074,7 +1074,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
           stroke="rgba(255,255,255,0.3)" {...da} markerEnd="url(#ahd)" />
         <line x1={qaX + qaW} y1={qaY + qaH / 2} x2={crwX} y2={crwY + crwH / 2} stroke="rgba(255,255,255,0.5)" strokeWidth={1.5} {...da} markerEnd="url(#ahd)" />
         <Box x={crwX} y={crwY} w={crwW} h={crwH} c={G} lines={["🔎 Code", "Review"]} />
-        <line x1={crwX + crwW} y1={crwY + crwH / 2} x2={relX} y2={relY + relH / 2} stroke="rgba(255,255,255,0.5)" strokeWidth={1.5} {...da} markerEnd="url(#ahd)" />
+        {/* NO direct arrow from Code Review to Release+Monitoring — work goes up via Ready for UAT then back down via Passed */}
         <Box x={relX} y={relY} w={relW} h={relH} c={P} lines={["📡 Release +", "Monitoring"]} />
 
         {/* ── AC Failed: Release+Monitoring → Development (U-shaped under Developer lane) ── */}
@@ -1119,10 +1119,9 @@ function IntegrationsFlow({ active }: { active: boolean }) {
                   // Dev lane
                   `L ${qaX + qaW / 2} ${qaY + qaH / 2}`,
                   `L ${crwX + crwW / 2} ${crwY + crwH / 2}`,
-                  `L ${relX + relW / 2} ${relY + relH / 2}`,
-                  // Ready for UAT: up from Release+Monitoring to PO UAT
-                  `L ${relX + relW / 2} ${(relY + uatY + uatH) / 2}`,
-                  `L ${uatX + uatW / 2} ${(relY + uatY + uatH) / 2}`,
+                  // Ready for UAT: up from Code Review to PO UAT
+                  `L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2}`,
+                  `L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2}`,
                   `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
                   // PO lane: UAT → Diamond → (Passed down) → Release → (Released up) → Commercial Handoff
                   `L ${diaX} ${diaY}`,
@@ -1154,9 +1153,8 @@ function IntegrationsFlow({ active }: { active: boolean }) {
                   `L ${devX + devW / 2} ${devY + devH / 2}`,
                   `L ${qaX + qaW / 2} ${qaY + qaH / 2}`,
                   `L ${crwX + crwW / 2} ${crwY + crwH / 2}`,
-                  `L ${relX + relW / 2} ${relY + relH / 2}`,
-                  `L ${relX + relW / 2} ${(relY + uatY + uatH) / 2}`,
-                  `L ${uatX + uatW / 2} ${(relY + uatY + uatH) / 2}`,
+                  `L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2}`,
+                  `L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2}`,
                   `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
                   `L ${diaX} ${diaY}`,
                   `L ${diaX} ${(diaY + 16 + relY) / 2}`,
