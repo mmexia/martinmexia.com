@@ -616,7 +616,7 @@ function CycleVisualization({ active }: { active: boolean }) {
                   color: COLORS.accent,
                   fontWeight: 600,
                   background: `${COLORS.accent}15`,
-                  padding: "6px 12px",
+                  padding: "5px 12px",
                   borderRadius: 8,
                 }}
               >
@@ -665,7 +665,7 @@ function CycleVisualization({ active }: { active: boolean }) {
                   color: COLORS.accentAlt,
                   fontWeight: 600,
                   background: `${COLORS.accentAlt}15`,
-                  padding: "6px 12px",
+                  padding: "5px 12px",
                   borderRadius: 8,
                 }}
               >
@@ -714,7 +714,7 @@ function CycleVisualization({ active }: { active: boolean }) {
                   color: COLORS.accent,
                   fontWeight: 600,
                   background: `${COLORS.accent}15`,
-                  padding: "6px 12px",
+                  padding: "5px 12px",
                   borderRadius: 8,
                 }}
               >
@@ -914,7 +914,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
               >
                 <td
                   style={{
-                    padding: "6px 12px",
+                    padding: "5px 12px",
                     fontSize: 13,
                     fontWeight: 600,
                     color: COLORS.text,
@@ -966,7 +966,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                 </td>
                 <td
                   style={{
-                    padding: "6px 12px",
+                    padding: "5px 12px",
                     fontSize: 12,
                     color: p.owner === "TBD" ? COLORS.textMuted : COLORS.text,
                     fontWeight: p.owner === "TBD" ? 400 : 600,
@@ -1432,12 +1432,12 @@ export default function Lisboa2026() {
           <AnimatedText active={current === 5} delay={0}>
             <div
               style={{
-                fontSize: 12,
+                fontSize: 11,
                 fontWeight: 600,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 color: COLORS.primary,
-                marginBottom: 10,
+                marginBottom: 6,
                 textAlign: "center",
               }}
             >
@@ -1447,11 +1447,11 @@ export default function Lisboa2026() {
           <AnimatedText active={current === 5} delay={0.1}>
             <h2
               style={{
-                fontSize: "clamp(24px, 3vw, 40px)",
+                fontSize: "clamp(22px, 2.8vw, 36px)",
                 fontWeight: 800,
                 textAlign: "center",
                 letterSpacing: "-0.02em",
-                marginBottom: 6,
+                marginBottom: 4,
               }}
             >
               Strategic{" "}
@@ -1461,12 +1461,12 @@ export default function Lisboa2026() {
           <AnimatedText active={current === 5} delay={0.15}>
             <p
               style={{
-                fontSize: 14,
+                fontSize: 13,
                 color: COLORS.textMuted,
                 textAlign: "center",
-                marginBottom: 20,
+                marginBottom: 14,
                 maxWidth: 600,
-                lineHeight: 1.4,
+                lineHeight: 1.3,
               }}
             >
               Beyond everyday work, these are the special initiatives with{" "}
