@@ -45,7 +45,7 @@ function Slide({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: "60px 80px",
+        padding: "40px 80px",
         opacity: active ? 1 : 0,
         transform: active ? "translateY(0) scale(1)" : "translateY(40px) scale(0.97)",
         transition: "opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1)",
@@ -880,7 +880,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                 <th
                   key={h}
                   style={{
-                    padding: "10px 14px",
+                    padding: "7px 12px",
                     fontSize: 10,
                     fontWeight: 700,
                     letterSpacing: "0.1em",
@@ -914,7 +914,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
               >
                 <td
                   style={{
-                    padding: "8px 14px",
+                    padding: "6px 12px",
                     fontSize: 13,
                     fontWeight: 600,
                     color: COLORS.text,
@@ -966,7 +966,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                 </td>
                 <td
                   style={{
-                    padding: "8px 14px",
+                    padding: "6px 12px",
                     fontSize: 12,
                     color: p.owner === "TBD" ? COLORS.textMuted : COLORS.text,
                     fontWeight: p.owner === "TBD" ? 400 : 600,
