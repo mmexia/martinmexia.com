@@ -725,6 +725,39 @@ function CycleVisualization({ active }: { active: boolean }) {
         </div>
       </div>
 
+      {/* Sprint markers */}
+      <AnimatedText active={active} delay={1.0}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 8,
+            marginTop: 28,
+            padding: "0 5%",
+          }}
+        >
+          {[1, 2, 3, 4].map((s) => (
+            <div
+              key={s}
+              style={{
+                flex: 1,
+                maxWidth: 200,
+                textAlign: "center",
+                padding: "8px 12px",
+                borderRadius: 8,
+                background: `${COLORS.primary}10`,
+                border: `1px solid ${COLORS.primary}20`,
+              }}
+            >
+              <div style={{ fontSize: 11, fontWeight: 700, color: COLORS.primaryLight }}>
+                Sprint {s}
+              </div>
+              <div style={{ fontSize: 10, color: COLORS.textMuted }}>2 weeks</div>
+            </div>
+          ))}
+        </div>
+      </AnimatedText>
+
       {/* Bottom callout */}
       <AnimatedText active={active} delay={1.2}>
         <div
@@ -732,7 +765,7 @@ function CycleVisualization({ active }: { active: boolean }) {
             display: "flex",
             justifyContent: "center",
             gap: 24,
-            marginTop: 40,
+            marginTop: 24,
             flexWrap: "wrap",
           }}
         >
@@ -983,11 +1016,263 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
   );
 }
 
+/* ─────────────────────── INTEGRATIONS FLOW ─────────────────────── */
+function IntegrationsFlow({ active }: { active: boolean }) {
+  const lanes = [
+    {
+      label: "COMMERCIAL",
+      color: "#3E4FE0",
+      bg: "rgba(62,79,224,0.06)",
+      steps: [
+        { name: "Start", icon: "▶", type: "start" as const },
+        { name: "Commercial\nRequest", icon: "📄", type: "step" as const, variant: "yellow" as const },
+        { name: "GM\nApproval", icon: "✅", type: "step" as const, variant: "yellow" as const },
+      ],
+    },
+    {
+      label: "PRODUCT\nOWNER",
+      color: "#E91E8C",
+      bg: "rgba(233,30,140,0.05)",
+      steps: [
+        { name: "Product\nAnalysis", icon: "🔍", type: "step" as const, variant: "pink" as const },
+        { name: "TAM\nValidation", icon: "📋", type: "step" as const, variant: "pink" as const },
+        { name: "TL Review +\nEstimation", icon: "⏱️", type: "step" as const, variant: "pink" as const },
+        { name: "PO UAT", icon: "👤", type: "step" as const, variant: "pink" as const },
+        { name: "UAT\nPassed?", icon: "✕", type: "decision" as const },
+        { name: "Commercial\nHandoff", icon: "📥", type: "step" as const, variant: "pink" as const },
+        { name: "Process\nComplete", icon: "⏹", type: "end" as const },
+      ],
+    },
+    {
+      label: "DEVELOPER",
+      color: "#22C55E",
+      bg: "rgba(34,197,94,0.05)",
+      steps: [
+        { name: "Development", icon: "💻", type: "step" as const, variant: "pink" as const },
+        { name: "Self-QA", icon: "☑️", type: "step" as const, variant: "green" as const },
+        { name: "Code\nReview", icon: "🔎", type: "step" as const, variant: "green" as const },
+        { name: "Release +\nMonitoring", icon: "📡", type: "step" as const, variant: "pink" as const },
+      ],
+    },
+    {
+      label: "OPERATIONS",
+      color: "#F59E0B",
+      bg: "rgba(245,158,11,0.05)",
+      steps: [
+        { name: "Blocker\nResolution", icon: "🔧", type: "step" as const, variant: "pink" as const },
+      ],
+    },
+  ];
+
+  const stepColors = {
+    yellow: { bg: "#FEF3C7", border: "#F59E0B", text: "#92400E" },
+    pink: { bg: "#FCE4EC", border: "#E91E63", text: "#880E4F" },
+    green: { bg: "#D1FAE5", border: "#22C55E", text: "#065F46" },
+  };
+
+  return (
+    <div
+      style={{
+        opacity: active ? 1 : 0,
+        transform: active ? "translateY(0)" : "translateY(20px)",
+        transition: "all 0.8s ease 0.2s",
+        display: "flex",
+        flexDirection: "column",
+        gap: 6,
+        width: "100%",
+        maxWidth: 900,
+      }}
+    >
+      {lanes.map((lane, li) => (
+        <div
+          key={lane.label}
+          style={{
+            display: "flex",
+            alignItems: "stretch",
+            borderRadius: 10,
+            overflow: "hidden",
+            border: `1px solid ${lane.color}25`,
+            background: lane.bg,
+            minHeight: lane.steps.length <= 1 ? 60 : 70,
+            opacity: active ? 1 : 0,
+            transition: `opacity 0.5s ease ${0.3 + li * 0.12}s`,
+          }}
+        >
+          {/* Lane label */}
+          <div
+            style={{
+              width: 36,
+              minWidth: 36,
+              background: `${lane.color}15`,
+              borderRight: `2px solid ${lane.color}40`,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "4px 2px",
+            }}
+          >
+            <span
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "mixed",
+                transform: "rotate(180deg)",
+                fontSize: 8,
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                color: lane.color,
+                textTransform: "uppercase",
+                whiteSpace: "pre-line",
+                textAlign: "center",
+                lineHeight: 1.2,
+              }}
+            >
+              {lane.label}
+            </span>
+          </div>
+          {/* Steps */}
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "8px 12px",
+              flexWrap: "nowrap",
+              overflowX: "auto",
+            }}
+          >
+            {lane.steps.map((step, si) => (
+              <div key={step.name} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                {si > 0 && (
+                  <div style={{ color: lane.color, fontSize: 14, opacity: 0.6 }}>→</div>
+                )}
+                {step.type === "start" ? (
+                  <div
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: "50%",
+                      border: `2px solid ${lane.color}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 14,
+                      color: lane.color,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {step.icon}
+                  </div>
+                ) : step.type === "end" ? (
+                  <div
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: "50%",
+                      border: `3px solid ${lane.color}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 14,
+                      color: lane.color,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {step.icon}
+                  </div>
+                ) : step.type === "decision" ? (
+                  <div
+                    style={{
+                      width: 36,
+                      height: 36,
+                      transform: "rotate(45deg)",
+                      border: `2px solid ${lane.color}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(255,255,255,0.9)",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <span style={{ transform: "rotate(-45deg)", fontSize: 10, fontWeight: 700, color: "#333" }}>
+                      {step.icon}
+                    </span>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      padding: "6px 10px",
+                      borderRadius: 6,
+                      background: stepColors[step.variant || "pink"].bg,
+                      border: `1px solid ${stepColors[step.variant || "pink"].border}30`,
+                      flexShrink: 0,
+                      textAlign: "center",
+                      minWidth: 70,
+                    }}
+                  >
+                    <div style={{ fontSize: 12, marginBottom: 2 }}>{step.icon}</div>
+                    <div
+                      style={{
+                        fontSize: 9,
+                        fontWeight: 600,
+                        color: stepColors[step.variant || "pink"].text,
+                        whiteSpace: "pre-line",
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      {step.name}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+      {/* Connection labels */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 16,
+          marginTop: 6,
+          flexWrap: "wrap",
+        }}
+      >
+        {[
+          { label: "Approved", from: "Commercial", to: "Product Owner" },
+          { label: "Ready for Dev", from: "Product Owner", to: "Developer" },
+          { label: "Ready for UAT", from: "Developer", to: "Product Owner" },
+          { label: "Blocked → Resolved", from: "Developer", to: "Operations" },
+        ].map((c) => (
+          <div
+            key={c.label}
+            style={{
+              fontSize: 9,
+              color: COLORS.textMuted,
+              display: "flex",
+              alignItems: "center",
+              gap: 4,
+              background: "rgba(255,255,255,0.03)",
+              padding: "3px 8px",
+              borderRadius: 6,
+              border: "1px solid rgba(255,255,255,0.06)",
+            }}
+          >
+            <span style={{ borderBottom: "1px dashed rgba(255,255,255,0.3)", width: 12, display: "inline-block" }} />
+            {c.label}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ─────────────────────── MAIN PRESENTATION ─────────────────────── */
 export default function Lisboa2026() {
   const [current, setCurrent] = useState(0);
   const transitioning = useRef(false);
-  const TOTAL_SLIDES = 6;
+  const TOTAL_SLIDES = 8;
 
   const goTo = useCallback(
     (n: number) => {
@@ -1346,7 +1631,7 @@ export default function Lisboa2026() {
           </div>
         </Slide>
 
-        {/* ═══════════ SLIDE 3: TEAM STRUCTURE ═══════════ */}
+        {/* ═══════════ SLIDE 3: TEAM STRUCTURE - PRINCIPLES ═══════════ */}
         <Slide active={current === 3} index={3}>
           <AnimatedText active={current === 3} delay={0}>
             <div
@@ -1366,23 +1651,277 @@ export default function Lisboa2026() {
           <AnimatedText active={current === 3} delay={0.1}>
             <h2
               style={{
-                fontSize: "clamp(28px, 3.5vw, 48px)",
+                fontSize: "clamp(32px, 4vw, 56px)",
                 fontWeight: 800,
                 textAlign: "center",
                 letterSpacing: "-0.02em",
-                marginBottom: 36,
+                marginBottom: 48,
               }}
             >
               Product Team{" "}
               <span className="yuno-logo-text">Structure</span>
             </h2>
           </AnimatedText>
-          <OrgMatrix active={current === 3} />
+
+          <div
+            style={{
+              display: "flex",
+              gap: 32,
+              flexWrap: "wrap",
+              justifyContent: "center",
+              maxWidth: 900,
+            }}
+          >
+            <AnimatedText active={current === 3} delay={0.25}>
+              <div
+                style={{
+                  background: "linear-gradient(135deg, rgba(62,79,224,0.12), rgba(62,79,224,0.04))",
+                  border: "1px solid rgba(62,79,224,0.2)",
+                  borderRadius: 20,
+                  padding: "40px 36px",
+                  textAlign: "center",
+                  maxWidth: 380,
+                  backdropFilter: "blur(20px)",
+                }}
+              >
+                <div style={{ fontSize: 48, marginBottom: 16 }}>👥</div>
+                <h3 style={{ fontSize: 22, fontWeight: 700, color: COLORS.text, marginBottom: 12 }}>
+                  Full Stack Ownership
+                </h3>
+                <p style={{ fontSize: 15, color: COLORS.textMuted, lineHeight: 1.6, margin: 0 }}>
+                  Product Teams are the full owners of their domain — <strong style={{ color: COLORS.text }}>Backend, Frontend, and Mobile</strong>. One team, one mission, complete ownership.
+                </p>
+              </div>
+            </AnimatedText>
+            <AnimatedText active={current === 3} delay={0.4}>
+              <div
+                style={{
+                  background: "linear-gradient(135deg, rgba(59,255,157,0.1), rgba(59,255,157,0.03))",
+                  border: "1px solid rgba(59,255,157,0.2)",
+                  borderRadius: 20,
+                  padding: "40px 36px",
+                  textAlign: "center",
+                  maxWidth: 380,
+                  backdropFilter: "blur(20px)",
+                }}
+              >
+                <div style={{ fontSize: 48, marginBottom: 16 }}>✦</div>
+                <h3 style={{ fontSize: 22, fontWeight: 700, color: COLORS.text, marginBottom: 12 }}>
+                  Cross-Team Collaboration
+                </h3>
+                <p style={{ fontSize: 15, color: COLORS.textMuted, lineHeight: 1.6, margin: 0 }}>
+                  Pending tech initiatives will enable teams to <strong style={{ color: COLORS.accent }}>submit PRs to other teams&apos; codebases</strong>, unblocking ourselves without dependencies.
+                </p>
+              </div>
+            </AnimatedText>
+          </div>
         </Slide>
 
-        {/* ═══════════ SLIDE 4: WAYS OF WORKING ═══════════ */}
+        {/* ═══════════ SLIDE 4: TEAM STRUCTURE - MATRIX ═══════════ */}
         <Slide active={current === 4} index={4}>
           <AnimatedText active={current === 4} delay={0}>
+            <div
+              style={{
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: COLORS.primary,
+                marginBottom: 10,
+                textAlign: "center",
+              }}
+            >
+              Organization
+            </div>
+          </AnimatedText>
+          <AnimatedText active={current === 4} delay={0.1}>
+            <h2
+              style={{
+                fontSize: "clamp(24px, 3vw, 40px)",
+                fontWeight: 800,
+                textAlign: "center",
+                letterSpacing: "-0.02em",
+                marginBottom: 20,
+              }}
+            >
+              Product Team{" "}
+              <span className="yuno-logo-text">Structure</span>
+            </h2>
+          </AnimatedText>
+          <OrgMatrix active={current === 4} />
+          <AnimatedText active={current === 4} delay={0.8}>
+            <a
+              href="https://docs.google.com/spreadsheets/d/1emwUjf4Jei6gjX67zvSsZ-lACc6EDkAAQlmvRPYdicg/edit?pli=1&gid=273124883#gid=273124883"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                marginTop: 16,
+                fontSize: 12,
+                color: COLORS.primaryLight,
+                textDecoration: "none",
+                padding: "6px 14px",
+                borderRadius: 8,
+                background: "rgba(62,79,224,0.08)",
+                border: "1px solid rgba(62,79,224,0.15)",
+                transition: "all 0.2s ease",
+              }}
+            >
+              📊 View Full Team Matrix Spreadsheet →
+            </a>
+          </AnimatedText>
+        </Slide>
+
+        {/* ═══════════ SLIDE 5: TEAM STRUCTURE - INTEGRATIONS ═══════════ */}
+        <Slide active={current === 5} index={5}>
+          <AnimatedText active={current === 5} delay={0}>
+            <div
+              style={{
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: COLORS.primary,
+                marginBottom: 6,
+                textAlign: "center",
+              }}
+            >
+              Organization
+            </div>
+          </AnimatedText>
+          <AnimatedText active={current === 5} delay={0.1}>
+            <h2
+              style={{
+                fontSize: "clamp(22px, 2.8vw, 36px)",
+                fontWeight: 800,
+                textAlign: "center",
+                letterSpacing: "-0.02em",
+                marginBottom: 6,
+              }}
+            >
+              Team Structure:{" "}
+              <span className="yuno-logo-text">Integrations</span>
+            </h2>
+          </AnimatedText>
+          <AnimatedText active={current === 5} delay={0.15}>
+            <p
+              style={{
+                fontSize: 13,
+                color: COLORS.textMuted,
+                textAlign: "center",
+                marginBottom: 16,
+                maxWidth: 700,
+                lineHeight: 1.4,
+              }}
+            >
+              3 teams will have integrations: <strong style={{ color: "#4d65ff" }}>Cards</strong>,{" "}
+              <strong style={{ color: "#7E41E9" }}>APMs</strong>, and{" "}
+              <strong style={{ color: "#FF5E00" }}>Banking Connectivity</strong>.
+              They will have a different way of working but within the same team.
+            </p>
+          </AnimatedText>
+
+          <div
+            style={{
+              display: "flex",
+              gap: 24,
+              alignItems: "flex-start",
+              width: "100%",
+              maxWidth: 1200,
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {/* Flow map - left side */}
+            <div style={{ flex: "1 1 580px", minWidth: 500, maxWidth: 900 }}>
+              <IntegrationsFlow active={current === 5} />
+            </div>
+
+            {/* Key points - right side */}
+            <div
+              style={{
+                flex: "0 1 300px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+                opacity: current === 5 ? 1 : 0,
+                transform: current === 5 ? "translateX(0)" : "translateX(20px)",
+                transition: "all 0.6s ease 0.6s",
+              }}
+            >
+              {[
+                {
+                  icon: "🔄",
+                  title: "Mobile Developers",
+                  text: "Devs are mobile between integration teams depending on priorities",
+                  color: COLORS.primary,
+                },
+                {
+                  icon: "📅",
+                  title: "Weekly Cadence",
+                  text: "Will most likely not work on sprints but more on a weekly cadence",
+                  color: COLORS.accent,
+                },
+                {
+                  icon: "🔗",
+                  title: "Full Payment Flow",
+                  text: "They will be owners of the whole payment flow, not just integrating the API",
+                  color: COLORS.matrixOrange,
+                },
+              ].map((point, i) => (
+                <AnimatedText key={point.title} active={current === 5} delay={0.5 + i * 0.12}>
+                  <div
+                    style={{
+                      background: "rgba(255,255,255,0.03)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      borderRadius: 12,
+                      padding: "12px 16px",
+                      borderLeft: `3px solid ${point.color}`,
+                    }}
+                  >
+                    <div style={{ fontSize: 10, fontWeight: 700, color: point.color, marginBottom: 4, display: "flex", alignItems: "center", gap: 6 }}>
+                      <span style={{ fontSize: 14 }}>{point.icon}</span>
+                      {point.title}
+                    </div>
+                    <div style={{ fontSize: 12, color: COLORS.textMuted, lineHeight: 1.4 }}>
+                      {point.text}
+                    </div>
+                  </div>
+                </AnimatedText>
+              ))}
+            </div>
+          </div>
+
+          <AnimatedText active={current === 5} delay={0.9}>
+            <a
+              href="https://docs.google.com/presentation/d/1RdDD0MTeU3XFXcOVj836-E5Ye5aeSIQda9_vQCwt7UY/edit?slide=id.g3ce6d675f99_0_1#slide=id.g3ce6d675f99_0_1"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                marginTop: 12,
+                fontSize: 12,
+                color: COLORS.primaryLight,
+                textDecoration: "none",
+                padding: "6px 14px",
+                borderRadius: 8,
+                background: "rgba(62,79,224,0.08)",
+                border: "1px solid rgba(62,79,224,0.15)",
+                transition: "all 0.2s ease",
+              }}
+            >
+              📑 View Integrations Process Presentation →
+            </a>
+          </AnimatedText>
+        </Slide>
+
+        {/* ═══════════ SLIDE 6: WAYS OF WORKING ═══════════ */}
+        <Slide active={current === 6} index={6}>
+          <AnimatedText active={current === 6} delay={0}>
             <div
               style={{
                 fontSize: 13,
@@ -1397,7 +1936,7 @@ export default function Lisboa2026() {
               Process
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 4} delay={0.1}>
+          <AnimatedText active={current === 6} delay={0.1}>
             <h2
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
@@ -1411,25 +1950,30 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Working</span>
             </h2>
           </AnimatedText>
-          <AnimatedText active={current === 4} delay={0.2}>
+          <AnimatedText active={current === 6} delay={0.2}>
             <p
               style={{
                 fontSize: 16,
                 color: COLORS.textMuted,
                 textAlign: "center",
                 marginBottom: 36,
-                maxWidth: 500,
+                maxWidth: 550,
               }}
             >
               2-Month Delivery Cycles with Built-in Flexibility
+              <br />
+              <span style={{ color: COLORS.accent, fontWeight: 600, fontSize: 15 }}>
+                2-Week Sprints
+              </span>{" "}
+              <span style={{ fontSize: 14 }}>within each cycle</span>
             </p>
           </AnimatedText>
-          <CycleVisualization active={current === 4} />
+          <CycleVisualization active={current === 6} />
         </Slide>
 
-        {/* ═══════════ SLIDE 5: STRATEGIC PROJECTS ═══════════ */}
-        <Slide active={current === 5} index={5}>
-          <AnimatedText active={current === 5} delay={0}>
+        {/* ═══════════ SLIDE 7: STRATEGIC PROJECTS ═══════════ */}
+        <Slide active={current === 7} index={7}>
+          <AnimatedText active={current === 7} delay={0}>
             <div
               style={{
                 fontSize: 11,
@@ -1444,7 +1988,7 @@ export default function Lisboa2026() {
               Roadmap
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 5} delay={0.1}>
+          <AnimatedText active={current === 7} delay={0.1}>
             <h2
               style={{
                 fontSize: "clamp(22px, 2.8vw, 36px)",
@@ -1458,7 +2002,7 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Projects</span>
             </h2>
           </AnimatedText>
-          <AnimatedText active={current === 5} delay={0.15}>
+          <AnimatedText active={current === 7} delay={0.15}>
             <p
               style={{
                 fontSize: 13,
@@ -1473,7 +2017,7 @@ export default function Lisboa2026() {
               <strong style={{ color: COLORS.accent }}>per-person ownership</strong>
             </p>
           </AnimatedText>
-          <StrategicProjectsTable active={current === 5} />
+          <StrategicProjectsTable active={current === 7} />
         </Slide>
 
         {/* Bottom nav hint */}
