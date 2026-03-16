@@ -660,39 +660,6 @@ function CycleVisualization({ active }: { active: boolean }) {
         </div>
       </div>
 
-      {/* Sprint markers */}
-      <AnimatedText active={active} delay={1.0}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 8,
-            marginTop: 28,
-            padding: "0 5%",
-          }}
-        >
-          {[1, 2, 3, 4].map((s) => (
-            <div
-              key={s}
-              style={{
-                flex: 1,
-                maxWidth: 200,
-                textAlign: "center",
-                padding: "8px 12px",
-                borderRadius: 8,
-                background: `${COLORS.primary}10`,
-                border: `1px solid ${COLORS.primary}20`,
-              }}
-            >
-              <div style={{ fontSize: 11, fontWeight: 700, color: COLORS.primaryLight }}>
-                Sprint {s}
-              </div>
-              <div style={{ fontSize: 10, color: COLORS.textMuted }}>2 weeks</div>
-            </div>
-          ))}
-        </div>
-      </AnimatedText>
-
       {/* Bottom callout */}
       <AnimatedText active={active} delay={1.2}>
         <div
@@ -953,33 +920,60 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
 
 /* ─────────────────────── INTEGRATIONS FLOW (SVG) ─────────────────────── */
 function IntegrationsFlow({ active }: { active: boolean }) {
-  /* Layout constants */
-  const W = 820;
-  const H = 420;
-  const laneH = [80, 110, 90, 70]; // Commercial, PO, Dev, Ops
-  const laneY = [0, 80, 190, 280];
-  const laneColors = ["#3E4FE0", "#E91E8C", "#22C55E", "#F59E0B"];
-  const laneBg = ["rgba(62,79,224,0.08)", "rgba(233,30,140,0.06)", "rgba(34,197,94,0.06)", "rgba(245,158,11,0.06)"];
-  const laneLabels = ["COMMERCIAL", "PRODUCT OWNER", "DEVELOPER", "OPERATIONS"];
-  const labelW = 36;
+  const W = 780;
+  const H = 380;
+  /* Lane geometry */
+  const LW = 32; // label column width
+  const laneGap = 4;
+  const lanes = [
+    { y: 0, h: 70, label: "COMMERCIAL", color: "#3E4FE0", bg: "rgba(62,79,224,0.07)" },
+    { y: 74, h: 100, label: "PRODUCT OWNER", color: "#E91E8C", bg: "rgba(233,30,140,0.05)" },
+    { y: 178, h: 80, label: "DEVELOPER", color: "#22C55E", bg: "rgba(34,197,94,0.05)" },
+    { y: 262, h: 65, label: "OPERATIONS", color: "#F59E0B", bg: "rgba(245,158,11,0.05)" },
+  ];
+  /* Step colors */
+  const Y = { bg: "#FEF3C7", bd: "#D4A017", tx: "#78350F" }; // yellow
+  const P = { bg: "#FCE7F3", bd: "#DB2777", tx: "#831843" }; // pink
+  const G = { bg: "#D1FAE5", bd: "#059669", tx: "#064E3B" }; // green
 
-  /* Step positions (x centers) */
-  const stepStyle = (bg: string, border: string) => ({
-    bg, border, text: "#333",
-  });
-  const yellow = stepStyle("#FEF3C7", "#F59E0B");
-  const pink = stepStyle("#FCE4EC", "#E91E63");
-  const green = stepStyle("#D1FAE5", "#22C55E");
+  /* Solid arrow style */
+  const sa = { stroke: "rgba(255,255,255,0.45)", strokeWidth: 1.2 };
+  /* Dashed arrow style */
+  const da = { strokeWidth: 1.2, strokeDasharray: "5 3", fill: "none" };
 
-  /* Animated flowing dot on dashed lines */
-  const flowDotKeyframes = `
-    @keyframes flowDot {
-      0% { offset-distance: 0%; opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { offset-distance: 100%; opacity: 0; }
-    }
-  `;
+  /* Box helper */
+  const Box = ({ x, y, w, h, c, lines }: { x: number; y: number; w: number; h: number; c: typeof Y; lines: string[] }) => (
+    <g>
+      <rect x={x} y={y} width={w} height={h} rx={5} fill={c.bg} stroke={c.bd} strokeWidth={0.8} strokeOpacity={0.5} />
+      {lines.map((t, i) => (
+        <text key={i} x={x + w / 2} y={y + (h / 2) + (i - (lines.length - 1) / 2) * 11} textAnchor="middle" dominantBaseline="central" fontSize={8} fontWeight={600} fill={c.tx}>{t}</text>
+      ))}
+    </g>
+  );
+
+  /* ── Step center coordinates ── */
+  // Commercial
+  const startCx = 62, startCy = 35;
+  const crX = 100, crY = 12, crW = 85, crH = 44;
+  const gmX = 215, gmY = 12, gmW = 80, gmH = 44;
+  // Product Owner (lane y=74)
+  const paX = 50, paY = 86, paW = 80, paH = 38;
+  const tamX = 155, tamY = 86, tamW = 80, tamH = 38;
+  const tlX = 260, tlY = 86, tlW = 88, tlH = 38;
+  const uatX = 470, uatY = 86, uatW = 70, uatH = 38;
+  const diaX = 568, diaY = 105; // decision diamond center
+  const chX = 630, chY = 86, chW = 80, chH = 38;
+  const endCx = 742, endCy = 105;
+  // Developer (lane y=178)
+  const devX = 80, devY = 192, devW = 90, devH = 38;
+  const qaX = 200, qaY = 192, qaW = 75, qaH = 38;
+  const crwX = 305, crwY = 192, crwW = 85, crwH = 38;
+  const relX = 470, relY = 192, relW = 95, relH = 38;
+  // Operations (lane y=262)
+  const brX = 80, brY = 274, brW = 100, brH = 38;
+
+  /* Main flow animation path (slow) */
+  const mainPath = `M ${startCx + 14} ${startCy} L ${crX} ${startCy} L ${crX + crW} ${startCy} L ${gmX} ${startCy} L ${gmX + gmW / 2} ${gmY + gmH} L ${gmX + gmW / 2} ${paY} L ${paX + paW / 2} ${paY + paH / 2} L ${tamX} ${tamY + tamH / 2} L ${tlX} ${tlY + tlH / 2} L ${tlX + tlW / 2} ${tlY + tlH} L ${devX + devW / 2} ${devY} L ${qaX} ${devY + devH / 2} L ${crwX} ${qaY + qaH / 2} L ${relX} ${relY + relH / 2} L ${relX + relW / 2} ${relY} L ${uatX + uatW / 2} ${uatY + uatH} L ${diaX} ${diaY} L ${chX} ${chY + chH / 2} L ${endCx} ${endCy}`;
 
   return (
     <div
@@ -988,157 +982,125 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         transform: active ? "translateY(0)" : "translateY(20px)",
         transition: "all 0.8s ease 0.2s",
         width: "100%",
-        maxWidth: W + 20,
+        maxWidth: W + 10,
       }}
     >
-      <style>{flowDotKeyframes}</style>
-      <svg
-        viewBox={`0 0 ${W} ${H}`}
-        style={{ width: "100%", height: "auto" }}
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", height: "auto" }}>
         <defs>
-          <marker id="arrowSolid" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-            <path d="M0,0 L8,3 L0,6" fill="rgba(255,255,255,0.5)" />
+          <marker id="ah" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L7,2.5 L0,5" fill="rgba(255,255,255,0.5)" />
           </marker>
-          <marker id="arrowDash" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-            <path d="M0,0 L8,3 L0,6" fill="rgba(255,255,255,0.35)" />
+          <marker id="ahd" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L7,2.5 L0,5" fill="rgba(255,255,255,0.3)" />
           </marker>
         </defs>
 
-        {/* Swim lanes */}
-        {laneLabels.map((label, i) => (
-          <g key={label}>
-            <rect x={0} y={laneY[i]} width={W} height={laneH[i]} rx={8} fill={laneBg[i]} stroke={`${laneColors[i]}30`} strokeWidth={1} />
-            <rect x={0} y={laneY[i]} width={labelW} height={laneH[i]} rx={8} fill={`${laneColors[i]}15`} />
-            <text
-              x={labelW / 2}
-              y={laneY[i] + laneH[i] / 2}
-              textAnchor="middle"
-              dominantBaseline="central"
-              fill={laneColors[i]}
-              fontSize={7}
-              fontWeight={700}
-              letterSpacing="0.08em"
-              transform={`rotate(-90, ${labelW / 2}, ${laneY[i] + laneH[i] / 2})`}
-            >
-              {label}
-            </text>
+        {/* ── Swim lane backgrounds ── */}
+        {lanes.map((l) => (
+          <g key={l.label}>
+            <rect x={0} y={l.y} width={W} height={l.h} rx={6} fill={l.bg} stroke={`${l.color}20`} strokeWidth={0.5} />
+            <rect x={0} y={l.y} width={LW} height={l.h} rx={6} fill={`${l.color}12`} />
+            <text x={LW / 2} y={l.y + l.h / 2} textAnchor="middle" dominantBaseline="central"
+              fill={l.color} fontSize={6.5} fontWeight={700} letterSpacing="0.06em"
+              transform={`rotate(-90, ${LW / 2}, ${l.y + l.h / 2})`}>{l.label}</text>
           </g>
         ))}
 
-        {/* ── COMMERCIAL LANE ── */}
-        {/* Start circle */}
-        <circle cx={70} cy={laneY[0] + 40} r={14} fill="none" stroke={laneColors[0]} strokeWidth={2} />
-        <polygon points="66,34 66,46 76,40" fill={laneColors[0]} />
-        {/* Commercial Request */}
-        <rect x={110} y={laneY[0] + 18} width={90} height={44} rx={6} fill={yellow.bg} stroke={`${yellow.border}50`} strokeWidth={1} />
-        <text x={155} y={laneY[0] + 35} textAnchor="middle" fontSize={8} fontWeight={600} fill={yellow.text}>Commercial</text>
-        <text x={155} y={laneY[0] + 46} textAnchor="middle" fontSize={8} fontWeight={600} fill={yellow.text}>Request</text>
-        {/* Arrow */}
-        <line x1={84} y1={laneY[0] + 40} x2={108} y2={laneY[0] + 40} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
-        {/* GM Approval */}
-        <rect x={230} y={laneY[0] + 18} width={80} height={44} rx={6} fill={yellow.bg} stroke={`${yellow.border}50`} strokeWidth={1} />
-        <text x={270} y={laneY[0] + 35} textAnchor="middle" fontSize={8} fontWeight={600} fill={yellow.text}>GM</text>
-        <text x={270} y={laneY[0] + 46} textAnchor="middle" fontSize={8} fontWeight={600} fill={yellow.text}>Approval</text>
-        <line x1={200} y1={laneY[0] + 40} x2={228} y2={laneY[0] + 40} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+        {/* ══════ COMMERCIAL LANE ══════ */}
+        <circle cx={startCx} cy={startCy} r={12} fill="none" stroke={lanes[0].color} strokeWidth={1.5} />
+        <polygon points={`${startCx - 3},${startCy - 5} ${startCx - 3},${startCy + 5} ${startCx + 5},${startCy}`} fill={lanes[0].color} />
+        <line x1={startCx + 12} y1={startCy} x2={crX} y2={startCy} {...sa} markerEnd="url(#ah)" />
+        <Box x={crX} y={crY} w={crW} h={crH} c={Y} lines={["Commercial", "Request"]} />
+        <line x1={crX + crW} y1={crY + crH / 2} x2={gmX} y2={gmY + gmH / 2} {...sa} markerEnd="url(#ah)" />
+        <Box x={gmX} y={gmY} w={gmW} h={gmH} c={Y} lines={["GM", "Approval"]} />
 
-        {/* ── CROSS-LANE: Commercial → PO (Approved) ── */}
-        <path d="M 270 62 L 270 100" stroke="rgba(255,255,255,0.3)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
-        <text x={280} y={82} fontSize={7} fill={COLORS.accent} fontWeight={600} fontStyle="italic">Approved</text>
+        {/* ── Cross: GM Approval → Product Analysis (Approved) ── */}
+        <path d={`M ${gmX + gmW / 2} ${gmY + gmH} L ${gmX + gmW / 2} ${paY - 2} L ${paX + paW / 2} ${paY - 2} L ${paX + paW / 2} ${paY}`}
+          stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
+        <text x={gmX + gmW / 2 + 8} y={(gmY + gmH + paY) / 2 - 2} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Approved</text>
 
-        {/* ── PRODUCT OWNER LANE ── */}
-        {/* Product Analysis */}
-        <rect x={60} y={laneY[1] + 12} width={80} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
-        <text x={100} y={laneY[1] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Product</text>
-        <text x={100} y={laneY[1] + 38} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Analysis</text>
-        {/* TAM Validation */}
-        <rect x={165} y={laneY[1] + 12} width={80} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
-        <text x={205} y={laneY[1] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>TAM</text>
-        <text x={205} y={laneY[1] + 38} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Validation</text>
-        <line x1={140} y1={laneY[1] + 32} x2={163} y2={laneY[1] + 32} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
-        {/* TL Review */}
-        <rect x={270} y={laneY[1] + 12} width={85} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
-        <text x={312} y={laneY[1] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>TL Review +</text>
-        <text x={312} y={laneY[1] + 38} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Estimation</text>
-        <line x1={245} y1={laneY[1] + 32} x2={268} y2={laneY[1] + 32} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+        {/* ══════ PRODUCT OWNER LANE ══════ */}
+        <Box x={paX} y={paY} w={paW} h={paH} c={P} lines={["Product", "Analysis"]} />
+        <line x1={paX + paW} y1={paY + paH / 2} x2={tamX} y2={tamY + tamH / 2} {...sa} markerEnd="url(#ah)" />
+        <Box x={tamX} y={tamY} w={tamW} h={tamH} c={P} lines={["TAM", "Validation"]} />
+        <line x1={tamX + tamW} y1={tamY + tamH / 2} x2={tlX} y2={tlY + tlH / 2} {...sa} markerEnd="url(#ah)" />
+        <Box x={tlX} y={tlY} w={tlW} h={tlH} c={P} lines={["TL Review +", "Estimation"]} />
 
-        {/* ── CROSS-LANE: PO → Dev (Ready for dev) ── */}
-        <path d="M 312 132 L 312 210" stroke="rgba(255,255,255,0.3)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
-        <text x={322} y={172} fontSize={7} fill={COLORS.accent} fontWeight={600} fontStyle="italic">Ready for dev</text>
+        {/* ── Cross: TL Review → Development (Ready for dev) ── */}
+        <path d={`M ${tlX + tlW / 2} ${tlY + tlH} L ${tlX + tlW / 2} ${(tlY + tlH + devY) / 2} L ${devX + devW / 2} ${(tlY + tlH + devY) / 2} L ${devX + devW / 2} ${devY}`}
+          stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
+        <text x={tlX + tlW / 2 + 8} y={(tlY + tlH + devY) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for dev</text>
 
-        {/* PO UAT */}
-        <rect x={500} y={laneY[1] + 12} width={70} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
-        <text x={535} y={laneY[1] + 35} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>PO UAT</text>
+        <line x1={tlX + tlW} y1={tlY + tlH / 2} x2={uatX} y2={uatY + uatH / 2} {...sa} markerEnd="url(#ah)" strokeDasharray="6 4" />
+        <Box x={uatX} y={uatY} w={uatW} h={uatH} c={P} lines={["PO UAT"]} />
+        <line x1={uatX + uatW} y1={uatY + uatH / 2} x2={diaX - 16} y2={diaY} {...sa} markerEnd="url(#ah)" />
+
         {/* Decision diamond */}
-        <rect x={598} y={laneY[1] + 16} width={30} height={30} rx={2} fill="white" stroke={laneColors[1]} strokeWidth={1.5} transform={`rotate(45, 613, ${laneY[1] + 31})`} />
-        <text x={613} y={laneY[1] + 34} textAnchor="middle" fontSize={8} fontWeight={700} fill="#333">✕</text>
-        <line x1={570} y1={laneY[1] + 32} x2={596} y2={laneY[1] + 32} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
-        {/* Commercial Handoff */}
-        <rect x={660} y={laneY[1] + 12} width={80} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
-        <text x={700} y={laneY[1] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Commercial</text>
-        <text x={700} y={laneY[1] + 38} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Handoff</text>
-        <line x1={631} y1={laneY[1] + 32} x2={658} y2={laneY[1] + 32} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
-        {/* Process Complete */}
-        <circle cx={775} cy={laneY[1] + 32} r={13} fill="none" stroke={laneColors[1]} strokeWidth={3} />
-        <rect x={769} y={laneY[1] + 26} width={12} height={12} rx={2} fill={laneColors[1]} />
-        <line x1={740} y1={laneY[1] + 32} x2={760} y2={laneY[1] + 32} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+        <rect x={diaX - 14} y={diaY - 14} width={28} height={28} rx={2}
+          fill="rgba(255,255,255,0.9)" stroke={lanes[1].color} strokeWidth={1.2}
+          transform={`rotate(45, ${diaX}, ${diaY})`} />
+        <text x={diaX} y={diaY + 1} textAnchor="middle" dominantBaseline="central" fontSize={9} fontWeight={700} fill="#333">✕</text>
 
-        {/* ── CROSS-LANE: Dev → PO (Ready for UAT) ── */}
-        <path d="M 490 210 L 490 132" stroke="rgba(255,255,255,0.3)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
-        <text x={446} y={172} fontSize={7} fill={COLORS.accent} fontWeight={600} fontStyle="italic">Ready for UAT</text>
+        <line x1={diaX + 16} y1={diaY} x2={chX} y2={chY + chH / 2} {...sa} markerEnd="url(#ah)" />
+        <Box x={chX} y={chY} w={chW} h={chH} c={P} lines={["Commercial", "Handoff"]} />
+        <line x1={chX + chW} y1={chY + chH / 2} x2={endCx - 12} y2={endCy} {...sa} markerEnd="url(#ah)" />
+        <circle cx={endCx} cy={endCy} r={11} fill="none" stroke={lanes[1].color} strokeWidth={2.5} />
+        <rect x={endCx - 5} y={endCy - 5} width={10} height={10} rx={1.5} fill={lanes[1].color} />
 
-        {/* ── CROSS-LANE: UAT Failed → Dev (AC Failed) ── */}
-        <path d="M 613 150 L 613 170 L 160 170 L 160 210" stroke="rgba(255,94,0,0.4)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
-        <text x={380} y={165} fontSize={7} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
+        {/* ── Cross: Release+Monitoring → PO UAT (Ready for UAT) ── */}
+        <path d={`M ${relX + relW / 2} ${relY} L ${relX + relW / 2} ${(relY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${(relY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${uatY + uatH}`}
+          stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
+        <text x={relX + relW / 2 - 50} y={(relY + uatY + uatH) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for UAT</text>
 
-        {/* ── CROSS-LANE: UAT Passed → Release (Passed) ── */}
-        <path d="M 613 150 L 613 170 L 580 170 L 580 210" stroke="rgba(59,255,157,0.4)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
+        {/* ── Cross: Diamond (AC Failed) → Development ── */}
+        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${diaY + 30} L ${devX + devW / 2} ${diaY + 30} L ${devX + devW / 2} ${devY}`}
+          stroke="rgba(255,94,0,0.45)" {...da} markerEnd="url(#ahd)" />
+        <text x={(diaX + devX + devW / 2) / 2} y={diaY + 27} fontSize={6.5} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
 
-        {/* ── DEVELOPER LANE ── */}
-        {/* Development */}
-        <rect x={100} y={laneY[2] + 10} width={90} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
-        <text x={145} y={laneY[2] + 28} textAnchor="middle" fontSize={8} fontWeight={600} fill={pink.text}>💻 Development</text>
-        {/* Self-QA */}
-        <rect x={220} y={laneY[2] + 10} width={75} height={40} rx={6} fill={green.bg} stroke={`${green.border}40`} strokeWidth={1} />
-        <text x={257} y={laneY[2] + 33} textAnchor="middle" fontSize={8} fontWeight={600} fill={green.text}>☑️ Self-QA</text>
-        <line x1={190} y1={laneY[2] + 30} x2={218} y2={laneY[2] + 30} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
-        {/* Code Review */}
-        <rect x={325} y={laneY[2] + 10} width={85} height={40} rx={6} fill={green.bg} stroke={`${green.border}40`} strokeWidth={1} />
-        <text x={367} y={laneY[2] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={green.text}>🔎 Code</text>
-        <text x={367} y={laneY[2] + 39} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={green.text}>Review</text>
-        <line x1={295} y1={laneY[2] + 30} x2={323} y2={laneY[2] + 30} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
-        {/* Release + Monitoring */}
-        <rect x={530} y={laneY[2] + 10} width={95} height={40} rx={6} fill={pink.bg} stroke={`${pink.border}40`} strokeWidth={1} />
-        <text x={577} y={laneY[2] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>📡 Release +</text>
-        <text x={577} y={laneY[2] + 39} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={pink.text}>Monitoring</text>
-        <line x1={410} y1={laneY[2] + 30} x2={528} y2={laneY[2] + 30} stroke="rgba(255,255,255,0.4)" strokeWidth={1.5} markerEnd="url(#arrowSolid)" />
+        {/* ── Cross: Diamond (Passed) → Release+Monitoring ── */}
+        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${diaY + 40} L ${relX + relW / 2} ${diaY + 40} L ${relX + relW / 2} ${relY + relH}`}
+          stroke="rgba(59,255,157,0.4)" {...da} markerEnd="url(#ahd)" />
+        <text x={diaX + 8} y={diaY + 38} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Passed</text>
 
-        {/* ── CROSS-LANE: Release → Commercial Handoff (Released) ── */}
-        <path d="M 625 210 L 660 210 L 700 132" stroke="rgba(255,255,255,0.3)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
-        <text x={665} y={175} fontSize={7} fill={COLORS.accent} fontWeight={600} fontStyle="italic">Released</text>
+        {/* ── Cross: Release → Commercial Handoff (Released) ── */}
+        <path d={`M ${relX + relW} ${relY + 4} L ${chX + chW / 2} ${relY + 4} L ${chX + chW / 2} ${chY + chH}`}
+          stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
+        <text x={(relX + relW + chX + chW / 2) / 2} y={relY} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Released</text>
 
-        {/* ── CROSS-LANE: Dev → Ops (Blocked) ── */}
-        <path d="M 145 240 L 145 300" stroke="rgba(245,158,11,0.4)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
-        <text x={155} y={272} fontSize={7} fill="#F59E0B" fontWeight={600} fontStyle="italic">Blocked</text>
+        {/* ══════ DEVELOPER LANE ══════ */}
+        <Box x={devX} y={devY} w={devW} h={devH} c={P} lines={["💻 Development"]} />
+        <line x1={devX + devW} y1={devY + devH / 2} x2={qaX} y2={qaY + qaH / 2} {...sa} markerEnd="url(#ah)" />
+        <Box x={qaX} y={qaY} w={qaW} h={qaH} c={G} lines={["☑️ Self-QA"]} />
+        <line x1={qaX + qaW} y1={qaY + qaH / 2} x2={crwX} y2={crwY + crwH / 2} {...sa} markerEnd="url(#ah)" />
+        <Box x={crwX} y={crwY} w={crwW} h={crwH} c={G} lines={["🔎 Code", "Review"]} />
+        <line x1={crwX + crwW} y1={crwY + crwH / 2} x2={relX} y2={relY + relH / 2} {...sa} markerEnd="url(#ah)" />
+        <Box x={relX} y={relY} w={relW} h={relH} c={P} lines={["📡 Release +", "Monitoring"]} />
 
-        {/* ── OPERATIONS LANE ── */}
-        <rect x={80} y={laneY[3] + 10} width={100} height={40} rx={6} fill={yellow.bg} stroke={`${yellow.border}40`} strokeWidth={1} />
-        <text x={130} y={laneY[3] + 28} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={yellow.text}>🔧 Blocker</text>
-        <text x={130} y={laneY[3] + 39} textAnchor="middle" fontSize={7.5} fontWeight={600} fill={yellow.text}>Resolution</text>
+        {/* ── Cross: Dev → Ops (Blocked) ── */}
+        <path d={`M ${devX + devW / 2} ${devY + devH} L ${devX + devW / 2} ${brY}`}
+          stroke="rgba(245,158,11,0.45)" {...da} markerEnd="url(#ahd)" />
+        <text x={devX + devW / 2 + 8} y={(devY + devH + brY) / 2} fontSize={6.5} fill="#F59E0B" fontWeight={600} fontStyle="italic">Blocked</text>
 
-        {/* ── CROSS-LANE: Ops → Dev (Resolved) ── */}
-        <path d="M 180 300 L 220 300 L 220 240" stroke="rgba(34,197,94,0.4)" strokeWidth={1.5} strokeDasharray="4 3" markerEnd="url(#arrowDash)" />
-        <text x={230} y={272} fontSize={7} fill="#22C55E" fontWeight={600} fontStyle="italic">Resolved</text>
+        {/* ══════ OPERATIONS LANE ══════ */}
+        <Box x={brX} y={brY} w={brW} h={brH} c={Y} lines={["🔧 Blocker", "Resolution"]} />
 
-        {/* ── Animated flow dots ── */}
+        {/* ── Cross: Ops → Dev (Resolved) ── */}
+        <path d={`M ${brX + brW} ${brY + brH / 2} L ${brX + brW + 25} ${brY + brH / 2} L ${brX + brW + 25} ${devY + devH}`}
+          stroke="rgba(34,197,94,0.45)" {...da} markerEnd="url(#ahd)" />
+        <text x={brX + brW + 30} y={(brY + brH / 2 + devY + devH) / 2} fontSize={6.5} fill="#22C55E" fontWeight={600} fontStyle="italic">Resolved</text>
+
+        {/* ── Animated flow dot (slow, follows main happy path) ── */}
         {active && (
           <>
-            <circle r={3} fill={COLORS.accent} opacity={0.8}>
-              <animateMotion dur="4s" repeatCount="indefinite" path="M 270 62 L 270 100 L 100 100 L 100 132 L 205 132 L 312 132 L 312 210 L 145 210 L 257 210 L 367 210 L 490 210 L 490 132 L 535 132 L 613 132" />
+            <circle r={3.5} fill="#3BFF9D" opacity={0.9}>
+              <animateMotion dur="12s" repeatCount="indefinite"
+                path={`M ${startCx + 12} ${startCy} L ${crX + crW / 2} ${crY + crH / 2} L ${gmX + gmW / 2} ${gmY + gmH / 2} L ${gmX + gmW / 2} ${paY} L ${paX + paW / 2} ${paY + paH / 2} L ${tamX + tamW / 2} ${tamY + tamH / 2} L ${tlX + tlW / 2} ${tlY + tlH / 2} L ${tlX + tlW / 2} ${devY + devH / 2} L ${devX + devW / 2} ${devY + devH / 2} L ${qaX + qaW / 2} ${qaY + qaH / 2} L ${crwX + crwW / 2} ${crwY + crwH / 2} L ${relX + relW / 2} ${relY + relH / 2} L ${relX + relW / 2} ${uatY + uatH / 2} L ${uatX + uatW / 2} ${uatY + uatH / 2} L ${diaX} ${diaY} L ${chX + chW / 2} ${chY + chH / 2} L ${endCx} ${endCy}`}
+              />
             </circle>
-            <circle r={2.5} fill="#3BFF9D" opacity={0.6}>
-              <animateMotion dur="6s" repeatCount="indefinite" begin="2s" path="M 312 132 L 312 210 L 190 230 L 295 230 L 410 230 L 528 230 L 625 210 L 700 132 L 775 132" />
+            <circle r={2.5} fill="#3BFF9D" opacity={0.5}>
+              <animateMotion dur="12s" repeatCount="indefinite" begin="4s"
+                path={`M ${startCx + 12} ${startCy} L ${crX + crW / 2} ${crY + crH / 2} L ${gmX + gmW / 2} ${gmY + gmH / 2} L ${gmX + gmW / 2} ${paY} L ${paX + paW / 2} ${paY + paH / 2} L ${tamX + tamW / 2} ${tamY + tamH / 2} L ${tlX + tlW / 2} ${tlY + tlH / 2} L ${tlX + tlW / 2} ${devY + devH / 2} L ${devX + devW / 2} ${devY + devH / 2} L ${qaX + qaW / 2} ${qaY + qaH / 2} L ${crwX + crwW / 2} ${crwY + crwH / 2} L ${relX + relW / 2} ${relY + relH / 2} L ${relX + relW / 2} ${uatY + uatH / 2} L ${uatX + uatW / 2} ${uatY + uatH / 2} L ${diaX} ${diaY} L ${chX + chW / 2} ${chY + chH / 2} L ${endCx} ${endCy}`}
+              />
             </circle>
           </>
         )}
