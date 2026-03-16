@@ -1031,7 +1031,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
         <text x={tlX + tlW / 2 - 48} y={(tlY + tlH + devY) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for dev</text>
 
-        <line x1={tlX + tlW} y1={tlY + tlH / 2} x2={uatX} y2={uatY + uatH / 2} {...sa} markerEnd="url(#ah)" />
+        {/* No direct line from TL Review to PO UAT */}
         <Box x={uatX} y={uatY} w={uatW} h={uatH} c={P} lines={["PO UAT"]} />
         <line x1={uatX + uatW} y1={uatY + uatH / 2} x2={diaX - 16} y2={diaY} {...sa} markerEnd="url(#ah)" />
 
@@ -1053,11 +1053,11 @@ function IntegrationsFlow({ active }: { active: boolean }) {
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
         <text x={(crwX + crwW / 2 + uatX + uatW / 2) / 2 - 20} y={(crwY + uatY + uatH) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for UAT</text>
 
-        {/* ── Cross: Diamond (Passed) → Release+Monitoring ── */}
-        {/* Goes straight down from diamond to Release+Monitoring top */}
-        <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${(diaY + 16 + relY) / 2} L ${relX + relW / 2 + 20} ${(diaY + 16 + relY) / 2} L ${relX + relW / 2 + 20} ${relY}`}
+        {/* ── Cross: PO UAT (Passed) → Release+Monitoring ── */}
+        {/* Goes straight down from PO UAT to Release+Monitoring top */}
+        <path d={`M ${uatX + uatW / 2} ${uatY + uatH} L ${uatX + uatW / 2} ${(uatY + uatH + relY) / 2} L ${relX + relW / 2} ${(uatY + uatH + relY) / 2} L ${relX + relW / 2} ${relY}`}
           stroke="rgba(59,255,157,0.4)" {...da} markerEnd="url(#ahd)" />
-        <text x={diaX + 8} y={(diaY + 16 + relY) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Passed</text>
+        <text x={(uatX + uatW / 2 + relX + relW / 2) / 2 + 8} y={(uatY + uatH + relY) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Passed</text>
 
         {/* ── Cross: Release+Monitoring → Commercial Handoff (Released) ── */}
         {/* Goes up from Release right, right along gap, then up to Commercial Handoff bottom */}
@@ -1090,10 +1090,10 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         {/* ══════ OPERATIONS LANE ══════ */}
         <Box x={brX} y={brY} w={brW} h={brH} c={Y} lines={["🔧 Blocker", "Resolution"]} />
 
-        {/* ── Cross: Ops → Dev (Resolved) — goes from Blocker Resolution up to Development ── */}
-        <path d={`M ${brX + brW / 2} ${brY} L ${brX + brW / 2} ${(brY + devY + devH) / 2} L ${devX + devW} ${(brY + devY + devH) / 2} L ${devX + devW} ${devY + devH}`}
+        {/* ── Cross: Ops → Dev (Resolved) — straight up from Blocker Resolution to Development ── */}
+        <path d={`M ${brX + brW / 2} ${brY} L ${brX + brW / 2} ${devY + devH}`}
           stroke="rgba(34,197,94,0.45)" {...da} markerEnd="url(#ahd)" />
-        <text x={brX + brW / 2 + 8} y={(brY + devY + devH) / 2 - 4} fontSize={6.5} fill="#22C55E" fontWeight={600} fontStyle="italic">Resolved</text>
+        <text x={brX + brW / 2 + 8} y={(brY + devY + devH) / 2} fontSize={6.5} fill="#22C55E" fontWeight={600} fontStyle="italic">Resolved</text>
 
         {/* ── Animated flow dot (slow, follows main happy path) ── */}
         {active && (
@@ -1123,12 +1123,13 @@ function IntegrationsFlow({ active }: { active: boolean }) {
                   `L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2}`,
                   `L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2}`,
                   `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
-                  // PO lane: UAT → Diamond → (Passed down) → Release → (Released up) → Commercial Handoff
+                  // PO lane: UAT → Diamond → back to UAT → (Passed down) → Release → (Released up) → Commercial Handoff
                   `L ${diaX} ${diaY}`,
-                  // Passed: down to Release+Monitoring top
-                  `L ${diaX} ${(diaY + 16 + relY) / 2}`,
-                  `L ${relX + relW / 2 + 20} ${(diaY + 16 + relY) / 2}`,
-                  `L ${relX + relW / 2 + 20} ${relY + relH / 2}`,
+                  `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
+                  // Passed: down from PO UAT to Release+Monitoring
+                  `L ${uatX + uatW / 2} ${(uatY + uatH + relY) / 2}`,
+                  `L ${relX + relW / 2} ${(uatY + uatH + relY) / 2}`,
+                  `L ${relX + relW / 2} ${relY + relH / 2}`,
                   // Released: right then up to Commercial Handoff
                   `L ${chX + chW / 2} ${relY + relH / 2}`,
                   `L ${chX + chW / 2} ${chY + chH / 2}`,
@@ -1157,9 +1158,10 @@ function IntegrationsFlow({ active }: { active: boolean }) {
                   `L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2}`,
                   `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
                   `L ${diaX} ${diaY}`,
-                  `L ${diaX} ${(diaY + 16 + relY) / 2}`,
-                  `L ${relX + relW / 2 + 20} ${(diaY + 16 + relY) / 2}`,
-                  `L ${relX + relW / 2 + 20} ${relY + relH / 2}`,
+                  `L ${uatX + uatW / 2} ${uatY + uatH / 2}`,
+                  `L ${uatX + uatW / 2} ${(uatY + uatH + relY) / 2}`,
+                  `L ${relX + relW / 2} ${(uatY + uatH + relY) / 2}`,
+                  `L ${relX + relW / 2} ${relY + relH / 2}`,
                   `L ${chX + chW / 2} ${relY + relH / 2}`,
                   `L ${chX + chW / 2} ${chY + chH / 2}`,
                   `L ${endCx} ${endCy}`,
