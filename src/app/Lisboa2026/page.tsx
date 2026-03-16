@@ -1067,12 +1067,12 @@ function IntegrationsFlow({ active }: { active: boolean }) {
 
         {/* ══════ DEVELOPER LANE ══════ */}
         <Box x={devX} y={devY} w={devW} h={devH} c={P} lines={["💻 Development"]} />
-        <line x1={devX + devW} y1={devY + devH / 2} x2={qaX} y2={qaY + qaH / 2} stroke="rgba(255,255,255,0.5)" strokeWidth={1.5} {...da} markerEnd="url(#ahd)" />
+        <line x1={devX + devW} y1={devY + devH / 2} x2={qaX} y2={qaY + qaH / 2} stroke="rgba(255,255,255,0.5)" {...da} strokeWidth={1.5} markerEnd="url(#ahd)" />
         <Box x={qaX} y={qaY} w={qaW} h={qaH} c={G} lines={["☑️ Self-QA"]} />
         {/* Self-QA → Development feedback loop (dashed, U-shaped under) */}
         <path d={`M ${qaX} ${qaY + qaH} L ${qaX} ${qaY + qaH + 14} L ${devX + devW} ${qaY + qaH + 14} L ${devX + devW} ${devY + devH}`}
           stroke="rgba(255,255,255,0.3)" {...da} markerEnd="url(#ahd)" />
-        <line x1={qaX + qaW} y1={qaY + qaH / 2} x2={crwX} y2={crwY + crwH / 2} stroke="rgba(255,255,255,0.5)" strokeWidth={1.5} {...da} markerEnd="url(#ahd)" />
+        <line x1={qaX + qaW} y1={qaY + qaH / 2} x2={crwX} y2={crwY + crwH / 2} stroke="rgba(255,255,255,0.5)" {...da} strokeWidth={1.5} markerEnd="url(#ahd)" />
         <Box x={crwX} y={crwY} w={crwW} h={crwH} c={G} lines={["🔎 Code", "Review"]} />
         {/* NO direct arrow from Code Review to Release+Monitoring — work goes up via Ready for UAT then back down via Passed */}
         <Box x={relX} y={relY} w={relW} h={relH} c={P} lines={["📡 Release +", "Monitoring"]} />
