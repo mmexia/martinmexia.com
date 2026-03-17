@@ -1465,7 +1465,7 @@ function CycleCalendarView({ active }: { active: boolean }) {
 export default function Lisboa2026() {
   const [current, setCurrent] = useState(0);
   const transitioning = useRef(false);
-  const TOTAL_SLIDES = 10;
+  const TOTAL_SLIDES = 11;
 
   const goTo = useCallback(
     (n: number) => {
@@ -1829,27 +1829,36 @@ export default function Lisboa2026() {
               color={COLORS.matrixOrange}
             />
           </div>
+        </Slide>
 
-          <AnimatedText active={current === 2} delay={0.75}>
-            <p
+        {/* ═══════════ SLIDE 3: MOTTO ═══════════ */}
+        <Slide active={current === 3} index={3}>
+          <AnimatedText active={current === 3} delay={0}>
+            <div style={{ marginBottom: 32, textAlign: "center" }}>
+              <YunoLogo color={COLORS.primary} width={100} />
+            </div>
+          </AnimatedText>
+          <AnimatedText active={current === 3} delay={0.3}>
+            <h2
               style={{
-                marginTop: 40,
-                fontSize: 18,
-                fontWeight: 600,
-                fontStyle: "italic",
-                color: COLORS.textMuted,
+                fontSize: "clamp(32px, 5vw, 64px)",
+                fontWeight: 800,
                 textAlign: "center",
-                letterSpacing: "0.02em",
+                lineHeight: 1.3,
+                letterSpacing: "-0.02em",
+                maxWidth: 700,
               }}
             >
-              &ldquo;Maintain the standard, Keep each other accountable&rdquo;
-            </p>
+              <span className="yuno-logo-text">Maintain the standard,</span>
+              <br />
+              <span className="yuno-logo-text">Keep each other accountable</span>
+            </h2>
           </AnimatedText>
         </Slide>
 
-        {/* ═══════════ SLIDE 3: TEAM STRUCTURE - PRINCIPLES ═══════════ */}
-        <Slide active={current === 3} index={3}>
-          <AnimatedText active={current === 3} delay={0}>
+        {/* ═══════════ SLIDE 4: TEAM STRUCTURE - PRINCIPLES ═══════════ */}
+        <Slide active={current === 4} index={4}>
+          <AnimatedText active={current === 4} delay={0}>
             <div
               style={{
                 fontSize: 13,
@@ -1864,7 +1873,7 @@ export default function Lisboa2026() {
               Organization
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 3} delay={0.1}>
+          <AnimatedText active={current === 4} delay={0.1}>
             <h2
               style={{
                 fontSize: "clamp(32px, 4vw, 56px)",
@@ -1888,18 +1897,18 @@ export default function Lisboa2026() {
               maxWidth: 900,
             }}
           >
-            <PrincipleCard active={current === 3} delay={0.25} color={COLORS.primary} icon="👥" title="Full Stack Ownership">
+            <PrincipleCard active={current === 4} delay={0.25} color={COLORS.primary} icon="👥" title="Full Stack Ownership">
               Product Teams are the full owners of their domain — <strong style={{ color: COLORS.text }}>Backend, Frontend, and Mobile</strong>. One team, one mission, complete ownership.
             </PrincipleCard>
-            <PrincipleCard active={current === 3} delay={0.4} color={COLORS.primary} icon="✦" title="Cross-Team Collaboration">
+            <PrincipleCard active={current === 4} delay={0.4} color={COLORS.primary} icon="✦" title="Cross-Team Collaboration">
               Pending tech initiatives will enable teams to <strong style={{ color: COLORS.accent }}>submit PRs to other teams&apos; codebases</strong>, unblocking ourselves without dependencies.
             </PrincipleCard>
           </div>
         </Slide>
 
-        {/* ═══════════ SLIDE 4: TEAM STRUCTURE - MATRIX ═══════════ */}
-        <Slide active={current === 4} index={4}>
-          <AnimatedText active={current === 4} delay={0}>
+        {/* ═══════════ SLIDE 5: TEAM STRUCTURE - MATRIX ═══════════ */}
+        <Slide active={current === 5} index={5}>
+          <AnimatedText active={current === 5} delay={0}>
             <div
               style={{
                 fontSize: 12,
@@ -1914,7 +1923,7 @@ export default function Lisboa2026() {
               Organization
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 4} delay={0.1}>
+          <AnimatedText active={current === 5} delay={0.1}>
             <h2
               style={{
                 fontSize: "clamp(24px, 3vw, 40px)",
@@ -1928,8 +1937,8 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Structure</span>
             </h2>
           </AnimatedText>
-          <OrgMatrix active={current === 4} />
-          <AnimatedText active={current === 4} delay={0.8}>
+          <OrgMatrix active={current === 5} />
+          <AnimatedText active={current === 5} delay={0.8}>
             <a
               href="https://docs.google.com/spreadsheets/d/1emwUjf4Jei6gjX67zvSsZ-lACc6EDkAAQlmvRPYdicg/edit?pli=1&gid=273124883#gid=273124883"
               target="_blank"
@@ -1954,9 +1963,9 @@ export default function Lisboa2026() {
           </AnimatedText>
         </Slide>
 
-        {/* ═══════════ SLIDE 5: TEAM STRUCTURE - INTEGRATIONS ═══════════ */}
-        <Slide active={current === 5} index={5}>
-          <AnimatedText active={current === 5} delay={0}>
+        {/* ═══════════ SLIDE 6: TEAM STRUCTURE - INTEGRATIONS ═══════════ */}
+        <Slide active={current === 6} index={6}>
+          <AnimatedText active={current === 6} delay={0}>
             <div
               style={{
                 fontSize: 11,
@@ -1971,7 +1980,7 @@ export default function Lisboa2026() {
               Organization
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 5} delay={0.1}>
+          <AnimatedText active={current === 6} delay={0.1}>
             <h2
               style={{
                 fontSize: "clamp(22px, 2.8vw, 36px)",
@@ -1985,7 +1994,7 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Integrations</span>
             </h2>
           </AnimatedText>
-          <AnimatedText active={current === 5} delay={0.15}>
+          <AnimatedText active={current === 6} delay={0.15}>
             <p
               style={{
                 fontSize: 13,
@@ -2016,7 +2025,7 @@ export default function Lisboa2026() {
           >
             {/* Flow map - left side */}
             <div style={{ flex: "1 1 580px", minWidth: 500, maxWidth: 900 }}>
-              <IntegrationsFlow active={current === 5} />
+              <IntegrationsFlow active={current === 6} />
             </div>
 
             {/* Key points - right side */}
@@ -2026,8 +2035,8 @@ export default function Lisboa2026() {
                 display: "flex",
                 flexDirection: "column",
                 gap: 10,
-                opacity: current === 5 ? 1 : 0,
-                transform: current === 5 ? "translateX(0)" : "translateX(20px)",
+                opacity: current === 6 ? 1 : 0,
+                transform: current === 6 ? "translateX(0)" : "translateX(20px)",
                 transition: "all 0.6s ease 0.6s",
               }}
             >
@@ -2045,7 +2054,7 @@ export default function Lisboa2026() {
                   color: COLORS.matrixOrange,
                 },
               ].map((point, i) => (
-                <AnimatedText key={point.title} active={current === 5} delay={0.5 + i * 0.12}>
+                <AnimatedText key={point.title} active={current === 6} delay={0.5 + i * 0.12}>
                   <div
                     style={{
                       background: "rgba(255,255,255,0.03)",
@@ -2069,7 +2078,7 @@ export default function Lisboa2026() {
             </div>
           </div>
 
-          <AnimatedText active={current === 5} delay={0.9}>
+          <AnimatedText active={current === 6} delay={0.9}>
             <a
               href="https://docs.google.com/presentation/d/1RdDD0MTeU3XFXcOVj836-E5Ye5aeSIQda9_vQCwt7UY/edit?slide=id.g3ce6d675f99_0_1#slide=id.g3ce6d675f99_0_1"
               target="_blank"
@@ -2094,9 +2103,9 @@ export default function Lisboa2026() {
           </AnimatedText>
         </Slide>
 
-        {/* ═══════════ SLIDE 6: WAYS OF WORKING ═══════════ */}
-        <Slide active={current === 6} index={6}>
-          <AnimatedText active={current === 6} delay={0}>
+        {/* ═══════════ SLIDE 7: WAYS OF WORKING ═══════════ */}
+        <Slide active={current === 7} index={7}>
+          <AnimatedText active={current === 7} delay={0}>
             <div
               style={{
                 fontSize: 13,
@@ -2111,7 +2120,7 @@ export default function Lisboa2026() {
               Process
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 6} delay={0.1}>
+          <AnimatedText active={current === 7} delay={0.1}>
             <h2
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
@@ -2125,7 +2134,7 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Working</span>
             </h2>
           </AnimatedText>
-          <AnimatedText active={current === 6} delay={0.2}>
+          <AnimatedText active={current === 7} delay={0.2}>
             <p
               style={{
                 fontSize: 16,
@@ -2143,12 +2152,12 @@ export default function Lisboa2026() {
               <span style={{ fontSize: 14 }}>within each cycle</span>
             </p>
           </AnimatedText>
-          <CycleVisualization active={current === 6} />
+          <CycleVisualization active={current === 7} />
         </Slide>
 
-        {/* ═══════════ SLIDE 7: CYCLE CALENDAR VIEW ═══════════ */}
-        <Slide active={current === 7} index={7}>
-          <AnimatedText active={current === 7} delay={0}>
+        {/* ═══════════ SLIDE 8: CYCLE CALENDAR VIEW ═══════════ */}
+        <Slide active={current === 8} index={8}>
+          <AnimatedText active={current === 8} delay={0}>
             <div
               style={{
                 fontSize: 13,
@@ -2163,7 +2172,7 @@ export default function Lisboa2026() {
               Planning
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 7} delay={0.1}>
+          <AnimatedText active={current === 8} delay={0.1}>
             <h2
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
@@ -2177,7 +2186,7 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Cycle View</span>
             </h2>
           </AnimatedText>
-          <AnimatedText active={current === 7} delay={0.2}>
+          <AnimatedText active={current === 8} delay={0.2}>
             <p
               style={{
                 fontSize: 16,
@@ -2192,12 +2201,12 @@ export default function Lisboa2026() {
               <span style={{ color: COLORS.accent, fontWeight: 600 }}>December 2026</span>
             </p>
           </AnimatedText>
-          <CycleCalendarView active={current === 7} />
+          <CycleCalendarView active={current === 8} />
         </Slide>
 
-        {/* ═══════════ SLIDE 8: STRATEGIC PROJECTS ═══════════ */}
-        <Slide active={current === 8} index={8}>
-          <AnimatedText active={current === 8} delay={0}>
+        {/* ═══════════ SLIDE 9: STRATEGIC PROJECTS ═══════════ */}
+        <Slide active={current === 9} index={9}>
+          <AnimatedText active={current === 9} delay={0}>
             <div
               style={{
                 fontSize: 11,
@@ -2212,7 +2221,7 @@ export default function Lisboa2026() {
               Roadmap
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 8} delay={0.1}>
+          <AnimatedText active={current === 9} delay={0.1}>
             <h2
               style={{
                 fontSize: "clamp(22px, 2.8vw, 36px)",
@@ -2226,7 +2235,7 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Projects</span>
             </h2>
           </AnimatedText>
-          <AnimatedText active={current === 8} delay={0.15}>
+          <AnimatedText active={current === 9} delay={0.15}>
             <p
               style={{
                 fontSize: 13,
@@ -2241,17 +2250,17 @@ export default function Lisboa2026() {
               <strong style={{ color: COLORS.accent }}>per-person ownership</strong>
             </p>
           </AnimatedText>
-          <StrategicProjectsTable active={current === 8} />
+          <StrategicProjectsTable active={current === 9} />
         </Slide>
 
-        {/* ═══════════ SLIDE 9: THANK YOU ═══════════ */}
-        <Slide active={current === 9} index={9}>
-          <AnimatedText active={current === 9} delay={0}>
+        {/* ═══════════ SLIDE 10: THANK YOU ═══════════ */}
+        <Slide active={current === 10} index={10}>
+          <AnimatedText active={current === 10} delay={0}>
             <div style={{ marginBottom: 32, textAlign: "center" }}>
               <YunoLogo color={COLORS.primary} width={160} />
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 9} delay={0.2}>
+          <AnimatedText active={current === 10} delay={0.2}>
             <h1
               style={{
                 fontSize: "clamp(48px, 7vw, 90px)",
@@ -2265,7 +2274,7 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Thank You</span>
             </h1>
           </AnimatedText>
-          <AnimatedText active={current === 9} delay={0.5}>
+          <AnimatedText active={current === 10} delay={0.5}>
             <p
               style={{
                 fontSize: 20,
