@@ -1347,9 +1347,8 @@ function CycleCalendarView({ active }: { active: boolean }) {
                 </div>
                 <div
                   style={{
-                    fontSize: 9,
+                    fontSize: 10,
                     color: COLORS.textMuted,
-                    opacity: 0.7,
                     marginTop: 2,
                     display: "flex",
                     alignItems: "center",
