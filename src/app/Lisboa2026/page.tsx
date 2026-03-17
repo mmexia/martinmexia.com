@@ -2,27 +2,67 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 
-/* ─────────────────────── YUNO BRAND COLORS ─────────────────────── */
+/* ─────────────────────── YUNO LOGO ─────────────────────── */
+function YunoLogo({ color = "#FFFFFF", width = 120 }: { color?: string; width?: number }) {
+  return (
+    <svg
+      width={width}
+      height={width * 0.32}
+      viewBox="0 0 120 38"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* "y" */}
+      <path
+        d="M0 8.5h5.2l7.3 16.8L19.8 8.5H25L14.2 33.5c-1.2 2.8-3 4.2-5.8 4.2H5.5v-4.2h2c1.3 0 2-.5 2.6-1.8l.8-1.8L0 8.5z"
+        fill={color}
+      />
+      {/* "u" */}
+      <path
+        d="M28 8.5h5v14.3c0 3.2 1.8 5 4.8 5s4.8-1.8 4.8-5V8.5h5v14.8c0 5.8-3.8 9.5-9.8 9.5S28 29.1 28 23.3V8.5z"
+        fill={color}
+      />
+      {/* "n" */}
+      <path
+        d="M52.5 8.5h5v3.2c1.5-2.2 4-3.7 7.2-3.7 5.2 0 8.3 3.5 8.3 9v15h-5V18c0-3.5-1.8-5.5-5-5.5-3.3 0-5.5 2.2-5.5 5.8V32h-5V8.5z"
+        fill={color}
+      />
+      {/* "o" */}
+      <path
+        d="M78 20.2c0-7 4.8-12.2 11.8-12.2S101.5 13.2 101.5 20.2s-4.8 12.2-11.7 12.2S78 27.2 78 20.2zm18.5 0c0-4.5-2.8-7.8-6.7-7.8s-6.8 3.3-6.8 7.8 2.8 7.8 6.8 7.8 6.7-3.3 6.7-7.8z"
+        fill={color}
+      />
+    </svg>
+  );
+}
+
+/* ─────────────────────── YUNO BRAND COLORS (Brandbook 2026) ─────── */
 const COLORS = {
-  primary: "#3E4FE0",
-  primaryDark: "#2A3BB8",
-  primaryLight: "#5C6CF7",
-  dark: "#0A0B1A",
-  darkCard: "#12132A",
-  darkSurface: "#1A1B35",
-  accent: "#3BFF9D",
-  accentAlt: "#DDE460",
+  // Primary palette
+  primary: "#3E4FE0",        // Yuno Blue
+  primaryDark: "#1726A6",    // Deep Blue (extended)
+  primaryLight: "#5967E4",   // Medium Blue (extended)
+  primaryLighter: "#7C89EF", // Light Blue (extended)
+  primaryPale: "#BDC3F6",    // Pale Blue (extended)
+  dark: "#282A30",           // Unity Black
+  darkCard: "#2F3138",       // Slightly lighter card bg
+  darkSurface: "#363840",    // Surface variant
+  accent: "#38ADFF",         // Sky Blue (gradient accent)
+  accentAlt: "#E0ED80",      // Lime (extended, small details only)
   text: "#FFFFFF",
-  textMuted: "#8E95B5",
+  textMuted: "#92959B",      // Security Gray
+  lilac: "#E8EAF5",          // Harmony Lilac
   cardBlue: "rgba(62, 79, 224, 0.15)",
-  cardPurple: "rgba(126, 65, 233, 0.15)",
-  cardGreen: "rgba(59, 255, 157, 0.15)",
-  cardOrange: "rgba(255, 94, 0, 0.15)",
-  // Matrix colors
-  matrixBlue: "#4d65ff",
-  matrixPurple: "#7E41E9",
-  matrixGreen: "#3BFF9D",
-  matrixOrange: "#FF5E00",
+  cardPurple: "rgba(89, 103, 228, 0.15)",
+  cardGreen: "rgba(56, 173, 255, 0.15)",
+  cardOrange: "rgba(224, 237, 128, 0.15)",
+  // Matrix colors (brand-aligned)
+  matrixBlue: "#5967E4",
+  matrixPurple: "#7C89EF",
+  matrixGreen: "#38ADFF",
+  matrixOrange: "#E0ED80",
+  // Neutral
+  gray: "#616366",           // Dark Gray (extended)
 };
 
 /* ─────────────────────── SLIDE WRAPPER ─────────────────────── */
@@ -329,16 +369,16 @@ function PrincipleCard({ active, delay, color, icon, title, children }: {
 /* ─────────────────────── MATRIX COMPONENT ─────────────────────── */
 function OrgMatrix({ active }: { active: boolean }) {
   const platformGroups = [
-    { label: "Core Platforms", color: "#4d65ff", bg: "#4d65ff12", rows: ["Core", "Routing"] },
-    { label: "Internal", color: "#7E41E9", bg: "#7E41E912", rows: ["Data Enablement", "Internal Tools & Architecture"] },
-    { label: "Experience", color: "#3BFF9D", bg: "#3BFF9D10", rows: ["Dashboard", "Checkout", "SDK & Plugins"] },
+    { label: "Core Platforms", color: "#5967E4", bg: "#4d65ff12", rows: ["Core", "Routing"] },
+    { label: "Internal", color: "#5967E4", bg: "#5967E412", rows: ["Data Enablement", "Internal Tools & Architecture"] },
+    { label: "Experience", color: "#38ADFF", bg: "#38ADFF10", rows: ["Dashboard", "Checkout", "SDK & Plugins"] },
   ];
 
   const columns = [
-    { group: "Cards", color: "#4d65ff", subs: ["Card Payments & Integrations", "Tokenization"] },
-    { group: "APMs", color: "#7E41E9", subs: ["APM Integrations"] },
-    { group: "Payment Ancillaries", color: "#3BFF9D", subs: ["Core Ancillaries", "Reconciliations"] },
-    { group: "New Bets", color: "#FF5E00", subs: ["Banking Connectivity", "Agentic Payments", "Banking Tech / WhiteLabel"] },
+    { group: "Cards", color: "#5967E4", subs: ["Card Payments & Integrations", "Tokenization"] },
+    { group: "APMs", color: "#5967E4", subs: ["APM Integrations"] },
+    { group: "Payment Ancillaries", color: "#38ADFF", subs: ["Core Ancillaries", "Reconciliations"] },
+    { group: "New Bets", color: "#E0ED80", subs: ["Banking Connectivity", "Agentic Payments", "Banking Tech / WhiteLabel"] },
   ];
 
   const allSubs = columns.flatMap((c) =>
@@ -502,10 +542,10 @@ function OrgMatrix({ active }: { active: boolean }) {
       {/* Color legend */}
       <div style={{ display: "flex", justifyContent: "center", gap: 16, marginTop: 14, flexWrap: "wrap" }}>
         {[
-          { label: "Cards", color: "#4d65ff" },
-          { label: "APMs", color: "#7E41E9" },
-          { label: "Payment Ancillaries", color: "#3BFF9D" },
-          { label: "New Bets", color: "#FF5E00" },
+          { label: "Cards", color: "#5967E4" },
+          { label: "APMs", color: "#5967E4" },
+          { label: "Payment Ancillaries", color: "#38ADFF" },
+          { label: "New Bets", color: "#E0ED80" },
         ].map((c) => (
           <div key={c.label} style={{ fontSize: 11, color: c.color, display: "flex", alignItems: "center", gap: 6 }}>
             <div style={{ width: 12, height: 12, borderRadius: 3, background: `linear-gradient(135deg, ${c.color}40, ${c.color}20)`, border: `1px solid ${c.color}30` }} />
@@ -964,9 +1004,9 @@ function IntegrationsFlow({ active }: { active: boolean }) {
   const laneGap = 4;
   const lanes = [
     { y: 0, h: 70, label: "COMMERCIAL", color: "#3E4FE0", bg: "rgba(62,79,224,0.07)" },
-    { y: 74, h: 100, label: "PRODUCT OWNER", color: "#E91E8C", bg: "rgba(233,30,140,0.05)" },
-    { y: 178, h: 80, label: "DEVELOPER", color: "#22C55E", bg: "rgba(34,197,94,0.05)" },
-    { y: 262, h: 65, label: "OPERATIONS", color: "#F59E0B", bg: "rgba(245,158,11,0.05)" },
+    { y: 74, h: 100, label: "PRODUCT OWNER", color: "#3E4FE0", bg: "rgba(62,79,224,0.05)" },
+    { y: 178, h: 80, label: "DEVELOPER", color: "#38ADFF", bg: "rgba(56,173,255,0.05)" },
+    { y: 262, h: 65, label: "OPERATIONS", color: "#92959B", bg: "rgba(146,149,155,0.05)" },
   ];
   /* Step colors */
   const Y = { bg: "#FEF3C7", bd: "#D4A017", tx: "#78350F" }; // yellow
@@ -1054,7 +1094,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         {/* ── Cross: GM Approval → Product Analysis (Approved) ── */}
         <path d={`M ${gmX + gmW / 2} ${gmY + gmH} L ${gmX + gmW / 2} ${paY - 2} L ${paX + paW / 2} ${paY - 2} L ${paX + paW / 2} ${paY}`}
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
-        <text x={gmX + gmW / 2 + 8} y={(gmY + gmH + paY) / 2 - 2} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Approved</text>
+        <text x={gmX + gmW / 2 + 8} y={(gmY + gmH + paY) / 2 - 2} fontSize={6.5} fill="#38ADFF" fontWeight={600} fontStyle="italic">Approved</text>
 
         {/* ══════ PRODUCT OWNER LANE ══════ */}
         <Box x={paX} y={paY} w={paW} h={paH} c={P} lines={["Product", "Analysis"]} />
@@ -1066,7 +1106,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         {/* ── Cross: TL Review → Development (Ready for dev) ── */}
         <path d={`M ${tlX + tlW / 2} ${tlY + tlH} L ${tlX + tlW / 2} ${(tlY + tlH + devY) / 2} L ${devX + devW / 2} ${(tlY + tlH + devY) / 2} L ${devX + devW / 2} ${devY}`}
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
-        <text x={tlX + tlW / 2 - 48} y={(tlY + tlH + devY) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for dev</text>
+        <text x={tlX + tlW / 2 - 48} y={(tlY + tlH + devY) / 2 - 4} fontSize={6.5} fill="#38ADFF" fontWeight={600} fontStyle="italic">Ready for dev</text>
 
         {/* No direct line from TL Review to PO UAT */}
         <Box x={uatX} y={uatY} w={uatW} h={uatH} c={P} lines={["PO UAT"]} />
@@ -1088,19 +1128,19 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         {/* Goes straight up from Code Review top to PO UAT bottom */}
         <path d={`M ${crwX + crwW / 2} ${crwY} L ${crwX + crwW / 2} ${(crwY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${(crwY + uatY + uatH) / 2} L ${uatX + uatW / 2} ${uatY + uatH}`}
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
-        <text x={(crwX + crwW / 2 + uatX + uatW / 2) / 2 - 20} y={(crwY + uatY + uatH) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Ready for UAT</text>
+        <text x={(crwX + crwW / 2 + uatX + uatW / 2) / 2 - 20} y={(crwY + uatY + uatH) / 2 - 4} fontSize={6.5} fill="#38ADFF" fontWeight={600} fontStyle="italic">Ready for UAT</text>
 
         {/* ── Cross: PO UAT (Passed) → Release+Monitoring ── */}
         {/* Goes straight down from PO UAT to Release+Monitoring top */}
         <path d={`M ${uatX + uatW / 2} ${uatY + uatH} L ${uatX + uatW / 2} ${(uatY + uatH + relY) / 2} L ${relX + relW / 2} ${(uatY + uatH + relY) / 2} L ${relX + relW / 2} ${relY}`}
           stroke="rgba(59,255,157,0.4)" {...da} markerEnd="url(#ahd)" />
-        <text x={(uatX + uatW / 2 + relX + relW / 2) / 2 + 8} y={(uatY + uatH + relY) / 2 - 4} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Passed</text>
+        <text x={(uatX + uatW / 2 + relX + relW / 2) / 2 + 8} y={(uatY + uatH + relY) / 2 - 4} fontSize={6.5} fill="#38ADFF" fontWeight={600} fontStyle="italic">Passed</text>
 
         {/* ── Cross: Release+Monitoring → Commercial Handoff (Released) ── */}
         {/* Goes up from Release right, right along gap, then up to Commercial Handoff bottom */}
         <path d={`M ${relX + relW} ${relY + relH / 2} L ${chX + chW / 2} ${relY + relH / 2} L ${chX + chW / 2} ${chY + chH}`}
           stroke="rgba(255,255,255,0.35)" {...da} markerEnd="url(#ahd)" />
-        <text x={chX + chW / 2 + 8} y={(relY + relH / 2 + chY + chH) / 2} fontSize={6.5} fill="#3BFF9D" fontWeight={600} fontStyle="italic">Released</text>
+        <text x={chX + chW / 2 + 8} y={(relY + relH / 2 + chY + chH) / 2} fontSize={6.5} fill="#38ADFF" fontWeight={600} fontStyle="italic">Released</text>
 
         {/* ══════ DEVELOPER LANE ══════ */}
         <Box x={devX} y={devY} w={devW} h={devH} c={P} lines={["💻 Development"]} />
@@ -1117,12 +1157,12 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         {/* ── AC Failed: Diamond (X) → Development (cross-lane, dashed) ── */}
         <path d={`M ${diaX} ${diaY + 16} L ${diaX} ${lanes[1].y + lanes[1].h + 6} L ${devX + devW / 2} ${lanes[1].y + lanes[1].h + 6} L ${devX + devW / 2} ${devY}`}
           stroke="rgba(255,94,0,0.45)" {...da} markerEnd="url(#ahd)" />
-        <text x={(diaX + devX + devW / 2) / 2} y={lanes[1].y + lanes[1].h + 3} fontSize={6.5} fill="#FF5E00" fontWeight={600} fontStyle="italic">AC Failed</text>
+        <text x={(diaX + devX + devW / 2) / 2} y={lanes[1].y + lanes[1].h + 3} fontSize={6.5} fill="#E0ED80" fontWeight={600} fontStyle="italic">AC Failed</text>
 
         {/* ── Cross: Dev → Ops (Blocked) — [ shape: down, left, down ── */}
         <path d={`M ${devX} ${devY + devH / 2} L ${devX - 18} ${devY + devH / 2} L ${devX - 18} ${brY + brH / 2} L ${brX} ${brY + brH / 2}`}
           stroke="rgba(245,158,11,0.45)" {...da} markerEnd="url(#ahd)" />
-        <text x={devX - 16 - 40} y={(devY + devH / 2 + brY + brH / 2) / 2 + 3} fontSize={6.5} fill="#F59E0B" fontWeight={600} fontStyle="italic">Blocked</text>
+        <text x={devX - 16 - 40} y={(devY + devH / 2 + brY + brH / 2) / 2 + 3} fontSize={6.5} fill="#92959B" fontWeight={600} fontStyle="italic">Blocked</text>
 
         {/* ══════ OPERATIONS LANE ══════ */}
         <Box x={brX} y={brY} w={brW} h={brH} c={Y} lines={["🔧 Blocker", "Resolution"]} />
@@ -1130,13 +1170,13 @@ function IntegrationsFlow({ active }: { active: boolean }) {
         {/* ── Cross: Ops → Dev (Resolved) — straight up from Blocker Resolution to Development ── */}
         <path d={`M ${brX + brW / 2} ${brY} L ${brX + brW / 2} ${devY + devH}`}
           stroke="rgba(34,197,94,0.45)" {...da} markerEnd="url(#ahd)" />
-        <text x={brX + brW / 2 + 8} y={(brY + devY + devH) / 2} fontSize={6.5} fill="#22C55E" fontWeight={600} fontStyle="italic">Resolved</text>
+        <text x={brX + brW / 2 + 8} y={(brY + devY + devH) / 2} fontSize={6.5} fill="#38ADFF" fontWeight={600} fontStyle="italic">Resolved</text>
 
         {/* ── Animated flow dot (slow, follows main happy path) ── */}
         {active && (
           <>
             {/* Dot 1: full happy path */}
-            <circle r={3} fill="#3BFF9D" opacity={0.85}>
+            <circle r={3} fill="#38ADFF" opacity={0.85}>
               <animateMotion dur="16s" repeatCount="indefinite"
                 path={[
                   `M ${startCx + 12} ${startCy}`,
@@ -1175,7 +1215,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
               />
             </circle>
             {/* Dot 2: staggered */}
-            <circle r={2.5} fill="#3BFF9D" opacity={0.5}>
+            <circle r={2.5} fill="#38ADFF" opacity={0.5}>
               <animateMotion dur="16s" repeatCount="indefinite" begin="5.3s"
                 path={[
                   `M ${startCx + 12} ${startCy}`,
@@ -1523,14 +1563,14 @@ export default function Lisboa2026() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap');
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         html, body {
           width: 100%; height: 100%;
           overflow: hidden;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, sans-serif;
           background: ${COLORS.dark};
           color: ${COLORS.text};
           -webkit-font-smoothing: antialiased;
@@ -1574,7 +1614,7 @@ export default function Lisboa2026() {
         }
 
         .shimmer-text {
-          background: linear-gradient(90deg, ${COLORS.text} 0%, ${COLORS.accent} 50%, ${COLORS.text} 100%);
+          background: linear-gradient(90deg, ${COLORS.text} 0%, ${COLORS.primaryLight} 50%, ${COLORS.text} 100%);
           background-size: 200% auto;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -1603,13 +1643,18 @@ export default function Lisboa2026() {
         {/* ═══════════ SLIDE 0: TITLE ═══════════ */}
         <Slide active={current === 0} index={0}>
           <AnimatedText active={current === 0} delay={0}>
+            <div style={{ marginBottom: 32, textAlign: "center" }}>
+              <YunoLogo color={COLORS.primary} width={140} />
+            </div>
+          </AnimatedText>
+          <AnimatedText active={current === 0} delay={0.15}>
             <div
               style={{
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: COLORS.accent,
+                color: COLORS.textMuted,
                 marginBottom: 24,
                 textAlign: "center",
               }}
@@ -1617,7 +1662,7 @@ export default function Lisboa2026() {
               Product Leadership Vision
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 0} delay={0.2}>
+          <AnimatedText active={current === 0} delay={0.3}>
             <h1
               style={{
                 fontSize: "clamp(42px, 6vw, 80px)",
@@ -1633,7 +1678,7 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Product at Yuno</span>
             </h1>
           </AnimatedText>
-          <AnimatedText active={current === 0} delay={0.5}>
+          <AnimatedText active={current === 0} delay={0.6}>
             <p
               style={{
                 fontSize: 20,
@@ -1647,7 +1692,7 @@ export default function Lisboa2026() {
               A new era of world-class product development
             </p>
           </AnimatedText>
-          <AnimatedText active={current === 0} delay={0.8}>
+          <AnimatedText active={current === 0} delay={0.9}>
             <div
               style={{
                 marginTop: 60,
@@ -1950,9 +1995,9 @@ export default function Lisboa2026() {
                 lineHeight: 1.4,
               }}
             >
-              3 teams will have integrations: <strong style={{ color: "#4d65ff" }}>Cards</strong>,{" "}
-              <strong style={{ color: "#7E41E9" }}>APMs</strong>, and{" "}
-              <strong style={{ color: "#FF5E00" }}>Banking Connectivity</strong>.
+              3 teams will have integrations: <strong style={{ color: "#5967E4" }}>Cards</strong>,{" "}
+              <strong style={{ color: "#5967E4" }}>APMs</strong>, and{" "}
+              <strong style={{ color: "#E0ED80" }}>Banking Connectivity</strong>.
               They will have a different way of working but within the same team.
             </p>
           </AnimatedText>
@@ -2201,18 +2246,8 @@ export default function Lisboa2026() {
         {/* ═══════════ SLIDE 9: THANK YOU ═══════════ */}
         <Slide active={current === 9} index={9}>
           <AnimatedText active={current === 9} delay={0}>
-            <div
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: COLORS.accent,
-                marginBottom: 24,
-                textAlign: "center",
-              }}
-            >
-              Product Leadership Vision
+            <div style={{ marginBottom: 32, textAlign: "center" }}>
+              <YunoLogo color={COLORS.primary} width={160} />
             </div>
           </AnimatedText>
           <AnimatedText active={current === 9} delay={0.2}>
