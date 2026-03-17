@@ -1762,9 +1762,34 @@ export default function Lisboa2026() {
           </div>
         </Slide>
 
-        {/* ═══════════ SLIDE 2: VALUES ═══════════ */}
+        {/* ═══════════ SLIDE 2: MOTTO ═══════════ */}
         <Slide active={current === 2} index={2}>
           <AnimatedText active={current === 2} delay={0}>
+            <div style={{ marginBottom: 32, textAlign: "center" }}>
+              <YunoLogo color={COLORS.primary} width={100} />
+            </div>
+          </AnimatedText>
+          <AnimatedText active={current === 2} delay={0.3}>
+            <h2
+              style={{
+                fontSize: "clamp(32px, 5vw, 64px)",
+                fontWeight: 800,
+                textAlign: "center",
+                lineHeight: 1.3,
+                letterSpacing: "-0.02em",
+                maxWidth: 700,
+              }}
+            >
+              <span className="yuno-logo-text">Maintain the standard,</span>
+              <br />
+              <span className="yuno-logo-text">Keep each other accountable</span>
+            </h2>
+          </AnimatedText>
+        </Slide>
+
+        {/* ═══════════ SLIDE 3: VALUES ═══════════ */}
+        <Slide active={current === 3} index={3}>
+          <AnimatedText active={current === 3} delay={0}>
             <div
               style={{
                 fontSize: 13,
@@ -1779,7 +1804,7 @@ export default function Lisboa2026() {
               How We Operate
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 2} delay={0.1}>
+          <AnimatedText active={current === 3} delay={0.1}>
             <h2
               style={{
                 fontSize: "clamp(32px, 4vw, 56px)",
@@ -1808,7 +1833,7 @@ export default function Lisboa2026() {
               icon="🔑"
               title="Ownership"
               description="We care deeply about what we build. Our products are not just tasks — they are our craft, our reputation, our legacy."
-              active={current === 2}
+              active={current === 3}
               delay={0.25}
               color={COLORS.primary}
             />
@@ -1816,7 +1841,7 @@ export default function Lisboa2026() {
               icon="⚡"
               title="Accountability"
               description="This is ours. When things go wrong, we respond. When things succeed, we built that. No finger-pointing, just results."
-              active={current === 2}
+              active={current === 3}
               delay={0.4}
               color={COLORS.accent}
             />
@@ -1824,36 +1849,11 @@ export default function Lisboa2026() {
               icon="🎯"
               title="Agency"
               description="It is 100% on us to make whatever we need happen. No blockers. No excuses. We find a way, always."
-              active={current === 2}
+              active={current === 3}
               delay={0.55}
               color={COLORS.matrixOrange}
             />
           </div>
-        </Slide>
-
-        {/* ═══════════ SLIDE 3: MOTTO ═══════════ */}
-        <Slide active={current === 3} index={3}>
-          <AnimatedText active={current === 3} delay={0}>
-            <div style={{ marginBottom: 32, textAlign: "center" }}>
-              <YunoLogo color={COLORS.primary} width={100} />
-            </div>
-          </AnimatedText>
-          <AnimatedText active={current === 3} delay={0.3}>
-            <h2
-              style={{
-                fontSize: "clamp(32px, 5vw, 64px)",
-                fontWeight: 800,
-                textAlign: "center",
-                lineHeight: 1.3,
-                letterSpacing: "-0.02em",
-                maxWidth: 700,
-              }}
-            >
-              <span className="yuno-logo-text">Maintain the standard,</span>
-              <br />
-              <span className="yuno-logo-text">Keep each other accountable</span>
-            </h2>
-          </AnimatedText>
         </Slide>
 
         {/* ═══════════ SLIDE 4: TEAM STRUCTURE - PRINCIPLES ═══════════ */}
