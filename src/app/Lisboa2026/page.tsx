@@ -1770,20 +1770,26 @@ export default function Lisboa2026() {
             </div>
           </AnimatedText>
           <AnimatedText active={current === 2} delay={0.3}>
-            <h2
+            <div
               style={{
-                fontSize: "clamp(32px, 5vw, 64px)",
-                fontWeight: 800,
+                fontSize: "clamp(36px, 5.5vw, 72px)",
+                fontWeight: 300,
+                fontStyle: "italic",
                 textAlign: "center",
-                lineHeight: 1.3,
-                letterSpacing: "-0.02em",
-                maxWidth: 700,
+                lineHeight: 1.4,
+                letterSpacing: "0.01em",
+                maxWidth: 800,
+                color: COLORS.lilac,
               }}
             >
-              <span className="yuno-logo-text">Maintain the standard,</span>
-              <br />
-              <span className="yuno-logo-text">Keep each other accountable</span>
-            </h2>
+              <span style={{ fontSize: "1.2em", fontWeight: 200 }}>&ldquo;</span>
+              <span className="yuno-logo-text" style={{ fontStyle: "italic" }}>
+                Maintain the standard,
+                <br />
+                Keep each other accountable
+              </span>
+              <span style={{ fontSize: "1.2em", fontWeight: 200 }}>&rdquo;</span>
+            </div>
           </AnimatedText>
         </Slide>
 
