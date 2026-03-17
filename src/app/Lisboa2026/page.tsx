@@ -1780,17 +1780,17 @@ export default function Lisboa2026() {
                     style={{
                       background: "rgba(255,255,255,0.03)",
                       border: "1px solid rgba(255,255,255,0.08)",
-                      borderRadius: 12,
-                      padding: "16px 20px",
-                      borderLeft: `3px solid ${point.color}`,
+                      borderRadius: 14,
+                      padding: "24px 28px",
+                      borderLeft: `4px solid ${point.color}`,
                       flex: 1,
                     }}
                   >
-                    <div style={{ fontSize: 12, fontWeight: 700, color: point.color, marginBottom: 6, display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{ fontSize: 16 }}>{point.icon}</span>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: point.color, marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ fontSize: 22 }}>{point.icon}</span>
                       {point.title}
                     </div>
-                    <div style={{ fontSize: 13, color: COLORS.textMuted, lineHeight: 1.5 }}>
+                    <div style={{ fontSize: 15, color: COLORS.textMuted, lineHeight: 1.6 }}>
                       {point.text}
                     </div>
                   </div>
