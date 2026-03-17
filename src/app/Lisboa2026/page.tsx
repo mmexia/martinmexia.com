@@ -1212,11 +1212,236 @@ function IntegrationsFlow({ active }: { active: boolean }) {
   );
 }
 
+/* ─────────────────────── CYCLE CALENDAR VIEW ─────────────────────── */
+function CycleCalendarView({ active }: { active: boolean }) {
+  const cycles = [
+    {
+      name: "Cycle 1",
+      start: "May 1",
+      end: "Jun 30",
+      months: ["May", "Jun"],
+      color: COLORS.primary,
+      sprints: [
+        { label: "S1", start: "May 1", end: "May 14" },
+        { label: "S2", start: "May 15", end: "May 28" },
+        { label: "S3", start: "May 29", end: "Jun 11" },
+        { label: "S4", start: "Jun 12", end: "Jun 25" },
+      ],
+      review: "Jun 1",
+    },
+    {
+      name: "Cycle 2",
+      start: "Jul 1",
+      end: "Aug 31",
+      months: ["Jul", "Aug"],
+      color: COLORS.matrixPurple,
+      sprints: [
+        { label: "S1", start: "Jul 1", end: "Jul 14" },
+        { label: "S2", start: "Jul 15", end: "Jul 28" },
+        { label: "S3", start: "Jul 29", end: "Aug 11" },
+        { label: "S4", start: "Aug 12", end: "Aug 25" },
+      ],
+      review: "Aug 1",
+    },
+    {
+      name: "Cycle 3",
+      start: "Sep 1",
+      end: "Oct 31",
+      months: ["Sep", "Oct"],
+      color: COLORS.accent,
+      sprints: [
+        { label: "S1", start: "Sep 1", end: "Sep 14" },
+        { label: "S2", start: "Sep 15", end: "Sep 28" },
+        { label: "S3", start: "Sep 29", end: "Oct 12" },
+        { label: "S4", start: "Oct 13", end: "Oct 26" },
+      ],
+      review: "Oct 1",
+    },
+    {
+      name: "Cycle 4",
+      start: "Nov 1",
+      end: "Dec 31",
+      months: ["Nov", "Dec"],
+      color: COLORS.matrixOrange,
+      sprints: [
+        { label: "S1", start: "Nov 1", end: "Nov 14" },
+        { label: "S2", start: "Nov 15", end: "Nov 28" },
+        { label: "S3", start: "Nov 29", end: "Dec 12" },
+        { label: "S4", start: "Dec 13", end: "Dec 26" },
+      ],
+      review: "Dec 1",
+    },
+  ];
+
+  return (
+    <div style={{ width: "100%", maxWidth: 900, margin: "0 auto" }}>
+      {/* Timeline header */}
+      <AnimatedText active={active} delay={0.3}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 8,
+            padding: "0 4px",
+          }}
+        >
+          <span style={{ fontSize: 11, color: COLORS.textMuted, fontWeight: 600 }}>MAY 2026</span>
+          <span style={{ fontSize: 11, color: COLORS.textMuted, fontWeight: 600 }}>DEC 2026</span>
+        </div>
+        {/* Full timeline bar */}
+        <div
+          style={{
+            height: 4,
+            background: "rgba(255,255,255,0.06)",
+            borderRadius: 2,
+            marginBottom: 24,
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              height: "100%",
+              width: active ? "100%" : "0%",
+              background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.matrixPurple}, ${COLORS.accent}, ${COLORS.matrixOrange})`,
+              borderRadius: 2,
+              transition: "width 1.5s ease 0.5s",
+            }}
+          />
+        </div>
+      </AnimatedText>
+
+      {/* Cycle rows */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {cycles.map((cycle, ci) => (
+          <AnimatedText key={cycle.name} active={active} delay={0.4 + ci * 0.15}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "stretch",
+                gap: 12,
+                background: "rgba(255,255,255,0.02)",
+                border: "1px solid rgba(255,255,255,0.06)",
+                borderRadius: 12,
+                padding: 12,
+                borderLeft: `3px solid ${cycle.color}`,
+              }}
+            >
+              {/* Cycle label */}
+              <div
+                style={{
+                  minWidth: 90,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  gap: 2,
+                }}
+              >
+                <div style={{ fontSize: 14, fontWeight: 700, color: cycle.color }}>{cycle.name}</div>
+                <div style={{ fontSize: 10, color: COLORS.textMuted }}>
+                  {cycle.start} – {cycle.end}
+                </div>
+                <div
+                  style={{
+                    fontSize: 9,
+                    color: cycle.color,
+                    opacity: 0.7,
+                    marginTop: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 3,
+                  }}
+                >
+                  <span>◆</span> Review: {cycle.review}
+                </div>
+              </div>
+
+              {/* Sprint blocks */}
+              <div
+                style={{
+                  flex: 1,
+                  display: "flex",
+                  gap: 6,
+                }}
+              >
+                {cycle.sprints.map((sprint, si) => (
+                  <div
+                    key={sprint.label}
+                    style={{
+                      flex: 1,
+                      background: `${cycle.color}15`,
+                      border: `1px solid ${cycle.color}30`,
+                      borderRadius: 8,
+                      padding: "8px 6px",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 2,
+                      opacity: active ? 1 : 0,
+                      transform: active ? "scale(1)" : "scale(0.8)",
+                      transition: `all 0.3s ease ${0.6 + ci * 0.15 + si * 0.05}s`,
+                    }}
+                  >
+                    <div style={{ fontSize: 11, fontWeight: 700, color: cycle.color }}>{sprint.label}</div>
+                    <div style={{ fontSize: 8, color: COLORS.textMuted, textAlign: "center", lineHeight: 1.2 }}>
+                      {sprint.start}
+                    </div>
+                    <div style={{ fontSize: 8, color: COLORS.textMuted, textAlign: "center", lineHeight: 1.2 }}>
+                      {sprint.end}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </AnimatedText>
+        ))}
+      </div>
+
+      {/* Legend */}
+      <AnimatedText active={active} delay={1.1}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 20,
+            marginTop: 20,
+            flexWrap: "wrap",
+          }}
+        >
+          {[
+            { icon: "📅", label: "2-month cycles", color: COLORS.textMuted },
+            { icon: "🏃", label: "4 × 2-week sprints per cycle", color: COLORS.textMuted },
+            { icon: "◆", label: "Mid-cycle review", color: COLORS.accent },
+          ].map((item) => (
+            <div
+              key={item.label}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 5,
+                fontSize: 11,
+                color: item.color,
+              }}
+            >
+              <span>{item.icon}</span> {item.label}
+            </div>
+          ))}
+        </div>
+      </AnimatedText>
+    </div>
+  );
+}
+
 /* ─────────────────────── MAIN PRESENTATION ─────────────────────── */
 export default function Lisboa2026() {
   const [current, setCurrent] = useState(0);
   const transitioning = useRef(false);
-  const TOTAL_SLIDES = 9;
+  const TOTAL_SLIDES = 10;
 
   const goTo = useCallback(
     (n: number) => {
@@ -1876,9 +2101,58 @@ export default function Lisboa2026() {
           <CycleVisualization active={current === 6} />
         </Slide>
 
-        {/* ═══════════ SLIDE 7: STRATEGIC PROJECTS ═══════════ */}
+        {/* ═══════════ SLIDE 7: CYCLE CALENDAR VIEW ═══════════ */}
         <Slide active={current === 7} index={7}>
           <AnimatedText active={current === 7} delay={0}>
+            <div
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: COLORS.primary,
+                marginBottom: 16,
+                textAlign: "center",
+              }}
+            >
+              Planning
+            </div>
+          </AnimatedText>
+          <AnimatedText active={current === 7} delay={0.1}>
+            <h2
+              style={{
+                fontSize: "clamp(28px, 3.5vw, 48px)",
+                fontWeight: 800,
+                textAlign: "center",
+                letterSpacing: "-0.02em",
+                marginBottom: 12,
+              }}
+            >
+              2026{" "}
+              <span className="yuno-logo-text">Cycle View</span>
+            </h2>
+          </AnimatedText>
+          <AnimatedText active={current === 7} delay={0.2}>
+            <p
+              style={{
+                fontSize: 16,
+                color: COLORS.textMuted,
+                textAlign: "center",
+                marginBottom: 32,
+                maxWidth: 550,
+              }}
+            >
+              4 delivery cycles from{" "}
+              <span style={{ color: COLORS.accent, fontWeight: 600 }}>May</span> to{" "}
+              <span style={{ color: COLORS.accent, fontWeight: 600 }}>December 2026</span>
+            </p>
+          </AnimatedText>
+          <CycleCalendarView active={current === 7} />
+        </Slide>
+
+        {/* ═══════════ SLIDE 8: STRATEGIC PROJECTS ═══════════ */}
+        <Slide active={current === 8} index={8}>
+          <AnimatedText active={current === 8} delay={0}>
             <div
               style={{
                 fontSize: 11,
@@ -1893,7 +2167,7 @@ export default function Lisboa2026() {
               Roadmap
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 7} delay={0.1}>
+          <AnimatedText active={current === 8} delay={0.1}>
             <h2
               style={{
                 fontSize: "clamp(22px, 2.8vw, 36px)",
@@ -1907,7 +2181,7 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Projects</span>
             </h2>
           </AnimatedText>
-          <AnimatedText active={current === 7} delay={0.15}>
+          <AnimatedText active={current === 8} delay={0.15}>
             <p
               style={{
                 fontSize: 13,
@@ -1922,12 +2196,12 @@ export default function Lisboa2026() {
               <strong style={{ color: COLORS.accent }}>per-person ownership</strong>
             </p>
           </AnimatedText>
-          <StrategicProjectsTable active={current === 7} />
+          <StrategicProjectsTable active={current === 8} />
         </Slide>
 
-        {/* ═══════════ SLIDE 8: THANK YOU ═══════════ */}
-        <Slide active={current === 8} index={8}>
-          <AnimatedText active={current === 8} delay={0}>
+        {/* ═══════════ SLIDE 9: THANK YOU ═══════════ */}
+        <Slide active={current === 9} index={9}>
+          <AnimatedText active={current === 9} delay={0}>
             <div
               style={{
                 fontSize: 13,
@@ -1942,7 +2216,7 @@ export default function Lisboa2026() {
               Product Leadership Vision
             </div>
           </AnimatedText>
-          <AnimatedText active={current === 8} delay={0.2}>
+          <AnimatedText active={current === 9} delay={0.2}>
             <h1
               style={{
                 fontSize: "clamp(48px, 7vw, 90px)",
@@ -1956,7 +2230,7 @@ export default function Lisboa2026() {
               <span className="yuno-logo-text">Thank You</span>
             </h1>
           </AnimatedText>
-          <AnimatedText active={current === 8} delay={0.5}>
+          <AnimatedText active={current === 9} delay={0.5}>
             <p
               style={{
                 fontSize: 20,
@@ -1969,7 +2243,7 @@ export default function Lisboa2026() {
               Let&apos;s build world-class products together.
             </p>
           </AnimatedText>
-          <AnimatedText active={current === 8} delay={0.8}>
+          <AnimatedText active={current === 9} delay={0.8}>
             <div
               style={{
                 marginTop: 48,
