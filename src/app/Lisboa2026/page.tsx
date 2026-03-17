@@ -1234,7 +1234,7 @@ function CycleCalendarView({ active }: { active: boolean }) {
       start: "Jul 1",
       end: "Aug 31",
       months: ["Jul", "Aug"],
-      color: COLORS.matrixPurple,
+      color: COLORS.primary,
       sprints: [
         { label: "S1", start: "Jul 1", end: "Jul 14" },
         { label: "S2", start: "Jul 15", end: "Jul 28" },
@@ -1248,7 +1248,7 @@ function CycleCalendarView({ active }: { active: boolean }) {
       start: "Sep 1",
       end: "Oct 31",
       months: ["Sep", "Oct"],
-      color: COLORS.accent,
+      color: COLORS.primary,
       sprints: [
         { label: "S1", start: "Sep 1", end: "Sep 14" },
         { label: "S2", start: "Sep 15", end: "Sep 28" },
@@ -1262,7 +1262,7 @@ function CycleCalendarView({ active }: { active: boolean }) {
       start: "Nov 1",
       end: "Dec 31",
       months: ["Nov", "Dec"],
-      color: COLORS.matrixOrange,
+      color: COLORS.primary,
       sprints: [
         { label: "S1", start: "Nov 1", end: "Nov 14" },
         { label: "S2", start: "Nov 15", end: "Nov 28" },
@@ -1307,7 +1307,7 @@ function CycleCalendarView({ active }: { active: boolean }) {
               left: 0,
               height: "100%",
               width: active ? "100%" : "0%",
-              background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.matrixPurple}, ${COLORS.accent}, ${COLORS.matrixOrange})`,
+              background: COLORS.primary,
               borderRadius: 2,
               transition: "width 1.5s ease 0.5s",
             }}
