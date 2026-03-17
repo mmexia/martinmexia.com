@@ -1829,6 +1829,22 @@ export default function Lisboa2026() {
               color={COLORS.matrixOrange}
             />
           </div>
+
+          <AnimatedText active={current === 2} delay={0.75}>
+            <p
+              style={{
+                marginTop: 40,
+                fontSize: 18,
+                fontWeight: 600,
+                fontStyle: "italic",
+                color: COLORS.textMuted,
+                textAlign: "center",
+                letterSpacing: "0.02em",
+              }}
+            >
+              &ldquo;Maintain the standard, Keep each other accountable&rdquo;
+            </p>
+          </AnimatedText>
         </Slide>
 
         {/* ═══════════ SLIDE 3: TEAM STRUCTURE - PRINCIPLES ═══════════ */}
