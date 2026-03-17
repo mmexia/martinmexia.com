@@ -184,6 +184,7 @@ function ProgressBar({
         height: 3,
         background: "rgba(255,255,255,0.05)",
         zIndex: 100,
+        overflow: "hidden",
       }}
     >
       <div
@@ -192,7 +193,7 @@ function ProgressBar({
           width: `${((current + 1) / total) * 100}%`,
           background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.accent})`,
           transition: "width 0.5s cubic-bezier(0.4,0,0.2,1)",
-          boxShadow: `0 0 10px ${COLORS.primary}30`,
+          boxShadow: "none",
         }}
       />
     </div>
@@ -1008,7 +1009,7 @@ function IntegrationsFlow({ active }: { active: boolean }) {
     <g>
       <rect x={x} y={y} width={w} height={h} rx={5} fill={c.bg} stroke={c.bd} strokeWidth={0.8} strokeOpacity={0.5} />
       {lines.map((t, i) => (
-        <text key={i} x={x + w / 2} y={y + (h / 2) + (i - (lines.length - 1) / 2) * 11} textAnchor="middle" dominantBaseline="central" fontSize={8} fontWeight={600} fill={c.tx}>{t}</text>
+        <text key={i} x={x + w / 2} y={y + (h / 2) + (i - (lines.length - 1) / 2) * 12} textAnchor="middle" dominantBaseline="central" fontSize={9} fontWeight={600} fill={c.tx} style={{ fontFamily: "'Titillium Web', sans-serif" }}>{t}</text>
       ))}
     </g>
   );
@@ -2033,14 +2034,14 @@ export default function Lisboa2026() {
             }}
           >
             {/* Flow map - left side */}
-            <div style={{ flex: "1 1 580px", minWidth: 500, maxWidth: 900 }}>
+            <div style={{ flex: "1 1 650px", minWidth: 580, maxWidth: 1000 }}>
               <IntegrationsFlow active={current === 6} />
             </div>
 
             {/* Key points - right side */}
             <div
               style={{
-                flex: "0 1 300px",
+                flex: "0 1 250px",
                 display: "flex",
                 flexDirection: "column",
                 gap: 10,
