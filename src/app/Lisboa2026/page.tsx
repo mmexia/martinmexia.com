@@ -144,7 +144,7 @@ function BackgroundOrbs() {
           width: 500,
           height: 500,
           borderRadius: "50%",
-          background: `radial-gradient(circle, ${COLORS.accent}20, transparent 70%)`,
+          background: `radial-gradient(circle, ${COLORS.primaryLight}20, transparent 70%)`,
           bottom: "-10%",
           left: "-5%",
           animation: "float2 18s ease-in-out infinite",
@@ -156,7 +156,7 @@ function BackgroundOrbs() {
           width: 400,
           height: 400,
           borderRadius: "50%",
-          background: `radial-gradient(circle, ${COLORS.matrixPurple}15, transparent 70%)`,
+          background: `radial-gradient(circle, ${COLORS.primaryLighter}15, transparent 70%)`,
           top: "40%",
           left: "50%",
           animation: "float3 20s ease-in-out infinite",
@@ -192,7 +192,7 @@ function ProgressBar({
           width: `${((current + 1) / total) * 100}%`,
           background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.accent})`,
           transition: "width 0.5s cubic-bezier(0.4,0,0.2,1)",
-          boxShadow: `0 0 20px ${COLORS.accent}50`,
+          boxShadow: `0 0 10px ${COLORS.primary}30`,
         }}
       />
     </div>
@@ -547,7 +547,7 @@ function CycleVisualization({ active }: { active: boolean }) {
   return (
     <div style={{ width: "100%", maxWidth: 1000, margin: "0 auto" }}>
       {/* Timeline Container */}
-      <div style={{ position: "relative", padding: "40px 0" }}>
+      <div style={{ position: "relative", padding: "24px 0" }}>
         {/* Main timeline line */}
         <div
           style={{
@@ -728,8 +728,8 @@ function CycleVisualization({ active }: { active: boolean }) {
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: 24,
-            marginTop: 24,
+            gap: 16,
+            marginTop: 16,
             flexWrap: "wrap",
           }}
         >
@@ -738,13 +738,13 @@ function CycleVisualization({ active }: { active: boolean }) {
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: 14,
-              padding: "20px 28px",
+              padding: "12px 20px",
               textAlign: "center",
               backdropFilter: "blur(20px)",
-              maxWidth: 280,
+              maxWidth: 260,
             }}
           >
-            <div style={{ fontSize: 24, marginBottom: 8 }}>📋</div>
+            <div style={{ fontSize: 18, marginBottom: 4 }}>📋</div>
             <div
               style={{
                 fontSize: 14,
@@ -764,13 +764,13 @@ function CycleVisualization({ active }: { active: boolean }) {
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: 14,
-              padding: "20px 28px",
+              padding: "12px 20px",
               textAlign: "center",
               backdropFilter: "blur(20px)",
-              maxWidth: 280,
+              maxWidth: 260,
             }}
           >
-            <div style={{ fontSize: 24, marginBottom: 8 }}>🔄</div>
+            <div style={{ fontSize: 18, marginBottom: 4 }}>🔄</div>
             <div
               style={{
                 fontSize: 14,
@@ -790,13 +790,13 @@ function CycleVisualization({ active }: { active: boolean }) {
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: 14,
-              padding: "20px 28px",
+              padding: "12px 20px",
               textAlign: "center",
               backdropFilter: "blur(20px)",
-              maxWidth: 280,
+              maxWidth: 260,
             }}
           >
-            <div style={{ fontSize: 24, marginBottom: 8 }}>⚡</div>
+            <div style={{ fontSize: 18, marginBottom: 4 }}>⚡</div>
             <div
               style={{
                 fontSize: 14,
@@ -877,8 +877,8 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                 <th
                   key={h}
                   style={{
-                    padding: "5px 11px",
-                    fontSize: 10,
+                    padding: "3px 10px",
+                    fontSize: 9,
                     fontWeight: 700,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
@@ -911,7 +911,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
               >
                 <td
                   style={{
-                    padding: "4px 11px",
+                    padding: "3px 10px",
                     fontSize: 12,
                     fontWeight: 600,
                     color: COLORS.text,
@@ -919,7 +919,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                 >
                   {p.name}
                 </td>
-                <td style={{ padding: "8px 14px" }}>
+                <td style={{ padding: "3px 10px" }}>
                   <span
                     style={{
                       fontSize: 11,
@@ -935,7 +935,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                     {p.status}
                   </span>
                 </td>
-                <td style={{ padding: "8px 14px" }}>
+                <td style={{ padding: "3px 10px" }}>
                   <span
                     style={{
                       fontSize: 12,
@@ -946,7 +946,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                     {p.priority}
                   </span>
                 </td>
-                <td style={{ padding: "8px 14px" }}>
+                <td style={{ padding: "3px 10px" }}>
                   <span
                     style={{
                       fontSize: 11,
@@ -963,7 +963,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
                 </td>
                 <td
                   style={{
-                    padding: "4px 11px",
+                    padding: "3px 10px",
                     fontSize: 12,
                     color: p.owner === "TBD" ? COLORS.textMuted : COLORS.text,
                     fontWeight: p.owner === "TBD" ? 400 : 600,
@@ -982,7 +982,7 @@ function StrategicProjectsTable({ active }: { active: boolean }) {
 
 /* ─────────────────────── INTEGRATIONS FLOW (SVG) ─────────────────────── */
 function IntegrationsFlow({ active }: { active: boolean }) {
-  const W = 780;
+  const W = 880;
   const H = 380;
   /* Lane geometry */
   const LW = 32; // label column width
@@ -1016,23 +1016,23 @@ function IntegrationsFlow({ active }: { active: boolean }) {
   /* ── Step center coordinates ── */
   // Commercial
   const startCx = 62, startCy = 35;
-  const crX = 100, crY = 12, crW = 85, crH = 44;
-  const gmX = 215, gmY = 12, gmW = 80, gmH = 44;
+  const crX = 100, crY = 10, crW = 110, crH = 48;
+  const gmX = 240, gmY = 10, gmW = 95, gmH = 48;
   // Product Owner (lane y=74)
-  const paX = 50, paY = 86, paW = 80, paH = 38;
-  const tamX = 155, tamY = 86, tamW = 80, tamH = 38;
-  const tlX = 260, tlY = 86, tlW = 88, tlH = 38;
-  const uatX = 470, uatY = 86, uatW = 70, uatH = 38;
-  const diaX = 568, diaY = 105; // decision diamond center
-  const chX = 630, chY = 86, chW = 80, chH = 38;
-  const endCx = 742, endCy = 105;
+  const paX = 50, paY = 84, paW = 100, paH = 42;
+  const tamX = 175, tamY = 84, tamW = 100, tamH = 42;
+  const tlX = 300, tlY = 84, tlW = 110, tlH = 42;
+  const uatX = 530, uatY = 84, uatW = 80, uatH = 42;
+  const diaX = 638, diaY = 105; // decision diamond center
+  const chX = 700, chY = 84, chW = 100, chH = 42;
+  const endCx = 842, endCy = 105;
   // Developer (lane y=178)
-  const devX = 80, devY = 192, devW = 90, devH = 38;
-  const qaX = 200, qaY = 192, qaW = 75, qaH = 38;
-  const crwX = 305, crwY = 192, crwW = 85, crwH = 38;
-  const relX = 470, relY = 192, relW = 95, relH = 38;
+  const devX = 80, devY = 192, devW = 105, devH = 42;
+  const qaX = 215, qaY = 192, qaW = 85, qaH = 42;
+  const crwX = 330, crwY = 192, crwW = 100, crwH = 42;
+  const relX = 530, relY = 192, relW = 115, relH = 42;
   // Operations (lane y=262)
-  const brX = 80, brY = 274, brW = 100, brH = 38;
+  const brX = 80, brY = 274, brW = 120, brH = 42;
 
   /* Main flow animation path (slow) */
   /* Happy path: Start → Commercial Request → GM Approval → (Approved) → Product Analysis → TAM → TL Review → (Ready for dev) → Development → Self-QA → Code Review → (Ready for UAT) → PO UAT → Diamond → (Passed) → Release → (Released) → Commercial Handoff → End */
@@ -1432,9 +1432,10 @@ function CycleCalendarView({ active }: { active: boolean }) {
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: 20,
-            marginTop: 20,
+            gap: 16,
+            marginTop: 12,
             flexWrap: "wrap",
+            marginBottom: 40,
           }}
         >
           {[
@@ -1785,7 +1786,9 @@ export default function Lisboa2026() {
               <span style={{ fontSize: "1.2em", fontWeight: 200 }}>&ldquo;</span>
               <span className="yuno-logo-text" style={{ fontStyle: "italic" }}>
                 Maintain the standard,
-                <br />
+              </span>
+              <br />
+              <span className="yuno-logo-text" style={{ fontStyle: "italic" }}>
                 Keep each other accountable
               </span>
               <span style={{ fontSize: "1.2em", fontWeight: 200 }}>&rdquo;</span>
