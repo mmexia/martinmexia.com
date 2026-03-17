@@ -121,7 +121,7 @@ function AnimatedText({
       style={{
         opacity: active ? 1 : 0,
         transform: active ? "translate(0)" : translateFrom,
-        transition: `opacity 0.6s cubic-bezier(0.4,0,0.2,1) ${delay}s, transform 0.6s cubic-bezier(0.4,0,0.2,1) ${delay}s`,
+        transition: `opacity 1s cubic-bezier(0.4,0,0.2,1) ${delay}s, transform 1s cubic-bezier(0.4,0,0.2,1) ${delay}s`,
       }}
     >
       {children}
@@ -1619,7 +1619,7 @@ export default function Lisboa2026() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          animation: shimmer 3s ease-in-out infinite;
+          animation: shimmer 4s ease-in-out 1 forwards;
         }
 
         /* Scrollbar for overflow slides */
@@ -2277,29 +2277,7 @@ export default function Lisboa2026() {
               Let&apos;s build world-class products together.
             </p>
           </AnimatedText>
-          <AnimatedText active={current === 9} delay={0.8}>
-            <div
-              style={{
-                marginTop: 48,
-                display: "flex",
-                gap: 16,
-                justifyContent: "center",
-              }}
-            >
-              {["🚀", "💎", "🔑", "⚡", "🎯"].map((e, i) => (
-                <span
-                  key={i}
-                  style={{
-                    fontSize: 32,
-                    opacity: 0.7,
-                    animation: `float${(i % 3) + 1} ${3 + i}s ease-in-out infinite`,
-                  }}
-                >
-                  {e}
-                </span>
-              ))}
-            </div>
-          </AnimatedText>
+          
         </Slide>
 
         {/* Bottom nav hint */}
