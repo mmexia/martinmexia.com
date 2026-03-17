@@ -1727,16 +1727,16 @@ export default function Lisboa2026() {
           </AnimatedText>
           <AnimatedText active={current === 1} delay={0.15}>
             <h2
-              className="shimmer-text"
               style={{
-                fontSize: "clamp(36px, 5vw, 64px)",
-                fontWeight: 900,
+                fontSize: "clamp(32px, 4vw, 56px)",
+                fontWeight: 800,
                 textAlign: "center",
                 letterSpacing: "-0.02em",
                 marginBottom: 48,
               }}
             >
-              Create World-Class Products
+              Create{" "}
+              <span className="yuno-logo-text">World-Class Products</span>
             </h2>
           </AnimatedText>
 
