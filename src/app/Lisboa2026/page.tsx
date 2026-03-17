@@ -1769,12 +1769,6 @@ export default function Lisboa2026() {
                   color: COLORS.primary,
                 },
                 {
-                  icon: "📅",
-                  title: "Weekly Cadence",
-                  text: "Will most likely not work on sprints but more on a weekly cadence",
-                  color: COLORS.accent,
-                },
-                {
                   icon: "🔗",
                   title: "Full Payment Flow",
                   text: "They will be owners of the whole payment flow, not just integrating the API",
@@ -1787,15 +1781,16 @@ export default function Lisboa2026() {
                       background: "rgba(255,255,255,0.03)",
                       border: "1px solid rgba(255,255,255,0.08)",
                       borderRadius: 12,
-                      padding: "12px 16px",
+                      padding: "16px 20px",
                       borderLeft: `3px solid ${point.color}`,
+                      flex: 1,
                     }}
                   >
-                    <div style={{ fontSize: 10, fontWeight: 700, color: point.color, marginBottom: 4, display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{ fontSize: 14 }}>{point.icon}</span>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: point.color, marginBottom: 6, display: "flex", alignItems: "center", gap: 6 }}>
+                      <span style={{ fontSize: 16 }}>{point.icon}</span>
                       {point.title}
                     </div>
-                    <div style={{ fontSize: 12, color: COLORS.textMuted, lineHeight: 1.4 }}>
+                    <div style={{ fontSize: 13, color: COLORS.textMuted, lineHeight: 1.5 }}>
                       {point.text}
                     </div>
                   </div>
