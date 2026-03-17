@@ -1348,7 +1348,7 @@ function CycleCalendarView({ active }: { active: boolean }) {
                 <div
                   style={{
                     fontSize: 9,
-                    color: cycle.color,
+                    color: COLORS.textMuted,
                     opacity: 0.7,
                     marginTop: 2,
                     display: "flex",
@@ -1416,7 +1416,7 @@ function CycleCalendarView({ active }: { active: boolean }) {
           {[
             { icon: "📅", label: "2-month cycles", color: COLORS.textMuted },
             { icon: "🏃", label: "4 × 2-week sprints per cycle", color: COLORS.textMuted },
-            { icon: "◆", label: "Mid-cycle review", color: COLORS.accent },
+            { icon: "◆", label: "Mid-cycle review", color: COLORS.textMuted },
           ].map((item) => (
             <div
               key={item.label}
