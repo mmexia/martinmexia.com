@@ -362,7 +362,7 @@ function OrgMatrix({ active }: { active: boolean }) {
 
   const columns = [
     { group: "Cards", color: "#5967E4", subs: ["Card Payments & Integrations", "Tokenization"] },
-    { group: "APMs", color: "#5967E4", subs: ["APM Integrations"] },
+    { group: "APMs", color: "#A56EFF", subs: ["APM Integrations"] },
     { group: "Payment Ancillaries", color: "#38ADFF", subs: ["Core Ancillaries", "Reconciliations"] },
     { group: "New Bets", color: "#E0ED80", subs: ["Banking Connectivity", "Agentic Payments", "Banking Tech / WhiteLabel"] },
   ];
@@ -529,7 +529,7 @@ function OrgMatrix({ active }: { active: boolean }) {
       <div style={{ display: "flex", justifyContent: "center", gap: 16, marginTop: 14, flexWrap: "wrap" }}>
         {[
           { label: "Cards", color: "#5967E4" },
-          { label: "APMs", color: "#5967E4" },
+          { label: "APMs", color: "#A56EFF" },
           { label: "Payment Ancillaries", color: "#38ADFF" },
           { label: "New Bets", color: "#E0ED80" },
         ].map((c) => (
@@ -2016,7 +2016,7 @@ export default function Lisboa2026() {
               }}
             >
               3 teams will have integrations: <strong style={{ color: "#5967E4" }}>Cards</strong>,{" "}
-              <strong style={{ color: "#5967E4" }}>APMs</strong>, and{" "}
+              <strong style={{ color: "#A56EFF" }}>APMs</strong>, and{" "}
               <strong style={{ color: "#E0ED80" }}>Banking Connectivity</strong>.
               They will have a different way of working but within the same team.
             </p>
