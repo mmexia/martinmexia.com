@@ -28,7 +28,7 @@ let DATA = null;
 let METHODS_BY_ID = {};
 let state = { q: "", country: "", method: "", ops: new Set(), cats: new Set() };
 
-fetch("./data/catalog.ui.json")
+fetch("/yunointegrations/data/catalog.ui.json")
   .then(r => r.json())
   .then(d => { DATA = d; init(); })
   .catch(e => {
