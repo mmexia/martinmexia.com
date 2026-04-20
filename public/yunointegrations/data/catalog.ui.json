@@ -12,7 +12,14 @@
       "methods": [
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "verify"
+          ],
           "flow": "DIRECT"
         }
       ]
@@ -489,6 +496,7 @@
             "get",
             "purchase",
             "refund",
+            "reverse",
             "verify"
           ],
           "flow": null
@@ -568,7 +576,48 @@
       "description": "Allinpay International is a payment gateway specializing in Asian cross-border transactions, serving merchants primarily in Hong Kong and Singapore. They provide a unified API (OATS) that integrates major payment methods including Alipay, WeChat Pay, UnionPay QR, PayNow, and regional e-wallets through Alipay+. The platform supports both online and in-store payments via QR codes, H5, web, and mobile apps with multi-currency processing and real-time transaction management.",
       "countries": [],
       "currencies": [],
-      "methods": []
+      "methods": [
+        {
+          "id": "ALIPAY",
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse",
+            "verify"
+          ],
+          "flow": null
+        },
+        {
+          "id": "PAYNOW",
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "WECHAT",
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "AMEX",
@@ -1235,7 +1284,21 @@
       "currencies": [
         "MXN"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse",
+            "verify"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "BAYONET",
@@ -1350,7 +1413,12 @@
       "methods": [
         {
           "id": "UPI",
-          "operations": [],
+          "operations": [
+            "cancel",
+            "get",
+            "purchase",
+            "refund"
+          ],
           "flow": "REDIRECT"
         }
       ]
@@ -1608,7 +1676,15 @@
       "methods": [
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse",
+            "verify"
+          ],
           "flow": "REDIRECT"
         }
       ]
@@ -1890,10 +1966,19 @@
           "operations": [
             "cancel",
             "capture",
+            "get",
             "purchase",
             "refund",
             "reverse",
             "verify"
+          ],
+          "flow": null
+        },
+        {
+          "id": "CRYPTO",
+          "operations": [
+            "get",
+            "purchase"
           ],
           "flow": null
         }
@@ -2800,7 +2885,8 @@
         {
           "id": "MERCADO_PAGO_CHECKOUT_PRO",
           "operations": [
-            "purchase"
+            "purchase",
+            "refund"
           ],
           "flow": null
         },
@@ -2831,7 +2917,9 @@
             "capture",
             "get",
             "purchase",
-            "refund"
+            "refund",
+            "reverse",
+            "verify"
           ],
           "flow": null
         },
@@ -4468,7 +4556,13 @@
       "methods": [
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "cancel",
+            "capture",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
           "flow": "DIRECT"
         }
       ]
@@ -4844,7 +4938,13 @@
       "methods": [
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "cancel",
+            "capture",
+            "purchase",
+            "refund",
+            "verify"
+          ],
           "flow": "DIRECT"
         }
       ]
@@ -4888,7 +4988,18 @@
       "methods": [
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "cancel",
+            "capture",
+            "dispute",
+            "get",
+            "purchase",
+            "refund",
+            "reverse",
+            "threeds_auth",
+            "threeds_version",
+            "verify"
+          ],
           "flow": "DIRECT"
         },
         {
@@ -4897,6 +5008,13 @@
             "get",
             "purchase",
             "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "THREE_DS",
+          "operations": [
+            "get"
           ],
           "flow": null
         }
@@ -5146,7 +5264,16 @@
       "currencies": [
         "PEN"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "PAGO_EFECTIVO",
+          "operations": [
+            "get",
+            "purchase"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "PAGOPLUX",
@@ -5218,8 +5345,20 @@
       "methods": [
         {
           "id": "PIX",
-          "operations": [],
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
           "flow": "REDIRECT"
+        },
+        {
+          "id": "PIX_PAYOUT",
+          "operations": [
+            "get",
+            "payout"
+          ],
+          "flow": null
         }
       ]
     },
@@ -5335,7 +5474,24 @@
       "currencies": [
         "BRL"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "PIX",
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "PIX_PAYOUT",
+          "operations": [
+            "payout"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "PAYAMIGO",
@@ -5346,7 +5502,21 @@
       "description": "PayAmigo is a fintech company that provides a fully localized payment infrastructure for cross-border merchants operating in emerging markets (especially Latin America, Africa and the Middle East). They offer services including local payment methods, treasury and FX management, tax compliance, multi-currency settlement and flexible integration options (API, hosted paywall, deep linking, reverse API).",
       "countries": [],
       "currencies": [],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse",
+            "verify"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "PAYCELL",
@@ -6413,7 +6583,21 @@
       "description": "Redsys es l\u00edder nacional y referente internacional con m\u00e1s de 40 a\u00f1os de experiencia en la prestaci\u00f3n de servicios de pago de alta calidad para Entidades Financieras y proveedores de servicios de pago.",
       "countries": [],
       "currencies": [],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse",
+            "verify"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "REFACIL",
@@ -6597,7 +6781,9 @@
             "capture",
             "get",
             "purchase",
-            "refund"
+            "refund",
+            "reverse",
+            "verify"
           ],
           "flow": null
         }
@@ -6990,7 +7176,21 @@
         "ZMW",
         "ZWL"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse",
+            "verify"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "SIPAY",
@@ -7050,7 +7250,10 @@
       "methods": [
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "purchase",
+            "refund"
+          ],
           "flow": "DIRECT"
         }
       ]
@@ -7071,7 +7274,11 @@
       "methods": [
         {
           "id": "PIX",
-          "operations": [],
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
           "flow": "DIRECT"
         }
       ]
@@ -7472,7 +7679,15 @@
       "methods": [
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse",
+            "verify"
+          ],
           "flow": "DIRECT"
         }
       ]
@@ -7531,7 +7746,20 @@
         "OMR",
         "QAR"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "verify"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "TRANSBANK",
@@ -8220,7 +8448,11 @@
       "methods": [
         {
           "id": "ZAINCASH",
-          "operations": [],
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
           "flow": "REDIRECT"
         }
       ]
@@ -8245,8 +8477,23 @@
       "methods": [
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
           "flow": "DIRECT"
+        },
+        {
+          "id": "SBP",
+          "operations": [
+            "get",
+            "payout",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
         }
       ]
     },
