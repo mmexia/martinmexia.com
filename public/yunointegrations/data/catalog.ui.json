@@ -6411,6 +6411,31 @@
       ]
     },
     {
+      "id": "QPAY",
+      "name": "QPay",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Qatar Central Bank Payment Gateway (QPAY). Runs on integrations-z declarative pipelines.",
+      "countries": [
+        "QA"
+      ],
+      "currencies": [
+        "QAR"
+      ],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        }
+      ]
+    },
+    {
       "id": "RAPPIBANK",
       "name": "Rappibank",
       "icon": "https://icons.prod.y.uno/rappibank_logosimbolo.png",
