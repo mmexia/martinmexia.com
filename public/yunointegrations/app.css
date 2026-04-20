@@ -196,6 +196,39 @@ select option { background: var(--bg); color: var(--text); }
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 14px;
 }
+
+/* Payment-method banner: full-width header when filtering by method */
+.method-banner {
+  grid-column: 1 / -1;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 6px;
+}
+.method-banner-head { display: flex; align-items: center; gap: 16px; }
+.method-banner img {
+  width: 48px; height: 48px; object-fit: contain;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 10px; padding: 6px; flex-shrink: 0;
+}
+.method-banner-title h3 {
+  font-size: 22px; font-weight: 500; margin: 0 0 6px;
+  letter-spacing: -0.015em; text-transform: none; color: var(--text);
+  font-family: inherit;
+}
+.method-banner-sub {
+  display: flex; gap: 10px; align-items: center;
+  font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);
+}
+.method-banner-sub code {
+  background: var(--card-overlay); padding: 2px 6px; border-radius: 4px; color: var(--text);
+}
+.method-banner-count {
+  margin: 12px 0 0;
+  font-size: 12px; color: var(--text-secondary);
+  font-family: var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase;
+}
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);

@@ -37,6 +37,10 @@ fetch("/yunointegrations/data/catalog.ui.json")
 
 function init() {
   METHODS_BY_ID = Object.fromEntries(DATA.payment_methods.map(m => [m.id, m]));
+  // Hide providers with 0 payment methods or 0 countries — they're catalog stubs.
+  DATA.providers = DATA.providers.filter(p =>
+    (p.methods || []).length > 0 && (p.countries || []).length > 0
+  );
   buildFilters();
   bindEvents();
   initTheme();
@@ -158,20 +162,63 @@ function render() {
   const matched = DATA.providers.filter(providerMatches);
   const grid = document.getElementById("grid");
   grid.innerHTML = "";
+  // Method-first view: when a payment method is selected, lead with a banner
+  // then render each provider in a processor-focused variant.
+  if (state.method) {
+    const meta = METHODS_BY_ID[state.method];
+    if (meta) grid.appendChild(methodBanner(meta, matched.length));
+  }
   matched.forEach(p => grid.appendChild(card(p)));
   document.getElementById("stats").textContent =
     `${matched.length} provider${matched.length === 1 ? "" : "s"} · ${DATA.payment_methods.length} payment methods`;
+}
+
+function methodBanner(method, count) {
+  const el = document.createElement("div");
+  el.className = "method-banner";
+  const logo = method.icon
+    ? `<img src="${method.icon}" alt="${escape(method.name)}" onerror="this.style.visibility='hidden'"/>`
+    : "";
+  const cat = method.category ? `<span class="pm-cat">${escape(method.category)}</span>` : "";
+  el.innerHTML = `
+    <div class="method-banner-head">
+      ${logo}
+      <div class="method-banner-title">
+        <h3>${escape(method.name)}</h3>
+        <div class="method-banner-sub">
+          <code>${escape(method.id)}</code>
+          ${cat}
+        </div>
+      </div>
+    </div>
+    <p class="method-banner-count">${count} processor${count === 1 ? "" : "s"} supporting this payment method</p>
+  `;
+  return el;
 }
 
 function card(p) {
   const el = document.createElement("div");
   el.className = "card";
   const logo = p.icon ? `<img class="logo" src="${p.icon}" alt="${p.name}" loading="lazy" onerror="this.style.visibility='hidden'"/>` : `<div class="logo" style="background:#1b2027"></div>`;
-  const preview = (p.methods || []).slice(0, 6).map(m => {
-    const name = METHODS_BY_ID[m.id]?.name || m.id;
-    return `<span class="pm-badge">${escape(name)}</span>`;
-  }).join("");
-  const more = (p.methods || []).length > 6 ? `<span class="pm-badge">+${p.methods.length - 6}</span>` : "";
+
+  // When filtering by a payment method, show that method's operations for this provider
+  // instead of the generic payment-method preview.
+  let featureRow = "";
+  if (state.method) {
+    const m = (p.methods || []).find(x => x.id === state.method);
+    const ops = (m?.operations || []).slice().sort((a, b) => OPS_ORDER.indexOf(a) - OPS_ORDER.indexOf(b));
+    featureRow = ops.length
+      ? `<div class="ops">${ops.map(o => `<span class="op ${o}">${o}</span>`).join("")}</div>`
+      : `<div class="ops"><span class="op none">operations not detected</span></div>`;
+  } else {
+    const preview = (p.methods || []).slice(0, 6).map(m => {
+      const name = METHODS_BY_ID[m.id]?.name || m.id;
+      return `<span class="pm-badge">${escape(name)}</span>`;
+    }).join("");
+    const more = (p.methods || []).length > 6 ? `<span class="pm-badge">+${p.methods.length - 6}</span>` : "";
+    featureRow = `<div class="pm-preview">${preview}${more}</div>`;
+  }
+
   el.innerHTML = `
     <div class="head">
       ${logo}
@@ -185,7 +232,7 @@ function card(p) {
       <span><b>${(p.methods || []).length}</b> methods</span>
       <span><b>${(p.currencies || []).length}</b> currencies</span>
     </div>
-    <div class="pm-preview">${preview}${more}</div>
+    ${featureRow}
   `;
   el.addEventListener("click", () => openDrawer(p));
   return el;
