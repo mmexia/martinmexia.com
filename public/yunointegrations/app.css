@@ -240,6 +240,7 @@ select option { background: var(--bg); color: var(--text); }
   display: flex; justify-content: flex-end;
   animation: fadeUp 0.2s ease;
 }
+.drawer[hidden] { display: none; }
 .drawer-inner {
   width: min(720px, 100%);
   background: var(--bg);
