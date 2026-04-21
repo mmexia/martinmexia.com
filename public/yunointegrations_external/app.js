@@ -28,7 +28,6 @@ let DATA = null;
 let METHODS_BY_ID = {};
 // cats starts empty but is populated with every known category in buildFilters()
 // so the default is "all selected = show all". Clearing it all = show none.
-// showPromised defaults to false so Zuora-promised entries are hidden until
 // the user explicitly opts in.
 let state = { q: "", country: "", method: "", ops: new Set(), cats: new Set(), showPromised: true };
 
@@ -279,7 +278,7 @@ function card(p) {
   const el = document.createElement("div");
   el.className = "card" + (p._promised ? " promised" : "");
   const logo = p.icon ? `<img class="logo" src="${p.icon}" alt="${p.name}" loading="lazy" onerror="this.style.visibility='hidden'"/>` : `<div class="logo" style="background:#1b2027"></div>`;
-  const promisedBadge = p._promised ? `<span class="promised-badge" title="Zuora-promised, not yet built">Zuora promised</span>` : "";
+  const promisedBadge = "";
 
   // When filtering by a payment method, show that method's operations for this provider
   // instead of the generic payment-method preview.
@@ -330,7 +329,7 @@ function openDrawer(p) {
       ? `<div class="ops">${ops.map(o => `<span class="op ${o}">${o}</span>`).join("")}</div>`
       : `<div class="ops"><span class="op none">operations not detected</span></div>`;
     const flow = m.flow ? `<span class="pm-cat">flow: ${m.flow}</span>` : "";
-    const promisedPill = m._promised ? `<span class="pm-cat promised-pill" title="Zuora-promised">Zuora promised</span>` : "";
+    const promisedPill = "";
     return `
       <div class="pm-row${m._promised ? " promised" : ""}">
         <div class="pm-head">

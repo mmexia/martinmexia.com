@@ -6,7 +6,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=www.24hourfitness.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -19,12 +19,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "TWOC2P",
@@ -487,11 +484,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_has_promised": true
+      ]
     },
     {
       "id": "AFIRME",
@@ -639,51 +634,44 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "PAYPAY",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "TOSSPAY",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "NAVER_PAY",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "KAKAO_PAY",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "MOMO_PAY",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_has_promised": true
+      ]
     },
     {
       "id": "ALL_IN_PAY",
@@ -749,7 +737,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=ebanx.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AR",
         "BR",
@@ -774,12 +762,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "AMAZONPAY",
@@ -787,7 +772,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=pay.amazon.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "DE",
         "ES",
@@ -809,12 +794,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "AMEX",
@@ -850,7 +832,7 @@
       "icon": "https://icons.duckduckgo.com/ip3/anb.com.sa.ico",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "SA",
         "US"
@@ -865,12 +847,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "ANTOM",
@@ -1318,7 +1297,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=authorize.net&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -1331,36 +1310,30 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "ACH",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "APPLE_PAY",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "PAYPAL",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "AZUL",
@@ -1707,19 +1680,16 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "BANK_TRANSFER",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_has_promised": true
+      ]
     },
     {
       "id": "BLUESNAP",
@@ -1727,7 +1697,7 @@
       "icon": "https://bluesnap.com/favicon.ico",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AT",
         "BE",
@@ -1762,28 +1732,23 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "ACH",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "SEPA",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "BRADESCO",
@@ -2043,11 +2008,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_has_promised": true
+      ]
     },
     {
       "id": "CARDCONNECT",
@@ -2055,7 +2018,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=cardconnect.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -2068,20 +2031,16 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "ACH",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "CCAVENUE",
@@ -2122,7 +2081,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=chase.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -2135,12 +2094,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "CHECKOUT",
@@ -2233,7 +2189,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=checkout.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AE",
         "AT",
@@ -2270,20 +2226,16 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "SEPA",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "CIBC",
@@ -2422,7 +2374,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=citi.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "BR",
         "DE",
@@ -2449,20 +2401,16 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "ACH",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "CLEAR_SALE",
@@ -2927,27 +2875,23 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "SEPA",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "BACS",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_has_promised": true
+      ]
     },
     {
       "id": "CYBERSOURCE_GTW",
@@ -3610,11 +3554,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_has_promised": true
+      ]
     },
     {
       "id": "ECOMMPAY",
@@ -3749,7 +3691,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=epx.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -3762,12 +3704,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "EVO",
@@ -3887,7 +3826,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=fatzebra.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AU",
         "NZ",
@@ -3904,20 +3843,16 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "BECS_AU",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "FINTOC",
@@ -4275,7 +4210,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=worldline.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AT",
         "AU",
@@ -4314,36 +4249,30 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "ACH",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "SEPA",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "BACS",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "GLOBALCOLLECT_V2",
@@ -4351,7 +4280,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=worldline.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AU",
         "DE",
@@ -4376,12 +4305,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "GLOBALPAY",
@@ -4404,7 +4330,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=www.gmo-pg.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "JP",
         "US"
@@ -4419,12 +4345,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "GOCARDLESS",
@@ -4432,7 +4355,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=gocardless.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AT",
         "AU",
@@ -4477,68 +4400,58 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "SEPA",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "BACS",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "BECS_AU",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "BECS_NZ",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "AUTOGIRO",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "BETALINGSSERVICE",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "PAD_CA",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "GOOGLE_PAY",
@@ -4665,7 +4578,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=helix.us&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -4678,12 +4591,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "HPAY",
@@ -4691,7 +4601,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=hpay.vn&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US",
         "VN"
@@ -4706,12 +4616,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "HYPERPAY",
@@ -4976,7 +4883,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=ingenico.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AT",
         "AU",
@@ -5015,28 +4922,23 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "SEPA",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "BACS",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "INOVIO",
@@ -5086,7 +4988,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=bambora.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AU",
         "NZ",
@@ -5103,12 +5005,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "IPSP",
@@ -5522,7 +5421,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=klarna.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AT",
         "BE",
@@ -5555,12 +5454,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "KOIN",
@@ -5885,7 +5781,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=deluxe.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -5898,20 +5794,16 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "ACH",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "MOBBEX",
@@ -5971,7 +5863,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=moneris.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "CA",
         "US"
@@ -5986,12 +5878,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "MONNET",
@@ -6177,7 +6066,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=mastercard.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AE",
         "CA",
@@ -6196,20 +6085,16 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "ACH",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "NEQUI",
@@ -6249,7 +6134,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=nexigroup.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "DE",
         "DK",
@@ -6274,12 +6159,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "NETWORK_INTERNATIONAL",
@@ -6497,11 +6379,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_has_promised": true
+      ]
     },
     {
       "id": "NOVALNET",
@@ -6675,7 +6555,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=opayo.co.uk&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "GB",
         "US"
@@ -6690,12 +6570,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "OPENPAY",
@@ -6730,7 +6607,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=chasepaymentech.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AT",
         "BE",
@@ -6765,68 +6642,58 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "ACH",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "SEPA",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "BACS",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "PAYPAL",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "APPLE_PAY",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "GOOGLE_PAY",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "PAZE",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "RAPPI",
@@ -7530,7 +7397,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=paypal.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -7543,28 +7410,23 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "ACH",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "PAYPAL_CREDIT",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "PAYPLUG",
@@ -7681,7 +7543,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=paystack.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "GH",
         "NG",
@@ -7700,20 +7562,16 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "PAYSTACK_DIRECT_DEBIT",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "PAYTR",
@@ -7992,7 +7850,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=plaid.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "CA",
         "US"
@@ -8007,12 +7865,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "PLANET",
@@ -8020,7 +7875,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=weareplanet.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "DE",
         "ES",
@@ -8040,12 +7895,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "PLUXEE",
@@ -8432,7 +8284,7 @@
       "icon": "https://icons.duckduckgo.com/ip3/quickgateway.com.ico",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -8445,12 +8297,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "RAPPIBANK",
@@ -8801,7 +8650,7 @@
       "icon": "https://icons.duckduckgo.com/ip3/saferpay.com.ico",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AT",
         "CH",
@@ -8820,12 +8669,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "SAFETYPAY",
@@ -8908,7 +8754,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=opayo.co.uk&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "GB",
         "IE",
@@ -8925,12 +8771,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "SANTANDER",
@@ -9014,7 +8857,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=sikahealth.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -9027,12 +8870,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "SILVERFLOW",
@@ -9413,7 +9253,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=sony.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "GB",
         "JP",
@@ -9430,12 +9270,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "SPLITIT",
@@ -9860,19 +9697,16 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "PAD_CA",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_has_promised": true
+      ]
     },
     {
       "id": "STRIPE_RADAR",
@@ -9895,7 +9729,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=stripe.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "CA",
         "GB",
@@ -9912,12 +9746,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "T1PAGOS",
@@ -10205,7 +10036,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=validifi.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -10218,12 +10049,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "VANTIV",
@@ -10231,7 +10059,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=worldpay.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -10244,12 +10072,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "VESTA",
@@ -10445,7 +10270,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=wellsfargo.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "US"
       ],
@@ -10458,12 +10283,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "WEPAY",
@@ -10471,7 +10293,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=wepay.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "CA",
         "US"
@@ -10486,20 +10308,16 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         },
         {
           "id": "ACH",
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "WIBOND",
@@ -10524,7 +10342,7 @@
       "icon": "https://www.google.com/s2/favicons?domain=windcave.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
+      "description": "",
       "countries": [
         "AU",
         "NZ",
@@ -10541,12 +10359,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_promised": true,
-      "_has_promised": true
+      ]
     },
     {
       "id": "WOMPI",
@@ -10678,11 +10493,9 @@
           "operations": [
             "purchase"
           ],
-          "flow": null,
-          "_promised": true
+          "flow": null
         }
-      ],
-      "_has_promised": true
+      ]
     },
     {
       "id": "XENDIT",
