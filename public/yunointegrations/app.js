@@ -105,11 +105,16 @@ function buildFilters() {
     msel.appendChild(opt);
   });
 
-  // Provider categories
+  // Provider categories — explicit order: Processor, Payment Method, Fraud Solution, 3d secure, then anything else alphabetically
+  const CAT_ORDER = ["Processor", "Payment Method", "Fraud Solution", "3d secure"];
   const cats = new Set();
   DATA.providers.forEach(p => p.category && cats.add(p.category));
+  const ordered = [
+    ...CAT_ORDER.filter(c => cats.has(c)),
+    ...[...cats].filter(c => !CAT_ORDER.includes(c)).sort(),
+  ];
   const catsEl = document.getElementById("cats");
-  [...cats].sort().forEach(c => {
+  ordered.forEach(c => {
     const label = document.createElement("label");
     label.innerHTML = `<input type="checkbox" value="${c}" /> ${c}`;
     catsEl.appendChild(label);
