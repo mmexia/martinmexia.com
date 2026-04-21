@@ -32,14 +32,41 @@ let METHODS_BY_ID = {};
 // the user explicitly opts in.
 let state = { q: "", country: "", method: "", ops: new Set(), cats: new Set(), showPromised: true };
 
-{
+const PW = "YunoRocks";
+
+function initGate() {
+  const gate = document.getElementById("pw-gate");
+  if (!gate) return Promise.resolve();
+  if (sessionStorage.getItem("yint-unlocked") === "1") {
+    gate.remove();
+    return Promise.resolve();
+  }
+  return new Promise(resolve => {
+    document.getElementById("pw-form").addEventListener("submit", e => {
+      e.preventDefault();
+      const input = document.getElementById("pw-input");
+      const err = document.getElementById("pw-err");
+      if (input.value === PW) {
+        sessionStorage.setItem("yint-unlocked", "1");
+        gate.remove();
+        resolve();
+      } else {
+        err.hidden = false;
+        input.value = "";
+        input.focus();
+      }
+    });
+  });
+}
+
+initGate().then(() => {
   fetch("/yunointegrations_external/data/catalog.ui.json")
     .then(r => r.json())
     .then(d => { DATA = d; init(); })
     .catch(e => {
       document.getElementById("grid").innerHTML = `<p style="color:#ef4444">Failed to load catalog: ${e}. Run <code>python3 extract.py</code> first.</p>`;
     });
-}
+});
 
 function init() {
   METHODS_BY_ID = Object.fromEntries(DATA.payment_methods.map(m => [m.id, m]));
