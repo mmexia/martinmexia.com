@@ -98,16 +98,13 @@ function initTheme() {
 
 function renderCounters() {
   const countries = new Set();
-  let opsCount = 0;
   DATA.providers.forEach(p => {
     (p.countries || []).forEach(c => countries.add(c));
-    (p.methods || []).forEach(m => (m.operations || []).forEach(() => opsCount++));
   });
   document.getElementById("counters").innerHTML = `
     <span><b>${DATA.providers.length}</b>Providers</span>
     <span><b>${DATA.payment_methods.length}</b>Payment methods</span>
     <span><b>${countries.size}</b>Countries</span>
-    <span><b>${opsCount.toLocaleString()}</b>Operations</span>
   `;
 }
 
