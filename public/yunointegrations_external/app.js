@@ -76,7 +76,8 @@ function init() {
   initTheme();
   renderCounters();
   render();
-  document.getElementById("gen").textContent = new Date().toISOString().slice(0, 10);
+  const genEl = document.getElementById("gen");
+  if (genEl) genEl.textContent = new Date().toISOString().slice(0, 10);
 }
 
 function initTheme() {
