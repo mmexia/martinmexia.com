@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" suppressHydrationWarning>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Yuno Integrations (External) · Martin Mexia</title>
+<meta name="description" content="Live catalog of Yuno's payment provider integrations — by country, payment method, and operation." />
+<link rel="icon" href="https://icons.prod.y.uno/yuno_logosimbolo.png" />
+<link rel="stylesheet" href="/yunointegrations_external/app.css" />
+<script>
+  (function() {
+    const theme = localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="brand-mark"><a href="https://www.martinmexia.com">MARTIN&nbsp;MEXIA</a></span>
+    <h1><span class="slash">/</span>Yuno Integrations <span style="font-size:0.65em;padding:2px 8px;margin-left:6px;border:1px solid var(--warn);color:var(--warn);border-radius:999px;letter-spacing:0.08em;text-transform:uppercase;font-family:var(--font-mono);vertical-align:middle">external</span></h1>
+  </div>
+  <div class="header-right">
+    <div class="stats" id="stats"></div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+  </div>
+</header>
+
+<section class="hero">
+  <h2 class="fade-up">Every provider. Every country. Every <em>payment method</em>.</h2>
+  <p class="fade-up d1">A live catalog of Yuno's payment integrations: providers, the countries they cover, the payment methods they support, and the operations (purchase, capture, refund, cancel…) available per method.</p>
+  <div class="hero-counters fade-up d2" id="counters"></div>
+</section>
+
+<main class="app">
+  <aside class="filters">
+    <section class="search">
+      <h3>Search</h3>
+      <input id="q" type="search" placeholder="Provider or method…" />
+    </section>
+
+    <section>
+      <h3>Country</h3>
+      <select id="country">
+        <option value="">All countries</option>
+      </select>
+    </section>
+
+    <section>
+      <h3>Payment method</h3>
+      <select id="method">
+        <option value="">All methods</option>
+      </select>
+    </section>
+
+    <section>
+      <h3>Operation</h3>
+      <div class="chips" id="ops">
+        <label><input type="checkbox" value="purchase" /> Purchase</label>
+        <label><input type="checkbox" value="capture" /> Capture</label>
+        <label><input type="checkbox" value="refund" /> Refund</label>
+        <label><input type="checkbox" value="cancel" /> Cancel</label>
+        <label><input type="checkbox" value="reverse" /> Reverse</label>
+        <label><input type="checkbox" value="verify" /> Verify</label>
+        <label><input type="checkbox" value="enrollment" /> Enrollment</label>
+      </div>
+    </section>
+
+    <section class="clear-section">
+      <button id="clear">Clear filters</button>
+    </section>
+  </aside>
+
+  <section class="results">
+    <div class="results-toolbar">
+      <div class="toolbar-label">Category</div>
+      <div class="chips" id="cats"></div>
+    </div>
+    <div id="grid" class="grid"></div>
+  </section>
+</main>
+
+<div id="drawer" class="drawer" hidden>
+  <div class="drawer-inner">
+    <button class="close" id="close-drawer" aria-label="Close">&times;</button>
+    <div id="drawer-body"></div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 MARTIN MEXIA</span>
+  <span class="divider">·</span>
+  <span>Sourced from <code style="font-family:var(--font-mono);background:var(--card-overlay);padding:2px 6px;border-radius:4px">catalog-int</code></span>
+  <span class="divider">·</span>
+  <span>Generated <span id="gen"></span></span>
+</footer>
+
+<script src="/yunointegrations_external/app.js"></script>
+</body>
+</html>
