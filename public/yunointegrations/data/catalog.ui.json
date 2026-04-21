@@ -1,31 +1,6 @@
 {
   "providers": [
     {
-      "id": "24HOURFITNESS",
-      "name": "24HourFitness",
-      "icon": "https://www.google.com/s2/favicons?domain=www.24hourfitness.com&sz=128",
-      "category": "Processor",
-      "website": "",
-      "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [
-        "US"
-      ],
-      "currencies": [
-        "USD"
-      ],
-      "methods": [
-        {
-          "id": "ACH",
-          "operations": [
-            "purchase"
-          ],
-          "flow": null,
-          "_promised": true
-        }
-      ],
-      "_promised": true
-    },
-    {
       "id": "TWOC2P",
       "name": "2C2P",
       "icon": "https://icons.prod.y.uno/2c2p_logosimbolo.png",

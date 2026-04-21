@@ -26,11 +26,13 @@ const OPS_ORDER = ["purchase", "capture", "refund", "cancel", "reverse", "verify
 
 let DATA = null;
 let METHODS_BY_ID = {};
-// cats starts empty but is populated with every known category in buildFilters()
-// so the default is "all selected = show all". Clearing it all = show none.
+// state.cats: a Set of selected category names. If empty AND state.catsAll is
+// true, treat as "show every category" (the default). catsAll is mutually
+// exclusive with any specific categories — picking a specific one clears the
+// All flag; picking All clears the specifics.
 // showPromised defaults to false so Zuora-promised entries are hidden until
 // the user explicitly opts in.
-let state = { q: "", country: "", method: "", ops: new Set(), cats: new Set(), showPromised: false };
+let state = { q: "", country: "", method: "", ops: new Set(), cats: new Set(), catsAll: true, showPromised: false };
 
 const PW = "YunoRocks";
 
@@ -153,7 +155,7 @@ function buildFilters() {
     msel.appendChild(g);
   }
 
-  // Provider categories — explicit order: Processor, Payment Method, Fraud Solution, 3d secure, then anything else alphabetically
+  // Provider categories — "All" pinned first, then explicit order.
   const CAT_ORDER = ["Processor", "Payment Method", "Fraud Solution", "3d secure"];
   const cats = new Set();
   DATA.providers.forEach(p => p.category && cats.add(p.category));
@@ -161,14 +163,14 @@ function buildFilters() {
     ...CAT_ORDER.filter(c => cats.has(c)),
     ...[...cats].filter(c => !CAT_ORDER.includes(c)).sort(),
   ];
-  // Seed the filter state with every category selected — the grid starts
-  // "all on". Clearing them all produces an empty grid (distinct from the
-  // legacy "empty set means no filter" semantics).
-  ordered.forEach(c => state.cats.add(c));
   const catsEl = document.getElementById("cats");
+  // "All" pill first, checked by default.
+  const allLabel = document.createElement("label");
+  allLabel.innerHTML = `<input type="checkbox" value="__ALL__" checked data-cat-all /> All`;
+  catsEl.appendChild(allLabel);
   ordered.forEach(c => {
     const label = document.createElement("label");
-    label.innerHTML = `<input type="checkbox" value="${c}" checked /> ${c}`;
+    label.innerHTML = `<input type="checkbox" value="${c}" /> ${c}`;
     catsEl.appendChild(label);
   });
 }
@@ -183,8 +185,32 @@ function bindEvents() {
     render();
   });
   document.getElementById("cats").addEventListener("change", e => {
-    state.cats.clear();
-    document.querySelectorAll("#cats input:checked").forEach(i => state.cats.add(i.value));
+    const isAll = e.target.dataset.catAll !== undefined;
+    const allCheckbox = document.querySelector('#cats input[data-cat-all]');
+    if (isAll) {
+      // Clicking the All pill: if now checked, clear specifics; if unchecked
+      // (user un-ticks All directly), leave specifics as-is (likely empty).
+      if (e.target.checked) {
+        document.querySelectorAll('#cats input:not([data-cat-all])').forEach(i => { i.checked = false; });
+        state.cats.clear();
+        state.catsAll = true;
+      } else {
+        state.catsAll = false;
+      }
+    } else {
+      // Clicking a specific pill: auto-uncheck All.
+      if (allCheckbox && allCheckbox.checked) {
+        allCheckbox.checked = false;
+        state.catsAll = false;
+      }
+      state.cats.clear();
+      document.querySelectorAll('#cats input:not([data-cat-all]):checked').forEach(i => state.cats.add(i.value));
+      // If no specifics remain checked, flip back into All mode for sanity.
+      if (state.cats.size === 0) {
+        if (allCheckbox) allCheckbox.checked = true;
+        state.catsAll = true;
+      }
+    }
     render();
   });
   document.getElementById("show-promised").addEventListener("change", e => {
@@ -192,17 +218,15 @@ function bindEvents() {
     render();
   });
   document.getElementById("clear").addEventListener("click", () => {
-    state = { q: "", country: "", method: "", ops: new Set(), cats: new Set(), showPromised: false };
+    state = { q: "", country: "", method: "", ops: new Set(), cats: new Set(), catsAll: true, showPromised: false };
     document.getElementById("q").value = "";
     document.getElementById("country").value = "";
     document.getElementById("method").value = "";
-    // Reset operations: all unchecked
     document.querySelectorAll("#ops input").forEach(i => (i.checked = false));
-    // Reset categories: all checked (+ rehydrate state)
-    document.querySelectorAll("#cats input").forEach(i => {
-      i.checked = true;
-      state.cats.add(i.value);
-    });
+    // Reset categories: only "All" checked.
+    document.querySelectorAll('#cats input:not([data-cat-all])').forEach(i => { i.checked = false; });
+    const allCheckbox = document.querySelector('#cats input[data-cat-all]');
+    if (allCheckbox) allCheckbox.checked = true;
     const pt = document.getElementById("show-promised");
     if (pt) pt.checked = false;
     render();
@@ -232,7 +256,7 @@ function providerMatches(p) {
     (p.methods || []).forEach(m => (m.operations || []).forEach(o => allOps.add(o)));
     for (const op of state.ops) if (!allOps.has(op)) return false;
   }
-  if (!state.cats.has(p.category)) return false;
+  if (!state.catsAll && !state.cats.has(p.category)) return false;
   return true;
 }
 
