@@ -7,8 +7,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "ACH",
@@ -28,8 +32,12 @@
       "category": "Processor",
       "website": "https://2c2p.com/",
       "description": "Quality payment solutions to align with your key objectives.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -490,8 +498,12 @@
       "category": "Processor",
       "website": "https://www.afirme.com/",
       "description": "",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -501,8 +513,12 @@
       "category": "Processor",
       "website": "https://www.airwallex.com/",
       "description": "Airwallex is a fintech platform enabling businesses to manage multi-currency accounts,",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "APPLE_PAY",
@@ -603,8 +619,18 @@
       "category": "Processor",
       "website": "https://global.alipay.com/platform/site/ihome",
       "description": "Quality payment solutions to align with your key objectives.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "CN",
+        "JP",
+        "KR",
+        "VN"
+      ],
+      "currencies": [
+        "CNY",
+        "JPY",
+        "KRW",
+        "VND"
+      ],
       "methods": [
         {
           "id": "ALIPAY",
@@ -663,8 +689,14 @@
       "category": "Processor",
       "website": "https://allinpayintl.com",
       "description": "Allinpay International is a payment gateway specializing in Asian cross-border transactions, serving merchants primarily in Hong Kong and Singapore. They provide a unified API (OATS) that integrates major payment methods including Alipay, WeChat Pay, UnionPay QR, PayNow, and regional e-wallets through Alipay+. The platform supports both online and in-store payments via QR codes, H5, web, and mobile apps with multi-currency processing and real-time transaction management.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "CN",
+        "US"
+      ],
+      "currencies": [
+        "CNY",
+        "USD"
+      ],
       "methods": [
         {
           "id": "ALIPAY",
@@ -715,8 +747,24 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AR",
+        "BR",
+        "CL",
+        "CO",
+        "MX",
+        "PE",
+        "US"
+      ],
+      "currencies": [
+        "ARS",
+        "BRL",
+        "CLP",
+        "COP",
+        "MXN",
+        "PEN",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -736,8 +784,21 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "DE",
+        "ES",
+        "FR",
+        "GB",
+        "IT",
+        "JP",
+        "US"
+      ],
+      "currencies": [
+        "EUR",
+        "GBP",
+        "JPY",
+        "USD"
+      ],
       "methods": [
         {
           "id": "AMAZON_PAY",
@@ -785,8 +846,14 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "SA",
+        "US"
+      ],
+      "currencies": [
+        "SAR",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -1246,8 +1313,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -1417,9 +1488,11 @@
       "category": "Processor",
       "website": "https://www.bancard.com.py/",
       "description": "Nuestra mision es proveer servicios transaccionales y de medios de pago electr\u00f3nico con flexibilidad, seguridad y calidad, generando valor percibido para accionistas, colaboradores y clientes, comprometidos con la comunidad y el ambiente.",
-      "countries": [],
+      "countries": [
+        "US"
+      ],
       "currencies": [
-        "PYG"
+        "USD"
       ],
       "methods": [
         {
@@ -1504,8 +1577,12 @@
       "category": "Fraud Solution",
       "website": "https://dashboard.bayonet.io/",
       "description": "Protect yourself from e-commerce fraud with the right tool.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -1643,8 +1720,34 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AT",
+        "BE",
+        "CY",
+        "DE",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "IE",
+        "IT",
+        "LT",
+        "LU",
+        "LV",
+        "MT",
+        "NL",
+        "PT",
+        "SI",
+        "SK",
+        "US"
+      ],
+      "currencies": [
+        "EUR",
+        "GBP",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -1943,8 +2046,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -2005,8 +2112,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -2026,7 +2137,9 @@
       "category": "Processor",
       "website": "https://www.checkout.com/",
       "description": "Checkout.com acts as an end-to-end Payment Services Provider, enabling businesses to move, manage, and optimize money. We empower businesses to accept online payments and disburse funds through various payment methods and integration options. Our Intelligent Acceptance, Authentication, Identity Verification, and Fraud Detection tools help merchants accept legitimate payments while preventing fraud. Additionally, we offer a unified dashboard for managing balances and payments across geographies and currencies.",
-      "countries": [],
+      "countries": [
+        "US"
+      ],
       "currencies": [
         "USD"
       ],
@@ -2094,8 +2207,12 @@
       "category": "3d secure",
       "website": "https://www.checkout.com/",
       "description": "Fight fraud, boost sales, and enhance customer experiences with Checkout.com 3D Secure solution.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -2105,8 +2222,36 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AE",
+        "AT",
+        "BE",
+        "CY",
+        "DE",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "IE",
+        "IT",
+        "LT",
+        "LU",
+        "LV",
+        "MT",
+        "NL",
+        "PT",
+        "SI",
+        "SK",
+        "US"
+      ],
+      "currencies": [
+        "AED",
+        "EUR",
+        "GBP",
+        "USD"
+      ],
       "methods": [
         {
           "id": "ACH",
@@ -2250,8 +2395,12 @@
       "category": "Fraud Solution",
       "website": "https://docs.cielo.com.br/risk-en/reference/getting-started-with-your-api-1",
       "description": "Cielo Cybersource antifraud uses the Cybersource Decision Manager engine to analyze transactions and determine fraud risk before or after payment authorization",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -2261,8 +2410,26 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "BR",
+        "DE",
+        "GB",
+        "HK",
+        "JP",
+        "MX",
+        "SG",
+        "US"
+      ],
+      "currencies": [
+        "BRL",
+        "EUR",
+        "GBP",
+        "HKD",
+        "JPY",
+        "MXN",
+        "SGD",
+        "USD"
+      ],
       "methods": [
         {
           "id": "PAYOUT",
@@ -2290,8 +2457,12 @@
       "category": "Fraud Solution",
       "website": "https://es.clear.sale/",
       "description": "Fights fraud, sell more and create better customer experiences with this solution.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -2369,8 +2540,12 @@
       "category": "Processor",
       "website": "https://coinflow.cash/?product=purchase",
       "description": "Coinflow is a versatile payment stack that helps companies improve conversion & retention rates by over 50% through familiar payment experiences:\\n\\nAccept fiat payment methods for selling goods and services (credit cards, Apple Pay, Google Pay, ACH transfers, SEPA transfers, UK Faster Payments, PIX) with instant settlement to you as the merchant.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -2677,8 +2852,12 @@
       "category": "3d secure",
       "website": "https://developer.cybersource.com/",
       "description": "Fight fraud, boost sales, and enhance customer experiences with our 3D Secure solution.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -2688,8 +2867,34 @@
       "category": "Fraud Solution",
       "website": "https://es.clear.sale",
       "description": "Fights fraud, sell more and create better customer experiences with this solution.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AT",
+        "BE",
+        "CY",
+        "DE",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "IE",
+        "IT",
+        "LT",
+        "LU",
+        "LV",
+        "MT",
+        "NL",
+        "PT",
+        "SI",
+        "SK",
+        "US"
+      ],
+      "currencies": [
+        "EUR",
+        "GBP",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -2736,8 +2941,12 @@
       "category": "Processor",
       "website": "https://cybersource.com/",
       "description": "Accept payments from all over the world. Our comprehensive platform supports popular payment methods, including in-store, online, and digital wallet payments",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -2747,8 +2956,12 @@
       "category": "Processor",
       "website": "",
       "description": "",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -3394,8 +3607,12 @@
       "category": "Processor",
       "website": "https://www.ecommpay.com/",
       "description": "",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -3517,8 +3734,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -3650,8 +3871,16 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AU",
+        "NZ",
+        "US"
+      ],
+      "currencies": [
+        "AUD",
+        "NZD",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -3784,8 +4013,12 @@
       "category": "Fraud Solution",
       "website": "https://www.forter.com/developer",
       "description": "Forter is a digital fraud prevention platform that protects ",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "APPLE_PAY",
@@ -4025,8 +4258,38 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AT",
+        "AU",
+        "BE",
+        "CY",
+        "DE",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "IE",
+        "IT",
+        "JP",
+        "LT",
+        "LU",
+        "LV",
+        "MT",
+        "NL",
+        "PT",
+        "SI",
+        "SK",
+        "US"
+      ],
+      "currencies": [
+        "AUD",
+        "EUR",
+        "GBP",
+        "JPY",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -4070,8 +4333,24 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AU",
+        "DE",
+        "ES",
+        "FR",
+        "GB",
+        "IT",
+        "JP",
+        "NL",
+        "US"
+      ],
+      "currencies": [
+        "AUD",
+        "EUR",
+        "GBP",
+        "JPY",
+        "USD"
+      ],
       "methods": [
         {
           "id": "BANK_TRANSFER",
@@ -4106,8 +4385,14 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "JP",
+        "US"
+      ],
+      "currencies": [
+        "JPY",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -4127,8 +4412,44 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AT",
+        "AU",
+        "BE",
+        "CA",
+        "CY",
+        "DE",
+        "DK",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "IE",
+        "IT",
+        "LT",
+        "LU",
+        "LV",
+        "MT",
+        "NL",
+        "NZ",
+        "PT",
+        "SE",
+        "SI",
+        "SK",
+        "US"
+      ],
+      "currencies": [
+        "AUD",
+        "CAD",
+        "DKK",
+        "EUR",
+        "GBP",
+        "NZD",
+        "SEK",
+        "USD"
+      ],
       "methods": [
         {
           "id": "ACH",
@@ -4323,8 +4644,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -4344,8 +4669,14 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US",
+        "VN"
+      ],
+      "currencies": [
+        "USD",
+        "VND"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -4622,8 +4953,38 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AT",
+        "AU",
+        "BE",
+        "CY",
+        "DE",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "IE",
+        "IT",
+        "JP",
+        "LT",
+        "LU",
+        "LV",
+        "MT",
+        "NL",
+        "PT",
+        "SI",
+        "SK",
+        "US"
+      ],
+      "currencies": [
+        "AUD",
+        "EUR",
+        "GBP",
+        "JPY",
+        "USD"
+      ],
       "methods": [
         {
           "id": "ACH",
@@ -4659,8 +5020,12 @@
       "category": "Processor",
       "website": "https://www.inoviopay.com/",
       "description": "Inovio is the revolutionary payments gateway with seamless integration and global ",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -4697,8 +5062,16 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AU",
+        "NZ",
+        "US"
+      ],
+      "currencies": [
+        "AUD",
+        "NZD",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -5124,8 +5497,32 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AT",
+        "BE",
+        "CH",
+        "DE",
+        "DK",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "IE",
+        "IT",
+        "NL",
+        "NO",
+        "SE",
+        "US"
+      ],
+      "currencies": [
+        "CHF",
+        "DKK",
+        "EUR",
+        "GBP",
+        "NOK",
+        "SEK",
+        "USD"
+      ],
       "methods": [
         {
           "id": "BNPL",
@@ -5176,8 +5573,12 @@
       "category": "Fraud Solution",
       "website": "https://koinlatam.com/antifraude",
       "description": "Koin Antifraud services",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "KOIN_FRAUD",
@@ -5458,8 +5859,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -5539,8 +5944,14 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "currencies": [
+        "CAD",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -5560,15 +5971,11 @@
       "category": "Processor",
       "website": "https://www.monnetpayments.com/en/",
       "description": "Ofrecer la soluci\u00f3n m\u00e1s completa para cobros y pagos por internet, facilitando la inclusi\u00f3n financiera y digital en todo LATAM.",
-      "countries": [],
+      "countries": [
+        "US"
+      ],
       "currencies": [
-        "PEN",
-        "USD",
-        "CLP",
-        "ARS",
-        "MXN",
-        "COP",
-        "GTQ"
+        "USD"
       ],
       "methods": [
         {
@@ -5742,8 +6149,18 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AE",
+        "CA",
+        "GB",
+        "US"
+      ],
+      "currencies": [
+        "AED",
+        "CAD",
+        "GBP",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -5803,8 +6220,24 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "DE",
+        "DK",
+        "EE",
+        "FI",
+        "LT",
+        "LV",
+        "NO",
+        "SE",
+        "US"
+      ],
+      "currencies": [
+        "DKK",
+        "EUR",
+        "NOK",
+        "SEK",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -6045,8 +6478,12 @@
       "category": "Processor",
       "website": "https://www.novalnet.com/",
       "description": "Novalnet\u2019s payment platform processes millions of transactions every day for 15,000+ custome",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -6207,8 +6644,14 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "GB",
+        "US"
+      ],
+      "currencies": [
+        "GBP",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -6255,8 +6698,34 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AT",
+        "BE",
+        "CY",
+        "DE",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "IE",
+        "IT",
+        "LT",
+        "LU",
+        "LV",
+        "MT",
+        "NL",
+        "PT",
+        "SI",
+        "SK",
+        "US"
+      ],
+      "currencies": [
+        "EUR",
+        "GBP",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -6760,8 +7229,12 @@
       "category": "Processor",
       "website": "https://payamigo.com/",
       "description": "PayAmigo is a fintech company that provides a fully localized payment infrastructure for cross-border merchants operating in emerging markets (especially Latin America, Africa and the Middle East). They offer services including local payment methods, treasury and FX management, tax compliance, multi-currency settlement and flexible integration options (API, hosted paywall, deep linking, reverse API).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -7024,8 +7497,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "VENMO",
@@ -7170,8 +7647,18 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "GH",
+        "NG",
+        "US",
+        "ZA"
+      ],
+      "currencies": [
+        "GHS",
+        "NGN",
+        "USD",
+        "ZAR"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -7470,8 +7957,14 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "currencies": [
+        "CAD",
+        "USD"
+      ],
       "methods": [
         {
           "id": "ACH_VERIFICATION",
@@ -7491,8 +7984,19 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "DE",
+        "ES",
+        "FR",
+        "GB",
+        "IT",
+        "US"
+      ],
+      "currencies": [
+        "EUR",
+        "GBP",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -7512,10 +8016,10 @@
       "category": "Payment Method",
       "website": "https://www.sodexo.co/",
       "description": "Garantiza la alimentaci\u00f3n diaria de tus colaboradores, fortalece el plan de beneficios de tu compa\u00f1\u00eda y optimiza los ingresos de tu talento humano con nuestros bonos y tarjetas de alimentaci\u00f3n Pluxee Canasta.",
-      "countries": [],
+      "countries": [
+        "US"
+      ],
       "currencies": [
-        "CLP",
-        "COP",
         "USD"
       ],
       "methods": [
@@ -7560,10 +8064,11 @@
       "category": "Processor",
       "website": "https://pockyt.io/",
       "description": "Pockyt is an alternative payments infrastructure that accelerates cross-border commerce growth by connecting businesses to over 300 locally preferred payment methods, including super apps, web3 wallets and homegrown real-time networks.",
-      "countries": [],
+      "countries": [
+        "US"
+      ],
       "currencies": [
-        "USD",
-        "GBP"
+        "USD"
       ],
       "methods": [
         {
@@ -7890,8 +8395,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -8059,8 +8568,12 @@
       "category": "Processor",
       "website": "https://redsys.es/",
       "description": "Redsys es l\u00edder nacional y referente internacional con m\u00e1s de 40 a\u00f1os de experiencia en la prestaci\u00f3n de servicios de pago de alta calidad para Entidades Financieras y proveedores de servicios de pago.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -8121,8 +8634,12 @@
       "category": "Processor",
       "website": "https://www.example.com/",
       "description": "Share with us a wanted integration, make sure to have your credentials available!",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -8132,8 +8649,12 @@
       "category": "Fraud Solution",
       "website": "https://www.y.uno/",
       "description": "Risk Conditions",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -8143,8 +8664,12 @@
       "category": "Fraud Solution",
       "website": "https://www.riskified.com/",
       "description": "Fights fraud, sell more and create better customer experiences with this solution.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "APPLE_PAY",
@@ -8238,8 +8763,18 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AT",
+        "CH",
+        "DE",
+        "FR",
+        "US"
+      ],
+      "currencies": [
+        "CHF",
+        "EUR",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -8334,8 +8869,16 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "GB",
+        "IE",
+        "US"
+      ],
+      "currencies": [
+        "EUR",
+        "GBP",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -8408,8 +8951,12 @@
       "category": "Fraud Solution",
       "website": "https://www.signifyd.com",
       "description": "Detects ecommerce fraud by using hundreds of data points, elastic linking and behavior data.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "SIGNIFYD",
@@ -8427,8 +8974,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -8821,8 +9372,16 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "GB",
+        "JP",
+        "US"
+      ],
+      "currencies": [
+        "GBP",
+        "JPY",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -9278,8 +9837,12 @@
       "category": "Fraud Solution",
       "website": "https://stripe.com/radar",
       "description": "Radar evaluates transactions in real-time, using machine learning algorithms to assess the risk of fraud. Radar screens all types of payment attempts such as successful, declined, blocked, and flagged for review.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -9289,8 +9852,16 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "CA",
+        "GB",
+        "US"
+      ],
+      "currencies": [
+        "CAD",
+        "GBP",
+        "USD"
+      ],
       "methods": [
         {
           "id": "ACH_VERIFICATION",
@@ -9492,8 +10063,12 @@
       "category": "Processor",
       "website": "https://uatp.com",
       "description": "Offers custom payment solutions for airlines globally.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -9586,8 +10161,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "ACH_VERIFICATION",
@@ -9607,8 +10186,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "ACH",
@@ -9816,8 +10399,12 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "ACH",
@@ -9837,8 +10424,14 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "currencies": [
+        "CAD",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -9883,8 +10476,16 @@
       "category": "Processor",
       "website": "",
       "description": "Zuora-promised integration (not yet implemented).",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "AU",
+        "NZ",
+        "US"
+      ],
+      "currencies": [
+        "AUD",
+        "NZD",
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -10003,8 +10604,12 @@
       "category": "Processor",
       "website": "https://www.fisglobal.com/en-gb/merchant-solutions-worldpay",
       "description": "Simplifies domestic and international payments.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
@@ -10259,8 +10864,12 @@
       "category": "Processor",
       "website": "",
       "description": "",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -10270,8 +10879,12 @@
       "category": "3d secure",
       "website": "",
       "description": "Fight fraud, boost sales, and enhance customer experiences with our 3D Secure solution.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -10281,8 +10894,12 @@
       "category": "",
       "website": "",
       "description": "",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": []
     },
     {
@@ -10292,8 +10909,12 @@
       "category": "Processor",
       "website": "https://www.y.uno/",
       "description": "Allows you to test end-to-end card flows.",
-      "countries": [],
-      "currencies": [],
+      "countries": [
+        "US"
+      ],
+      "currencies": [
+        "USD"
+      ],
       "methods": [
         {
           "id": "CARD",
