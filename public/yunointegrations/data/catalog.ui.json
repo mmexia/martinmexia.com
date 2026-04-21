@@ -1,6 +1,27 @@
 {
   "providers": [
     {
+      "id": "24HOURFITNESS",
+      "name": "24HourFitness",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "TWOC2P",
       "name": "2C2P",
       "icon": "https://icons.prod.y.uno/2c2p_logosimbolo.png",
@@ -74,8 +95,8 @@
       "website": "https://www.adyen.com/",
       "description": "Accepts online payments on any device or channel, whatever your business model so you can give customers the experiences they expect.",
       "countries": [
-        "AU",
         "AT",
+        "AU",
         "BE",
         "BR",
         "CA",
@@ -451,19 +472,16 @@
             "refund"
           ],
           "flow": null
+        },
+        {
+          "id": "BACS",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
         }
       ]
-    },
-    {
-      "id": "ADYEN_EUROPE",
-      "name": "Adyen Europe",
-      "icon": "https://icons.prod.y.uno/adyen_logosimbolo.png",
-      "category": "Processor",
-      "website": "https://www.adyen.com/",
-      "description": "Accepts online payments on any device or channel, whatever your business model so you can give customers the experiences they expect.",
-      "countries": [],
-      "currencies": [],
-      "methods": []
     },
     {
       "id": "AFIRME",
@@ -587,7 +605,56 @@
       "description": "Quality payment solutions to align with your key objectives.",
       "countries": [],
       "currencies": [],
-      "methods": []
+      "methods": [
+        {
+          "id": "ALIPAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "PAYPAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "TOSSPAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "NAVER_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "KAKAO_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "MOMO_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ]
     },
     {
       "id": "ALL_IN_PAY",
@@ -642,6 +709,48 @@
       ]
     },
     {
+      "id": "ALLPAGO",
+      "name": "Allpago",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
+      "id": "AMAZONPAY",
+      "name": "AmazonPay",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "AMAZON_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "AMEX",
       "name": "Amex",
       "icon": "https://icons.prod.y.uno/amex_logosimbolo.png",
@@ -668,6 +777,27 @@
           "flow": null
         }
       ]
+    },
+    {
+      "id": "ANB",
+      "name": "ANB",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "ANTOM",
@@ -1110,6 +1240,51 @@
       ]
     },
     {
+      "id": "AUTHORIZE_NET",
+      "name": "Authorize.Net",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "APPLE_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "PAYPAL",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "AZUL",
       "name": "Azul",
       "icon": "https://icons.prod.y.uno/azul_logosimbolo.png",
@@ -1442,8 +1617,61 @@
             "refund"
           ],
           "flow": "REDIRECT"
+        },
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "BANK_TRANSFER",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
         }
       ]
+    },
+    {
+      "id": "BLUESNAP",
+      "name": "BlueSnap",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "SEPA",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "BRADESCO",
@@ -1697,8 +1925,45 @@
             "refund"
           ],
           "flow": null
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
         }
       ]
+    },
+    {
+      "id": "CARDCONNECT",
+      "name": "CardConnect",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "CCAVENUE",
@@ -1732,6 +1997,27 @@
           "flow": "REDIRECT"
         }
       ]
+    },
+    {
+      "id": "CHASEMOBILITY",
+      "name": "ChaseMobility",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "CHECKOUT",
@@ -1811,6 +2097,35 @@
       "countries": [],
       "currencies": [],
       "methods": []
+    },
+    {
+      "id": "CHECKOUT_COM",
+      "name": "Checkout.com",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "SEPA",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "CIBC",
@@ -1940,20 +2255,38 @@
       "methods": []
     },
     {
+      "id": "CITI",
+      "name": "Citi",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "PAYOUT",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "CLEAR_SALE",
       "name": "ClearSale",
       "icon": "https://icons.prod.y.uno/clearsale_logosimbolo.png",
-      "category": "Fraud Solution",
-      "website": "https://es.clear.sale/",
-      "description": "Fights fraud, sell more and create better customer experiences with this solution.",
-      "countries": [],
-      "currencies": [],
-      "methods": []
-    },
-    {
-      "id": "CLEAR_SALE_BR",
-      "name": "ClearSaleBR",
-      "icon": "https://icons.prod.y.uno/clearsale_br_logosimbolo.png",
       "category": "Fraud Solution",
       "website": "https://es.clear.sale/",
       "description": "Fights fraud, sell more and create better customer experiences with this solution.",
@@ -2369,6 +2702,30 @@
             "verify"
           ],
           "flow": null
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "SEPA",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "BACS",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
         }
       ]
     },
@@ -3019,6 +3376,14 @@
             "refund"
           ],
           "flow": null
+        },
+        {
+          "id": "UPI",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
         }
       ]
     },
@@ -3146,6 +3511,27 @@
       ]
     },
     {
+      "id": "EPX",
+      "name": "EPX",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "EVO",
       "name": "Evo",
       "icon": "https://icons.prod.y.uno/evo_logosimbolo.png",
@@ -3256,6 +3642,35 @@
           "flow": "DIRECT"
         }
       ]
+    },
+    {
+      "id": "FATZEBRA",
+      "name": "FatZebra",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "BECS_AU",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "FINTOC",
@@ -3604,6 +4019,72 @@
       ]
     },
     {
+      "id": "GLOBALCOLLECT",
+      "name": "GlobalCollect",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "SEPA",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "BACS",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
+      "id": "GLOBALCOLLECT_V2",
+      "name": "GlobalCollect_v2",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "BANK_TRANSFER",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "GLOBALPAY",
       "name": "Globalpay",
       "icon": "https://icons.staging.y.uno/globalpay_logosimbolo.png",
@@ -3617,6 +4098,104 @@
         "COP"
       ],
       "methods": []
+    },
+    {
+      "id": "GMO_PG",
+      "name": "GMO-PG",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
+      "id": "GOCARDLESS",
+      "name": "GoCardless",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "SEPA",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "BACS",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "BECS_AU",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "BECS_NZ",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "AUTOGIRO",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "BETALINGSSERVICE",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "PAD_CA",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "GOOGLE_PAY",
@@ -3736,6 +4315,48 @@
         "ZAR"
       ],
       "methods": []
+    },
+    {
+      "id": "HELIX",
+      "name": "Helix",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
+      "id": "HPAY",
+      "name": "HPay",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "HYPERPAY",
@@ -3995,6 +4616,43 @@
       "methods": []
     },
     {
+      "id": "INGENICO_GLOBALCOLLECT",
+      "name": "Ingenico/GlobalCollect",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "SEPA",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "BACS",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "INOVIO",
       "name": "Inovio",
       "icon": "https://icons.prod.y.uno/inovio_logosimbolo.png",
@@ -4031,6 +4689,27 @@
         "DOP"
       ],
       "methods": []
+    },
+    {
+      "id": "IPPAYMENTS",
+      "name": "IPPayments",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "IPSP",
@@ -4411,8 +5090,8 @@
       ]
     },
     {
-      "id": "KLAP_2",
-      "name": "Klap",
+      "id": "KLAP",
+      "name": "Klap Alternative",
       "icon": "https://icons.prod.y.uno/klap_logosimbolo.png",
       "category": "Processor",
       "website": "https://www.klap.cl/home-comercios/ecommerce",
@@ -4434,36 +5113,30 @@
             "refund",
             "reverse"
           ],
-          "flow": null
+          "flow": "DIRECT"
         }
       ]
     },
     {
-      "id": "KLAP",
-      "name": "Klap Alternative",
-      "icon": "https://icons.prod.y.uno/klap_logosimbolo.png",
+      "id": "KLARNA",
+      "name": "Klarna",
+      "icon": "",
       "category": "Processor",
-      "website": "https://www.klap.cl/home-comercios/ecommerce",
-      "description": "Accepts credit, debit and prepaid card purchases throughout its network.",
-      "countries": [
-        "CL"
-      ],
-      "currencies": [
-        "CLP"
-      ],
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
       "methods": [
         {
-          "id": "CARD",
+          "id": "BNPL",
           "operations": [
-            "cancel",
-            "capture",
-            "purchase",
-            "refund",
-            "reverse"
+            "purchase"
           ],
-          "flow": "DIRECT"
+          "flow": null,
+          "_promised": true
         }
-      ]
+      ],
+      "_promised": true
     },
     {
       "id": "KOIN",
@@ -4779,6 +5452,35 @@
       ]
     },
     {
+      "id": "MERCHANTESOLUTIONS",
+      "name": "MerchanteSolutions",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "MOBBEX",
       "name": "Mobbex",
       "icon": "https://icons.prod.y.uno/mobbex_logosimbolo.png",
@@ -4829,6 +5531,27 @@
           "flow": null
         }
       ]
+    },
+    {
+      "id": "MONERIS",
+      "name": "Moneris",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "MONNET",
@@ -5013,6 +5736,35 @@
       ]
     },
     {
+      "id": "MPGS_MASTERCARD",
+      "name": "MPGS/Mastercard",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "NEQUI",
       "name": "Nequi",
       "icon": "https://icons.prod.y.uno/nequi_logosimbolo.png",
@@ -5043,6 +5795,27 @@
           "flow": null
         }
       ]
+    },
+    {
+      "id": "NETS",
+      "name": "Nets",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "NETWORK_INTERNATIONAL",
@@ -5254,6 +6027,14 @@
             "verify"
           ],
           "flow": "DIRECT"
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
         }
       ]
     },
@@ -5420,6 +6201,27 @@
       ]
     },
     {
+      "id": "OPAYODIRECT",
+      "name": "OpayoDirect",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "OPENPAY",
       "name": "OpenPay",
       "icon": "https://icons.prod.y.uno/openpay_logosimbolo.png",
@@ -5445,6 +6247,83 @@
           "flow": "DIRECT"
         }
       ]
+    },
+    {
+      "id": "ORBITAL",
+      "name": "Orbital",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "SEPA",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "BACS",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "PAYPAL",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "APPLE_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "GOOGLE_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "PAZE",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "RAPPI",
@@ -6139,6 +7018,43 @@
       ]
     },
     {
+      "id": "PAYPALCP",
+      "name": "PayPalCP",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "VENMO",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "PAYPAL_CREDIT",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "PAYPLUG",
       "name": "PayPlug",
       "icon": "https://icons.prod.y.uno/payplug_logosimbolo.png",
@@ -6246,6 +7162,35 @@
           "flow": null
         }
       ]
+    },
+    {
+      "id": "PAYSTACK",
+      "name": "Paystack",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "PAYSTACK_DIRECT_DEBIT",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "PAYTR",
@@ -6517,6 +7462,48 @@
           "flow": null
         }
       ]
+    },
+    {
+      "id": "PLAID",
+      "name": "Plaid",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "ACH_VERIFICATION",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
+      "id": "PLANET",
+      "name": "Planet",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "PLUXEE",
@@ -6897,6 +7884,27 @@
       ]
     },
     {
+      "id": "QUICKGATEWAY",
+      "name": "QuickGateway",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "RAPPIBANK",
       "name": "Rappibank",
       "icon": "https://icons.prod.y.uno/rappibank_logosimbolo.png",
@@ -6930,27 +7938,6 @@
       "category": "Processor",
       "website": "https://razorpay.com/",
       "description": "Payment Gateway. Offer a seamless payment experience on your website or app.",
-      "countries": [
-        "US"
-      ],
-      "currencies": [
-        "INR"
-      ],
-      "methods": [
-        {
-          "id": "UPI",
-          "operations": [],
-          "flow": "REDIRECT"
-        }
-      ]
-    },
-    {
-      "id": "RAZORPAY_CROSS_BORDER",
-      "name": "Razorpay (Cross-Border)",
-      "icon": "https://icons.prod.y.uno/razorpay_logosimbolo.png",
-      "category": "Processor",
-      "website": "https://razorpay.com/",
-      "description": "Payment Gateway. Accept cross-border payments from international customers on your website or app.",
       "countries": [
         "US"
       ],
@@ -7245,6 +8232,27 @@
       ]
     },
     {
+      "id": "SAFERPAY",
+      "name": "SaferPay",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "SAFETYPAY",
       "name": "SafetyPay",
       "icon": "https://icons.prod.y.uno/safetypay_logosimbolo.png",
@@ -7320,6 +8328,27 @@
       ]
     },
     {
+      "id": "SAGEPAY",
+      "name": "SagePay",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "SANTANDER",
       "name": "Santander",
       "icon": "https://icons.prod.y.uno/santander_logosimbolo.png",
@@ -7390,6 +8419,27 @@
           "flow": null
         }
       ]
+    },
+    {
+      "id": "SIKAHEALTH",
+      "name": "SikaHealth",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "SILVERFLOW",
@@ -7763,6 +8813,27 @@
         "JPY"
       ],
       "methods": []
+    },
+    {
+      "id": "SONY",
+      "name": "Sony",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "SPLITIT",
@@ -8181,6 +9252,22 @@
             "refund"
           ],
           "flow": null
+        },
+        {
+          "id": "BACS",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "PAD_CA",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
         }
       ]
     },
@@ -8194,6 +9281,27 @@
       "countries": [],
       "currencies": [],
       "methods": []
+    },
+    {
+      "id": "STRIPEFC",
+      "name": "StripeFC",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "ACH_VERIFICATION",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "T1PAGOS",
@@ -8345,27 +9453,6 @@
       ]
     },
     {
-      "id": "TRANSBANK_2",
-      "name": "Transbank Alternative",
-      "icon": "https://icons.prod.y.uno/transbank_logosimbolo.png",
-      "category": "Processor",
-      "website": "https://privado.transbank.cl/",
-      "description": "Offers your national and international customers secure transactions in Chilean pesos.",
-      "countries": [
-        "CL"
-      ],
-      "currencies": [
-        "CLP"
-      ],
-      "methods": [
-        {
-          "id": "CARD",
-          "operations": [],
-          "flow": "DIRECT"
-        }
-      ]
-    },
-    {
       "id": "TRANSFEERA",
       "name": "Transfeera",
       "icon": "https://icons.prod.y.uno/transfeera_logosimbolo.png",
@@ -8491,6 +9578,48 @@
         "QAR"
       ],
       "methods": []
+    },
+    {
+      "id": "VALIDIFI",
+      "name": "ValidiFi",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "ACH_VERIFICATION",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
+      "id": "VANTIV",
+      "name": "Vantiv",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "VESTA",
@@ -8681,6 +9810,56 @@
       ]
     },
     {
+      "id": "WELLSFARGO",
+      "name": "WellsFargo",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
+      "id": "WEPAY",
+      "name": "WePay",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
+    },
+    {
       "id": "WIBOND",
       "name": "Wibond",
       "icon": "https://icons.prod.y.uno/wibond_logosimbolo.png",
@@ -8696,6 +9875,27 @@
         "CLP"
       ],
       "methods": []
+    },
+    {
+      "id": "WINDCAVE",
+      "name": "Windcave",
+      "icon": "",
+      "category": "Processor",
+      "website": "",
+      "description": "Zuora-promised integration (not yet implemented).",
+      "countries": [],
+      "currencies": [],
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
+        }
+      ],
+      "_promised": true
     },
     {
       "id": "WOMPI",
@@ -8817,6 +10017,14 @@
             "reverse"
           ],
           "flow": "DIRECT"
+        },
+        {
+          "id": "ACH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null,
+          "_promised": true
         }
       ]
     },
@@ -9273,6 +10481,13 @@
       "type": "PAYMENT_METHOD"
     },
     {
+      "id": "ACH_VERIFICATION",
+      "name": "ACH Verification",
+      "icon": "",
+      "category": "BANK_TRANSFER",
+      "type": "PAYMENT_METHOD"
+    },
+    {
       "id": "ACUOTAZ",
       "name": "aCuotaz",
       "icon": "https://icons.prod.y.uno/acuotaz_logosimbolo.png",
@@ -9332,6 +10547,13 @@
       "id": "ALIPAY_HK",
       "name": "AlipayHK",
       "icon": "https://icons.prod.y.uno/alipayhk_logosimbolo.png",
+      "category": "WALLET",
+      "type": "PAYMENT_METHOD"
+    },
+    {
+      "id": "AMAZON_PAY",
+      "name": "Amazon Pay",
+      "icon": "",
       "category": "WALLET",
       "type": "PAYMENT_METHOD"
     },
@@ -9403,6 +10625,13 @@
       "name": "Atome",
       "icon": "https://icons.prod.y.uno/atome_logosimbolo.png",
       "category": "BUY_NOW_PAY_LATER",
+      "type": "PAYMENT_METHOD"
+    },
+    {
+      "id": "AUTOGIRO",
+      "name": "Autogiro",
+      "icon": "",
+      "category": "BANK_TRANSFER",
       "type": "PAYMENT_METHOD"
     },
     {
@@ -9560,9 +10789,30 @@
       "type": "PAYMENT_METHOD"
     },
     {
+      "id": "BECS_NZ",
+      "name": "BECS Direct Debit (NZ)",
+      "icon": "",
+      "category": "BANK_TRANSFER",
+      "type": "PAYMENT_METHOD"
+    },
+    {
+      "id": "BECS_AU",
+      "name": "BECS Direct Entry (AU)",
+      "icon": "",
+      "category": "BANK_TRANSFER",
+      "type": "PAYMENT_METHOD"
+    },
+    {
       "id": "BEEPING",
       "name": "Beeping",
       "icon": "https://icons.prod.y.uno/beeping_logosimbolo.png",
+      "category": "WALLET",
+      "type": "PAYMENT_METHOD"
+    },
+    {
+      "id": "BETALINGSSERVICE",
+      "name": "Betalingsservice",
+      "icon": "",
       "category": "WALLET",
       "type": "PAYMENT_METHOD"
     },
@@ -9592,6 +10842,13 @@
       "name": "BLIK",
       "icon": "https://icons.prod.y.uno/blik_logosimbolo.png",
       "category": "BANK_TRANSFER",
+      "type": "PAYMENT_METHOD"
+    },
+    {
+      "id": "BNPL",
+      "name": "BNPL",
+      "icon": "",
+      "category": "BUY_NOW_PAY_LATER",
       "type": "PAYMENT_METHOD"
     },
     {
@@ -10218,6 +11475,13 @@
       "type": "PAYMENT_METHOD"
     },
     {
+      "id": "MOMO_PAY",
+      "name": "MomoPay",
+      "icon": "",
+      "category": "WALLET",
+      "type": "PAYMENT_METHOD"
+    },
+    {
       "id": "MONNET_QR",
       "name": "Monnet QR",
       "icon": "https://icons.prod.y.uno/monnet_logosimbolo.png",
@@ -10554,9 +11818,23 @@
       "type": "PAYMENT_METHOD"
     },
     {
+      "id": "PAYOUT",
+      "name": "Payouts",
+      "icon": "",
+      "category": "WALLET",
+      "type": "PAYMENT_METHOD"
+    },
+    {
       "id": "PAYPAL",
       "name": "PayPal",
       "icon": "https://icons.prod.y.uno/paypal_logosimbolo.png",
+      "category": "WALLET",
+      "type": "PAYMENT_METHOD"
+    },
+    {
+      "id": "PAYPAL_CREDIT",
+      "name": "PayPal Credit",
+      "icon": "",
       "category": "WALLET",
       "type": "PAYMENT_METHOD"
     },
@@ -10603,6 +11881,13 @@
       "type": "PAYMENT_METHOD"
     },
     {
+      "id": "PAYSTACK_DIRECT_DEBIT",
+      "name": "Paystack Direct Debit",
+      "icon": "",
+      "category": "WALLET",
+      "type": "PAYMENT_METHOD"
+    },
+    {
       "id": "PAYU",
       "name": "PAYU",
       "icon": "https://icons.prod.y.uno/payu_logosimbolo.png",
@@ -10614,6 +11899,13 @@
       "name": "Payv\u00e1lida",
       "icon": "https://icons.prod.y.uno/payvalida_logosimbolo.png",
       "category": "PAYMENT_LINK",
+      "type": "PAYMENT_METHOD"
+    },
+    {
+      "id": "PAZE",
+      "name": "Paze",
+      "icon": "",
+      "category": "WALLET",
       "type": "PAYMENT_METHOD"
     },
     {
@@ -10698,6 +11990,13 @@
       "name": "Powerpay",
       "icon": "https://icons.prod.y.uno/powerpay_logosimbolo.png",
       "category": "BUY_NOW_PAY_LATER",
+      "type": "PAYMENT_METHOD"
+    },
+    {
+      "id": "PAD_CA",
+      "name": "Pre-Authorized Debit (CA)",
+      "icon": "",
+      "category": "BANK_TRANSFER",
       "type": "PAYMENT_METHOD"
     },
     {
@@ -10967,6 +12266,13 @@
       "type": "PAYMENT_METHOD"
     },
     {
+      "id": "TOSSPAY",
+      "name": "TossPay",
+      "icon": "",
+      "category": "WALLET",
+      "type": "PAYMENT_METHOD"
+    },
+    {
       "id": "TOUCH_AND_GO",
       "name": "Touch & Go ",
       "icon": "https://icons.y.uno/touchngo_logosimbolo.png",
@@ -11062,6 +12368,13 @@
       "name": "UPI Autopay",
       "icon": "https://icons.y.uno/upi_logosimbolo.png",
       "category": "BANK_TRANSFER",
+      "type": "PAYMENT_METHOD"
+    },
+    {
+      "id": "VENMO",
+      "name": "Venmo",
+      "icon": "",
+      "category": "WALLET",
       "type": "PAYMENT_METHOD"
     },
     {

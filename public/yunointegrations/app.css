@@ -256,6 +256,65 @@ select option { background: var(--bg); color: var(--text); }
   font-size: 12px; color: var(--text-secondary);
   font-family: var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase;
 }
+/* Password gate */
+.pw-gate {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.pw-box {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 40px 28px;
+  width: 100%; max-width: 380px;
+}
+.pw-box h1 { margin: 4px 0 2px; font-size: 22px; font-weight: 500; letter-spacing: -0.015em; }
+.pw-box p { margin: 0 0 8px; color: var(--text-secondary); font-size: 13px; text-align: center; }
+.pw-box input {
+  width: 100%; padding: 10px 14px;
+  background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px;
+  font-size: 14px; outline: none; font-family: inherit;
+  text-align: center; letter-spacing: 0.08em;
+}
+.pw-box input:focus { border-color: var(--accent); }
+.pw-box button {
+  width: 100%; padding: 10px; border-radius: 8px;
+  background: var(--accent); color: #fff; border: none;
+  font-family: inherit; font-size: 13px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  cursor: pointer; transition: all .15s;
+}
+.pw-box button:hover { background: var(--accent-hover); }
+.pw-err {
+  color: var(--danger); font-size: 12px; text-align: center;
+  font-family: var(--font-mono);
+}
+
+/* Zuora promised styling */
+.promised-badge {
+  position: absolute; top: 10px; right: 10px;
+  font-size: 9px; padding: 3px 8px; border-radius: 999px;
+  background: color-mix(in srgb, var(--warn) 15%, transparent);
+  color: var(--warn);
+  border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent);
+  font-family: var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase;
+  font-weight: 500;
+}
+.promised-pill {
+  background: color-mix(in srgb, var(--warn) 15%, transparent) !important;
+  color: var(--warn) !important;
+  border-color: color-mix(in srgb, var(--warn) 40%, transparent) !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+}
+.pm-row.promised { border-color: color-mix(in srgb, var(--warn) 35%, var(--border)); }
+.card.promised { border-color: color-mix(in srgb, var(--warn) 30%, var(--border)); }
+
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -264,6 +323,7 @@ select option { background: var(--bg); color: var(--text); }
   cursor: pointer;
   transition: all .15s;
   display: flex; flex-direction: column; gap: 10px;
+  position: relative;
 }
 .card:hover {
   border-color: var(--accent);

@@ -16,6 +16,17 @@
 </script>
 </head>
 <body>
+<div id="pw-gate" class="pw-gate">
+  <form id="pw-form" class="pw-box">
+    <div class="pw-brand"><img src="https://icons.prod.y.uno/yuno_logosimbolo.png" alt="Yuno" height="32"/></div>
+    <h1>Yuno Integrations</h1>
+    <p>Enter the password to view the catalog.</p>
+    <input id="pw-input" type="password" autocomplete="current-password" placeholder="Password" autofocus />
+    <button type="submit">Enter</button>
+    <div id="pw-err" class="pw-err" hidden>Wrong password.</div>
+  </form>
+</div>
+
 <header>
   <div class="brand">
     <span class="brand-mark"><a href="https://www.martinmexia.com">MARTIN&nbsp;MEXIA</a></span>
@@ -64,6 +75,13 @@
         <label><input type="checkbox" value="reverse" /> Reverse</label>
         <label><input type="checkbox" value="verify" /> Verify</label>
         <label><input type="checkbox" value="enrollment" /> Enrollment</label>
+      </div>
+    </section>
+
+    <section>
+      <h3>Source</h3>
+      <div class="chips" id="promised-toggle">
+        <label><input type="checkbox" id="show-promised" checked /> Show Zuora promised</label>
       </div>
     </section>
 
