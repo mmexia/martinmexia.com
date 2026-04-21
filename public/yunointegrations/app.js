@@ -37,15 +37,6 @@ fetch("/yunointegrations/data/catalog.ui.json")
 
 function init() {
   METHODS_BY_ID = Object.fromEntries(DATA.payment_methods.map(m => [m.id, m]));
-  // Don't hide incomplete entries — tag them instead. Flag on each provider.
-  DATA.providers.forEach(p => {
-    const noMethods = !(p.methods && p.methods.length);
-    const noCountries = !(p.countries && p.countries.length);
-    p._incomplete = noMethods || noCountries;
-    p._incompleteReason = noMethods && noCountries ? "no methods · no countries"
-      : noMethods ? "no methods"
-      : noCountries ? "no countries" : "";
-  });
   buildFilters();
   bindEvents();
   initTheme();
@@ -208,11 +199,8 @@ function methodBanner(method, count) {
 
 function card(p) {
   const el = document.createElement("div");
-  el.className = "card" + (p._incomplete ? " incomplete" : "");
+  el.className = "card";
   const logo = p.icon ? `<img class="logo" src="${p.icon}" alt="${p.name}" loading="lazy" onerror="this.style.visibility='hidden'"/>` : `<div class="logo" style="background:#1b2027"></div>`;
-  const incompleteBadge = p._incomplete
-    ? `<span class="incomplete-badge" title="${escape(p._incompleteReason)}">incomplete</span>`
-    : "";
 
   // When filtering by a payment method, show that method's operations for this provider
   // instead of the generic payment-method preview.
@@ -233,18 +221,12 @@ function card(p) {
   }
 
   el.innerHTML = `
-    ${incompleteBadge}
     <div class="head">
       ${logo}
       <div>
         <div class="title">${escape(p.name)}</div>
         <div class="cat">${escape(p.category || "")}</div>
       </div>
-    </div>
-    <div class="meta">
-      <span><b>${(p.countries || []).length}</b> countries</span>
-      <span><b>${(p.methods || []).length}</b> methods</span>
-      <span><b>${(p.currencies || []).length}</b> currencies</span>
     </div>
     ${featureRow}
   `;
