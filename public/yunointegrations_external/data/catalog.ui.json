@@ -3,10 +3,10 @@
     {
       "id": "24HOURFITNESS",
       "name": "24HourFitness",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=www.24hourfitness.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -96,8 +96,8 @@
       "website": "https://www.adyen.com/",
       "description": "Accepts online payments on any device or channel, whatever your business model so you can give customers the experiences they expect.",
       "countries": [
-        "AU",
         "AT",
+        "AU",
         "BE",
         "BR",
         "CA",
@@ -486,17 +486,6 @@
       "_has_promised": true
     },
     {
-      "id": "ADYEN_EUROPE",
-      "name": "Adyen Europe",
-      "icon": "https://icons.prod.y.uno/adyen_logosimbolo.png",
-      "category": "Processor",
-      "website": "https://www.adyen.com/",
-      "description": "Accepts online payments on any device or channel, whatever your business model so you can give customers the experiences they expect.",
-      "countries": [],
-      "currencies": [],
-      "methods": []
-    },
-    {
       "id": "AFIRME",
       "name": "Afirme",
       "icon": "https://icons.prod.y.uno/afirme_logosimbolo.png",
@@ -725,10 +714,10 @@
     {
       "id": "ALLPAGO",
       "name": "Allpago",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=ebanx.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -747,10 +736,10 @@
     {
       "id": "AMAZONPAY",
       "name": "AmazonPay",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=pay.amazon.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -797,10 +786,10 @@
     {
       "id": "ANB",
       "name": "ANB",
-      "icon": "",
+      "icon": "https://icons.duckduckgo.com/ip3/anb.com.sa.ico",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -1259,10 +1248,10 @@
     {
       "id": "AUTHORIZE_NET",
       "name": "Authorize.Net",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=authorize.net&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -1658,10 +1647,10 @@
     {
       "id": "BLUESNAP",
       "name": "BlueSnap",
-      "icon": "",
+      "icon": "https://bluesnap.com/favicon.ico",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -1960,10 +1949,10 @@
     {
       "id": "CARDCONNECT",
       "name": "CardConnect",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=cardconnect.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -2023,10 +2012,10 @@
     {
       "id": "CHASEMOBILITY",
       "name": "ChaseMobility",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=chase.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -2124,10 +2113,10 @@
     {
       "id": "CHECKOUT_COM",
       "name": "Checkout.com",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=checkout.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -2281,10 +2270,10 @@
     {
       "id": "CITI",
       "name": "Citi",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=citi.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -2312,17 +2301,6 @@
       "id": "CLEAR_SALE",
       "name": "ClearSale",
       "icon": "https://icons.prod.y.uno/clearsale_logosimbolo.png",
-      "category": "Fraud Solution",
-      "website": "https://es.clear.sale/",
-      "description": "Fights fraud, sell more and create better customer experiences with this solution.",
-      "countries": [],
-      "currencies": [],
-      "methods": []
-    },
-    {
-      "id": "CLEAR_SALE_BR",
-      "name": "ClearSaleBR",
-      "icon": "https://icons.prod.y.uno/clearsale_br_logosimbolo.png",
       "category": "Fraud Solution",
       "website": "https://es.clear.sale/",
       "description": "Fights fraud, sell more and create better customer experiences with this solution.",
@@ -3551,10 +3529,10 @@
     {
       "id": "EPX",
       "name": "EPX",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=epx.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -3685,10 +3663,10 @@
     {
       "id": "FATZEBRA",
       "name": "FatZebra",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=fatzebra.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -4061,10 +4039,10 @@
     {
       "id": "GLOBALCOLLECT",
       "name": "GlobalCollect",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=worldline.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -4107,10 +4085,10 @@
     {
       "id": "GLOBALCOLLECT_V2",
       "name": "GlobalCollect_v2",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=worldline.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -4144,10 +4122,10 @@
     {
       "id": "GMO_PG",
       "name": "GMO-PG",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=www.gmo-pg.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -4166,10 +4144,10 @@
     {
       "id": "GOCARDLESS",
       "name": "GoCardless",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=gocardless.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -4363,10 +4341,10 @@
     {
       "id": "HELIX",
       "name": "Helix",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=helix.us&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -4385,10 +4363,10 @@
     {
       "id": "HPAY",
       "name": "HPay",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=hpay.vn&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -4664,10 +4642,10 @@
     {
       "id": "INGENICO_GLOBALCOLLECT",
       "name": "Ingenico/GlobalCollect",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=ingenico.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -4740,10 +4718,10 @@
     {
       "id": "IPPAYMENTS",
       "name": "IPPayments",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=bambora.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -5138,8 +5116,8 @@
       ]
     },
     {
-      "id": "KLAP_2",
-      "name": "Klap",
+      "id": "KLAP",
+      "name": "Klap Alternative",
       "icon": "https://icons.prod.y.uno/klap_logosimbolo.png",
       "category": "Processor",
       "website": "https://www.klap.cl/home-comercios/ecommerce",
@@ -5161,33 +5139,6 @@
             "refund",
             "reverse"
           ],
-          "flow": null
-        }
-      ]
-    },
-    {
-      "id": "KLAP",
-      "name": "Klap Alternative",
-      "icon": "https://icons.prod.y.uno/klap_logosimbolo.png",
-      "category": "Processor",
-      "website": "https://www.klap.cl/home-comercios/ecommerce",
-      "description": "Accepts credit, debit and prepaid card purchases throughout its network.",
-      "countries": [
-        "CL"
-      ],
-      "currencies": [
-        "CLP"
-      ],
-      "methods": [
-        {
-          "id": "CARD",
-          "operations": [
-            "cancel",
-            "capture",
-            "purchase",
-            "refund",
-            "reverse"
-          ],
           "flow": "DIRECT"
         }
       ]
@@ -5195,10 +5146,10 @@
     {
       "id": "KLARNA",
       "name": "Klarna",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=klarna.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -5530,10 +5481,10 @@
     {
       "id": "MERCHANTESOLUTIONS",
       "name": "MerchanteSolutions",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=deluxe.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -5612,10 +5563,10 @@
     {
       "id": "MONERIS",
       "name": "Moneris",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=moneris.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -5816,10 +5767,10 @@
     {
       "id": "MPGS_MASTERCARD",
       "name": "MPGS/Mastercard",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=mastercard.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -5878,10 +5829,10 @@
     {
       "id": "NETS",
       "name": "Nets",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=nexigroup.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -6284,10 +6235,10 @@
     {
       "id": "OPAYODIRECT",
       "name": "OpayoDirect",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=opayo.co.uk&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -6333,10 +6284,10 @@
     {
       "id": "ORBITAL",
       "name": "Orbital",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=chasepaymentech.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -7103,10 +7054,10 @@
     {
       "id": "PAYPALCP",
       "name": "PayPalCP",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=paypal.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -7250,10 +7201,10 @@
     {
       "id": "PAYSTACK",
       "name": "Paystack",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=paystack.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -7551,10 +7502,10 @@
     {
       "id": "PLAID",
       "name": "Plaid",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=plaid.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -7573,10 +7524,10 @@
     {
       "id": "PLANET",
       "name": "Planet",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=weareplanet.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -7948,7 +7899,7 @@
     {
       "id": "QPAY",
       "name": "QPay",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=cbq.qa&sz=128",
       "category": "Processor",
       "website": "",
       "description": "Qatar Central Bank Payment Gateway (QPAY). Runs on integrations-z declarative pipelines.",
@@ -7973,10 +7924,10 @@
     {
       "id": "QUICKGATEWAY",
       "name": "QuickGateway",
-      "icon": "",
+      "icon": "https://icons.duckduckgo.com/ip3/quickgateway.com.ico",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -8026,27 +7977,6 @@
       "category": "Processor",
       "website": "https://razorpay.com/",
       "description": "Payment Gateway. Offer a seamless payment experience on your website or app.",
-      "countries": [
-        "US"
-      ],
-      "currencies": [
-        "INR"
-      ],
-      "methods": [
-        {
-          "id": "UPI",
-          "operations": [],
-          "flow": "REDIRECT"
-        }
-      ]
-    },
-    {
-      "id": "RAZORPAY_CROSS_BORDER",
-      "name": "Razorpay (Cross-Border)",
-      "icon": "https://icons.prod.y.uno/razorpay_logosimbolo.png",
-      "category": "Processor",
-      "website": "https://razorpay.com/",
-      "description": "Payment Gateway. Accept cross-border payments from international customers on your website or app.",
       "countries": [
         "US"
       ],
@@ -8343,10 +8273,10 @@
     {
       "id": "SAFERPAY",
       "name": "SaferPay",
-      "icon": "",
+      "icon": "https://icons.duckduckgo.com/ip3/saferpay.com.ico",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -8440,10 +8370,10 @@
     {
       "id": "SAGEPAY",
       "name": "SagePay",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=opayo.co.uk&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -8534,10 +8464,10 @@
     {
       "id": "SIKAHEALTH",
       "name": "SikaHealth",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=sikahealth.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -8929,10 +8859,10 @@
     {
       "id": "SONY",
       "name": "Sony",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=sony.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -9399,10 +9329,10 @@
     {
       "id": "STRIPEFC",
       "name": "StripeFC",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=stripe.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -9568,27 +9498,6 @@
       ]
     },
     {
-      "id": "TRANSBANK_2",
-      "name": "Transbank Alternative",
-      "icon": "https://icons.prod.y.uno/transbank_logosimbolo.png",
-      "category": "Processor",
-      "website": "https://privado.transbank.cl/",
-      "description": "Offers your national and international customers secure transactions in Chilean pesos.",
-      "countries": [
-        "CL"
-      ],
-      "currencies": [
-        "CLP"
-      ],
-      "methods": [
-        {
-          "id": "CARD",
-          "operations": [],
-          "flow": "DIRECT"
-        }
-      ]
-    },
-    {
       "id": "TRANSFEERA",
       "name": "Transfeera",
       "icon": "https://icons.prod.y.uno/transfeera_logosimbolo.png",
@@ -9718,10 +9627,10 @@
     {
       "id": "VALIDIFI",
       "name": "ValidiFi",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=validifi.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -9740,10 +9649,10 @@
     {
       "id": "VANTIV",
       "name": "Vantiv",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=worldpay.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -9950,10 +9859,10 @@
     {
       "id": "WELLSFARGO",
       "name": "WellsFargo",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=wellsfargo.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -9972,10 +9881,10 @@
     {
       "id": "WEPAY",
       "name": "WePay",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=wepay.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -10019,10 +9928,10 @@
     {
       "id": "WINDCAVE",
       "name": "Windcave",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=windcave.com&sz=128",
       "category": "Processor",
       "website": "",
-      "description": "Promised integration (from Zuora estimation). Not yet implemented.",
+      "description": "Zuora-promised integration (not yet implemented).",
       "countries": [],
       "currencies": [],
       "methods": [
@@ -10397,7 +10306,7 @@
     {
       "id": "YUNO",
       "name": "Yuno",
-      "icon": "",
+      "icon": "https://www.google.com/s2/favicons?domain=y.uno&sz=128",
       "category": "Processor",
       "website": "",
       "description": "",
@@ -10773,7 +10682,7 @@
       "id": "AUTOGIRO",
       "name": "Autogiro",
       "icon": "",
-      "category": "WALLET",
+      "category": "BANK_TRANSFER",
       "type": "PAYMENT_METHOD"
     },
     {
@@ -10990,7 +10899,7 @@
       "id": "BNPL",
       "name": "BNPL",
       "icon": "",
-      "category": "WALLET",
+      "category": "BUY_NOW_PAY_LATER",
       "type": "PAYMENT_METHOD"
     },
     {
