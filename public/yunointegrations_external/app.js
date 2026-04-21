@@ -187,7 +187,8 @@ function bindEvents() {
     document.querySelectorAll("#cats input:checked").forEach(i => state.cats.add(i.value));
     render();
   });
-  document.getElementById("show-promised").addEventListener("change", e => {
+  const _spt = document.getElementById("show-promised");
+  if (_spt) _spt.addEventListener("change", e => {
     state.showPromised = e.target.checked;
     render();
   });
