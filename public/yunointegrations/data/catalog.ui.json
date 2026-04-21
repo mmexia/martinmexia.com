@@ -126,9 +126,7 @@
       "methods": [
         {
           "id": "7ELEVEN",
-          "operations": [
-            "purchase"
-          ],
+          "operations": [],
           "flow": "REDIRECT"
         },
         {
@@ -641,7 +639,7 @@
             "capture",
             "purchase",
             "refund",
-            "verify"
+            "reverse"
           ],
           "flow": null
         }
@@ -1084,14 +1082,6 @@
             "unenrollment"
           ],
           "flow": null
-        },
-        {
-          "id": "v2",
-          "operations": [
-            "enrollment",
-            "get"
-          ],
-          "flow": null
         }
       ]
     },
@@ -1261,12 +1251,20 @@
       "methods": [
         {
           "id": "BOLETO",
-          "operations": [],
+          "operations": [
+            "get",
+            "purchase"
+          ],
           "flow": "REDIRECT"
         },
         {
           "id": "PIX",
-          "operations": [],
+          "operations": [
+            "cancel",
+            "get",
+            "purchase",
+            "refund"
+          ],
           "flow": "REDIRECT"
         }
       ]
@@ -1836,7 +1834,7 @@
           "id": "GOOGLE_PAY",
           "operations": [
             "complete",
-            "verify"
+            "purchase"
           ],
           "flow": null
         },
@@ -2197,12 +2195,12 @@
         {
           "id": "CARD",
           "operations": [
+            "cancel",
             "capture",
             "get",
             "purchase",
             "refund",
-            "reverse",
-            "verify"
+            "reverse"
           ],
           "flow": "DIRECT"
         }
@@ -2249,7 +2247,15 @@
         "PEN",
         "USD"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "CUOTEALO_BCP",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "CYBERSOURCE_3DS",
@@ -2271,7 +2277,20 @@
       "description": "Fights fraud, sell more and create better customer experiences with this solution.",
       "countries": [],
       "currencies": [],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "purchase",
+            "refund",
+            "reverse",
+            "verify"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "CYBERSOURCE_GTW",
@@ -2627,6 +2646,7 @@
         "MA",
         "NG",
         "PA",
+        "PH",
         "PY",
         "PE",
         "SA",
@@ -2658,6 +2678,7 @@
         "MAD",
         "NGN",
         "USD",
+        "PHP",
         "PYG",
         "PEN",
         "SAR",
@@ -2728,6 +2749,11 @@
           "id": "FPX",
           "operations": [],
           "flow": "DIRECT"
+        },
+        {
+          "id": "GCASH",
+          "operations": [],
+          "flow": "REDIRECT"
         },
         {
           "id": "KHIPU",
@@ -2922,13 +2948,6 @@
             "verify"
           ],
           "flow": null
-        },
-        {
-          "id": "ECOMMPAY_PAYOUT",
-          "operations": [
-            "verify"
-          ],
-          "flow": null
         }
       ]
     },
@@ -2945,7 +2964,19 @@
       "currencies": [
         "BRL"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "get",
+            "purchase",
+            "refund",
+            "reverse",
+            "verify"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "ELAVON",
@@ -2981,7 +3012,17 @@
         "SEK",
         "GBP"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "EPAYCO",
@@ -3031,7 +3072,7 @@
             "installments",
             "purchase",
             "refund",
-            "verify"
+            "reverse"
           ],
           "flow": null
         }
@@ -3117,13 +3158,6 @@
             "reverse"
           ],
           "flow": "DIRECT"
-        },
-        {
-          "id": "v2",
-          "operations": [
-            "get"
-          ],
-          "flow": null
         }
       ]
     },
@@ -3344,7 +3378,27 @@
         "BRL",
         "UYU"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "installments",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
+          "id": "PIX",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "GLOBALPAYMENTS",
@@ -3411,7 +3465,7 @@
             "get",
             "purchase",
             "refund",
-            "verify"
+            "reverse"
           ],
           "flow": null
         }
@@ -4214,7 +4268,12 @@
       "methods": [
         {
           "id": "KHIPU",
-          "operations": [],
+          "operations": [
+            "cancel",
+            "get",
+            "purchase",
+            "refund"
+          ],
           "flow": "REDIRECT"
         }
       ]
@@ -4314,7 +4373,15 @@
       "description": "Koin Antifraud services",
       "countries": [],
       "currencies": [],
-      "methods": []
+      "methods": [
+        {
+          "id": "KOIN_FRAUD",
+          "operations": [
+            "screening"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "KONDUTO",
@@ -4387,8 +4454,26 @@
           "flow": "DIRECT"
         },
         {
+          "id": "PAYCASH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "PSE",
+          "operations": [
+            "issuers",
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
           "id": "SPEI",
-          "operations": [],
+          "operations": [
+            "get",
+            "purchase"
+          ],
           "flow": "REDIRECT"
         }
       ]
@@ -4415,9 +4500,30 @@
             "get",
             "purchase",
             "refund",
-            "verify"
+            "reverse"
           ],
           "flow": "DIRECT"
+        },
+        {
+          "id": "MAYA_CHECKOUT",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "MAYA_WALLET",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "QRPH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
         }
       ]
     },
@@ -4611,8 +4717,47 @@
       ],
       "methods": [
         {
+          "id": "BANK_TRANSFER",
+          "operations": [
+            "get",
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
           "id": "CARD",
           "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "CARD_REDIRECT",
+          "operations": [
+            "get",
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "CASH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "MONNET_QR",
+          "operations": [
+            "get",
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "MONNET_WALLET",
+          "operations": [
+            "get",
             "purchase"
           ],
           "flow": null
@@ -4726,13 +4871,6 @@
             "purchase"
           ],
           "flow": null
-        },
-        {
-          "id": "v2",
-          "operations": [
-            "purchase"
-          ],
-          "flow": null
         }
       ]
     },
@@ -4786,8 +4924,8 @@
             "get",
             "installments",
             "purchase",
-            "reverse",
-            "verify"
+            "refund",
+            "reverse"
           ],
           "flow": "DIRECT"
         },
@@ -5036,7 +5174,9 @@
       "methods": [
         {
           "id": "PIX",
-          "operations": [],
+          "operations": [
+            "installments"
+          ],
           "flow": "REDIRECT"
         }
       ]
@@ -5080,6 +5220,7 @@
           "id": "PIX",
           "operations": [
             "get",
+            "issuers",
             "purchase",
             "refund"
           ],
@@ -5164,7 +5305,11 @@
       "methods": [
         {
           "id": "PIX",
-          "operations": [],
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
           "flow": "REDIRECT"
         },
         {
@@ -5193,7 +5338,9 @@
         {
           "id": "CARD",
           "operations": [
-            "get"
+            "get",
+            "purchase",
+            "refund"
           ],
           "flow": null
         }
@@ -5229,8 +5376,8 @@
           "id": "PIX",
           "operations": [
             "get",
-            "refund",
-            "verify"
+            "purchase",
+            "refund"
           ],
           "flow": "REDIRECT"
         }
@@ -5249,7 +5396,47 @@
       "currencies": [
         "BRL"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "BOLETO",
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
+          "id": "PIX",
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "WALLET",
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "PAGO_EFECTIVO",
@@ -5323,9 +5510,19 @@
           "flow": "DIRECT"
         },
         {
+          "id": "OXXO",
+          "operations": [],
+          "flow": null
+        },
+        {
           "id": "PIX",
           "operations": [],
           "flow": "REDIRECT"
+        },
+        {
+          "id": "PSE",
+          "operations": [],
+          "flow": null
         }
       ]
     },
@@ -5928,6 +6125,14 @@
             "reverse"
           ],
           "flow": null
+        },
+        {
+          "id": "PSE",
+          "operations": [
+            "issuers",
+            "purchase"
+          ],
+          "flow": null
         }
       ]
     },
@@ -5967,7 +6172,27 @@
       "currencies": [
         "COP"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
+          "id": "PSE",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "PICPAY",
@@ -5991,7 +6216,7 @@
             "get",
             "purchase",
             "refund",
-            "verify"
+            "reverse"
           ],
           "flow": "DIRECT"
         },
@@ -6005,9 +6230,10 @@
           "flow": null
         },
         {
-          "id": "v2",
+          "id": "PIX",
           "operations": [
             "get",
+            "purchase",
             "refund"
           ],
           "flow": null
@@ -6050,7 +6276,7 @@
             "capture",
             "purchase",
             "refund",
-            "verify"
+            "reverse"
           ],
           "flow": null
         },
@@ -6098,6 +6324,13 @@
             "reverse"
           ],
           "flow": "DIRECT"
+        },
+        {
+          "id": "PENDING",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
         }
       ]
     },
@@ -6114,7 +6347,40 @@
         "COP",
         "USD"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "enrollment",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
+          "id": "PLUXEE_CL",
+          "operations": [
+            "complete",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
+          "id": "PLUXEE_PA",
+          "operations": [
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "POCKYT",
@@ -6135,7 +6401,7 @@
             "get",
             "purchase",
             "refund",
-            "verify"
+            "reverse"
           ],
           "flow": null
         },
@@ -6640,17 +6906,23 @@
       "methods": [
         {
           "id": "BREB",
-          "operations": [],
+          "operations": [
+            "get"
+          ],
           "flow": "DIRECT"
         },
         {
           "id": "BREB_LLAVES",
-          "operations": [],
+          "operations": [
+            "get"
+          ],
           "flow": "DIRECT"
         },
         {
           "id": "PSE",
-          "operations": [],
+          "operations": [
+            "get"
+          ],
           "flow": "REDIRECT"
         }
       ]
@@ -6747,12 +7019,12 @@
         {
           "id": "CARD",
           "operations": [
+            "cancel",
             "capture",
             "get",
             "purchase",
             "refund",
-            "reverse",
-            "verify"
+            "reverse"
           ],
           "flow": null
         }
@@ -6783,7 +7055,26 @@
         "PEN",
         "USD"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "PIX",
+          "operations": [
+            "issuers",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "PSE",
+          "operations": [
+            "issuers",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "SAFRAPAY",
@@ -7534,7 +7825,7 @@
             "purchase",
             "refund",
             "reverse",
-            "verify"
+            "transfer"
           ],
           "flow": null
         },
@@ -7803,7 +8094,14 @@
       "methods": [
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse",
+            "verify"
+          ],
           "flow": "DIRECT"
         }
       ]
@@ -7855,13 +8153,6 @@
         },
         {
           "id": "SIGNATURE",
-          "operations": [
-            "get"
-          ],
-          "flow": null
-        },
-        {
-          "id": "v2",
           "operations": [
             "get"
           ],
@@ -8115,7 +8406,10 @@
       "methods": [
         {
           "id": "PIX",
-          "operations": [],
+          "operations": [
+            "get",
+            "purchase"
+          ],
           "flow": "REDIRECT"
         }
       ]
@@ -8133,7 +8427,20 @@
       "currencies": [
         "BRL"
       ],
-      "methods": []
+      "methods": [
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        }
+      ]
     },
     {
       "id": "WIBOND",
@@ -8173,7 +8480,9 @@
         },
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "verify"
+          ],
           "flow": "DIRECT"
         },
         {
@@ -8298,8 +8607,37 @@
       "methods": [
         {
           "id": "ALFAMART",
-          "operations": [],
+          "operations": [
+            "purchase"
+          ],
           "flow": "DIRECT"
+        },
+        {
+          "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
+          "id": "DANA",
+          "operations": [
+            "cancel",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "DIRECT_DEBIT",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
         },
         {
           "id": "FPX",
@@ -8309,29 +8647,96 @@
           "flow": null
         },
         {
+          "id": "GCASH",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "GRABPAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
           "id": "INDOMARET",
-          "operations": [],
+          "operations": [
+            "purchase"
+          ],
           "flow": "DIRECT"
         },
         {
+          "id": "MAYA_WALLET",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "OVO_WALLET",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "QRIS",
+          "operations": [
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "SEVEN_ELEVEN",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
           "id": "SHOPEEPAY",
-          "operations": [],
+          "operations": [
+            "purchase"
+          ],
           "flow": "REDIRECT"
         },
         {
           "id": "THAI_QR",
-          "operations": [],
+          "operations": [
+            "purchase"
+          ],
           "flow": "REDIRECT"
         },
         {
+          "id": "TOUCH_N_GO",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
           "id": "TRUEMONEY",
-          "operations": [],
+          "operations": [
+            "purchase"
+          ],
           "flow": "REDIRECT"
         },
         {
           "id": "VIRTUAL_ACCOUNT_IDN",
-          "operations": [],
+          "operations": [
+            "purchase"
+          ],
           "flow": "REDIRECT"
+        },
+        {
+          "id": "WECHAT_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
         }
       ]
     },
@@ -8565,12 +8970,22 @@
       "methods": [
         {
           "id": "CARD",
-          "operations": [],
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
           "flow": "DIRECT"
         },
         {
           "id": "PIX",
-          "operations": [],
+          "operations": [
+            "purchase",
+            "refund"
+          ],
           "flow": "REDIRECT"
         }
       ]
@@ -8977,15 +9392,15 @@
       "type": "PAYMENT_METHOD"
     },
     {
-      "id": "BREB",
-      "name": "Breb",
+      "id": "BREB_LLAVES",
+      "name": "Breb Llaves",
       "icon": "https://icons.y.uno/breb_logosimbolo.png",
       "category": "BANK_TRANSFER",
       "type": "PAYMENT_METHOD"
     },
     {
-      "id": "BREB_LLAVES",
-      "name": "BreB Llaves Din\u00e1micas",
+      "id": "BREB",
+      "name": "Breb QR",
       "icon": "https://icons.y.uno/breb_logosimbolo.png",
       "category": "BANK_TRANSFER",
       "type": "PAYMENT_METHOD"
