@@ -487,6 +487,18 @@
       "currencies": [],
       "methods": [
         {
+          "id": "APPLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
           "id": "CARD",
           "operations": [
             "cancel",
@@ -496,6 +508,18 @@
             "refund",
             "reverse",
             "verify"
+          ],
+          "flow": null
+        },
+        {
+          "id": "GOOGLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
           ],
           "flow": null
         }
@@ -1642,7 +1666,29 @@
       ],
       "methods": [
         {
+          "id": "APPLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        },
+        {
           "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "GOOGLE_PAY",
           "operations": [
             "cancel",
             "capture",
@@ -1700,6 +1746,18 @@
       ],
       "methods": [
         {
+          "id": "APPLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
           "id": "CARD",
           "operations": [
             "cancel",
@@ -1717,6 +1775,18 @@
             "get",
             "purchase",
             "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "GOOGLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
           ],
           "flow": null
         },
@@ -1806,8 +1876,13 @@
         {
           "id": "APPLE_PAY",
           "operations": [
+            "cancel",
+            "capture",
             "complete",
-            "purchase"
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
           ],
           "flow": null
         },
@@ -1833,8 +1908,13 @@
         {
           "id": "GOOGLE_PAY",
           "operations": [
+            "cancel",
+            "capture",
             "complete",
-            "purchase"
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
           ],
           "flow": null
         },
@@ -2701,6 +2781,14 @@
           "flow": "DIRECT"
         },
         {
+          "id": "APPLE_PAY",
+          "operations": [
+            "cancel",
+            "capture"
+          ],
+          "flow": null
+        },
+        {
           "id": "BANCO_NACIONAL_CASH",
           "operations": [],
           "flow": "REDIRECT"
@@ -2754,6 +2842,14 @@
           "id": "GCASH",
           "operations": [],
           "flow": "REDIRECT"
+        },
+        {
+          "id": "GOOGLE_PAY",
+          "operations": [
+            "cancel",
+            "capture"
+          ],
+          "flow": null
         },
         {
           "id": "KHIPU",
@@ -3277,9 +3373,23 @@
       "currencies": [],
       "methods": [
         {
+          "id": "APPLE_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
           "id": "FORTER",
           "operations": [
             "screening"
+          ],
+          "flow": null
+        },
+        {
+          "id": "GOOGLE_PAY",
+          "operations": [
+            "purchase"
           ],
           "flow": null
         }
@@ -3380,11 +3490,33 @@
       ],
       "methods": [
         {
+          "id": "APPLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
           "id": "CARD",
           "operations": [
             "cancel",
             "capture",
             "installments",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
+          "id": "GOOGLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
             "purchase",
             "refund",
             "reverse"
@@ -4780,7 +4912,31 @@
       ],
       "methods": [
         {
+          "id": "APPLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
           "id": "CARD",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
+          "id": "GOOGLE_PAY",
           "operations": [
             "cancel",
             "capture",
@@ -4836,9 +4992,23 @@
       ],
       "methods": [
         {
+          "id": "APPLE_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
           "id": "CARD",
           "operations": [],
           "flow": "DIRECT"
+        },
+        {
+          "id": "GOOGLE_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
         }
       ]
     },
@@ -5195,6 +5365,20 @@
         "MXN"
       ],
       "methods": [
+        {
+          "id": "APPLE_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "GOOGLE_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
         {
           "id": "SPEI",
           "operations": [],
@@ -6480,6 +6664,17 @@
       ],
       "methods": [
         {
+          "id": "APPLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
           "id": "CARD",
           "operations": [
             "cancel",
@@ -6807,8 +7002,13 @@
         {
           "id": "GOOGLE_PAY",
           "operations": [
+            "cancel",
+            "capture",
             "complete",
-            "purchase"
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
           ],
           "flow": null
         }
@@ -6959,6 +7159,20 @@
       "countries": [],
       "currencies": [],
       "methods": [
+        {
+          "id": "APPLE_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
+        {
+          "id": "GOOGLE_PAY",
+          "operations": [
+            "purchase"
+          ],
+          "flow": null
+        },
         {
           "id": "RISKIFIED",
           "operations": [
@@ -7789,6 +8003,18 @@
           "flow": null
         },
         {
+          "id": "APPLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
+          ],
+          "flow": null
+        },
+        {
           "id": "BANCONTACT",
           "operations": [
             "get",
@@ -7862,6 +8088,18 @@
             "get",
             "purchase",
             "refund"
+          ],
+          "flow": null
+        },
+        {
+          "id": "GOOGLE_PAY",
+          "operations": [
+            "cancel",
+            "capture",
+            "get",
+            "purchase",
+            "refund",
+            "reverse"
           ],
           "flow": null
         },
