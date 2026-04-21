@@ -117,18 +117,37 @@ function buildFilters() {
     select.appendChild(opt);
   });
 
-  // Payment methods (only those with at least one provider)
+  // Payment methods (only those with at least one provider). Pin the common
+  // ones at the top so Card / Apple Pay / Google Pay / PIX / PayPal / Boleto
+  // are easy to find; rest follow alphabetically.
   const methodsWithProvider = new Set();
   DATA.providers.forEach(p => (p.methods || []).forEach(m => methodsWithProvider.add(m.id)));
-  const ms = DATA.payment_methods.filter(m => methodsWithProvider.has(m.id))
-    .sort((a, b) => a.name.localeCompare(b.name));
+  const available = DATA.payment_methods.filter(m => methodsWithProvider.has(m.id));
+  const COMMON = ["CARD", "APPLE_PAY", "GOOGLE_PAY", "PIX", "PAYPAL", "BOLETO", "ACH", "SEPA"];
+  const byId = Object.fromEntries(available.map(m => [m.id, m]));
+  const pinned = COMMON.filter(id => byId[id]).map(id => byId[id]);
+  const rest = available
+    .filter(m => !COMMON.includes(m.id))
+    .sort((a, b) => (a.name || a.id).localeCompare(b.name || b.id));
   const msel = document.getElementById("method");
-  ms.forEach(m => {
+  const addOption = (m, parent) => {
     const opt = document.createElement("option");
     opt.value = m.id;
     opt.textContent = `${m.name} ${m.category ? "— " + m.category : ""}`;
-    msel.appendChild(opt);
-  });
+    parent.appendChild(opt);
+  };
+  if (pinned.length) {
+    const g = document.createElement("optgroup");
+    g.label = "Common";
+    pinned.forEach(m => addOption(m, g));
+    msel.appendChild(g);
+  }
+  if (rest.length) {
+    const g = document.createElement("optgroup");
+    g.label = "All methods";
+    rest.forEach(m => addOption(m, g));
+    msel.appendChild(g);
+  }
 
   // Provider categories — explicit order: Processor, Payment Method, Fraud Solution, 3d secure, then anything else alphabetically
   const CAT_ORDER = ["Processor", "Payment Method", "Fraud Solution", "3d secure"];

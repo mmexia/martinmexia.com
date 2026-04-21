@@ -26,14 +26,43 @@ const OPS_ORDER = ["purchase", "capture", "refund", "cancel", "reverse", "verify
 
 let DATA = null;
 let METHODS_BY_ID = {};
-let state = { q: "", country: "", method: "", ops: new Set(), cats: new Set() };
+let state = { q: "", country: "", method: "", ops: new Set(), cats: new Set(), showPromised: true };
 
-fetch("/yunointegrations_external/data/catalog.ui.json")
-  .then(r => r.json())
-  .then(d => { DATA = d; init(); })
-  .catch(e => {
-    document.getElementById("grid").innerHTML = `<p style="color:#ef4444">Failed to load catalog: ${e}. Run <code>python3 extract.py</code> first.</p>`;
+const PW = "YunoRocks";
+
+function initGate() {
+  const gate = document.getElementById("pw-gate");
+  if (!gate) return Promise.resolve();
+  if (sessionStorage.getItem("yint-unlocked") === "1") {
+    gate.remove();
+    return Promise.resolve();
+  }
+  return new Promise(resolve => {
+    document.getElementById("pw-form").addEventListener("submit", e => {
+      e.preventDefault();
+      const input = document.getElementById("pw-input");
+      const err = document.getElementById("pw-err");
+      if (input.value === PW) {
+        sessionStorage.setItem("yint-unlocked", "1");
+        gate.remove();
+        resolve();
+      } else {
+        err.hidden = false;
+        input.value = "";
+        input.focus();
+      }
+    });
   });
+}
+
+initGate().then(() => {
+  fetch("/yunointegrations_external/data/catalog.ui.json")
+    .then(r => r.json())
+    .then(d => { DATA = d; init(); })
+    .catch(e => {
+      document.getElementById("grid").innerHTML = `<p style="color:#ef4444">Failed to load catalog: ${e}. Run <code>python3 extract.py</code> first.</p>`;
+    });
+});
 
 function init() {
   METHODS_BY_ID = Object.fromEntries(DATA.payment_methods.map(m => [m.id, m]));
@@ -88,18 +117,37 @@ function buildFilters() {
     select.appendChild(opt);
   });
 
-  // Payment methods (only those with at least one provider)
+  // Payment methods (only those with at least one provider). Pin the common
+  // ones at the top so Card / Apple Pay / Google Pay / PIX / PayPal / Boleto
+  // are easy to find; rest follow alphabetically.
   const methodsWithProvider = new Set();
   DATA.providers.forEach(p => (p.methods || []).forEach(m => methodsWithProvider.add(m.id)));
-  const ms = DATA.payment_methods.filter(m => methodsWithProvider.has(m.id))
-    .sort((a, b) => a.name.localeCompare(b.name));
+  const available = DATA.payment_methods.filter(m => methodsWithProvider.has(m.id));
+  const COMMON = ["CARD", "APPLE_PAY", "GOOGLE_PAY", "PIX", "PAYPAL", "BOLETO", "ACH", "SEPA"];
+  const byId = Object.fromEntries(available.map(m => [m.id, m]));
+  const pinned = COMMON.filter(id => byId[id]).map(id => byId[id]);
+  const rest = available
+    .filter(m => !COMMON.includes(m.id))
+    .sort((a, b) => (a.name || a.id).localeCompare(b.name || b.id));
   const msel = document.getElementById("method");
-  ms.forEach(m => {
+  const addOption = (m, parent) => {
     const opt = document.createElement("option");
     opt.value = m.id;
     opt.textContent = `${m.name} ${m.category ? "— " + m.category : ""}`;
-    msel.appendChild(opt);
-  });
+    parent.appendChild(opt);
+  };
+  if (pinned.length) {
+    const g = document.createElement("optgroup");
+    g.label = "Common";
+    pinned.forEach(m => addOption(m, g));
+    msel.appendChild(g);
+  }
+  if (rest.length) {
+    const g = document.createElement("optgroup");
+    g.label = "All methods";
+    rest.forEach(m => addOption(m, g));
+    msel.appendChild(g);
+  }
 
   // Provider categories — explicit order: Processor, Payment Method, Fraud Solution, 3d secure, then anything else alphabetically
   const CAT_ORDER = ["Processor", "Payment Method", "Fraud Solution", "3d secure"];
@@ -131,12 +179,17 @@ function bindEvents() {
     document.querySelectorAll("#cats input:checked").forEach(i => state.cats.add(i.value));
     render();
   });
+  document.getElementById("show-promised").addEventListener("change", e => {
+    state.showPromised = e.target.checked;
+    render();
+  });
   document.getElementById("clear").addEventListener("click", () => {
-    state = { q: "", country: "", method: "", ops: new Set(), cats: new Set() };
+    state = { q: "", country: "", method: "", ops: new Set(), cats: new Set(), showPromised: true };
     document.getElementById("q").value = "";
     document.getElementById("country").value = "";
     document.getElementById("method").value = "";
     document.querySelectorAll("#ops input, #cats input").forEach(i => (i.checked = false));
+    document.getElementById("show-promised").checked = true;
     render();
   });
   document.getElementById("close-drawer").addEventListener("click", closeDrawer);
@@ -144,6 +197,15 @@ function bindEvents() {
 }
 
 function providerMatches(p) {
+  // Zuono-promised filter: when OFF, hide fully-promised providers and require
+  // a non-promised match for any selected payment method.
+  if (!state.showPromised) {
+    if (p._promised) return false;
+    if (state.method) {
+      const m = (p.methods || []).find(x => x.id === state.method);
+      if (m && m._promised) return false;
+    }
+  }
   if (state.q) {
     const hay = (p.name + " " + p.id + " " + (p.description || "")).toLowerCase();
     if (!hay.includes(state.q)) return false;
@@ -199,8 +261,9 @@ function methodBanner(method, count) {
 
 function card(p) {
   const el = document.createElement("div");
-  el.className = "card";
+  el.className = "card" + (p._promised ? " promised" : "");
   const logo = p.icon ? `<img class="logo" src="${p.icon}" alt="${p.name}" loading="lazy" onerror="this.style.visibility='hidden'"/>` : `<div class="logo" style="background:#1b2027"></div>`;
+  const promisedBadge = p._promised ? `<span class="promised-badge" title="Zuora-promised, not yet built">Zuora promised</span>` : "";
 
   // When filtering by a payment method, show that method's operations for this provider
   // instead of the generic payment-method preview.
@@ -221,6 +284,7 @@ function card(p) {
   }
 
   el.innerHTML = `
+    ${promisedBadge}
     <div class="head">
       ${logo}
       <div>
@@ -250,8 +314,9 @@ function openDrawer(p) {
       ? `<div class="ops">${ops.map(o => `<span class="op ${o}">${o}</span>`).join("")}</div>`
       : `<div class="ops"><span class="op none">operations not detected</span></div>`;
     const flow = m.flow ? `<span class="pm-cat">flow: ${m.flow}</span>` : "";
+    const promisedPill = m._promised ? `<span class="pm-cat promised-pill" title="Zuora-promised">Zuora promised</span>` : "";
     return `
-      <div class="pm-row">
+      <div class="pm-row${m._promised ? " promised" : ""}">
         <div class="pm-head">
           <div>
             <div class="pm-name">${escape(meta.name)}</div>
@@ -260,6 +325,7 @@ function openDrawer(p) {
           <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
             ${meta.category ? `<span class="pm-cat">${meta.category}</span>` : ""}
             ${flow}
+            ${promisedPill}
           </div>
         </div>
         ${opsHtml}
