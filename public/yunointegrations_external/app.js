@@ -26,43 +26,20 @@ const OPS_ORDER = ["purchase", "capture", "refund", "cancel", "reverse", "verify
 
 let DATA = null;
 let METHODS_BY_ID = {};
+// cats starts empty but is populated with every known category in buildFilters()
+// so the default is "all selected = show all". Clearing it all = show none.
+// showPromised defaults to false so Zuora-promised entries are hidden until
+// the user explicitly opts in.
 let state = { q: "", country: "", method: "", ops: new Set(), cats: new Set(), showPromised: true };
 
-const PW = "YunoRocks";
-
-function initGate() {
-  const gate = document.getElementById("pw-gate");
-  if (!gate) return Promise.resolve();
-  if (sessionStorage.getItem("yint-unlocked") === "1") {
-    gate.remove();
-    return Promise.resolve();
-  }
-  return new Promise(resolve => {
-    document.getElementById("pw-form").addEventListener("submit", e => {
-      e.preventDefault();
-      const input = document.getElementById("pw-input");
-      const err = document.getElementById("pw-err");
-      if (input.value === PW) {
-        sessionStorage.setItem("yint-unlocked", "1");
-        gate.remove();
-        resolve();
-      } else {
-        err.hidden = false;
-        input.value = "";
-        input.focus();
-      }
-    });
-  });
-}
-
-initGate().then(() => {
+{
   fetch("/yunointegrations_external/data/catalog.ui.json")
     .then(r => r.json())
     .then(d => { DATA = d; init(); })
     .catch(e => {
       document.getElementById("grid").innerHTML = `<p style="color:#ef4444">Failed to load catalog: ${e}. Run <code>python3 extract.py</code> first.</p>`;
     });
-});
+}
 
 function init() {
   METHODS_BY_ID = Object.fromEntries(DATA.payment_methods.map(m => [m.id, m]));
@@ -157,10 +134,14 @@ function buildFilters() {
     ...CAT_ORDER.filter(c => cats.has(c)),
     ...[...cats].filter(c => !CAT_ORDER.includes(c)).sort(),
   ];
+  // Seed the filter state with every category selected — the grid starts
+  // "all on". Clearing them all produces an empty grid (distinct from the
+  // legacy "empty set means no filter" semantics).
+  ordered.forEach(c => state.cats.add(c));
   const catsEl = document.getElementById("cats");
   ordered.forEach(c => {
     const label = document.createElement("label");
-    label.innerHTML = `<input type="checkbox" value="${c}" /> ${c}`;
+    label.innerHTML = `<input type="checkbox" value="${c}" checked /> ${c}`;
     catsEl.appendChild(label);
   });
 }
@@ -188,8 +169,15 @@ function bindEvents() {
     document.getElementById("q").value = "";
     document.getElementById("country").value = "";
     document.getElementById("method").value = "";
-    document.querySelectorAll("#ops input, #cats input").forEach(i => (i.checked = false));
-    document.getElementById("show-promised").checked = true;
+    // Reset operations: all unchecked
+    document.querySelectorAll("#ops input").forEach(i => (i.checked = false));
+    // Reset categories: all checked (+ rehydrate state)
+    document.querySelectorAll("#cats input").forEach(i => {
+      i.checked = true;
+      state.cats.add(i.value);
+    });
+    const pt = document.getElementById("show-promised");
+    if (pt) pt.checked = false;
     render();
   });
   document.getElementById("close-drawer").addEventListener("click", closeDrawer);
@@ -217,7 +205,7 @@ function providerMatches(p) {
     (p.methods || []).forEach(m => (m.operations || []).forEach(o => allOps.add(o)));
     for (const op of state.ops) if (!allOps.has(op)) return false;
   }
-  if (state.cats.size && !state.cats.has(p.category)) return false;
+  if (!state.cats.has(p.category)) return false;
   return true;
 }
 

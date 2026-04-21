@@ -16,68 +16,7 @@
 </script>
 </head>
 <body>
-<header>
-  <div class="brand">
-    <span class="brand-mark"><a href="https://www.martinmexia.com">MARTIN&nbsp;MEXIA</a></span>
-    <h1><span class="slash">/</span>Yuno Integrations <span style="font-size:0.65em;padding:2px 8px;margin-left:6px;border:1px solid var(--warn);color:var(--warn);border-radius:999px;letter-spacing:0.08em;text-transform:uppercase;font-family:var(--font-mono);vertical-align:middle">external</span></h1>
-  </div>
-  <div class="header-right">
-    <div class="stats" id="stats"></div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
-  </div>
-</header>
-
-<section class="hero">
-  <h2 class="fade-up">Every provider. Every country. Every <em>payment method</em>.</h2>
-  <p class="fade-up d1">A live catalog of Yuno's payment integrations: providers, the countries they cover, the payment methods they support, and the operations (purchase, capture, refund, cancel…) available per method.</p>
-  <div class="hero-counters fade-up d2" id="counters"></div>
-</section>
-
-<main class="app">
-  <aside class="filters">
-    <section class="search">
-      <h3>Search</h3>
-      <input id="q" type="search" placeholder="Provider or method…" />
-    </section>
-
-    <section>
-      <h3>Country</h3>
-      <select id="country">
-        <option value="">All countries</option>
-      </select>
-    </section>
-
-    <section>
-      <h3>Payment method</h3>
-      <select id="method">
-        <option value="">All methods</option>
-      </select>
-    </section>
-
-    <section>
-      <h3>Operation</h3>
-      <div class="chips" id="ops">
-        <label><input type="checkbox" value="purchase" /> Purchase</label>
-        <label><input type="checkbox" value="capture" /> Capture</label>
-        <label><input type="checkbox" value="refund" /> Refund</label>
-        <label><input type="checkbox" value="cancel" /> Cancel</label>
-        <label><input type="checkbox" value="reverse" /> Reverse</label>
-        <label><input type="checkbox" value="verify" /> Verify</label>
-        <label><input type="checkbox" value="enrollment" /> Enrollment</label>
-      </div>
-    </section>
-
-    <section class="clear-section">
-      <button id="clear">Clear filters</button>
-    </section>
-  </aside>
-
-  <section class="results">
-    <div class="results-toolbar">
-      <div class="toolbar-label">Category</div>
-      <div class="chips" id="cats"></div>
-    </div>
-    <div id="grid" class="grid"></div>
+<div id="grid" class="grid"></div>
   </section>
 </main>
 
