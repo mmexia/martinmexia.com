@@ -4,7 +4,7 @@
       "id": "TWOC2P",
       "name": "2C2P",
       "icon": "https://icons.prod.y.uno/2c2p_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://2c2p.com/",
       "description": "Quality payment solutions to align with your key objectives.",
       "countries": [
@@ -32,7 +32,7 @@
       "id": "ACUOTAZ",
       "name": "aCuotaz",
       "icon": "https://icons.prod.y.uno/acuotaz_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://apurata.com/app/integraciones",
       "description": "Receives online payments as installments plans without the need of having a credit card.",
       "countries": [
@@ -57,7 +57,7 @@
       "id": "ADDI",
       "name": "Addi",
       "icon": "https://icons.prod.y.uno/addi_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://addi.com",
       "description": "Offers buy now, pay later to users as installment plans at the checkout with a clear schedule of payments.",
       "countries": [
@@ -74,7 +74,7 @@
       "id": "ADYEN",
       "name": "Adyen",
       "icon": "https://icons.prod.y.uno/adyen_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.adyen.com/",
       "description": "Accepts online payments on any device or channel, whatever your business model so you can give customers the experiences they expect.",
       "countries": [
@@ -469,7 +469,7 @@
       "id": "AFIRME",
       "name": "Afirme",
       "icon": "https://icons.prod.y.uno/afirme_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.afirme.com/",
       "description": "",
       "countries": [
@@ -492,7 +492,7 @@
       "id": "AIRWALLEX",
       "name": "Airwallex",
       "icon": "https://icons.prod.y.uno/airwallex_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.airwallex.com/",
       "description": "Airwallex is a fintech platform enabling businesses to manage multi-currency accounts,",
       "countries": [
@@ -545,7 +545,7 @@
       "id": "AKBANK",
       "name": "Akbank",
       "icon": "https://icons.prod.y.uno/akbank_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.akbank.com",
       "description": "Akbank is one of Turkey's leading private banks, offering comprehensive payment processing services.",
       "countries": [
@@ -572,7 +572,7 @@
       "id": "ALELO",
       "name": "Alelo",
       "icon": "https://icons.prod.y.uno/alelo_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://developers.alelo.com.br/",
       "description": "Accepts online payments on any device or channel, whatever your business model so you can give customers the experiences they expect.",
       "countries": [
@@ -598,7 +598,7 @@
       "id": "ALIPAY",
       "name": "Alipay+",
       "icon": "https://icons.prod.y.uno/alipay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://global.alipay.com/platform/site/ihome",
       "description": "Quality payment solutions to align with your key objectives.",
       "countries": [
@@ -662,7 +662,7 @@
       "id": "ALL_IN_PAY",
       "name": "All in Pay",
       "icon": "https://icons.prod.y.uno/allinpay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://allinpayintl.com",
       "description": "Allinpay International is a payment gateway specializing in Asian cross-border transactions, serving merchants primarily in Hong Kong and Singapore. They provide a unified API (OATS) that integrates major payment methods including Alipay, WeChat Pay, UnionPay QR, PayNow, and regional e-wallets through Alipay+. The platform supports both online and in-store payments via QR codes, H5, web, and mobile apps with multi-currency processing and real-time transaction management.",
       "countries": [
@@ -720,7 +720,7 @@
       "id": "ALLPAGO",
       "name": "Allpago",
       "icon": "https://www.google.com/s2/favicons?domain=ebanx.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -755,7 +755,7 @@
       "id": "AMAZONPAY",
       "name": "AmazonPay",
       "icon": "https://www.google.com/s2/favicons?domain=pay.amazon.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -787,7 +787,7 @@
       "id": "AMEX",
       "name": "Amex",
       "icon": "https://icons.prod.y.uno/amex_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.americanexpress.com/",
       "description": "Processes online card payments.",
       "countries": [
@@ -815,7 +815,7 @@
       "id": "ANB",
       "name": "ANB",
       "icon": "https://icons.duckduckgo.com/ip3/anb.com.sa.ico",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -840,7 +840,7 @@
       "id": "ANTOM",
       "name": "Antom",
       "icon": "https://icons.prod.y.uno/antom_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.antom.com/",
       "description": "Antom is a global payment technology provider by Ant Group, enabling businesses to accept and process cross-border payments across multiple regions with local payment methods.",
       "countries": [
@@ -888,7 +888,7 @@
       "id": "ARCUS",
       "name": "Arcus",
       "icon": "https://icons.prod.y.uno/arcus_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://dashboard.arcusfi.com/authentication/sign-in",
       "description": "Allows cash and real-time transactions with all the guarantees that the Bank of Mexico requires from SPEI participants.",
       "countries": [
@@ -916,7 +916,7 @@
       "id": "ASTROPAY",
       "name": "AstroPay",
       "icon": "https://icons.prod.y.uno/astropay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://astropay.com",
       "description": "From instant payments, savings, and investments to rewards and next-level experiences. All in one single application.",
       "countries": [
@@ -1145,7 +1145,7 @@
       "id": "AUTHORIZE_NET",
       "name": "Authorize.Net",
       "icon": "https://www.google.com/s2/favicons?domain=authorize.net&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -1189,7 +1189,7 @@
       "id": "AZUL",
       "name": "Azul",
       "icon": "https://icons.prod.y.uno/azul_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.azul.com.do/Pages/es/default.aspx",
       "description": "Accepts credit, debit and prepaid card purchases throughout its network.",
       "countries": [
@@ -1217,7 +1217,7 @@
       "id": "BAC",
       "name": "BAC",
       "icon": "https://icons.prod.y.uno/bac_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.baccredomatic.com/",
       "description": "Allows you to sell in an easy, fast and secure way with all cards.",
       "countries": [
@@ -1248,7 +1248,7 @@
       "id": "BAC_CREDOMATIC",
       "name": "BAC Credomatic",
       "icon": "https://icons.prod.y.uno/bac_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.baccredomatic.com",
       "description": "Offers fast, easy and secure card payments.",
       "countries": [
@@ -1273,7 +1273,7 @@
       "id": "BAMBOO",
       "name": "Bamboo",
       "icon": "https://icons.prod.y.uno/bamboo_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://bamboopaymentsystems.com/",
       "description": "Bamboo Payments\u2019 enable organizations to operate locally in LATAM without needing to register local subsidiaries or worry about the dizzying array of local payment methods, varying tax regulations, or specific market knowledge.",
       "countries": [
@@ -1315,7 +1315,7 @@
       "id": "BANCARD",
       "name": "Bancard",
       "icon": "https://icons.prod.y.uno/bancard_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.bancard.com.py/",
       "description": "Nuestra mision es proveer servicios transaccionales y de medios de pago electr\u00f3nico con flexibilidad, seguridad y calidad, generando valor percibido para accionistas, colaboradores y clientes, comprometidos con la comunidad y el ambiente.",
       "countries": [
@@ -1341,7 +1341,7 @@
       "id": "BANCO_DO_BRASIL",
       "name": "Banco do Brasil",
       "icon": "https://icons.prod.y.uno/bancodobrasil_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.bb.com.br/site/pra-voce/",
       "description": "",
       "countries": [
@@ -1375,7 +1375,7 @@
       "id": "BANORTE",
       "name": "Banorte",
       "icon": "https://icons.prod.y.uno/banorte_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.banorte.com/",
       "description": "Banorte is a financial institution in Mexico that provides Payworks, a high-volume payment processing engine enabling merchants to accept credit and debit card transactions, including VISA, MasterCard, and American Express. It supports secure online commerce through features like 3D Secure authentication to reduce fraud and ensure cardholder verification during internet purchases",
       "countries": [
@@ -1419,7 +1419,7 @@
       "id": "BBVA",
       "name": "BBVA ISO Direct",
       "icon": "https://icons.prod.y.uno/bbva_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.bbva.mx/",
       "description": "BBVA M\u00e9xico is a leading financial institution offering a wide range of digital banking services, including domestic and international transfers, utility payments, investments, and credit products, all accessible through its online platform and mobile apps. Its digital infrastructure allows individual and business customers to conduct transactions securely and efficiently, with support for multiple currencies and service channels",
       "countries": [
@@ -1447,7 +1447,7 @@
       "id": "BELVO",
       "name": "Belvo",
       "icon": "https://icons.prod.y.uno/belvo_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://belvo.com/",
       "description": "Unlock the power of open finance in Latin America.",
       "countries": [
@@ -1479,7 +1479,7 @@
       "id": "BHD",
       "name": "BHD Leon",
       "icon": "https://icons.prod.y.uno/BHD_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "Provide a secure payment option that allows customers of Banco BHD and other banks to carry",
       "countries": [
@@ -1505,7 +1505,7 @@
       "id": "BILLDESK",
       "name": "BillDesk",
       "icon": "https://icons.prod.y.uno/billdesk_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.billdesk.com/",
       "description": "Payment Gateway for India. Accept payments via UPI and other methods.",
       "countries": [
@@ -1545,7 +1545,7 @@
       "id": "BLUESNAP",
       "name": "BlueSnap",
       "icon": "https://bluesnap.com/favicon.ico",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -1604,7 +1604,7 @@
       "id": "BRADESCO",
       "name": "Bradesco",
       "icon": "https://icons.prod.y.uno/bradesco_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://banco.bradesco/",
       "description": "Offers financial solutions and services that make your life easier. It is indicated that this connection for payments made through PIX and Boleto is made through Shopfacil.",
       "countries": [
@@ -1629,7 +1629,7 @@
       "id": "BRAINTREE",
       "name": "Braintree",
       "icon": "https://icons.prod.y.uno/braintree_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.braintreepayments.com/",
       "description": "Processes online card payments.",
       "countries": [
@@ -1866,7 +1866,7 @@
       "id": "CARDCONNECT",
       "name": "CardConnect",
       "icon": "https://www.google.com/s2/favicons?domain=cardconnect.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -1896,7 +1896,7 @@
       "id": "CCAVENUE",
       "name": "CCAvenue",
       "icon": "https://icons.prod.y.uno/ccavenue_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.ccavenue.com",
       "description": "CCAvenue is a leading payment gateway in India and the Middle East, providing comprehensive payment solutions.",
       "countries": [
@@ -1929,7 +1929,7 @@
       "id": "CHASEMOBILITY",
       "name": "ChaseMobility",
       "icon": "https://www.google.com/s2/favicons?domain=chase.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -1952,7 +1952,7 @@
       "id": "CHECKOUT",
       "name": "Checkout",
       "icon": "https://icons.prod.y.uno/checkout.com_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.checkout.com/",
       "description": "Checkout.com acts as an end-to-end Payment Services Provider, enabling businesses to move, manage, and optimize money. We empower businesses to accept online payments and disburse funds through various payment methods and integration options. Our Intelligent Acceptance, Authentication, Identity Verification, and Fraud Detection tools help merchants accept legitimate payments while preventing fraud. Additionally, we offer a unified dashboard for managing balances and payments across geographies and currencies.",
       "countries": [
@@ -2037,7 +2037,7 @@
       "id": "CHECKOUT_COM",
       "name": "Checkout.com",
       "icon": "https://www.google.com/s2/favicons?domain=checkout.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -2091,7 +2091,7 @@
       "id": "CIBC",
       "name": "CIBC",
       "icon": "https://icons.prod.y.uno/cibc_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.cibc.com/en/personal-banking.html",
       "description": "Accepts payments with all cards",
       "countries": [
@@ -2138,7 +2138,7 @@
       "id": "CIELO",
       "name": "Cielo",
       "icon": "https://icons.prod.y.uno/cielo_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.cielo.com.br/",
       "description": "Allows you to sell easily, quickly and securely with all cards.",
       "countries": [
@@ -2222,7 +2222,7 @@
       "id": "CITI",
       "name": "Citi",
       "icon": "https://www.google.com/s2/favicons?domain=citi.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -2281,7 +2281,7 @@
       "id": "CLICK_TO_PAY",
       "name": "Click to Pay",
       "icon": "https://icons.prod.y.uno/clicktopay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.mastercard.us/en-us/personal/ways-to-pay/click-to-pay.html",
       "description": "Click to Pay by Mastercard is a smarter and secure way to make online payments. Speed through checkout in just a few clicks at any participating merchant.",
       "countries": [
@@ -2296,7 +2296,7 @@
       "id": "CMI",
       "name": "CMI",
       "icon": "https://icons.prod.y.uno/cmi_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.cmi.co.ma/",
       "description": "Simplify electronic payment solutions to support our customers' commercial success.",
       "countries": [
@@ -2325,7 +2325,7 @@
       "id": "COBRO_DIGITAL",
       "name": "Cobro Digital",
       "icon": "https://icons.prod.y.uno/cobrodigital_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://cobrodigital.com/",
       "description": "We created a platform where you can accept payments online in cash, cards and transfers in your business.",
       "countries": [
@@ -2349,7 +2349,7 @@
       "id": "COINFLOW",
       "name": "Coinflow",
       "icon": "https://icons.prod.y.uno/coinflow_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://coinflow.cash/?product=purchase",
       "description": "Coinflow is a versatile payment stack that helps companies improve conversion & retention rates by over 50% through familiar payment experiences:\\n\\nAccept fiat payment methods for selling goods and services (credit cards, Apple Pay, Google Pay, ACH transfers, SEPA transfers, UK Faster Payments, PIX) with instant settlement to you as the merchant.",
       "countries": [
@@ -2386,7 +2386,7 @@
       "id": "CONEKTA",
       "name": "Conekta",
       "icon": "https://icons.prod.y.uno/conekta_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.conekta.com/",
       "description": "We created a platform where you can accept payments online in cash, cards and transfers in your business.",
       "countries": [
@@ -2416,7 +2416,7 @@
       "id": "CREDIBANCO",
       "name": "CredibanCo",
       "icon": "https://icons.prod.y.uno/credibanco_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://portal-credibanco.crediservices.credibanco.com/#/welcome",
       "description": "Receives electronic payments with high quality standards and technology.",
       "countries": [
@@ -2444,7 +2444,7 @@
       "id": "CREDIX",
       "name": "Credix",
       "icon": "https://icons.prod.y.uno/credix_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.credix.com/",
       "description": "Credix is a Costa Rican company. It is dedicated to providing credit due to the increasing market demand for innovative financing products that make purchases of goods and services more accessible through installment payments.",
       "countries": [
@@ -2471,7 +2471,7 @@
       "id": "CUOTEALO",
       "name": "Cuot\u00e9alo",
       "icon": "https://icons.dev.y.uno/cuotealo_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.viabcp.com/cuotealo",
       "description": "Financiamiento a corto plazo, que te permite comprar en cuotas en m\u00e1s de 400 tiendas online, \u00a1sin tarjeta de cr\u00e9dito!",
       "countries": [
@@ -2581,7 +2581,7 @@
       "id": "CYBERSOURCE_GTW",
       "name": "Cybersource Gateway",
       "icon": "https://icons.prod.y.uno/cybersource_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://cybersource.com/",
       "description": "Accept payments from all over the world. Our comprehensive platform supports popular payment methods, including in-store, online, and digital wallet payments",
       "countries": [
@@ -2596,7 +2596,7 @@
       "id": "DASHBOARD_TEST",
       "name": "Dashboard Test",
       "icon": "https://icons.prod.y.uno/yuno_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -2611,7 +2611,7 @@
       "id": "DATAFAST",
       "name": "Datafast",
       "icon": "https://icons.prod.y.uno/datafast_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.datafast.com.ec/",
       "description": "Allows face-to-face and digital payments with credit and debit cards for your business.",
       "countries": [
@@ -2632,7 +2632,7 @@
       "id": "DAVIPLATA",
       "name": "DaviPlata",
       "icon": "https://icons.prod.y.uno/daviplata_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.daviplata.com",
       "description": "Powered by Davivienda, it allows mobile payments.",
       "countries": [
@@ -2665,7 +2665,7 @@
       "id": "DECIDIR",
       "name": "Decidir",
       "icon": "https://icons.prod.y.uno/decidir_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.decidir.com/",
       "description": "Processes online card payments.",
       "countries": [
@@ -2861,7 +2861,7 @@
       "id": "DE_UNA",
       "name": "Deuna",
       "icon": "https://icons.prod.y.uno/deuna_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://deuna.app/",
       "description": "Direct integration with Deuna",
       "countries": [
@@ -2887,7 +2887,7 @@
       "id": "DINERS",
       "name": "Diners",
       "icon": "https://icons.prod.y.uno/dinersclubinternational_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.dinersclub.com.ec/",
       "description": "Diners offers you the greatest benefits in credit cards, investments, savings plans, insurance, and more. Join the club.",
       "countries": [
@@ -2915,7 +2915,7 @@
       "id": "DLOCAL",
       "name": "dLocal",
       "icon": "https://icons.prod.y.uno/dlocal_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://dlocal.com",
       "description": "Receives payments in emerging markets across LATAM, APAC, and EMEA.",
       "countries": [
@@ -3140,7 +3140,7 @@
       "id": "E_COMPROCESSING",
       "name": "E-Comprocessing",
       "icon": "https://icons.prod.y.uno/e-comprocessing_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.e-comprocessing.com/",
       "description": "Quality payment solutions to align with your key objectives.",
       "countries": [
@@ -3171,7 +3171,7 @@
       "id": "EBANX",
       "name": "Ebanx",
       "icon": "https://icons.prod.y.uno/ebanx_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.ebanx.com/en/",
       "description": "EBANX enables global organizations to grow exponentially in Latin America by leveraging a platform of end-to-end localized payment and financial solutions.",
       "countries": [
@@ -3246,7 +3246,7 @@
       "id": "ECOMMPAY",
       "name": "Ecommpay",
       "icon": "https://icons.y.uno/ecommpay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.ecommpay.com/",
       "description": "",
       "countries": [
@@ -3275,7 +3275,7 @@
       "id": "EDENRED",
       "name": "Edenred",
       "icon": "https://icons.prod.y.uno/edenred_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.edenred.com/en",
       "description": "Edenred offers innovative specific-purpose payment solutions for food, incentives, mobility, and corporate payments.",
       "countries": [
@@ -3302,7 +3302,7 @@
       "id": "ELAVON",
       "name": "Elavon",
       "icon": "https://icons.prod.y.uno/elavon_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.elavon.com/",
       "description": "Elavon is the innovative, secure, and global partner for your payment processing needs, ",
       "countries": [
@@ -3348,7 +3348,7 @@
       "id": "EPAYCO",
       "name": "ePayco",
       "icon": "https://icons.prod.y.uno/epayco_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://epayco.com/pagos/",
       "description": "Accepts credit, debit and prepaid card purchases throughout its network.",
       "countries": [
@@ -3373,7 +3373,7 @@
       "id": "EPX",
       "name": "EPX",
       "icon": "https://www.google.com/s2/favicons?domain=epx.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -3396,7 +3396,7 @@
       "id": "EVO",
       "name": "Evo",
       "icon": "https://icons.prod.y.uno/evo_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://evopayments.com/",
       "description": "EVO Payments, Inc. is a global provider of payment processing services, enabling businesses ",
       "countries": [
@@ -3425,7 +3425,7 @@
       "id": "FAC",
       "name": "FAC",
       "icon": "https://icons.y.uno/fac_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://firstatlanticcommerce.com",
       "description": "Provide online payment solutions and international credit card processing for merchants and partners all over the world.",
       "countries": [
@@ -3508,7 +3508,7 @@
       "id": "FATZEBRA",
       "name": "FatZebra",
       "icon": "https://www.google.com/s2/favicons?domain=fatzebra.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -3542,7 +3542,7 @@
       "id": "FINTOC",
       "name": "Fintoc",
       "icon": "https://icons.dev.y.uno/fintoc_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://fintoc.com/cl",
       "description": "Accepts payments from any bank\\nFintoc allows you to recieve payments from any account. More convenient than cards, simpler than transfers and automatically reconciled",
       "countries": [
@@ -3581,7 +3581,7 @@
       "id": "FISERV",
       "name": "Fiserv",
       "icon": "https://icons.prod.y.uno/fiserv_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www2.firstdata.com.ar/comercios/",
       "description": "Operates with cards in a fast, simple and secure way.",
       "countries": [
@@ -3608,7 +3608,7 @@
       "id": "FLUTTERWAVE",
       "name": "Flutterwave",
       "icon": "https://icons.prod.y.uno/flutterwave_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://flutterwave.com/us/",
       "description": "Flutterwave is a comprehensive payment infrastructure provider supporting multiple African markets and international transactions. The platform offers APIs, SDKs, and prebuilt UIs for integrating various payment methods including cards, bank transfers, USSD, and mobile money across multiple countries",
       "countries": [
@@ -3684,7 +3684,7 @@
       "id": "GALICIA",
       "name": "Galicia",
       "icon": "https://icons.prod.y.uno/galicia_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.galicia.ar/",
       "description": "We've developed a platform that allows you to accept payments effortlessly through QR codes, enabling fast and secure bank transfers for your business.",
       "countries": [
@@ -3708,7 +3708,7 @@
       "id": "GARANTI_BBVA",
       "name": "Garanti BBVA",
       "icon": "https://icons.prod.y.uno/garantibbva_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.garantibbva.com.tr",
       "description": "Garanti BBVA is Turkey's second largest private bank, offering modern payment processing solutions.",
       "countries": [
@@ -3735,7 +3735,7 @@
       "id": "GEIDEA",
       "name": "Geidea",
       "icon": "https://icons.prod.y.uno/geidea_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.geidea.net",
       "description": "Geidea is a Saudi-based fintech company providing innovative payment and business solutions across the MENA region.",
       "countries": [
@@ -3762,7 +3762,7 @@
       "id": "GETNET",
       "name": "Getnet",
       "icon": "https://icons.prod.y.uno/getnet_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://site.getnet.com.br/",
       "description": "Digital Platform is a complete ecosystem created to provide the most diverse solutions for the payments market (eCommerce, mCommerce).",
       "countries": [
@@ -3821,7 +3821,7 @@
       "id": "GLOBALPAYMENTS",
       "name": "Global Payment",
       "icon": "https://icons.staging.y.uno/globalpayments_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.globalpayments.com/",
       "description": "We combine our leading commerce platform with deep expertise to deliver solutions that make every aspect of commerce work better. For any business. At every scale.",
       "countries": [
@@ -3892,7 +3892,7 @@
       "id": "GLOBALCOLLECT",
       "name": "GlobalCollect",
       "icon": "https://www.google.com/s2/favicons?domain=worldline.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -3962,7 +3962,7 @@
       "id": "GLOBALCOLLECT_V2",
       "name": "GlobalCollect_v2",
       "icon": "https://www.google.com/s2/favicons?domain=worldline.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -3997,7 +3997,7 @@
       "id": "GLOBALPAY",
       "name": "Globalpay",
       "icon": "https://icons.staging.y.uno/globalpay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://dashboard.globalpay.com.co/",
       "description": "Offers online and alternative payment methods for your customers in Latin America.",
       "countries": [
@@ -4012,7 +4012,7 @@
       "id": "GMO_PG",
       "name": "GMO-PG",
       "icon": "https://www.google.com/s2/favicons?domain=www.gmo-pg.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -4037,7 +4037,7 @@
       "id": "GOCARDLESS",
       "name": "GoCardless",
       "icon": "https://www.google.com/s2/favicons?domain=gocardless.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -4141,7 +4141,7 @@
       "id": "HELIX",
       "name": "Helix",
       "icon": "https://www.google.com/s2/favicons?domain=helix.us&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -4164,7 +4164,7 @@
       "id": "HPAY",
       "name": "HPay",
       "icon": "https://www.google.com/s2/favicons?domain=hpay.vn&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -4189,7 +4189,7 @@
       "id": "HYPERPAY",
       "name": "HyperPay",
       "icon": "https://icons.prod.y.uno/hyperpay_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.hyperpay.com",
       "description": "HyperPay is a leading payment gateway in the MENA region, providing comprehensive payment solutions.",
       "countries": [
@@ -4216,7 +4216,7 @@
       "id": "ICICMS",
       "name": "ICICMS",
       "icon": "https://icons.prod.y.uno/icici_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.mastercard.com/gateway",
       "description": "ICICMS is a regional implementation of MPGS (Mastercard Payment Gateway Services) ",
       "countries": [
@@ -4250,7 +4250,7 @@
       "id": "INGENICO",
       "name": "Ingenico",
       "icon": "https://icons.prod.y.uno/ingenico_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://ingenico.com/",
       "description": "Processes online card payments.",
       "countries": [
@@ -4446,7 +4446,7 @@
       "id": "INGENICO_GLOBALCOLLECT",
       "name": "Ingenico/GlobalCollect",
       "icon": "https://www.google.com/s2/favicons?domain=ingenico.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -4509,7 +4509,7 @@
       "id": "INOVIO",
       "name": "Inovio",
       "icon": "https://icons.prod.y.uno/inovio_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.inoviopay.com/",
       "description": "Inovio is the revolutionary payments gateway with seamless integration and global ",
       "countries": [
@@ -4536,7 +4536,7 @@
       "id": "INSWITCH",
       "name": "Inswitch",
       "icon": "https://icons.prod.y.uno/inswitch_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.inswitch.com/",
       "description": "Create the fintech solution that best fits your business with our embedded finance platform.",
       "countries": [
@@ -4551,7 +4551,7 @@
       "id": "IPPAYMENTS",
       "name": "IPPayments",
       "icon": "https://www.google.com/s2/favicons?domain=bambora.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -4578,7 +4578,7 @@
       "id": "IPSP",
       "name": "IPSP",
       "icon": "https://icons.prod.y.uno/ipsp_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://ipsp.kz",
       "description": "Get maximum reliability for payment infrastructure with IPSP payment service provider. Technological solutions for accepting online payments. For any business - We work with all businesses, including White Label models. 24/7 Support - Our employees will communicate with you and your clients, not a bot or AI.",
       "countries": [
@@ -4593,7 +4593,7 @@
       "id": "ISBANK",
       "name": "Isbank",
       "icon": "https://icons.prod.y.uno/isbank_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.isbank.com.tr",
       "description": "\u0130\u015fbank is Turkey's first national bank and a leading financial institution, offering comprehensive payment solutions.",
       "countries": [
@@ -4620,7 +4620,7 @@
       "id": "ITAU",
       "name": "Ita\u00fa",
       "icon": "https://icons.prod.y.uno/itau_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.itau.com.br/",
       "description": "Ita\u00fa is one of the largest financial institutions in Brazil, offering a wide range of banking and payment solutions.",
       "countries": [
@@ -4656,7 +4656,7 @@
       "id": "IYZICO",
       "name": "Iyzico",
       "icon": "https://icons.prod.y.uno/iyzico_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.iyzico.com",
       "description": "Iyzico is a leading Turkish payment gateway, offering innovative payment solutions for e-commerce.",
       "countries": [
@@ -4696,7 +4696,7 @@
       "id": "IZIPAY",
       "name": "Izipay",
       "icon": "https://icons.prod.y.uno/izipay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.izipay.pe/izipay",
       "description": "Accepts payments with all cards and leading mobile wallets in Peru.",
       "countries": [
@@ -4724,7 +4724,7 @@
       "id": "JPMORGAN",
       "name": "J.P. Morgan",
       "icon": "https://icons.y.uno/jpmorgan_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.jpmorgan.com/",
       "description": "Processes online card payments.",
       "countries": [
@@ -4926,7 +4926,7 @@
       "id": "KHIPU",
       "name": "Khipu",
       "icon": "https://icons.prod.y.uno/khipu_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://khipu.com/",
       "description": "Transformamos los datos que necesitas en una API para iniciaci\u00f3n de pagos, ",
       "countries": [
@@ -4956,7 +4956,7 @@
       "id": "KLAP",
       "name": "Klap Alternative",
       "icon": "https://icons.prod.y.uno/klap_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.klap.cl/home-comercios/ecommerce",
       "description": "Accepts credit, debit and prepaid card purchases throughout its network.",
       "countries": [
@@ -4984,7 +4984,7 @@
       "id": "KLARNA",
       "name": "Klarna",
       "icon": "https://www.google.com/s2/favicons?domain=klarna.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -5027,7 +5027,7 @@
       "id": "KOIN",
       "name": "Koin",
       "icon": "https://icons.prod.y.uno/koin_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.koin.com.br/",
       "description": "Com a Koin, voc\u00ea tem total liberdade para parcelar suas compras do jeito que quiser e onde que preferir! Compre com seguran\u00e7a, sem burocracia e sem precisar abrir uma nova conta banc\u00e1ria.",
       "countries": [
@@ -5104,7 +5104,7 @@
       "id": "KUESKI",
       "name": "Kueski",
       "icon": "https://icons.prod.y.uno/kueski_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://kueski.com",
       "description": "Offers buy now, pay later to users as installment plans at the checkout with a clear schedule of payments.",
       "countries": [
@@ -5119,7 +5119,7 @@
       "id": "KUSHKI",
       "name": "Kushki",
       "icon": "https://icons.prod.y.uno/kushki_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.kushki.com",
       "description": "Allows credit and debit card payments in Latin America.",
       "countries": [
@@ -5176,7 +5176,7 @@
       "id": "MAYA",
       "name": "Maya",
       "icon": "https://icons.prod.y.uno/maya_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.maya.ph/",
       "description": "Allows you to sell easily, quickly and securely with all cards.",
       "countries": [
@@ -5225,7 +5225,7 @@
       "id": "MEDIANET",
       "name": "Medianet",
       "icon": "https://icons.prod.y.uno/medianet_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://plataforma.medianetpay.ec/secure/sv/login.do",
       "description": "Accepts credit and debit card payments, simplifying electronic payments.",
       "countries": [
@@ -5246,7 +5246,7 @@
       "id": "MERCADO_PAGO",
       "name": "Mercado Pago",
       "icon": "https://icons.prod.y.uno/mercadopago_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://plataforma.medianetpay.ec/secure/sv/login.do",
       "description": "Allows you to make purchases through Mercado Pago multiple methods even from unlog customers.",
       "countries": [
@@ -5344,7 +5344,7 @@
       "id": "MERCHANTESOLUTIONS",
       "name": "MerchanteSolutions",
       "icon": "https://www.google.com/s2/favicons?domain=deluxe.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -5374,7 +5374,7 @@
       "id": "MOBBEX",
       "name": "Mobbex",
       "icon": "https://icons.prod.y.uno/mobbex_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://mobbex.com/",
       "description": "Argentine-based online payment platform providing comprehensive checkout capabilities, ",
       "countries": [
@@ -5401,7 +5401,7 @@
       "id": "MODO",
       "name": "MODO",
       "icon": "https://icons.prod.y.uno/modo_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.modo.com.ar/",
       "description": "Wallet where you can pay via QR as well as find discounts",
       "countries": [
@@ -5426,7 +5426,7 @@
       "id": "MONERIS",
       "name": "Moneris",
       "icon": "https://www.google.com/s2/favicons?domain=moneris.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -5451,7 +5451,7 @@
       "id": "MONNET",
       "name": "Monnet",
       "icon": "https://icons.prod.y.uno/monnet_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.monnetpayments.com/en/",
       "description": "Ofrecer la soluci\u00f3n m\u00e1s completa para cobros y pagos por internet, facilitando la inclusi\u00f3n financiera y digital en todo LATAM.",
       "countries": [
@@ -5513,7 +5513,7 @@
       "id": "MOVII",
       "name": "Movii",
       "icon": "https://icons.prod.y.uno/movii_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.empresas.movii.com.co/",
       "description": "Movii offers innovative and efficient payment solutions, with API-based services that streamline operational processes.",
       "countries": [
@@ -5581,7 +5581,7 @@
       "id": "MPGS",
       "name": "MPGS",
       "icon": "https://icons.prod.y.uno/mastercard_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.mastercard.com/gateway",
       "description": "MPGS (Mastercard Payment Gateway Services) is a payment gateway ",
       "countries": [
@@ -5642,7 +5642,7 @@
       "id": "NEQUI",
       "name": "Nequi",
       "icon": "https://icons.prod.y.uno/nequi_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://conecta.nequi.com/content/consultas",
       "description": "Nequi is a widely used mobile banking app in Colombia, enabling payments, transfers, and financial services on mobile devices.",
       "countries": [
@@ -5674,7 +5674,7 @@
       "id": "NETS",
       "name": "Nets",
       "icon": "https://www.google.com/s2/favicons?domain=nexigroup.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -5709,7 +5709,7 @@
       "id": "NETWORK_INTERNATIONAL",
       "name": "Network International",
       "icon": "https://icons.prod.y.uno/networkinternational_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.network.ae",
       "description": "Network International is a leading payment solutions provider in the Middle East and Africa.",
       "countries": [
@@ -5736,7 +5736,7 @@
       "id": "NIUBIZ",
       "name": "Niubiz",
       "icon": "https://icons.prod.y.uno/niubiz_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.niubiz.com.pe/",
       "description": "Allows you to sell easily, quickly and securely with all cards.",
       "countries": [
@@ -5787,7 +5787,7 @@
       "id": "NMI",
       "name": "NMI",
       "icon": "https://icons.prod.y.uno/nmi_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.nmi.com",
       "description": "NMI is a payment gateway providing secure credit and debit card processing services globally.",
       "countries": [
@@ -5929,7 +5929,7 @@
       "id": "NOVALNET",
       "name": "Novalnet",
       "icon": "https://icons.prod.y.uno/novalnet_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.novalnet.com/",
       "description": "Novalnet\u2019s payment platform processes millions of transactions every day for 15,000+ custome",
       "countries": [
@@ -5956,7 +5956,7 @@
       "id": "NTT_DATA",
       "name": "NTT Data",
       "icon": "https://icons.prod.y.uno/nttdata_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.nttdatapay.com/",
       "description": "NTT DATA Payments provides end-to-end payments acceptance services through both online and offline channels with its vast range of payment services.",
       "countries": [
@@ -6004,7 +6004,7 @@
       "id": "SPINPAY",
       "name": "NuPay",
       "icon": "https://icons.prod.y.uno/nubank_logosimbolo_final.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://nupaybusiness.com.br",
       "description": "Offers to pay through Pix, the most beloved instant payment in Brazil and NuPay, a cardless credit product.",
       "countries": [
@@ -6027,7 +6027,7 @@
       "id": "NUVEI",
       "name": "Nuvei",
       "icon": "https://icons.prod.y.uno/nuvei_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://nuvei.com/",
       "description": "Payments designed to accelerate your business.",
       "countries": [
@@ -6062,7 +6062,7 @@
       "id": "OKTO",
       "name": "OKTO",
       "icon": "https://icons.prod.y.uno/okto_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.oktopayments.com/",
       "description": "OKTO (Oktopayments) is a unified global payment platform that powers end-to-end digital payment solutions for both online and retail environments worldwide",
       "countries": [
@@ -6095,7 +6095,7 @@
       "id": "OPAYODIRECT",
       "name": "OpayoDirect",
       "icon": "https://www.google.com/s2/favicons?domain=opayo.co.uk&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -6120,7 +6120,7 @@
       "id": "OPENPAY",
       "name": "OpenPay",
       "icon": "https://icons.prod.y.uno/openpay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.openpay.mx/",
       "description": "Collects online payments easily and securely.",
       "countries": [
@@ -6147,7 +6147,7 @@
       "id": "ORBITAL",
       "name": "Orbital",
       "icon": "https://www.google.com/s2/favicons?domain=chasepaymentech.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -6241,7 +6241,7 @@
       "id": "RAPPI",
       "name": "Paga con Rappi",
       "icon": "https://icons.prod.y.uno/rappi_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.pagaconrappi.com",
       "description": "Collects payments on your website and social networks with a click and without asking for bank details or forms.",
       "countries": [
@@ -6268,7 +6268,7 @@
       "id": "PAGALEVE",
       "name": "Pagaleve",
       "icon": "https://icons.prod.y.uno/pagaleve_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.pagaleve.com.br/",
       "description": "Pagaleve permite parcelar compras usando Pix sin tarjeta de cr\u00e9dito ni intereses. Facilita pagos r\u00e1pidos y seguros en varias tiendas, ofreciendo la opci\u00f3n de pagar en cuotas quincenales.",
       "countries": [
@@ -6298,7 +6298,7 @@
       "id": "PAGALO",
       "name": "Pagalo",
       "icon": "https://icons.prod.y.uno/pagalo_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://pagalo.co/",
       "description": "Pagalo is a payment gateway to connect methods and processors in your commerce.",
       "countries": [
@@ -6325,7 +6325,7 @@
       "id": "PAGARME",
       "name": "Pagarme",
       "icon": "https://icons.prod.y.uno/pagarme_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://pagar.me",
       "description": "No Pagar.me | Pagamentos online e gest\u00e3o financeira , voc\u00ea come\u00e7a a vender na internet com alta convers\u00e3o e a seguran\u00e7a que voc\u00ea precisa para crescer o seu neg\u00f3cio.",
       "countries": [
@@ -6362,7 +6362,7 @@
       "id": "PAGBANK",
       "name": "PagBank",
       "icon": "https://icons.prod.y.uno/pagseguro_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://pagseguro.uol.com.br/",
       "description": "Disrupt and democratize the access of financial services and payments solutions in Brazil, providing a simple, safe, affordable and digital ecosystem to merchants and consumers",
       "countries": [
@@ -6417,7 +6417,7 @@
       "id": "PAGO_EFECTIVO",
       "name": "PagoEfectivo",
       "icon": "https://icons.prod.y.uno/pagoefectivo_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.pagoefectivo.com/",
       "description": "Sin necesidad de contar con productos bancarios: En PagoEfectivo, podr\u00e1 aprovechar las ventajas del comercio electr\u00f3nico y pagar su compra con efectivo, en cualquiera de nuestros centros autorizados de pago a nivel nacional.",
       "countries": [
@@ -6441,7 +6441,7 @@
       "id": "PAGOPLUX",
       "name": "PagoPlux",
       "icon": "https://icons.prod.y.uno/pagoplux_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.pagoplux.com/",
       "description": "Payment solutions for your business.",
       "countries": [
@@ -6456,7 +6456,7 @@
       "id": "PAGSEGURO",
       "name": "PagSeguro",
       "icon": "https://icons.prod.y.uno/pagseguro_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://pagseguro.uol.com.br/",
       "description": "Allows you to make safe and secure card payments in Brazil.",
       "countries": [
@@ -6505,7 +6505,7 @@
       "id": "PAGSMILE",
       "name": "Pagsmile",
       "icon": "https://icons.prod.y.uno/pagsmile_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://pagsmile.com/",
       "description": "Pagsmile allows merchants to easily enter new markets through local payment methods. Cover different payment methods in the main Latin American countries and receive international payments with no extra taxes.\\n\\nAccept payments worldwide with the Payin solution, or send funds to your customers with the Payout solution.",
       "countries": [
@@ -6538,7 +6538,7 @@
       "id": "PANDA_BLUE",
       "name": "Panda blue",
       "icon": "https://icons.prod.y.uno/pandablue_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://pandablue.com/",
       "description": "PandaBlue | Secure international payments | From the main platforms ",
       "countries": [
@@ -6583,7 +6583,7 @@
       "id": "PAPARA",
       "name": "Papara",
       "icon": "https://icons.prod.y.uno/papara_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.papara.com",
       "description": "Papara is a Turkish digital wallet and payment platform, offering fast and secure payment processing.",
       "countries": [
@@ -6610,7 +6610,7 @@
       "id": "PARAM",
       "name": "Param",
       "icon": "https://icons.prod.y.uno/param_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.param.com.tr",
       "description": "Param is a Turkish fintech company providing digital payment and financial services.",
       "countries": [
@@ -6637,7 +6637,7 @@
       "id": "PAY4FUN",
       "name": "Pay4Fun",
       "icon": "https://icons.prod.y.uno/pay4fun_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://p4f.com/",
       "description": "Brazilian payment gateway service that specializes in B2C financial transactions, offering secure payment processing through popular local methods like PIX and instant bank transfers. The platform provides merchants with a comprehensive API for managing deposits, withdrawals, refunds, and account balances, with features including white-label customization, multi-currency support, and robust security measures for KYC/AML compliance.",
       "countries": [
@@ -6669,7 +6669,7 @@
       "id": "PAYAMIGO",
       "name": "PayAmigo",
       "icon": "https://icons.prod.y.uno/payamigo_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://payamigo.com/",
       "description": "PayAmigo is a fintech company that provides a fully localized payment infrastructure for cross-border merchants operating in emerging markets (especially Latin America, Africa and the Middle East). They offer services including local payment methods, treasury and FX management, tax compliance, multi-currency settlement and flexible integration options (API, hosted paywall, deep linking, reverse API).",
       "countries": [
@@ -6698,7 +6698,7 @@
       "id": "PAYCELL",
       "name": "Paycell",
       "icon": "https://icons.prod.y.uno/paycell_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.paycell.com.tr",
       "description": "Paycell is Turkcell's digital wallet and payment solution, offering seamless mobile payment services.",
       "countries": [
@@ -6725,7 +6725,7 @@
       "id": "PAYMENTEZ",
       "name": "Paymentez",
       "icon": "https://icons.prod.y.uno/paymentez_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://paymentez.com",
       "description": "Offers online and alternative payment methods for your customers in Latin America.",
       "countries": [
@@ -6792,7 +6792,7 @@
       "id": "PAYPAL",
       "name": "PayPal",
       "icon": "https://icons.prod.y.uno/paypal_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.paypal.com",
       "description": "Allows you to make online payments to your customers almost anywhere in the world.",
       "countries": [
@@ -6937,7 +6937,7 @@
       "id": "PAYPALCP",
       "name": "PayPalCP",
       "icon": "https://www.google.com/s2/favicons?domain=paypal.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -6974,7 +6974,7 @@
       "id": "PAYPLUG",
       "name": "PayPlug",
       "icon": "https://icons.prod.y.uno/payplug_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.payplug.com/",
       "description": "Payplug is the French omnichannel payment solution designed for merchants and e-retailers of all sizes.",
       "countries": [
@@ -7083,7 +7083,7 @@
       "id": "PAYSTACK",
       "name": "Paystack",
       "icon": "https://www.google.com/s2/favicons?domain=paystack.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -7119,7 +7119,7 @@
       "id": "PAYTR",
       "name": "PayTR",
       "icon": "https://icons.prod.y.uno/paytr_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.paytr.com",
       "description": "PayTR is a Turkish payment gateway providing secure online payment solutions.",
       "countries": [
@@ -7146,7 +7146,7 @@
       "id": "PAYU",
       "name": "PayU",
       "icon": "https://icons.prod.y.uno/payu_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://payu.com/en",
       "description": "Receives online payments made with credit cards, bank transfers, cash and more.",
       "countries": [
@@ -7192,7 +7192,7 @@
       "id": "PAYVALIDA",
       "name": "Payv\u00e1lida",
       "icon": "https://icons.prod.y.uno/payvalida_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://payvalida.com/",
       "description": "Reaches fast and secure payments in latin america.",
       "countries": [
@@ -7215,7 +7215,7 @@
       "id": "PAYZEN",
       "name": "Payzen",
       "icon": "https://icons.staging.y.uno/payzen_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://payzen.io/",
       "description": "Secures transactions  from proximity  payment and internet all over the world.",
       "countries": [
@@ -7250,7 +7250,7 @@
       "id": "PICPAY",
       "name": "PicPay",
       "icon": "https://icons.prod.y.uno/picpay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://picpay.com/",
       "description": "PicPay oferece um portf\u00f3lio completo de servi\u00e7os financeiros para dar mais poder para o dinheiro ",
       "countries": [
@@ -7311,7 +7311,7 @@
       "id": "PINBANK",
       "name": "Pinbank",
       "icon": "https://icons.prod.y.uno/pinbank_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.pinbank.com.br/",
       "description": "Voc\u00ea sabe o que \u00e9 Bank as a Service? \u00c9 a possibilidade da sua empresa oferecer servi\u00e7os ",
       "countries": [
@@ -7346,7 +7346,7 @@
       "id": "PLACE_TO_PAY",
       "name": "Placetopay",
       "icon": "https://icons.prod.y.uno/placetopay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.evertecinc.com/en/ecommerce-gateway/",
       "description": "Provides streamlined and secure payment solutions for all types of industries.",
       "countries": [
@@ -7390,7 +7390,7 @@
       "id": "PLAID",
       "name": "Plaid",
       "icon": "https://www.google.com/s2/favicons?domain=plaid.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -7415,7 +7415,7 @@
       "id": "PLANET",
       "name": "Planet",
       "icon": "https://www.google.com/s2/favicons?domain=weareplanet.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -7445,7 +7445,7 @@
       "id": "PLUXEE",
       "name": "Pluxee",
       "icon": "https://icons.prod.y.uno/pluxee_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.sodexo.co/",
       "description": "Garantiza la alimentaci\u00f3n diaria de tus colaboradores, fortalece el plan de beneficios de tu compa\u00f1\u00eda y optimiza los ingresos de tu talento humano con nuestros bonos y tarjetas de alimentaci\u00f3n Pluxee Canasta.",
       "countries": [
@@ -7493,7 +7493,7 @@
       "id": "POCKYT",
       "name": "Pockyt",
       "icon": "https://icons.prod.y.uno/pockyt_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://pockyt.io/",
       "description": "Pockyt is an alternative payments infrastructure that accelerates cross-border commerce growth by connecting businesses to over 300 locally preferred payment methods, including super apps, web3 wallets and homegrown real-time networks.",
       "countries": [
@@ -7526,7 +7526,7 @@
       "id": "POWERPAY",
       "name": "Powerpay",
       "icon": "https://icons.prod.y.uno/powerpay_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.powerpay.pe/",
       "description": "Powerpay is a payment method that allows you to pay for your purchases in installments of your choice, using your credit card in 3, 6, or 12 months. You can split your purchases into 3 interest-free installments with no fees (0.00% TEA and 0.00% TCEA). For 6 and 12 months, we also don\u2019t charge interest, but there is a Powerpay fee that varies depending on your purchase: from S/ 6.60 to S/ 1,225.80 (0.00% TEA and variable TCEA). This fee will be charged in equal parts within each installment.",
       "countries": [
@@ -7549,7 +7549,7 @@
       "id": "PRISMA",
       "name": "Prisma",
       "icon": "https://icons.prod.y.uno/prisma_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.prismamediosdepago.com/",
       "description": "Processes online card payments.",
       "countries": [
@@ -7576,7 +7576,7 @@
       "id": "PROSA",
       "name": "Prosa",
       "icon": "https://icons.prod.y.uno/prosa_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.prosamexico.mx/",
       "description": "Receives purchases through different devices by accepting card payments.",
       "countries": [
@@ -7615,7 +7615,7 @@
       "id": "PROSA_ISO",
       "name": "Prosa ISO Direct",
       "icon": "https://icons.prod.y.uno/prosa_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.prosamexico.mx/",
       "description": "Receives purchases through different devices by accepting card payments.",
       "countries": [
@@ -7631,7 +7631,7 @@
       "id": "PUNTOXPRESS",
       "name": "Puntoxpress",
       "icon": "https://icons.prod.y.uno/puntoexpress_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://puntoxpress.com/",
       "description": "Payment designed to accelerate your business.",
       "countries": [
@@ -7654,7 +7654,7 @@
       "id": "QI",
       "name": "QI",
       "icon": "https://icons.prod.y.uno/qi_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "QI payment provider specializing in payout operations.",
       "countries": [
@@ -7677,7 +7677,7 @@
       "id": "QNB",
       "name": "QNB",
       "icon": "https://icons.prod.y.uno/qnbfinansbank_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.qnb.com",
       "description": "Qatar National Bank Internet Payment Gateway powered by Hitachi Digital Payment Solutions, offering secure eCommerce transaction processing via RESTful APIs.",
       "countries": [
@@ -7711,7 +7711,7 @@
       "id": "QNB_FINANSBANK",
       "name": "QNB Finansbank",
       "icon": "https://icons.prod.y.uno/qnbfinansbank_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.qnbfinansbank.com",
       "description": "QNB Finansbank is a leading Turkish bank backed by Qatar National Bank, offering modern payment solutions.",
       "countries": [
@@ -7765,7 +7765,7 @@
       "id": "QNB_MPGS",
       "name": "QNB MPGS",
       "icon": "https://icons.prod.y.uno/qnbfinansbank_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.mastercard.com/gateway",
       "description": "QNB (Qatar National Bank) is a regional implementation of MPGS (Mastercard Payment Gateway Services) ",
       "countries": [
@@ -7799,7 +7799,7 @@
       "id": "QPAY",
       "name": "QPay",
       "icon": "https://www.google.com/s2/favicons?domain=cbq.qa&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "Qatar Central Bank Payment Gateway (QPAY). Runs on integrations-z declarative pipelines.",
       "countries": [
@@ -7824,7 +7824,7 @@
       "id": "QUICKGATEWAY",
       "name": "QuickGateway",
       "icon": "https://icons.duckduckgo.com/ip3/quickgateway.com.ico",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -7847,7 +7847,7 @@
       "id": "RAPPIBANK",
       "name": "Rappibank",
       "icon": "https://icons.prod.y.uno/rappibank_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://interbank.pe/rappibank",
       "description": "Provide payments infrastructure that helps you succeed.",
       "countries": [
@@ -7874,7 +7874,7 @@
       "id": "RAZORPAY",
       "name": "Razorpay",
       "icon": "https://icons.prod.y.uno/razorpay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://razorpay.com/",
       "description": "Payment Gateway. Offer a seamless payment experience on your website or app.",
       "countries": [
@@ -7895,7 +7895,7 @@
       "id": "REDE",
       "name": "Rede",
       "icon": "https://icons.prod.y.uno/rede_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.userede.com.br/",
       "description": "Allows safe online payments for your customers.",
       "countries": [
@@ -7944,7 +7944,7 @@
       "id": "REDEBAN",
       "name": "Redeban",
       "icon": "https://icons.prod.y.uno/redeban_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.rbmcolombia.com/wps/portal",
       "description": "Accepts online payments thanks to different payment collection tools that adapt to your business needs.",
       "countries": [
@@ -7980,7 +7980,7 @@
       "id": "REDEBAN_DIRECT",
       "name": "Redeban Direct",
       "icon": "https://icons.prod.y.uno/redeban_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.rbmcolombia.com/wps/portal",
       "description": "Accepts online payments thanks to different payment collection tools that adapt to your business needs.",
       "countries": [
@@ -7995,7 +7995,7 @@
       "id": "REDSYS",
       "name": "Redsys",
       "icon": "https://icons.prod.y.uno/redsys_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://redsys.es/",
       "description": "Redsys es l\u00edder nacional y referente internacional con m\u00e1s de 40 a\u00f1os de experiencia en la prestaci\u00f3n de servicios de pago de alta calidad para Entidades Financieras y proveedores de servicios de pago.",
       "countries": [
@@ -8024,7 +8024,7 @@
       "id": "REFACIL",
       "name": "Refacil",
       "icon": "https://icons.prod.y.uno/refacil_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.refacil.co/",
       "description": "Refacil (SuperPagos) es un proveedor de pagos que permite realizar transacciones mediante PSE, BreB Llaves Din\u00e1micas y BreB QR Interoperable en Colombia.",
       "countries": [
@@ -8061,7 +8061,7 @@
       "id": "REQUEST_INTEGRATION",
       "name": "Request integration",
       "icon": "https://icons.prod.y.uno/redeban_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.example.com/",
       "description": "Share with us a wanted integration, make sure to have your credentials available!",
       "countries": [
@@ -8128,7 +8128,7 @@
       "id": "SAB",
       "name": "SAB",
       "icon": "https://icons.prod.y.uno/sabb_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.mastercard.com/gateway",
       "description": "SAB is a regional implementation of MPGS (Mastercard Payment Gateway Services) ",
       "countries": [
@@ -8162,7 +8162,7 @@
       "id": "SAFE2PAY",
       "name": "Safe2pay",
       "icon": "https://icons.prod.y.uno/safe2pay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://safe2pay.com.br/",
       "description": "Safe2Pay is a provider of online payment solutions, enabling businesses to securely accept payments across various channels. Based in Brazil, Safe2Pay offers integrated services such as hosted payment pages, virtual terminals, and mobile payment solutions like pocketPOS. With a focus on simplicity and security, Safe2Pay supports multiple payment methods, including credit cards, bank transfers, and digital currencies.",
       "countries": [
@@ -8190,7 +8190,7 @@
       "id": "SAFERPAY",
       "name": "SaferPay",
       "icon": "https://icons.duckduckgo.com/ip3/saferpay.com.ico",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -8219,7 +8219,7 @@
       "id": "SAFETYPAY",
       "name": "SafetyPay",
       "icon": "https://icons.prod.y.uno/safetypay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.safetypay.com/en",
       "description": "Enables online cash payments, bank transfers and cross border transactions for a global market of consumers.",
       "countries": [
@@ -8265,7 +8265,7 @@
       "id": "SAFRAPAY",
       "name": "Safrapay",
       "icon": "https://icons.prod.y.uno/safrapay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.safrapay.com.br/",
       "description": "Safrapay is a secure and customizable payment processing company in Latin America that offers omnichannel payment solutions for online and in-person merchants.",
       "countries": [
@@ -8294,7 +8294,7 @@
       "id": "SAGEPAY",
       "name": "SagePay",
       "icon": "https://www.google.com/s2/favicons?domain=opayo.co.uk&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -8321,7 +8321,7 @@
       "id": "SANTANDER",
       "name": "Santander",
       "icon": "https://icons.prod.y.uno/santander_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.santander.com.br/",
       "description": "",
       "countries": [
@@ -8347,7 +8347,7 @@
       "id": "SIBS",
       "name": "Sibs",
       "icon": "https://icons.prod.y.uno/sibs_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.pay.sibs.com/",
       "description": "Direct integration with Sibs",
       "countries": [
@@ -8397,7 +8397,7 @@
       "id": "SIKAHEALTH",
       "name": "SikaHealth",
       "icon": "https://www.google.com/s2/favicons?domain=sikahealth.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -8420,7 +8420,7 @@
       "id": "SILVERFLOW",
       "name": "Silverflow",
       "icon": "https://icons.prod.y.uno/silverflow_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.silverflow.com/",
       "description": "Silverflow is a cloud-native payment processing platform that provides direct acquiring services and card payment processing infrastructure. It offers merchants a modern API-based solution for processing card transactions with direct connections to card networks, providing greater control, transparency, and optimization of payment operations",
       "countries": [
@@ -8751,7 +8751,7 @@
       "id": "SIPAY",
       "name": "Sipay",
       "icon": "https://icons.prod.y.uno/sipay_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.sipay.com.tr",
       "description": "Sipay is a Turkish payment service provider offering comprehensive payment solutions.",
       "countries": [
@@ -8778,7 +8778,7 @@
       "id": "SMBC",
       "name": "SMBC",
       "icon": "https://icons.prod.y.uno/smbc_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.smbc.co.jp/",
       "description": "A trusted global solution provider committed to the growth of our customers and advancement of society.",
       "countries": [
@@ -8793,7 +8793,7 @@
       "id": "SONY",
       "name": "Sony",
       "icon": "https://www.google.com/s2/favicons?domain=sony.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -8820,7 +8820,7 @@
       "id": "SPLITIT",
       "name": "Splitit",
       "icon": "https://icons.prod.y.uno/splitit_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.splitit.com/global/",
       "description": "Splitit is a Buy Now, Pay Later (BNPL) service that allows shoppers to split purchases into interest-free installments using their existing credit cards. They make use of authorization holds to lock users total debt and then do periodic partial captures for each installment.",
       "countries": [
@@ -8844,7 +8844,7 @@
       "id": "STARKBANK",
       "name": "StarkBank",
       "icon": "https://icons.prod.y.uno/starkbank_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://starkbank.com/",
       "description": "StarkBank provides modern banking infrastructure for businesses in Brazil.",
       "countries": [
@@ -8869,7 +8869,7 @@
       "id": "STONE",
       "name": "Stone",
       "icon": "https://icons.prod.y.uno/stone_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.stone.com.br/",
       "description": "Processes and authorizes credit and debit card transactions for business consultants, customers, and financial management.",
       "countries": [
@@ -8896,7 +8896,7 @@
       "id": "STP",
       "name": "STP",
       "icon": "https://icons.prod.y.uno/stp_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://stp.mx",
       "description": "Allows massive collections in Mexico through wire transfers, QR codes and collection messages.",
       "countries": [
@@ -8922,7 +8922,7 @@
       "id": "STRIPE",
       "name": "Stripe",
       "icon": "https://icons.prod.y.uno/stripe_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "Stripe is a suite of APIs powering online payment processing and commerce solutions ",
       "countries": [
@@ -9269,7 +9269,7 @@
       "id": "STRIPEFC",
       "name": "StripeFC",
       "icon": "https://www.google.com/s2/favicons?domain=stripe.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -9296,7 +9296,7 @@
       "id": "T1PAGOS",
       "name": "T1Pagos",
       "icon": "https://icons.prod.y.uno/t1pagos_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.t1pagos.com/",
       "description": "Accepts credit and debit card payments in Mexico.",
       "countries": [
@@ -9317,7 +9317,7 @@
       "id": "TABAPAY",
       "name": "Tabapay",
       "icon": "https://icons.prod.y.uno/tabapay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://tabapay.com",
       "description": "TabaPay is a unified payment platform specializing in instant payments, offering push and pull transactions across multiple payment rails including card networks, ACH, and RTP for instant access to funds.",
       "countries": [
@@ -9347,7 +9347,7 @@
       "id": "TABBY",
       "name": "Tabby",
       "icon": "https://icons.prod.y.uno/tabby_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://tabby.ai",
       "description": "Buy Now Pay Later provider for the Middle East. Allows customers to split purchases into interest-free installments.",
       "countries": [
@@ -9376,7 +9376,7 @@
       "id": "TAP_PAYMENTS",
       "name": "Tap Payments",
       "icon": "https://icons.prod.y.uno/tappayments_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.tap.company",
       "description": "Tap Payments is a Kuwait-based payment gateway providing modern payment solutions for the MENA region.",
       "countries": [
@@ -9416,7 +9416,7 @@
       "id": "TRANSBANK",
       "name": "Transbank",
       "icon": "https://icons.prod.y.uno/transbank_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://privado.transbank.cl",
       "description": "Offers your national and international customers secure transactions.",
       "countries": [
@@ -9445,7 +9445,7 @@
       "id": "TRANSFEERA",
       "name": "Transfeera",
       "icon": "https://icons.prod.y.uno/transfeera_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://transfeera.com/",
       "description": "Process, manage and automate payments with security, transparency and agility.",
       "countries": [
@@ -9478,7 +9478,7 @@
       "id": "UATP",
       "name": "UATP",
       "icon": "https://icons.y.uno/uatp_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://uatp.com",
       "description": "Offers custom payment solutions for airlines globally.",
       "countries": [
@@ -9504,7 +9504,7 @@
       "id": "UNLIMINT",
       "name": "Unlimit",
       "icon": "https://icons.prod.y.uno/unlimit_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.unlimit.com/",
       "description": "Accepts card payments and alternative payment methods worldwide.",
       "countries": [
@@ -9549,7 +9549,7 @@
       "id": "VAKIFBANK",
       "name": "VakifBank",
       "icon": "https://icons.y.uno/vakifarbank_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.vakifbank.com.tr",
       "description": "Vak\u0131fBank is one of Turkey's oldest and largest state-owned banks, providing comprehensive payment solutions.",
       "countries": [
@@ -9576,7 +9576,7 @@
       "id": "VALIDIFI",
       "name": "ValidiFi",
       "icon": "https://www.google.com/s2/favicons?domain=validifi.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -9599,7 +9599,7 @@
       "id": "VANTIV",
       "name": "Vantiv",
       "icon": "https://www.google.com/s2/favicons?domain=worldpay.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -9732,7 +9732,7 @@
       "id": "VINDI",
       "name": "Vindi",
       "icon": "https://icons.prod.y.uno/vindi_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://pagamentos.vindi.com.br/intermediador/",
       "description": "O Intermediador de pagamentos da Vindi tem todos os recursos que sua empresa precisa para receber pagamentos e tamb\u00e9m uma solu\u00e7\u00e3o completa antifraudes, tudo isso em um \u00fanico lugar.",
       "countries": [
@@ -9758,7 +9758,7 @@
       "id": "VOLT",
       "name": "Volt",
       "icon": "https://icons.dev.y.uno/volt_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.volt.io/pix/",
       "description": "Accept instant payments in Brazil\\nOur integration with Pix enables you to seamlessly expand into Latin America's largest economy.",
       "countries": [
@@ -9782,7 +9782,7 @@
       "id": "VR",
       "name": "VR Benef\u00edcios",
       "icon": "https://icons.prod.y.uno/vr_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.vr.com.br/",
       "description": "Replaces the physical basket, flexibility in choosing products, advantage of the cumulative balance, savings in expenses and logistics.",
       "countries": [
@@ -9810,7 +9810,7 @@
       "id": "WELLSFARGO",
       "name": "WellsFargo",
       "icon": "https://www.google.com/s2/favicons?domain=wellsfargo.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -9833,7 +9833,7 @@
       "id": "WEPAY",
       "name": "WePay",
       "icon": "https://www.google.com/s2/favicons?domain=wepay.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -9865,7 +9865,7 @@
       "id": "WIBOND",
       "name": "Wibond",
       "icon": "https://icons.prod.y.uno/wibond_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.wibond.com.ar",
       "description": "Offers installment payments without the need of having a credit card.",
       "countries": [
@@ -9882,7 +9882,7 @@
       "id": "WINDCAVE",
       "name": "Windcave",
       "icon": "https://www.google.com/s2/favicons?domain=windcave.com&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -9909,7 +9909,7 @@
       "id": "WOMPI",
       "name": "Wompi",
       "icon": "https://icons.prod.y.uno/wompi_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://wompi.co",
       "description": "Payment gateway developed by Bancolombia, which allows you to make payments through multiple options.",
       "countries": [
@@ -9947,7 +9947,7 @@
       "id": "WORLDLINE",
       "name": "Worldline",
       "icon": "https://icons.prod.y.uno/worldline_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://worldline.com/",
       "description": "Provides globally advanced payment technology.",
       "countries": [
@@ -10008,7 +10008,7 @@
       "id": "WORLDPAY",
       "name": "WorldPay",
       "icon": "https://icons.prod.y.uno/worldpay_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.fisglobal.com/en-gb/merchant-solutions-worldpay",
       "description": "Simplifies domestic and international payments.",
       "countries": [
@@ -10043,7 +10043,7 @@
       "id": "XENDIT",
       "name": "Xendit",
       "icon": "https://icons.prod.y.uno/xendit_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.xendit.co/en/",
       "description": "Provide payments infrastructure that helps you succeed.",
       "countries": [
@@ -10225,7 +10225,7 @@
       "id": "YAPI_KREDI",
       "name": "YapiKredi",
       "icon": "https://icons.prod.y.uno/yapikredi_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.yapikredi.com.tr",
       "description": "Yap\u0131 Kredi is one of Turkey's first nationwide commercial banks, offering modern payment processing services.",
       "countries": [
@@ -10252,7 +10252,7 @@
       "id": "YAPPY",
       "name": "Yappy",
       "icon": "https://icons.prod.y.uno/yappy_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.yappy.com.pa",
       "description": "Payment designed to accelerate your business.",
       "countries": [
@@ -10267,7 +10267,7 @@
       "id": "YUNO",
       "name": "Yuno",
       "icon": "https://www.google.com/s2/favicons?domain=y.uno&sz=128",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "",
       "description": "",
       "countries": [
@@ -10312,7 +10312,7 @@
       "id": "YUNO_TEST_PAYMENT_GW",
       "name": "Yuno Test Payment Gateway",
       "icon": "https://icons.prod.y.uno/yuno_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://www.y.uno/",
       "description": "Allows you to test end-to-end card flows.",
       "countries": [
@@ -10339,7 +10339,7 @@
       "id": "ZAINCASH",
       "name": "ZainCash",
       "icon": "https://icons.y.uno/zaincash_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://zaincash.com/",
       "description": "ZainCash offers a simple robust payment gateway to transfer money instantly from anywhere to everywhere inside Iraq, in an easy, safe, and fast way.",
       "countries": [
@@ -10364,7 +10364,7 @@
       "id": "ZESTA",
       "name": "Zesta",
       "icon": "https://icons.prod.y.uno/zesta_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://carusell.world/",
       "description": "Payment processor for Russia, Kazakhstan, and Uzbekistan supporting card payments and local APMs.",
       "countries": [
@@ -10404,7 +10404,7 @@
       "id": "ZIRAAT_BANKASI",
       "name": "Ziraat Bankasi",
       "icon": "https://icons.y.uno/ziraatbank_logosimbolo.png",
-      "category": "Payment Method",
+      "category": "Payment Provider",
       "website": "https://www.ziraatbank.com.tr",
       "description": "Ziraat Bankas\u0131 is Turkey's largest state-owned bank and oldest bank, offering comprehensive payment processing solutions.",
       "countries": [
@@ -10431,7 +10431,7 @@
       "id": "ZOOP",
       "name": "Zoop",
       "icon": "https://icons.prod.y.uno/zoop_logosimbolo.png",
-      "category": "Processor",
+      "category": "Payment Provider",
       "website": "https://zoop.com.br/",
       "description": "A Zoop foi fundada com o objetivo de suprir a car\u00eancia de agilidade e ",
       "countries": [

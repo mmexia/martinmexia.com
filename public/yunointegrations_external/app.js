@@ -155,7 +155,7 @@ function buildFilters() {
   }
 
   // Provider categories — "All" pinned first, then explicit order.
-  const CAT_ORDER = ["Processor", "Payment Method", "Fraud Solution", "3d secure"];
+  const CAT_ORDER = ["Payment Provider", "Fraud Solution", "3d secure"];
   const cats = new Set();
   DATA.providers.forEach(p => p.category && cats.add(p.category));
   const ordered = [
@@ -304,10 +304,14 @@ function card(p) {
   const logo = p.icon ? `<img class="logo" src="${p.icon}" alt="${p.name}" loading="lazy" onerror="this.style.visibility='hidden'"/>` : `<div class="logo" style="background:#1b2027"></div>`;
   const promisedBadge = "";
 
+  // Fraud solutions don't have payment methods — skip the preview entirely.
+  const isFraud = p.category === "Fraud Solution";
   // When filtering by a payment method, show that method's operations for this provider
   // instead of the generic payment-method preview.
   let featureRow = "";
-  if (state.method) {
+  if (isFraud) {
+    featureRow = "";
+  } else if (state.method) {
     const m = (p.methods || []).find(x => x.id === state.method);
     const ops = (m?.operations || []).slice().sort((a, b) => OPS_ORDER.indexOf(a) - OPS_ORDER.indexOf(b));
     featureRow = ops.length
@@ -372,16 +376,21 @@ function openDrawer(p) {
     `;
   }).join("") : `<p class="sub">No payment methods recorded.</p>`;
 
-  body.innerHTML = `
-    <h2>${logo}<span>${escape(p.name)}</span></h2>
-    <div class="sub">${escape(p.category || "")} · ID <code>${escape(p.id)}</code>${p.website ? ` · <a href="${p.website}" target="_blank" rel="noopener">website</a>` : ""}</div>
-    ${p.description ? `<p>${escape(p.description)}</p>` : ""}
+  // Fraud Solutions aren't processors — hide the payment-centric sections.
+  const isFraud = p.category === "Fraud Solution";
+  const paymentSections = isFraud ? "" : `
     <h3>Countries (${(p.countries || []).length})</h3>
     ${countriesHtml}
     <h3>Currencies</h3>
     ${currenciesHtml}
     <h3>Payment methods (${(p.methods || []).length})</h3>
     ${pmHtml}
+  `;
+  body.innerHTML = `
+    <h2>${logo}<span>${escape(p.name)}</span></h2>
+    <div class="sub">${escape(p.category || "")} · ID <code>${escape(p.id)}</code>${p.website ? ` · <a href="${p.website}" target="_blank" rel="noopener">website</a>` : ""}</div>
+    ${p.description ? `<p>${escape(p.description)}</p>` : ""}
+    ${paymentSections}
   `;
   document.getElementById("drawer").hidden = false;
   document.body.style.overflow = "hidden";
