@@ -177,7 +177,8 @@ function bindEvents() {
   document.getElementById("q").addEventListener("input", e => { state.q = e.target.value.toLowerCase(); render(); });
   document.getElementById("country").addEventListener("change", e => { state.country = e.target.value; render(); });
   document.getElementById("method").addEventListener("change", e => { state.method = e.target.value; render(); });
-  document.getElementById("ops").addEventListener("change", e => {
+  const opsEl = document.getElementById("ops");
+  if (opsEl) opsEl.addEventListener("change", e => {
     state.ops.clear();
     document.querySelectorAll("#ops input:checked").forEach(i => state.ops.add(i.value));
     render();
