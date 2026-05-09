@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { COPY, LOCATIONS, REGISTRIES, embedSrc, mapsLink, wazeLink, type Lang } from "./copy";
-import { ChurchIcon, Fairway, Laurel, MapsIcon, PinFlag, WazeIcon } from "./icons";
+import { ChurchIcon, Cross, Fairway, Laurel, MapsIcon, PinFlag, WazeIcon } from "./icons";
 
 const LS_LANG = "bautizo_lang";
 const LS_UNLOCKED = "bautizo_unlocked_v1";
@@ -138,7 +138,7 @@ function PasswordGate({
       >
         <div className="ornament" style={{ marginBottom: 24 }}>
           <span className="line"></span>
-          <Laurel size={32} />
+          <Cross size={32} />
           <span className="line"></span>
         </div>
         <div className="t-cap" style={{ marginBottom: 14 }}>
@@ -231,7 +231,7 @@ function TopBar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        <PinFlag size={20} />
+        <Cross size={20} />
         <div className="t-cap" style={{ fontSize: 10 }}>
           <span className="topbar-full">
             Martín · {lang === "en" ? "Baptism" : "Bautizo"} · 24 · 10 · 2026
@@ -1080,7 +1080,7 @@ function Footer({ lang }: { lang: Lang }) {
     >
       <div className="ornament" style={{ marginBottom: 24 }}>
         <span className="line"></span>
-        <Laurel size={36} />
+        <Cross size={36} />
         <span className="line"></span>
       </div>
       <div

@@ -1,5 +1,12 @@
 type IconProps = { size?: number; color?: string };
 
+export const Cross = ({ size = 24, color = "var(--azul-deep)" }: IconProps) => (
+  <svg width={size * 0.75} height={size} viewBox="0 0 24 32" fill="none">
+    <line x1="12" y1="3" x2="12" y2="29" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+    <line x1="4" y1="11" x2="20" y2="11" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+  </svg>
+);
+
 export const PinFlag = ({ size = 28, color = "var(--azul-deep)" }: IconProps) => (
   <svg width={size} height={size} viewBox="0 0 32 32" fill="none">
     <line x1="9" y1="3" x2="9" y2="29" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
